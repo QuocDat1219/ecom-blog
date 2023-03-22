@@ -28,6 +28,78 @@ export const nav = [
     path: "/contact",
   },
 ]
+export const categorys = [
+  {
+    _id: "1",
+    title: "Quần",
+  },
+  {
+    _id: "2",
+    title: "Áo",
+  },
+  {
+    _id: "3",
+    title: "Áo lạnh",
+  },
+  {
+    _id: "4",
+    title: "Quần đùi",
+  },
+  
+]
+
+export const brands = [
+  {
+    _id: "11",
+    title: "Yara",
+    image: "https://everev.vn/wp-content/uploads/2022/11/atess.png"
+  },
+  {
+    _id: "22",
+    title: "Yolo",
+    image: "https://everev.vn/wp-content/uploads/2022/11/star-charge-logo-1280x-q95.png"
+  },
+  {
+    _id: "33",
+    title: "Nike",
+    image: "https://everev.vn/wp-content/uploads/2022/11/firmer-scaled.jpg"
+  },
+  {
+    _id: "44",
+    title: "Adidit",
+    image: "https://everev.vn/wp-content/uploads/2022/11/263dc8d59ce45aba03f5-e1669795641104.jpg"
+  },
+  
+]
+
+export const products = [
+  {
+    _id: "1",
+    title: "Yara 1",
+    imagesThumbnail: "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
+    category: "1"
+  },
+  {
+    _id: "2",
+    title: "Yolo 2",
+    imagesThumbnail: "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
+    category: "2"
+  },
+  {
+    _id: "3",
+    title: "Nike 3",
+    imagesThumbnail: "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
+    category: "3"
+  },
+  {
+    _id: "4",
+    title: "Adidit 4",
+    imagesThumbnail: "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
+    category: "4"
+  },
+  
+]
+
 export const featured = [
   {
     cover: "../images/hero/h1.png",
