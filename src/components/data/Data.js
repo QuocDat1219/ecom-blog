@@ -27,7 +27,7 @@ export const nav = [
     text: "contact",
     path: "/contact",
   },
-]
+];
 export const categorys = [
   {
     _id: "1",
@@ -45,60 +45,63 @@ export const categorys = [
     _id: "4",
     title: "Quần đùi",
   },
-  
-]
+];
 
 export const brands = [
   {
     _id: "11",
     title: "Yara",
-    image: "https://everev.vn/wp-content/uploads/2022/11/atess.png"
+    image: "https://everev.vn/wp-content/uploads/2022/11/atess.png",
   },
   {
     _id: "22",
     title: "Yolo",
-    image: "https://everev.vn/wp-content/uploads/2022/11/star-charge-logo-1280x-q95.png"
+    image:
+      "https://everev.vn/wp-content/uploads/2022/11/star-charge-logo-1280x-q95.png",
   },
   {
     _id: "33",
     title: "Nike",
-    image: "https://everev.vn/wp-content/uploads/2022/11/firmer-scaled.jpg"
+    image: "https://everev.vn/wp-content/uploads/2022/11/firmer-scaled.jpg",
   },
   {
     _id: "44",
     title: "Adidit",
-    image: "https://everev.vn/wp-content/uploads/2022/11/263dc8d59ce45aba03f5-e1669795641104.jpg"
+    image:
+      "https://everev.vn/wp-content/uploads/2022/11/263dc8d59ce45aba03f5-e1669795641104.jpg",
   },
-  
-]
+];
 
 export const products = [
   {
     _id: "1",
     title: "Yara 1",
-    imagesThumbnail: "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
-    category: "1"
+    imagesThumbnail:
+      "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
+    category: "1",
   },
   {
     _id: "2",
     title: "Yolo 2",
-    imagesThumbnail: "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
-    category: "2"
+    imagesThumbnail:
+      "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
+    category: "2",
   },
   {
     _id: "3",
     title: "Nike 3",
-    imagesThumbnail: "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
-    category: "3"
+    imagesThumbnail:
+      "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
+    category: "3",
   },
   {
     _id: "4",
     title: "Adidit 4",
-    imagesThumbnail: "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
-    category: "4"
+    imagesThumbnail:
+      "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
+    category: "4",
   },
-  
-]
+];
 
 export const featured = [
   {
@@ -130,57 +133,86 @@ export const featured = [
 export const list = [
   {
     id: 1,
-    cover: "../images/list/p-1.png",
-    name: "Red Carpet Real Estate",
-    location: "210 Zirak Road, Canada",
-    category: "For Rent",
-    price: "$3,700",
-    type: "Apartment",
+    cover: "../images/list/blog-1.png",
+    name: "Cách sử dụng các tính năng của bộ sạc xe ô tô điện an toàn?",
+    location: "Bộ sạc xe ô tô điện là một thiết bị quan trọng để duy trì ...",
+    category: "Tin hoạt động",
+    date: "21-Th3",
+    // price: "$3,700",
+    // type: "Apartment",
   },
   {
     id: 2,
-    cover: "../images/list/p-2.png",
-    name: "Fairmount Properties",
-    location: "5698 Zirak Road, NewYork",
-    category: "For Sale",
-    price: "$9,750",
-    type: "Condos",
+    cover: "../images/list/blog-2.png",
+    name: "Trạm sạc tư nhân 22kw chuẩn IEC61851 đầu tiên tại Hà Nội",
+    location:
+      "Hôm nay chúng tôi xin chia sẻ đến các bạn về việc lắp đặt trạm ...",
+    category: "Tin hoạt động",
+    date: "21-Th3",
+    // price: "$9,750",
+    // type: "Condos",
   },
   {
     id: 3,
-    cover: "../images/list/p-7.png",
-    name: "The Real Estate Corner",
-    location: "5624 Mooker Market, USA",
-    category: "For Rent",
-    price: "$5,860",
-    type: "Offices",
+    cover: "../images/list/blog-3.png",
+    name: "Bộ sạc ô tô điện thông minh giúp tiết kiệm thời gian và chi phí",
+    location:
+      "Xin chào tất cả anh em trên toàn quốc thích và quan tâm tới ô ...",
+    category: "Tin hoạt động",
+    date: "16-Th3",
+    // price: "$5,860",
+    // type: "Offices",
   },
   {
     id: 4,
-    cover: "../images/list/p-4.png",
-    name: "Herringbone Realty",
-    location: "5621 Liverpool, London",
-    category: "For Sale",
-    price: "$7,540",
-    type: "Homes & Villas",
+    cover: "../images/list/blog-4.png",
+    name: "TRẠM SẠC TƯ NHÂN TẠI ĐẢO CẦU VỒNG THẠCH BÀN HÀ NỘI",
+    location:
+      "Đảo Cầu Vồng Thạch Bàn Hà Nội đã trở thành một điểm đến hấp dẫn ...",
+    // category: "For Sale",
+    date: "16-Th3",
+    // price: "$7,540",
+    // type: "Homes & Villas",
   },
   {
     id: 5,
-    cover: "../images/list/p-5.png",
-    name: "Brick Lane Realty",
-    location: "210 Montreal Road, Canada",
-    category: "For Rent",
-    price: "$4,850",
-    type: "Commercial",
+    cover: "../images/list/blog-5.jpg",
+    name: "Những điểm nổi bật của mẫu sạc 7kw Type 2 Costel Korea CEC-1603",
+    location:
+      "Dưới đây là những điểm nổi bật của mẫu sạc 7kw Type 2 Costel Korea ...	",
+    category: "Tin ngành xe điện",
+    date: "7-Th12",
+    // price: "$4,850",
+    // type: "Commercial",
   },
   {
     id: 6,
-    cover: "../images/list/p-6.png",
-    name: "Banyon Tree Realty",
-    location: "210 Zirak Road, Canada",
+    cover: "../images/list/blog-6.jpg",
+    name: "Những điểm nổi bật của mẫu CEC-1603",
+    location:
+      "Dưới đây là những điểm nổi bật của mẫu CEC-1603: 1. Công ty chúng tôi ...",
     category: "For Sale",
-    price: "$2,742",
-    type: "Apartment",
+    category: "Tin ngành xe điện",
+    date: "7-Th12",
+    // price: "$2,742",
+    // type: "Apartment",
+  },
+];
+export const tpost = [
+  {
+    id: 1,
+    title: "Cách sử dụng các tính năng của bộ sạc xe ô tô điện an toàn?",
+    cover: "../images/list/blog-1.png",
+  },
+  {
+    id: 2,
+    title: "Trạm sạc tư nhân 22kw chuẩn IEC61851 đầu tiên tại Hà Nội",
+    cover: "../images/list/blog-2.png",
+  },
+  {
+    id: 3,
+    title: "Những điểm nổi bật của mẫu CEC-1603",
+    cover: "../images/list/blog-6.jpg",
   },
 ];
 export const awards = [
