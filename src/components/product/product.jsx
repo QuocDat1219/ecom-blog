@@ -1,20 +1,22 @@
 import { products } from "../data/Data"
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 const Product = () => {
 
     return (
         <>
-            <div className="mt-4 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+            <div className="mt-4 grid gap-y-10 gap-x-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
                 {products.map((item) => (
-                    <div key={item._id} className="group relative border border-gray-200">
-                        <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
+                    <div key={item._id} className="group relative border border-gray-200 rounded-lg">
+                        <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-50">
                             <img
                                 src={item.imagesThumbnail}
 
                                 className="h-full w-full object-cover object-center group-hover:opacity-75"
                             />
                         </div>
+                        <hr />
                         <div className="mt-4 flex justify-between pl-[10px]">
                             <div>
                                 <p className="mt-1 text-sm text-gray-500">{item.category}</p>
@@ -28,10 +30,18 @@ const Product = () => {
                             </div>
                             {/* <p className="text-sm font-medium text-gray-900">{product.price}</p> */}
                         </div>
+                        <hr />
+                        <div className="pt-2">
+                            <button type="button" className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 border border-blue-700 rounded text-center mr-2 mb-2 w-[100%] ">
+                                <FontAwesomeIcon icon={faMagnifyingGlass} /> Xem thêm
+                            </button>
+                        </div>
+
                     </div>
+
                 ))}
             </div>
-            
+
         </>
     )
 
