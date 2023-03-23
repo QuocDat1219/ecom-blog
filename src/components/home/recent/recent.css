@@ -19,3 +19,16 @@
   border-top: 1px solid #e4e8f3;
   padding: 10px 30px;
 }
+.RecentC_img{
+  height: 200px;
+}
+.p_location{
+  font-size: 13px;
+}
+.p_location:hover{
+  color: #007bff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.h5_location{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
