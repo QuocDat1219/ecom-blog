@@ -5,7 +5,7 @@ const Path = (props) => {
 
         <>
             <section className="section-pagetop bg pt-3">
-                <div className="container mx-auto sm:px-4">
+                <div className=" mx-auto sm:px-4">
                     <nav>
                         <ol className="flex flex-wrap list-reset pt-3 pb-3 py-4 px-4 mb-4 bg-gray-200 rounded text-white">
                             <li className="inline-block py-2 text-gray-700"><a href="#">Trang chủ </a></li>
