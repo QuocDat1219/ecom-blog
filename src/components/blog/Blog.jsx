@@ -8,7 +8,7 @@ const Blog = () => {
   return (
     <>
       <main>
-        <div className="container">
+        <div className="containers">
           <section className="mainContent">
             {/* <Popular /> */}
             <RecentCard />

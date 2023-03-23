@@ -29,7 +29,7 @@ const RecentCard = () => {
                       color: "#fff",
                     }}
                   >
-                    {date}
+                    {/* {date} */}
                   </span>
                 </div>
                 <h5 className="h5_location">{name}</h5>
