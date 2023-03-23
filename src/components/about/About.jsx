@@ -15,7 +15,7 @@ const About = () => {
         <div className="HeadingA">
           <HeadingAbout title="Chúng tôi là ai" />
         </div>
-        <div className="container flex mtop">
+        <div className="containers flex mtop">
           <div class="image-container">
             <img src={imgAb} />
           </div>
@@ -36,7 +36,7 @@ const About = () => {
           <HeadingAbout title="Câu chuyện khởi nghiệp" />
         </div>
 
-        <div className="container flex mtop">
+        <div className="containers flex mtop">
           <div class="text-container">
             <p>
               EverEV là một trong những đơn vị tiên phong trong lĩnh vực sạc ô

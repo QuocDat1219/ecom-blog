@@ -1,4 +1,4 @@
-main .container {
+main .containers {
     display: flex;
     justify-content: space-between;
   }

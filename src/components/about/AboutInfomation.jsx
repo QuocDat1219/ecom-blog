@@ -7,7 +7,7 @@ const Infomation = () => {
   return (
     <>
       <section className="team background">
-        <div className="container">
+        <div className="containers">
           {/* <Heading title="Our Featured Agents" subtitle="Ban điều hành" /> */}
           <div className="col-inner">
             <div className="row">
