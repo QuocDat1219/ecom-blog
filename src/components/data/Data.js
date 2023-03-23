@@ -9,7 +9,7 @@ export const nav = [
   },
   {
     text: "SẢN PHẨM",
-    path: "/allproduct"
+    path: "/allproduct",
   },
   {
     text: "DỊCH VỤ",
@@ -28,6 +28,78 @@ export const nav = [
     path: "/contact",
   },
 ]
+export const categorys = [
+  {
+    _id: "1",
+    title: "Quần",
+  },
+  {
+    _id: "2",
+    title: "Áo",
+  },
+  {
+    _id: "3",
+    title: "Áo lạnh",
+  },
+  {
+    _id: "4",
+    title: "Quần đùi",
+  },
+  
+]
+
+export const brands = [
+  {
+    _id: "11",
+    title: "Yara",
+    image: "https://everev.vn/wp-content/uploads/2022/11/atess.png"
+  },
+  {
+    _id: "22",
+    title: "Yolo",
+    image: "https://everev.vn/wp-content/uploads/2022/11/star-charge-logo-1280x-q95.png"
+  },
+  {
+    _id: "33",
+    title: "Nike",
+    image: "https://everev.vn/wp-content/uploads/2022/11/firmer-scaled.jpg"
+  },
+  {
+    _id: "44",
+    title: "Adidit",
+    image: "https://everev.vn/wp-content/uploads/2022/11/263dc8d59ce45aba03f5-e1669795641104.jpg"
+  },
+  
+]
+
+export const products = [
+  {
+    _id: "1",
+    title: "Yara 1",
+    imagesThumbnail: "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
+    category: "1"
+  },
+  {
+    _id: "2",
+    title: "Yolo 2",
+    imagesThumbnail: "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
+    category: "2"
+  },
+  {
+    _id: "3",
+    title: "Nike 3",
+    imagesThumbnail: "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
+    category: "3"
+  },
+  {
+    _id: "4",
+    title: "Adidit 4",
+    imagesThumbnail: "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
+    category: "4"
+  },
+  
+]
+
 export const featured = [
   {
     cover: "../images/hero/h1.png",
@@ -54,7 +126,7 @@ export const featured = [
     name: "Villa & Condo",
     total: "80 Property",
   },
-]
+];
 export const list = [
   {
     id: 1,
@@ -110,29 +182,29 @@ export const list = [
     price: "$2,742",
     type: "Apartment",
   },
-]
+];
 export const awards = [
   {
-    icon: <i class='fa-solid fa-trophy'></i>,
+    icon: <i class="fa-solid fa-trophy"></i>,
     num: "32 M	",
     name: "Blue Burmin Award",
   },
   {
-    icon: <i class='fa-solid fa-briefcase'></i>,
+    icon: <i class="fa-solid fa-briefcase"></i>,
     num: "43 M",
     name: "Mimo X11 Award",
   },
   {
-    icon: <i class='fa-solid fa-lightbulb'></i>,
+    icon: <i class="fa-solid fa-lightbulb"></i>,
     num: "51 M",
     name: "Australian UGC Award",
   },
   {
-    icon: <i class='fa-solid fa-heart'></i>,
+    icon: <i class="fa-solid fa-heart"></i>,
     num: "42 M",
     name: "IITCA Green Award",
   },
-]
+];
 export const location = [
   {
     id: 1,
@@ -182,51 +254,66 @@ export const location = [
     Offices: "07 Offices",
     cover: "./images/location/city-6.png",
   },
-]
+];
 export const team = [
   {
-    list: "50",
-    cover: "../images/customer/team-1.jpg",
-    address: "Liverpool, Canada",
-    name: "Sargam S. Singh",
-    icon: [<i class='fa-brands fa-facebook-f'></i>, <i class='fa-brands fa-linkedin'></i>, <i class='fa-brands fa-twitter'></i>, <i class='fa-brands fa-instagram'></i>],
+    // list: "50",
+    cover: "../images/customer/People1.jpg",
+    address: "GIÁM ĐỐC KỸ THUẬT",
+    name: "HOÀNG KIÊN",
+    icon: [
+      <i class="fa-brands fa-facebook-f"></i>,
+      <i class="fa-brands fa-linkedin"></i>,
+      <i class="fa-brands fa-twitter"></i>,
+      <i class="fa-brands fa-instagram"></i>,
+    ],
   },
   {
-    list: "70",
-    cover: "../images/customer/team-2.jpg",
-    address: "Montreal, Canada",
-    name: "Harijeet M. Siller",
-    icon: [<i class='fa-brands fa-facebook-f'></i>, <i class='fa-brands fa-linkedin'></i>, <i class='fa-brands fa-twitter'></i>, <i class='fa-brands fa-instagram'></i>],
+    // list: "70",
+    cover: "../images/customer/People2.jpg",
+    address: "CHỦ TỊCH HĐQT",
+    name: "NGUYỄN MẠNH CƯỜNG",
+    icon: [
+      <i class="fa-brands fa-facebook-f"></i>,
+      <i class="fa-brands fa-linkedin"></i>,
+      <i class="fa-brands fa-twitter"></i>,
+      <i class="fa-brands fa-instagram"></i>,
+    ],
   },
   {
-    list: "80",
-    cover: "../images/customer/team-3.jpg",
-    address: "Denever, USA",
-    name: "Anna K. Young",
-    icon: [<i class='fa-brands fa-facebook-f'></i>, <i class='fa-brands fa-linkedin'></i>, <i class='fa-brands fa-twitter'></i>, <i class='fa-brands fa-instagram'></i>],
+    // list: "80",
+    cover: "../images/customer/People3.jpg",
+    address: "TỔNG GIÁM ĐỐC",
+    name: "CƯỜNG NGUYỄN",
+    icon: [
+      <i class="fa-brands fa-facebook-f"></i>,
+      <i class="fa-brands fa-linkedin"></i>,
+      <i class="fa-brands fa-twitter"></i>,
+      <i class="fa-brands fa-instagram"></i>,
+    ],
   },
-  {
-    list: "51",
-    cover: "../images/customer/team-4.jpg",
-    address: "2272 Briarwood Drive",
-    name: "Michael P. Grimaldo",
-    icon: [<i class='fa-brands fa-facebook-f'></i>, <i class='fa-brands fa-linkedin'></i>, <i class='fa-brands fa-twitter'></i>, <i class='fa-brands fa-instagram'></i>],
-  },
-  {
-    list: "42",
-    cover: "../images/customer/team-5.jpg",
-    address: "2272 Briarwood Drive",
-    name: "Michael P. Grimaldo",
-    icon: [<i class='fa-brands fa-facebook-f'></i>, <i class='fa-brands fa-linkedin'></i>, <i class='fa-brands fa-twitter'></i>, <i class='fa-brands fa-instagram'></i>],
-  },
-  {
-    list: "38",
-    cover: "../images/customer/team-5.jpg",
-    address: "Montreal, USA",
-    name: "Adam K. Jollio",
-    icon: [<i class='fa-brands fa-facebook-f'></i>, <i class='fa-brands fa-linkedin'></i>, <i class='fa-brands fa-twitter'></i>, <i class='fa-brands fa-instagram'></i>],
-  },
-]
+  // {
+  //   list: "51",
+  //   cover: "../images/customer/team-4.jpg",
+  //   address: "2272 Briarwood Drive",
+  //   name: "Michael P. Grimaldo",
+  //   icon: [<i class='fa-brands fa-facebook-f'></i>, <i class='fa-brands fa-linkedin'></i>, <i class='fa-brands fa-twitter'></i>, <i class='fa-brands fa-instagram'></i>],
+  // },
+  // {
+  //   list: "42",
+  //   cover: "../images/customer/team-5.jpg",
+  //   address: "2272 Briarwood Drive",
+  //   name: "Michael P. Grimaldo",
+  //   icon: [<i class='fa-brands fa-facebook-f'></i>, <i class='fa-brands fa-linkedin'></i>, <i class='fa-brands fa-twitter'></i>, <i class='fa-brands fa-instagram'></i>],
+  // },
+  // {
+  //   list: "38",
+  //   cover: "../images/customer/team-5.jpg",
+  //   address: "Montreal, USA",
+  //   name: "Adam K. Jollio",
+  //   icon: [<i class='fa-brands fa-facebook-f'></i>, <i class='fa-brands fa-linkedin'></i>, <i class='fa-brands fa-twitter'></i>, <i class='fa-brands fa-instagram'></i>],
+  // },
+];
 export const price = [
   {
     plan: "Basic",
@@ -234,19 +321,27 @@ export const price = [
     ptext: "per user, per month",
     list: [
       {
-        icon: <i class='fa-solid fa-check'></i>,
+        icon: <i class="fa-solid fa-check"></i>,
         text: "99.5% Uptime Guarantee",
       },
       {
-        icon: <i class='fa-solid fa-check'></i>,
+        icon: <i class="fa-solid fa-check"></i>,
         text: "120GB CDN Bandwidth",
       },
       {
-        icon: <i class='fa-solid fa-check'></i>,
+        icon: <i class="fa-solid fa-check"></i>,
         text: "5GB Cloud Storage",
       },
-      { change: "color", icon: <i class='fa-solid fa-x'></i>, text: "Personal Help Support" },
-      { change: "color", icon: <i class='fa-solid fa-x'></i>, text: "Enterprise SLA" },
+      {
+        change: "color",
+        icon: <i class="fa-solid fa-x"></i>,
+        text: "Personal Help Support",
+      },
+      {
+        change: "color",
+        icon: <i class="fa-solid fa-x"></i>,
+        text: "Enterprise SLA",
+      },
     ],
   },
   {
@@ -256,24 +351,24 @@ export const price = [
     ptext: "per user, per month",
     list: [
       {
-        icon: <i class='fa-solid fa-check'></i>,
+        icon: <i class="fa-solid fa-check"></i>,
         text: "99.5% Uptime Guarantee",
       },
       {
-        icon: <i class='fa-solid fa-check'></i>,
+        icon: <i class="fa-solid fa-check"></i>,
         text: "150GB CDN Bandwidth",
       },
       {
-        icon: <i class='fa-solid fa-check'></i>,
+        icon: <i class="fa-solid fa-check"></i>,
         text: "10GB Cloud Storage",
       },
       {
-        icon: <i class='fa-solid fa-check'></i>,
+        icon: <i class="fa-solid fa-check"></i>,
         text: "Personal Help Support",
       },
       {
         change: "color",
-        icon: <i class='fa-solid fa-x'></i>,
+        icon: <i class="fa-solid fa-x"></i>,
         text: "Enterprise SLA",
       },
     ],
@@ -284,39 +379,60 @@ export const price = [
     ptext: "2 user, per month",
     list: [
       {
-        icon: <i class='fa-solid fa-check'></i>,
+        icon: <i class="fa-solid fa-check"></i>,
         text: "100% Uptime Guarantee",
       },
       {
-        icon: <i class='fa-solid fa-check'></i>,
+        icon: <i class="fa-solid fa-check"></i>,
         text: "200GB CDN Bandwidth",
       },
       {
-        icon: <i class='fa-solid fa-check'></i>,
+        icon: <i class="fa-solid fa-check"></i>,
         text: "20GB Cloud Storage",
       },
       {
-        icon: <i class='fa-solid fa-check'></i>,
+        icon: <i class="fa-solid fa-check"></i>,
         text: "Personal Help Support",
       },
       {
-        icon: <i class='fa-solid fa-check'></i>,
+        icon: <i class="fa-solid fa-check"></i>,
         text: "Enterprise SLA",
       },
     ],
   },
-]
+];
 export const footer = [
   {
     title: "LAYOUTS",
-    text: [{ list: "Home Page" }, { list: "About Page" }, { list: "Service Page" }, { list: "Property Page" }, { list: "Contact Page" }, { list: "Single Blog" }],
+    text: [
+      { list: "Home Page" },
+      { list: "About Page" },
+      { list: "Service Page" },
+      { list: "Property Page" },
+      { list: "Contact Page" },
+      { list: "Single Blog" },
+    ],
   },
   {
     title: "ALL SECTIONS",
-    text: [{ list: "Headers" }, { list: "Features" }, { list: "Attractive" }, { list: "Testimonials" }, { list: "Videos" }, { list: "Footers" }],
+    text: [
+      { list: "Headers" },
+      { list: "Features" },
+      { list: "Attractive" },
+      { list: "Testimonials" },
+      { list: "Videos" },
+      { list: "Footers" },
+    ],
   },
   {
     title: "COMPANY",
-    text: [{ list: "About" }, { list: "Blog" }, { list: "Pricing" }, { list: "Affiliate" }, { list: "Login" }, { list: "Changelog" }],
+    text: [
+      { list: "About" },
+      { list: "Blog" },
+      { list: "Pricing" },
+      { list: "Affiliate" },
+      { list: "Login" },
+      { list: "Changelog" },
+    ],
   },
-]
+];

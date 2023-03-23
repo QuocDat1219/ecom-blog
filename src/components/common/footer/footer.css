@@ -3,56 +3,101 @@
   padding: 40px 0;
   color: #fff;
 }
-.footerContact h1 {
-  font-size: 40px;
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: auto;
 }
-footer {
-  background-color: #1d2636;
-  padding: 50px 0;
-  color: #fff;
+
+.company-info {
+  flex-basis: 100%;
+  text-align: center;
 }
-footer .container {
-  display: grid;
-  grid-template-columns: 6fr 2fr 2fr 1fr;
-  grid-gap: 20px;
+
+.company-info h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
 }
-footer img {
-  width: 150px;
-}
-footer h2 {
-  font-weight: 500;
-}
-footer p {
-  color: grey;
-  margin: 20px 0;
-}
-footer input {
-  background-color: #fff;
-  padding: 17px;
-  width: 100%;
-  border-radius: 5px;
-}
-footer h3 {
-  font-weight: 500;
-  margin-bottom: 30px;
-}
-footer ul {
-  display: block;
-}
-footer ul li {
-  display: block;
-  color: grey;
+
+.company-info p {
+  font-size: 16px;
+  line-height: 1.5;
   margin-bottom: 20px;
 }
-.legal {
+
+.contact-info {
+  flex-basis: calc(50% - 40px);
   text-align: center;
-  padding: 20px;
-  background: #1d2636;
-  color: rgba(255, 255, 255, 0.5);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
-@media screen and (max-width: 800px) {
-  footer .container {
-    grid-template-columns: repeat(2, 1fr);
+
+.contact-info h4 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.contact-info p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.contact-info .address {
+  margin-bottom: 0;
+}
+
+.contact-info .map-container {
+  height: 200px;
+  margin-bottom: 20px;
+}
+
+.contact-info iframe {
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 767px) {
+  .footer-content {
+    flex-direction: column;
   }
+  .map-container{
+    order: 1;
+  }
+  .company-info,
+  .contact-info {
+    flex-basis: 100%;
+    margin-bottom: 20px;
+  }
+
+}
+@media screen and (min-width: 768px) {
+  .footer-content {
+    flex-direction: row;
+  }
+
+  .company-info {
+    flex-basis: 30%;
+    text-align: left;
+    margin-bottom: 0;
+  }
+
+  .contact-info {
+    flex-basis: calc(35% - 40px);
+    text-align: left;
+    margin-bottom: 0;
+  }
+  .map-container{
+    flex-basis: 30%;
+    text-align: left;
+    margin-bottom: 0;
+  }
+}
+.logo {
+  height: 150px;
+  width: 230px;
+  margin-left: auto;
+  margin-right: auto;
 }

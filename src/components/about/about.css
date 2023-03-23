@@ -1,3 +1,6 @@
+.HeadingA{
+  text-align: center;
+}
 .about {
   margin-bottom: 80px;
 }
@@ -22,4 +25,57 @@
   .about .container img {
     margin-top: 50px;
   }
+}
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 100 20px;
+  max-width: 100%;
+}
+
+.image-container {
+  flex: 1 0 30%;
+}
+
+.image-container img {
+  width: 80%;
+  height: auto;
+  justify-content: center;
+  margin-left: 40px;
+  border-radius: 20px;
+}
+.image-container-two img {
+  margin-top: 10px; 
+}
+
+.text-container {
+  flex: 1 0 50%;
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 20px;
+  height: 300px;
+  
+}
+.text-container p{
+  font-size: 1.4rem;
+ 
+
+}
+
+@media (max-width: 767px) {
+  .image-container,
+  .text-container {
+    flex-basis: 100%;
+  }
+}
+.HeadingA_2{
+  margin-top: 100px;
+  
+}
+.HeadingA_3{
+  margin-top: 100px;
+}
+.HeadingA_4{
+  margin-top: 100px;
+  margin-bottom: 100px;
 }

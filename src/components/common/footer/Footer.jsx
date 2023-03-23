@@ -1,59 +1,51 @@
 import React from "react"
 import { footer } from "../../data/Data"
 import "./footer.css"
-import { useHistory } from 'react-router-dom';
-
+import { Container, Row, Col, ListGroup } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const Footer = () => {
   const history = useHistory();
   const handleClick = () => {
     history.push('/contact');
   };
   return (
-    <>
-      <section className='footerContact'>
-        <div className='container'>
-          <div className='send flex'>
-            <div className='text'>
-              <h1>Nếu bạn cần</h1>
-              <p>Đừng ngần ngại liên hệ với chúng tôi để biết thêm thông tin về công ty hoặc dịch vụ </p>
-            </div>
-            <button className='btn5' onClick={handleClick}>Liên hệ</button>
-          </div>
+    <footer>
+    <div className="footer-content">
+      <div className="company-info">
+        <div className="logo">
+          <img src="https://everev.vn/wp-content/uploads/2023/03/everev-logo-1-e1678267237257.png" alt="" />
         </div>
-      </section>
-
-      <footer>
-        <div className='container'>
-          <div className='box'>
-            <div className='logo'>
-              <img src='../images/logo-light.png' alt='' />
-              <h2>Do You Need Help With Anything?</h2>
-              <p>Receive updates, hot deals, tutorials, discounts sent straignt in your inbox every month</p>
-
-              <div className='input flex'>
-                <input type='text' placeholder='Email Address' />
-                <button>Subscribe</button>
-              </div>
-            </div>
-          </div>
-
-          {footer.map((val) => (
-            <div className='box'>
-              <h3>{val.title}</h3>
-              <ul>
-                {val.text.map((items) => (
-                  <li> {items.list} </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </footer>
-      <div className='legal'>
-        <span>© 2021 RentUP. Designd By GorkCoder.</span>
+        <h3>Công ty Cổ phần EverEV</h3>
+        <p>Ever Ev là công ty phân phối, lắp đặt và vận hành sạc ô tô điện hàng đầu Việt Nam</p>
       </div>
-    </>
+
+      <div className="contact-info">
+        <h3>Liên hệ</h3>
+        <p>300B Minh Khai, Phường Minh Khai, Quận Hai Bà Trưng, Hà Nội, Việt Nam</p>
+        <p>0909184567</p>
+        <p>info@everev.vn</p>
+        
+      </div>
+      <FontAwesomeIcon icon="fa-brands fa-facebook" style={{color: "#0643ac",}} />
+      <div className="map-container">
+        <h3>Địa chỉ</h3>
+        <iframe
+          title="EverEV Map"
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3723.0780830673913!2d105.857308!3d20.998565!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314aba8fbcfd8217%3A0x10473b8a8bceda35!2zMTY1IFbDqiBNaW5oIEtoYWksIFBoxrDhu51uZyBNaW5oIEtoYWksIEjDoCBOaHXhur8sIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1648017403731!5m2!1svi!2s"
+          width="300"
+          height="160"
+          style={{ border: 0 }}
+          allowFullScreen=""
+          loading="lazy"
+        ></iframe>
+      </div>
+    </div>
+
+    <div className="footer-bottom">
+      <p>&copy; 2023 EverEV. All rights reserved.</p>
+    </div>
+  </footer>
   )
 }
 
-export default Footer
+export default Footer;

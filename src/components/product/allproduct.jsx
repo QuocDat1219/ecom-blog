@@ -1,259 +1,44 @@
-const allproduct = () => {
+import "./allproduct.css"
+import Path from "./path";
+import Filter from "./FilterCard";
+import Product from "./product";
+import BrandSillder from "./brandSlider";
+
+const AllProduct = () => {
     return (
         <>
-            <section class="section-pagetop bg">
-                <div class="container">
-                    <h2 class="title-page">Category products</h2>
-                    <nav>
-                        <ol class="breadcrumb text-white">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Best category</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Great articles</li>
-                        </ol>
-                    </nav>
-                </div>
-            </section>
-            <section class="section-content padding-y-4">
-                <div class="container">
-                    <div class="row">
-                        <aside class="col-md-3">
+            <Path data="" />
+            <section className="section-content padding-y-4">
+                <div className="container">
+                    <div className="row">
+                        <aside className="col-md-3">
+                            <Filter />
 
-                            <div class="card">
 
-                                <article class="filter-group">
-                                    <header class="card-header">
-                                        <a href="#" data-toggle="collapse" data-target="#collapse_2" aria-expanded="true" class="">
-                                            <i class="icon-control fa fa-chevron-down"></i>
-                                            <h6 class="title">Brands </h6>
-                                        </a>
-                                    </header>
-                                    <div class="filter-content collapse show" id="collapse_2">
-                                        <div class="card-body">
-                                            <label class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" />
-                                                <div class="custom-control-label">Mercedes
-                                                    <b class="badge badge-pill badge-light float-right">120</b>  </div>
-                                            </label>
-                                            <label class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" />
-                                                <div class="custom-control-label">Toyota
-                                                    <b class="badge badge-pill badge-light float-right">15</b>  </div>
-                                            </label>
-                                            <label class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" />
-                                                <div class="custom-control-label">Mitsubishi
-                                                    <b class="badge badge-pill badge-light float-right">35</b> </div>
-                                            </label>
-                                            <label class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" />
-                                                <div class="custom-control-label">Nissan
-                                                    <b class="badge badge-pill badge-light float-right">89</b> </div>
-                                            </label>
-                                            <label class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" />
-                                                <div class="custom-control-label">Honda
-                                                    <b class="badge badge-pill badge-light float-right">30</b>  </div>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </article>
 
-                                <article class="filter-group">
-                                    <header class="card-header">
-                                        <a href="#" data-toggle="collapse" data-target="#collapse_5" aria-expanded="false" class="">
-                                            <i class="icon-control fa fa-chevron-down"></i>
-                                            <h6 class="title">More filter </h6>
-                                        </a>
-                                    </header>
-                                    <div class="filter-content collapse in" id="collapse_5">
-                                        <div class="card-body">
-                                            <label class="custom-control custom-radio">
-                                                <input type="radio" name="myfilter_radio" checked="" class="custom-control-input" />
-                                                <div class="custom-control-label">Any condition</div>
-                                            </label>
-                                            <label class="custom-control custom-radio">
-                                                <input type="radio" name="myfilter_radio" class="custom-control-input" />
-                                                <div class="custom-control-label">Brand new </div>
-                                            </label>
-                                            <label class="custom-control custom-radio">
-                                                <input type="radio" name="myfilter_radio" class="custom-control-input" />
-                                                <div class="custom-control-label">Used items</div>
-                                            </label>
-                                            <label class="custom-control custom-radio">
-                                                <input type="radio" name="myfilter_radio" class="custom-control-input" />
-                                                <div class="custom-control-label">Very old</div>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
                         </aside>
-                        <main class="col-md-9">
+                        <main className="col-md-9">
 
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <figure class="card card-product-grid">
-                                        <div class="img-wrap">
-                                            <img src="https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg" />
+                            <Product />
 
-                                        </div>
-                                        <div className="d-grid gap-2 col-9 mx-auto">
-                                            <p>Name category</p>
-                                        </div>
-                                        <figcaption class="info-wrap mx-auto">
-                                            <div class="fix-height">
-                                                <a href="#" class="title">Great item name goes here</a>
-                                            </div>
-                                            <div class="d-grid gap-2 col-9 mx-auto">
-                                                <a href="#" class="btn btn-outline-primary "><i class="fa fa-search-plus"></i> Quick view</a>
-
-                                            </div>
-
-                                        </figcaption>
-                                    </figure>
-                                </div>
-                                <div class="col-md-4">
-                                    <figure class="card card-product-grid">
-                                        <div class="img-wrap">
-                                            <img src="https://everev.vn/wp-content/uploads/2022/11/Athena-60-300x300.jpg" />
-
-                                        </div>
-                                        <div>
-                                            <p>Name category</p>
-                                        </div>
-                                        <figcaption class="info-wrap">
-                                            <div class="fix-height">
-                                                <a href="#" class="title">Product name goes here just for demo item</a>
-
-                                            </div>
-                                            <a href="#" class="btn btn-outline-primary"><i class="fa fa-search-plus"></i> Quick view</a>
-                                        </figcaption>
-                                    </figure>
-                                </div>
-                                <div class="col-md-4">
-                                    <figure class="card card-product-grid">
-                                        <div class="img-wrap">
-                                            <img src="https://everev.vn/wp-content/uploads/2022/11/Aurora11-2-300x300.jpg" />
-
-                                        </div>
-                                        <div>
-                                            <p>Name category</p>
-                                        </div>
-                                        <figcaption class="info-wrap">
-                                            <div class="fix-height">
-                                                <a href="#" class="title">Product name goes here just for demo item</a>
-
-                                            </div>
-                                            <a href="#" class="btn btn-outline-primary"><i class="fa fa-search-plus"></i> Quick view</a>
-                                        </figcaption>
-                                    </figure>
-                                </div>
-                                <div class="col-md-4">
-                                    <figure class="card card-product-grid">
-                                        <div class="img-wrap">
-                                            <img src="https://everev.vn/wp-content/uploads/2022/11/Costel-cec-0520br-300x300.jpg" />
-
-                                        </div>
-                                        <div>
-                                            <p>Name category</p>
-                                        </div>
-                                        <figcaption class="info-wrap">
-                                            <div class="fix-height">
-                                                <a href="#" class="title">Product name goes here just for demo item</a>
-
-                                            </div>
-                                            <a href="#" class="btn btn-outline-primary"><i class="fa fa-search-plus"></i> Quick view</a>
-                                        </figcaption>
-                                    </figure>
-                                </div>
-                                <div class="col-md-4">
-                                    <figure class="card card-product-grid">
-                                        <div class="img-wrap">
-                                            <img src="https://everev.vn/wp-content/uploads/2022/11/Jupiter-60-V2-1-150x150.jpg" />
-
-                                        </div>
-                                        <div>
-                                            <p>Name category</p>
-                                        </div>
-                                        <figcaption class="info-wrap">
-                                            <div class="fix-height">
-                                                <a href="#" class="title">Product name goes here just for demo item</a>
-
-                                            </div>
-                                            <a href="#" class="btn btn-outline-primary"><i class="fa fa-search-plus"></i> Quick view</a>
-                                        </figcaption>
-                                    </figure>
-                                </div>
-                                <div class="col-md-4">
-                                    <figure class="card card-product-grid">
-                                        <div class="img-wrap">
-                                            <img src="https://everev.vn/wp-content/uploads/2022/11/Jupiter-60-V2-1-150x150.jpg" />
-
-                                        </div>
-                                        <div>
-                                            <p>Name category</p>
-                                        </div>
-                                        <figcaption class="info-wrap">
-                                            <div class="fix-height">
-                                                <a href="#" class="title">Product name goes here just for demo item</a>
-
-                                            </div>
-                                            <a href="#" class="btn btn-outline-primary"><i class="fa fa-search-plus"></i> Quick view</a>
-                                        </figcaption>
-                                    </figure>
-                                </div>
-                                <div class="col-md-4">
-                                    <figure class="card card-product-grid">
-                                        <div class="img-wrap">
-                                            <img src="https://everev.vn/wp-content/uploads/2022/11/Jupiter-60-V2-1-150x150.jpg" />
-
-                                        </div>
-                                        <div>
-                                            <p>Name category</p>
-                                        </div>
-                                        <figcaption class="info-wrap">
-                                            <div class="fix-height">
-                                                <a href="#" class="title">Product name goes here just for demo item</a>
-
-                                            </div>
-                                            <a href="#" class="btn btn-outline-primary"><i class="fa fa-search-plus"></i> Quick view</a>
-                                        </figcaption>
-                                    </figure>
-                                </div>
-                                <div class="col-md-4">
-                                    <figure class="card card-product-grid">
-                                        <div class="img-wrap">
-                                            <img src="https://everev.vn/wp-content/uploads/2022/11/Jupiter-60-V2-1-150x150.jpg" />
-
-                                        </div>
-                                        <div>
-                                            <p>Name category</p>
-                                        </div>
-                                        <figcaption class="nfo-wrap">
-                                            <div class="fix-height">
-                                                <a href="#" class="title">Product name goes here just for demo item</a>
-
-                                            </div>
-                                            <a href="#" class="btn btn-outline-primary"><i class="fa fa-search-plus"></i> Quick view</a>
-                                        </figcaption>
-                                    </figure>
-                                </div>
-                            </div>
-                            <nav class="mt-4" aria-label="Page navigation sample">
-                                <ul class="pagination">
-                                    <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                            <nav className="mt-4" aria-label="Page navigation sample">
+                                <ul className="pagination">
+                                    <li className="page-item disabled"><a className="page-link" href="#">Trước</a></li>
+                                    <li className="page-item active"><a className="page-link" href="#">1</a></li>
+                                    <li className="page-item"><a className="page-link" href="#">2</a></li>
+                                    <li className="page-item"><a className="page-link" href="#">3</a></li>
+                                    <li className="page-item"><a className="page-link" href="#">Kế tiếp</a></li>
                                 </ul>
                             </nav>
                         </main>
                     </div>
                 </div>
             </section>
+            <section className="section-pagetop bg pt-3 pb-5">
+                <BrandSillder />
+            </section>
         </>
     );
 
 }
-export default allproduct
+export default AllProduct
