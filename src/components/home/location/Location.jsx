@@ -7,7 +7,7 @@ const Location = () => {
   return (
     <>
       <section className='location padding'>
-        <div className='container'>
+        <div className='containers'>
           <Heading title='Explore By Location' subtitle='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.' />
 
           <div className='content grid3 mtop'>

@@ -1,94 +1,243 @@
 
-import { brands, categorys } from "../data/Data"
-import { useState } from "react";
 
-const BrandCard = () => {
+import styled from "styled-components";
+import { useFilterContext } from "../context/filter_context";
+import { FaCheck } from "react-icons/fa";
+import FormatPrice from "../Helpers/FormatPrice";
+import { Button } from "../styles/Button";
 
-    const [selectedBrands, setSelectedBrands] = useState("");
-    const [selectedCategories, setSelectedCategories] = useState([]);
+const FilterSection = () => {
+  const {
+    filters: { text, category, color, price, maxPrice, minPrice },
+    updateFilterValue,
+    all_products,
+    clearFilters,
+  } = useFilterContext();
 
-    const handleCheckboxCategoryChange = (event) => {
-        const categoryTitle = event.target.value;
-        if (event.target.checked) {
-            setSelectedCategories([...selectedCategories, categoryTitle]);
-        } else {
-            setSelectedCategories(selectedCategories.filter((title) => title !== categoryTitle));
+  // get the unique values of each property
+  const getUniqueData = (data, attr) => {
+    let newVal = data.map((curElem) => {
+      return curElem[attr];
+    });
+
+    if (attr === "colors") {
+      // return (newVal = ["All", ...new Set([].concat(...newVal))]);
+      newVal = newVal.flat();
+    }
+
+    return (newVal = ["all", ...new Set(newVal)]);
+  };
+
+  // we need to have the individual data of each in an array format
+  const categoryData = getUniqueData(all_products, "category");
+  const companyData = getUniqueData(all_products, "company");
+  const colorsData = getUniqueData(all_products, "colors");
+  // console.log(
+  //   "🚀 ~ file: FilterSection.js ~ line 23 ~ FilterSection ~ companyData",
+  //   colorsData
+  // );
+
+  return (
+    <Wrapper>
+      <div className="filter-search">
+        <form onSubmit={(e) => e.preventDefault()}>
+          <input
+            type="text"
+            name="text"
+            placeholder="Search"
+            value={text}
+            onChange={updateFilterValue}
+          />
+        </form>
+      </div>
+
+      <div className="filter-category">
+        <h3>Category</h3>
+        <div>
+          {categoryData.map((curElem, index) => {
+            return (
+              <button
+                key={index}
+                type="button"
+                name="category"
+                value={curElem}
+                className={curElem === category ? "active" : ""}
+                onClick={updateFilterValue}>
+                {curElem}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="filter-company">
+        <h3>Company</h3>
+
+        <form action="#">
+          <select
+            name="company"
+            id="company"
+            className="filter-company--select"
+            onClick={updateFilterValue}>
+            {companyData.map((curElem, index) => {
+              return (
+                <option key={index} value={curElem} name="company">
+                  {curElem}
+                </option>
+              );
+            })}
+          </select>
+        </form>
+      </div>
+
+      <div className="filter-colors colors">
+        <h3>Colors</h3>
+
+        <div className="filter-color-style">
+          {colorsData.map((curColor, index) => {
+            if (curColor === "all") {
+              return (
+                <button
+                  key={index}
+                  type="button"
+                  value={curColor}
+                  name="color"
+                  className="color-all--style"
+                  onClick={updateFilterValue}>
+                  all
+                </button>
+              );
+            }
+            return (
+              <button
+                key={index}
+                type="button"
+                value={curColor}
+                name="color"
+                style={{ backgroundColor: curColor }}
+                className={color === curColor ? "btnStyle active" : "btnStyle"}
+                onClick={updateFilterValue}>
+                {color === curColor ? <FaCheck className="checkStyle" /> : null}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="filter_price">
+        <h3>Price</h3>
+        <p>
+          <FormatPrice price={price} />
+        </p>
+        <input
+          type="range"
+          name="price"
+          min={minPrice}
+          max={maxPrice}
+          value={price}
+          onChange={updateFilterValue}
+        />
+      </div>
+
+      <div className="filter-clear">
+        <Button className="btn" onClick={clearFilters}>
+          Clear Filters
+        </Button>
+      </div>
+    </Wrapper>
+  );
+};
+
+const Wrapper = styled.section`
+  padding: 5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  h3 {
+    padding: 2rem 0;
+    font-size: bold;
+  }
+  .filter-search {
+    input {
+      padding: 0.6rem 1rem;
+      width: 80%;
+    }
+  }
+  .filter-category {
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.4rem;
+      button {
+        border: none;
+        background-color: ${({ theme }) => theme.colors.white};
+        text-transform: capitalize;
+        cursor: pointer;
+        &:hover {
+          color: ${({ theme }) => theme.colors.btn};
         }
-    };
-    const handleCheckboxBrandChange = (event) => {
-        const BrandTitle = event.target.value;
-        if (event.target.checked) {
-            setSelectedBrands(BrandTitle);
-        } else {
-            setSelectedBrands(selectedBrands.filter((title) => title !== BrandTitle));
-        }
-    };
-    console.log(selectedBrands);
-    return (
-        <>
-            <div className="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300">
-                <article className="filter-group">
-                    <div className="py-3 px-6 mb-0 bg-gray-200 border-b-1 border-gray-300 text-gray-900">
-                        <a href="#" data-toggle="collapse" data-target="#collapse_2" aria-expanded="true" className="text-decoration-none">
-                            <i className="icon-control fa fa-chevron-down"></i>
-                            <h6 className="title">Danh mục sản phẩm </h6>
-                        </a>
-                    </div>
-                    <div className="filter-content hidden opacity-100 block" id="collapse_2">
-                        <div className="flex-auto p-6">
-                            {categorys.map((item, index) => (
-                                <label className="custom-control custom-checkbox" key={item._id}>
-                                    <input
-                                        type="checkbox"
-                                        className="custom-control-input"
-                                        value={item.title}
-                                        checked={selectedCategories.includes(item.title)}
-                                        onChange={handleCheckboxCategoryChange}
-                                    />
-                                    <div className="custom-control-label">{item.title}</div>
-                                    {/* <b className="inline-block p-1 text-center font-semibold text-sm align-baseline leading-none rounded rounded-full py-1 px-3 bg-gray-100 text-gray-800 hover:bg-gray-200 float-right">120</b>  </div> */}
-                                </label>
-                            ))}
+      }
+      .active {
+        border-bottom: 1px solid #000;
+        color: ${({ theme }) => theme.colors.btn};
+      }
+    }
+  }
+  .filter-company--select {
+    padding: 0.3rem 1.2rem;
+    font-size: 1.6rem;
+    color: ${({ theme }) => theme.colors.text};
+    text-transform: capitalize;
+  }
+  .filter-color-style {
+    display: flex;
+    justify-content: center;
+  }
+  .color-all--style {
+    background-color: transparent;
+    text-transform: capitalize;
+    border: none;
+    cursor: pointer;
+  }
+  .btnStyle {
+    width: 2rem;
+    height: 2rem;
+    background-color: #000;
+    border-radius: 50%;
+    margin-left: 1rem;
+    border: none;
+    outline: none;
+    opacity: 0.5;
+    cursor: pointer;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  .active {
+    opacity: 1;
+  }
+  .checkStyle {
+    font-size: 1rem;
+    color: #fff;
+  }
+  .filter_price {
+    input {
+      margin: 0.5rem 0 1rem 0;
+      padding: 0;
+      box-shadow: none;
+      cursor: pointer;
+    }
+  }
+  .filter-shipping {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .filter-clear .btn {
+    background-color: #ec7063;
+    color: #000;
+  }
+`;
 
-                        </div>
-                    </div>
-
-                </article>
-                <article className="filter-group">
-                    <div className="py-3 px-6 mb-0 bg-gray-200 border-b-1 border-gray-300 text-gray-900">
-                        <a href="#" data-toggle="collapse" data-target="#collapse_5" aria-expanded="false" className="text-decoration-none">
-                            <i className="icon-control fa fa-chevron-down"></i>
-                            <h6 className="title">Nhãn hàng </h6>
-                        </a>
-                    </div>
-                    <div className="filter-content hidden in" id="collapse_5">
-                        <div className="flex-auto p-6">
-                            {brands.map((item, index) => (
-                                <label className="custom-control custom-radio">
-                                    <input
-                                        type="radio"
-                                        name="myfilter_radio"
-                                        className="custom-control-input"
-                                        value={item.title}
-                                        checked={selectedBrands.includes(item.title)}
-                                        onChange={handleCheckboxBrandChange}
-                                    />
-                                    <div className="custom-control-label">{item.title}</div>
-                                </label>
-                            ))}
-
-
-                        </div>
-                    </div>
-                </article>
-                <div class="d-grid gap-2 my-2 mx-auto">
-                    <button className="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-blue-600 text-white hover:bg-blue-600 px-5"><i class="fa fa-filter" aria-hidden="true"></i>Lọc</button>
-
-                </div>
-            </div>
-        </>
-    )
-
-}
-
-export default BrandCard
+export default FilterSection;

@@ -9,12 +9,12 @@ const Header = () => {
   return (
     <>
       <header>
-        <div className='container flex'>
-          <div className='logo'>
-            {/* <img src='./images/logo.png' alt='' /> */}
+        <div className='containers flex'>
+          <div className="h-[30px]">
+            <img src='./images/logo.png' alt=''  />
           </div>
           <div className='nav'>
-            <ul className={navList ? "small" : "flex"}>
+            <ul className={navList ? "smalls" : "flex"}>
               {nav.map((list, index) => (
                 <li key={index}>
                   <Link to={list.path}>{list.text}</Link>

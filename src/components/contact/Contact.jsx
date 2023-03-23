@@ -7,7 +7,7 @@ const Contact = () => {
   return (
     <>
       <section className="contact mb">
-        <div className="container">
+        <div className="containers">
           <form className="shadow">
             <h4>Tìm kiếm cửa hàng</h4> <br />
             <div class="row">

@@ -7,7 +7,7 @@ const Price = () => {
   return (
     <>
       <section className='price padding'>
-        <div className='container'>
+        <div className='containers'>
           <Heading title='Select Your Package' subtitle='At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores' />
           <PriceCard />
         </div>
