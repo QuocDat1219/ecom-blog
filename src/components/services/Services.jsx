@@ -11,9 +11,9 @@ const Services = () => {
     <>
       <section className="services mb">
         <Back name="Dịch vụ" title="Các dịch vụ của chúng tôi" cover={img} />
-        <div class="container">
+        <div class="containers">
           <div class="row">
-            <div class="col-sm">
+            <div class="flex justify-center pt-3 pl-4">
               <img class="anh" src={img2} alt="linh kien" />
             </div>
             <div class="col-sm" id="text1">
@@ -37,23 +37,21 @@ const Services = () => {
         <div class="imgdai">
           <Back cover={img3} />
         </div>
-        <div style={{textAlign:"center", paddingTop:"20px"}}>
-          <h3 style={{paddingBottom:"20px"}}>Dịch vụ vận hành và bảo hành</h3>
-          <div class="row">
-            <div class="col-sm">
-              <img src={img2} alt="" class="imgblog" />
-              <p>Tên gì đó</p>
-            </div>
-            <div class="col-sm">
-              <img src={img2} alt="" class="imgblog" />
-              <p>Tên gì đó</p>
-            </div>
-            <div class="col-sm">
-              <img src={img2} alt="" class="imgblog" />
-              <p>Tên gì đó</p>
-            </div>
+        <div class="flex justify-center gap-4 grid gird-col-1 text-center">
+          <div>
+            <img src={img2} alt="" class="imgblog" />
+            <p>Tên gì đó</p>
+          </div>
+          <div>
+            <img src={img2} alt="" class="imgblog" />
+            <p>Tên gì đó</p>
+          </div>
+          <div>
+            <img src={img2} alt="" class="imgblog" />
+            <p>Tên gì đó</p>
           </div>
         </div>
+
       </section>
     </>
   );
