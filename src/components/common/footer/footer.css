@@ -1,58 +1,95 @@
-.footerContact {
-  background-color: #27ae60;
-  padding: 40px 0;
-  color: #fff;
-}
-.footerContact h1 {
-  font-size: 40px;
-}
-footer {
-  background-color: #1d2636;
-  padding: 50px 0;
-  color: #fff;
-}
-footer .container {
-  display: grid;
-  grid-template-columns: 6fr 2fr 2fr 1fr;
-  grid-gap: 20px;
-}
-footer img {
-  width: 150px;
-}
-footer h2 {
-  font-weight: 500;
-}
-footer p {
-  color: grey;
-  margin: 20px 0;
-}
-footer input {
-  background-color: #fff;
-  padding: 17px;
+/* .footer-container{
   width: 100%;
-  border-radius: 5px;
+  background-color: #eee;
 }
-footer h3 {
-  font-weight: 500;
-  margin-bottom: 30px;
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+
+  font-family: Roboto, sans-serif;
 }
-footer ul {
-  display: block;
-}
-footer ul li {
-  display: block;
-  color: grey;
+
+.left-container, .middle-container, .right-container {
+  flex-basis: 30%;
   margin-bottom: 20px;
 }
-.legal {
+
+.left-container h3, .middle-container h3, .right-container h3 {
+  margin-bottom: 10px;
   text-align: center;
-  padding: 20px;
-  background: #1d2636;
-  color: rgba(255, 255, 255, 0.5);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
-@media screen and (max-width: 800px) {
-  footer .container {
-    grid-template-columns: repeat(2, 1fr);
+.title{
+  text-align: left;
+  margin-bottom: 0;
+}
+.right-container iframe {
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    flex-direction: column;
+    text-align: center;
   }
+  .logo-footer{
+    width: 118px;
+    height: 80px;
+  }
+  .left-container,
+  .middle-container,
+  .right-container {
+    flex-basis: 100%;
+  }
+  .right-container {
+    order: 2;
+  }
+  .middle-container {
+    order: 3;
+  }
+  .left-container {
+    order: 1;
+  }
+}
+@media only screen and (min-width: 500px) and (max-width: 768px) {
+  .container {
+  flex-wrap: wrap;
+  justify-content: center;
+  }
+   .right-container {
+  flex-basis: 45%;
+  margin-left: auto;
+  margin-right: auto;
+  }
+  .left-container,
+  .middle-container {
+    flex-basis: 45%;
+    margin-bottom: 20px;
+  }
+  .logo-footer{
+    width: 118px;
+    height: 80px;
+  }
+  }
+  .legal{
+    text-align: center;
+    background-color: #007bff;
+    color:#FFF;
+    padding: 10px 0 15px;
+  }
+.name-header{
+  color: #007bff;
+  font-weight: bold;
+} */
+.logo-footer{
+  height: 150px;
+  width: 230px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.title-footer{
+  text-align: center;
+  color: #007bff;
 }
