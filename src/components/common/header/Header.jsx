@@ -14,13 +14,13 @@ const Header = () => {
             <img src='./images/logo.png' alt=''  />
           </div>
           <div className='nav'>
-            <ul className={navList ? "small" : "flexs"}>
+            {/* <ul className={navList ? "small" : "flexs"}>
               {nav.map((list, index) => (
                 <li key={index}>
                   <Link to={list.path}>{list.text}</Link>
                 </li>
               ))}
-            </ul>
+            </ul> */}
           </div>
           <div className='button flexs'>
             <h4>
