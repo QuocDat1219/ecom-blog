@@ -9,10 +9,11 @@ import BrandSillder from "./brandSlider";
 const AllProduct = () => {
     return (
         <>
+            <div className="p-5">
+                <BrandSillder />
+            </div>
             <div className="containers">
-                <div className="p-5">
-                    <BrandSillder />
-                </div>
+
                 <Path />
                 <section >
                     <div className="container max-w-screen-xl mx-auto px-4">

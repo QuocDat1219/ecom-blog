@@ -1,10 +1,10 @@
 
 import React from "react";
-// import StarRatings from "react-star-ratings";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFilter, faGlasses } from '@fortawesome/free-solid-svg-icons'
 import { categorys, brands } from "../data/Data"
 const Filters = () => {
   let queryParams;
-
 
 
   return (
@@ -46,6 +46,11 @@ const Filters = () => {
             </li>
           ))}
         </ul>
+        <hr className="my-4" />
+
+        <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+          <FontAwesomeIcon icon={faFilter} /> Lọc
+        </button>
       </div>
     </aside>
   );

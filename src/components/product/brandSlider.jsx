@@ -6,16 +6,12 @@ const BrandSillder = () => {
     return (
         <>
             <div >
-                <Marquee behavior="scroll" direction="left">
+                <Marquee behavior="scroll" direction="left" >
                     {brands.map((item, index) => (
                         <div key={item._id}>
-                            <img src={item.image} style={{ width: "50%", height: "100px", display: "block", marginRight: "200px" }} />
+                            <img src={item.image} style={{ width: "50%", height: "100px", display: "block", marginRight: "80px" }} />
                         </div>
                     ))}
-
-
-
-
                 </Marquee>
             </div>
         </>

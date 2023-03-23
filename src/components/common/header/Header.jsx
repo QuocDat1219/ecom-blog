@@ -23,9 +23,9 @@ const Header = () => {
             </ul>
           </div>
 
-          {/* <div className='toggle'>
+          <div className='toggle'>
             <button onClick={() => setNavList(!navList)}>{navList ? <i className='fa fa-times'></i> : <i className='fa fa-bars'></i>}</button>
-          </div> */}
+          </div>
         </div>
       </header>
     </>
