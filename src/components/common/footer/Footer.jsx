@@ -3,11 +3,8 @@ import { footer } from "../../data/Data"
 import "./footer.css"
 import { Container, Row, Col, ListGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 const Footer = () => {
-  const history = useHistory();
-  const handleClick = () => {
-    history.push('/contact');
-  };
   return (
     <footer>
     <div className="footer-content">
