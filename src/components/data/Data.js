@@ -12,7 +12,7 @@ export const nav = [
     path: "/allproduct"
   },
   {
-    text: "services",
+    text: "DỊCH VỤ",
     path: "/services",
   },
   {
@@ -24,7 +24,7 @@ export const nav = [
     path: "/pricing",
   },
   {
-    text: "contact",
+    text: "LIÊN HỆ",
     path: "/contact",
   },
 ]

@@ -1,18 +1,23 @@
 import React from "react"
 import { footer } from "../../data/Data"
 import "./footer.css"
+import { useHistory } from 'react-router-dom';
 
 const Footer = () => {
+  const history = useHistory();
+  const handleClick = () => {
+    history.push('/contact');
+  };
   return (
     <>
       <section className='footerContact'>
         <div className='container'>
           <div className='send flex'>
             <div className='text'>
-              <h1>Do You Have Questions ?</h1>
-              <p>We'll help you to grow your career and growth.</p>
+              <h1>Nếu bạn cần</h1>
+              <p>Đừng ngần ngại liên hệ với chúng tôi để biết thêm thông tin về công ty hoặc dịch vụ </p>
             </div>
-            <button className='btn5'>Contact Us Today</button>
+            <button className='btn5' onClick={handleClick}>Liên hệ</button>
           </div>
         </div>
       </section>
