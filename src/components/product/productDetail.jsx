@@ -22,7 +22,7 @@ const ProductDetail = () => {
                 <Path data={record.title} />
 
             </div>
-            <section class="overflow-hidden bg-white py-7 dark:bg-gray-800">
+            <section class="overflow-hidden bg-white py-7 ">
                 <div class="max-w-6xl px-4 py-4 mx-auto lg:py-8 md:px-6">
                     <div class="flex flex-wrap -mx-4">
                         <div class="w-full mb-8 md:w-1/2 md:mb-0">
