@@ -32,9 +32,11 @@ const Product = () => {
                         </div>
                         <hr />
                         <div className="pt-2">
-                            <button type="button" className="bg-color-basic hover:bg-blue-400 text-white font-bold py-2 px-4 border border-blue-700 rounded text-center mr-2 mb-2 w-[100%] ">
-                                <FontAwesomeIcon icon={faMagnifyingGlass} /> Xem thêm
-                            </button>
+                            <a href={`/productdetail/${item._id}`}>
+                                <button type="button" className="bg-color-basic hover:bg-blue-400 text-white font-bold py-2 px-4 border border-blue-700 rounded text-center mr-2 mb-2 w-[100%] ">
+                                    <FontAwesomeIcon icon={faMagnifyingGlass} /> Xem thêm
+                                </button>
+                            </a>
                         </div>
 
                     </div>
@@ -43,7 +45,7 @@ const Product = () => {
 
             </div>
 
-          
+
 
         </>
     )
