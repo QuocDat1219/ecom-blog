@@ -5,6 +5,8 @@ import "../home/featured/Featured.css";
 import img2 from "../images/linkkien.jpg";
 import img3 from "../images/tramsac.jpg";
 import "./Services.css";
+import { tpost } from "../data/Data";
+
 const Services = () => {
   return (
     <>
@@ -49,42 +51,21 @@ const Services = () => {
             Dịch vụ vận hành và bảo hành
           </h3>
           <div class="flex flex-wrap justify-between">
-            <div class="w-full md:w-1/3 px-4 mb-8 md:mb-0">
+            {tpost.map((val)=> (
+              <div class="w-full md:w-1/3 px-4 mb-8 md:mb-0">
               <div class="relative h-0 pb-[100%] mb-4">
                 <img
-                  src="https://picsum.photos/id/1018/400"
-                  alt="Item 1"
-                  class="absolute inset-0 w-full h-full object-cover rounded-[20px]"
-                />
-              </div>
-              <p class="text-gray-700 leading-relaxed text-center mt-4">
-                Bài viết 1
-              </p>
-            </div>
-            <div class="w-full md:w-1/3 px-4 mb-8 md:mb-0">
-              <div class="relative h-0 pb-[100%] mb-4">
-                <img
-                  src="https://picsum.photos/id/1020/400"
-                  alt="Item 2"
-                  class="absolute inset-0 w-full h-full object-cover rounded-[20px]"
-                />
-              </div>
-              <p class="text-gray-700 leading-relaxed text-center mt-4">
-                Bài viết 2
-              </p>
-            </div>
-            <div class="w-full md:w-1/3 px-4 mb-8 md:mb-0">
-              <div class="relative h-0 pb-[100%] mb-4">
-                <img
-                  src="https://picsum.photos/id/1033/400"
+                  src={val.cover}
                   alt="Item 3"
                   class="absolute inset-0 w-full h-full object-cover rounded-[20px]"
                 />
               </div>
               <p class="text-gray-700 leading-relaxed text-center mt-4">
-                Bài viết 3
+                {val.title}
               </p>
             </div>
+            )).slice(-3)}
+            
           </div>
         </div>
 
