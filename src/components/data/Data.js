@@ -31,19 +31,19 @@ export const nav = [
 export const categorys = [
   {
     _id: "1",
-    title: "Quần",
+    title: "Sạc AC",
   },
   {
     _id: "2",
-    title: "Áo",
+    title: "Sạc DC",
   },
   {
     _id: "3",
-    title: "Áo lạnh",
+    title: "Sạc ABC",
   },
   {
     _id: "4",
-    title: "Quần đùi",
+    title: "Sạc XYZ",
   },
 ];
 
@@ -61,7 +61,7 @@ export const brands = [
   },
   {
     _id: "33",
-    title: "Nike",
+    title: "Ni",
     image: "https://everev.vn/wp-content/uploads/2022/11/firmer-scaled.jpg",
   },
   {
