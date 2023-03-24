@@ -15,12 +15,12 @@ const Footer = () => {
                   alt=""
                 />
               </div>
-              <h3 className="font-medium text-title-color text-center text-[20px]">Công ty Cổ phần EverEV</h3>
+              <h3 className="font-medium text-color-title text-center text-[20px]">Công ty Cổ phần EverEV</h3>
               <p className="text-text-color">Ever Ev là công ty phân phối, lắp đặt và vận hành sạc ô tô điện hàng đầu Việt Nam</p>
             </div>
 
             <div className="md:mr-8">
-              <h3 className="text-title-color text-center text-[20px]">Liên hệ</h3>
+              <h3 className="text-color-title text-center text-[20px]">Liên hệ</h3>
               <div className="text-text-color">
                 <p>300B Minh Khai, Phường Minh Khai, Quận Hai Bà Trưng, Hà Nội, Việt Nam</p>
                 <p>0909184567</p>
@@ -29,7 +29,7 @@ const Footer = () => {
             </div>
 
             <div className="justify-center items-center">
-              <h3 className="text-title-color text-center text-[20px]">Địa chỉ</h3>
+              <h3 className="text-color-title text-center text-[20px]">Địa chỉ</h3>
               <iframe
                 title="EverEV Map"
                 className="w-[200] h-[150] mr-auto ml-auto"
