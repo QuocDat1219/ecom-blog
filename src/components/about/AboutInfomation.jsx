@@ -29,7 +29,7 @@ const Infomation = () => {
                 </span>
               </div>
             </div>
-            <h4 className="title-col">Ban điều hành </h4>
+            <p className="title-col">Ban điều hành </p>
           </div>
 
           <div className="content mtop grid3">

@@ -16,13 +16,13 @@
   line-height: 30px;
 }
 @media screen and (max-width: 768px) {
-  .about .container {
+  .about .containers {
     flex-direction: column;
   }
   .about p {
     padding: 0;
   }
-  .about .container img {
+  .about .containers img {
     margin-top: 50px;
   }
 }

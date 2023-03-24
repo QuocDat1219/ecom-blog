@@ -1,13 +1,13 @@
-.heading {
+.Blog_heading {
     margin: 50px 0;
     background-image: url("../../../public/images/title_pattern.png");
     height: 35px;
     background-position: center;
     width: 100%;
   }
-  .heading h6 {
+  .Blog_heading h6 {
     font-weight: 400;
-    background: #fb4c35;
+    background: #007bff;
     color: #fff;
     height: 35px;
     width: 130px;
