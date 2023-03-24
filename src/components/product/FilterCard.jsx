@@ -17,8 +17,8 @@ const Filters = () => {
       </a>
 
 
-      <div className=" md:block px-6 py-4 border border-gray-200 bg-white rounded shadow-sm ">
-        <h3 className="font-semibold mb-2">Category</h3>
+      <div className=" md:block px-6 py-4 border border-color-basic bg-white rounded-md shadow-sm ">
+        <h3 className="font-semibold mb-2">Danh mục</h3>
 
         <ul className="space-y-1">
           {categorys.map((item) => (
@@ -32,7 +32,7 @@ const Filters = () => {
           ))}
         </ul>
 
-        <hr className="my-4" />
+        <hr className="my-4 text-color-basic" />
 
         <h3 className="font-semibold mb-2">Nhãn hàng</h3>
         <ul className="space-y-1">
@@ -48,7 +48,7 @@ const Filters = () => {
         </ul>
         <hr className="my-4" />
 
-        <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+        <button class="bg-color-basic hover:bg-blue-400 text-white font-bold py-2 px-4 border border-black rounded">
           <FontAwesomeIcon icon={faFilter} /> Lọc
         </button>
       </div>

@@ -1,10 +1,10 @@
 export const nav = [
   {
-    text: "home",
+    text: "HOME",
     path: "/",
   },
   {
-    text: "about",
+    text: "ABOUT",
     path: "/about",
   },
   {
@@ -16,13 +16,13 @@ export const nav = [
     path: "/services",
   },
   {
-    text: "blog",
+    text: "BLOG",
     path: "/blog",
   },
-  {
-    text: "pricing",
-    path: "/pricing",
-  },
+  // {
+  //   text: "pricing",
+  //   path: "/pricing",
+  // },
   {
     text: "LIÊN HỆ",
     path: "/contact",
@@ -75,31 +75,129 @@ export const brands = [
 export const products = [
   {
     _id: "1",
-    title: "Yara 1",
+    title: "COSTEL CEC-0530BR",
     imagesThumbnail:
       "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
+    imagesDetail: [
+      {
+        original: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
+        thumbnail: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
+
+      },
+      {
+        original: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
+        thumbnail: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
+
+      },
+      {
+        original: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
+        thumbnail: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
+
+      },
+      {
+        original: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
+        thumbnail: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
+
+      },
+    ],
     category: "1",
+    description: "Sạc DC siêu nhanh, công suất 50 kw.Sử dụng giao diện LCD lớn 13 inch hiện đại và thân thiện với người dùng.Được trang bị 3 đầu nối sạc : (CHAdeMO, CCS 1,2, IEC62196-2 Loại2)Sạc siêu nhanh và tương thích với nhiều loại xe.Chất lượng sơn và độ bền được đảm bảo ngay cả trong khi lắp đặt ngoài trời",
+    detail: "chi tiet ne",
+
   },
   {
     _id: "2",
-    title: "Yolo 2",
+    title: "Artemis 7",
     imagesThumbnail:
       "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
+    imagesDetail: [
+      {
+        original: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
+        thumbnail: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
+
+      },
+      {
+        original: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
+        thumbnail: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
+
+      },
+      {
+        original: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
+        thumbnail: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
+
+      },
+      {
+        original: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
+        thumbnail: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
+
+      },
+    ],
     category: "2",
+    description: "Sạc nhanh và an toànĐặc biệt phù hợp với nhu cầu sạc tại các hộ gia đình.Kiểu dáng công nghiệp hiện đại mang lại trải nghiệm dễ chịu cho người dùng.Kết nối dễ dàng với giao thức OCPP 1.6J.Hỗ trợ 4G, WIFI, Ethernet, RS485.",
+    detail: "chi tiet ne",
   },
   {
     _id: "3",
     title: "Nike 3",
     imagesThumbnail:
       "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
+    imagesDetail: [
+      {
+        original: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
+        thumbnail: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
+
+      },
+      {
+        original: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
+        thumbnail: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
+
+      },
+      {
+        original: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
+        thumbnail: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
+
+      },
+      {
+        original: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
+        thumbnail: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
+
+      },
+    ],
     category: "3",
+    description: "abc xy ",
+    detail: "chi tiet ne",
   },
   {
     _id: "4",
     title: "Adidit 4",
     imagesThumbnail:
       "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
+    imagesDetail: [
+      {
+        original: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
+        thumbnail: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
+
+      },
+      {
+        original: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
+        thumbnail: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
+
+      },
+      {
+        original: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
+        thumbnail: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
+
+      },
+      {
+        original: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
+        thumbnail: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
+
+      },
+    ],
+
     category: "4",
+    description: "abc xy ",
+    detail: "chi tiet ne",
   },
 ];
 
