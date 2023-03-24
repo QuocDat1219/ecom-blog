@@ -30,7 +30,7 @@
 
     }
   }
-  @media screen and (max-width: 550px) {
+  @media screen and (max-width: 768px) {
     .each-slide-effect span {
       width: 60%;
       align-items: center;
