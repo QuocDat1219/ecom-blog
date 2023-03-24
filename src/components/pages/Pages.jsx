@@ -9,6 +9,7 @@ import Blog from "../blog/Blog"
 import Services from "../services/Services"
 import Contact from "../contact/Contact"
 import AllProduct from "../product/allproduct"
+import ProductDetail from "../product/productDetail"
 const Pages = () => {
   return (
     <>
@@ -22,7 +23,7 @@ const Pages = () => {
           <Route exact path='/blog' component={Blog} />
           <Route exact path='/pricing' component={Pricing} />
           <Route exact path='/contact' component={Contact} />
-          
+          <Route exact path='/productdetail/:id' component={ProductDetail} />
         </Switch>
         <Footer />
       </Router>
