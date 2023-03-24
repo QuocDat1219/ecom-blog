@@ -10,6 +10,7 @@ module.exports = {
       colors: {
         'color-basic': '#0B1A4A',
         'text-color': '#FFF',
+        'color-title':'#00FFFF',
       },
     },
   },
