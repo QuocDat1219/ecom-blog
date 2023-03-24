@@ -9,6 +9,8 @@
     width: 100px;
     height: 80px;
     object-fit: cover;
+    /* text-align: center;
+    justify-content: center; */
   }
   .tpost .text {
     padding: 0 0px;

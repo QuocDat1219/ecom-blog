@@ -4,7 +4,7 @@ main .containers {
   }
   .mainContent {
     width: 75%;
-    padding-bottom: 40px;
+    padding-bottom: 50px;
   }
   .sideContent {
     width: 23%;
@@ -13,7 +13,7 @@ main .containers {
     background-color: #000;
   }
   @media screen and (max-width: 768px) {
-    main .container {
+    main .containers {
       flex-direction: column;
     }
     .mainContent {

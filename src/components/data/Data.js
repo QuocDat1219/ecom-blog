@@ -198,6 +198,13 @@ export const list = [
     // type: "Apartment",
   },
 ];
+export const contentBlog = [
+  {
+    id: 1,
+    title: "Cách sử dụng các tính năng của bộ sạc xe ô tô điện an toàn?",
+    poster: "POSTED ON 21/03/2023 BY TUONGVI",
+  },
+];
 export const tpost = [
   {
     id: 1,

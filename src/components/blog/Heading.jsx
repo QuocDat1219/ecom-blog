@@ -4,7 +4,7 @@ import "./Heading.css";
 const Heading = ({ title }) => {
   return (
     <>
-      <div className="heading">
+      <div className="Blog_heading">
         <h6>{title}</h6>
       </div>
     </>

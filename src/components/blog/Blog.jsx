@@ -4,6 +4,7 @@ import RecentCard from "../home/recent/RecentCard";
 import "../home/recent/recent.css";
 import "./Blog.css";
 import Side from "./Side";
+
 const Blog = () => {
   return (
     <>

@@ -1,6 +1,7 @@
 import React from "react";
 import { list } from "../../data/Data";
 import "./recent.css";
+import { Link } from "react-router-dom";
 const RecentCard = () => {
   return (
     <>
@@ -8,12 +9,14 @@ const RecentCard = () => {
         {list.map((val, index) => {
           const { cover, category, location, name, price, type, date } = val;
           return (
-            <div className="box shadow" key={index}>
+            <div className="recentCard" key={index}>
               <div className="RecentC_img">
-                <img src={cover} alt="" />
+                <Link to="/tintuc1">
+                  <img src={cover} alt="" />
+                </Link>
               </div>
               <div className="text">
-                <div className="category flex">
+                <div className="category flexs">
                   <span
                     style={{
                       background:
@@ -23,20 +26,24 @@ const RecentCard = () => {
                   >
                     {category}
                   </span>
+
                   <span
                     style={{
-                      background: "#25b579",
+                      background: "#007bff",
                       color: "#fff",
                     }}
                   >
-                    {/* {date} */}
+                    {date}
                   </span>
                 </div>
-                <h5 className="h5_location">{name}</h5>
-                <p className="p_location">
-                  {/* <i className='fa fa-location-dot'></i>  */}
-                  {location}
-                </p>
+                <h4 className="h5_location">{name}</h4>
+                <div className="is-divider"></div>
+                <Link to="/tintuc1">
+                  <span className="p_location">
+                    {location.slice(0, 40)}...
+                    {/* <i className='fa fa-location-dot'></i>  */}
+                  </span>
+                </Link>
               </div>
               {/* <div className="button flex">
                 <div>
