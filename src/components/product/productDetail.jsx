@@ -22,7 +22,7 @@ const ProductDetail = () => {
                 <Path data={record.title} />
 
             </div>
-            <section class="overflow-hidden bg-white py-7 dark:bg-gray-800">
+            <section class="overflow-hidden bg-white py-7 ">
                 <div class="max-w-6xl px-4 py-4 mx-auto lg:py-8 md:px-6">
                     <div class="flex flex-wrap -mx-4">
                         <div class="w-full mb-8 md:w-1/2 md:mb-0">
@@ -36,21 +36,21 @@ const ProductDetail = () => {
                                 />
 
 
-                                <div class="px-6 pb-6 mt-6 border-t border-gray-300 dark:border-gray-400 ">
+                                <div class="px-6 pb-6 mt-6 border-t border-gray-300  ">
                                     <div class="flex flex-wrap items-center mt-6">
                                         <span class="mr-2">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                                class="w-4 h-4 text-gray-700 dark:text-gray-400 bi bi-truck"
+                                                class="w-4 h-4 text-gray-700  bi bi-truck"
                                                 viewBox="0 0 16 16">
                                                 <path
                                                     d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5v-7zm1.294 7.456A1.999 1.999 0 0 1 4.732 11h5.536a2.01 2.01 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456zM12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12v4zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z">
                                                 </path>
                                             </svg>
                                         </span>
-                                        <h2 class="text-lg font-bold text-gray-700 dark:text-gray-400">Mô tả</h2>
+                                        <h2 class="text-lg font-bold text-gray-700 ">Mô tả</h2>
                                     </div>
                                     <div class="mt-2 px-7">
-                                        <a class="text-sm text-blue-400 dark:text-blue-200" href="#">{record.detail}</a>
+                                        <a class="text-sm text-blue-400 " href="#">{record.detail}</a>
                                     </div>
                                 </div>
                             </div>
@@ -58,13 +58,13 @@ const ProductDetail = () => {
                         <div class="w-full px-4 md:w-1/2 ">
                             <div class="lg:pl-20">
                                 <div class="mb-8 ">
-                                    <h2 class="max-w-xl mb-6 text-2xl font-bold dark:text-gray-400 md:text-4xl">
+                                    <h2 class="max-w-xl mb-6 text-2xl font-bold  md:text-4xl">
                                         {record.title}</h2>
-                                    <p class="inline-block mb-6 text-xl font-bold text-gray-700 dark:text-gray-400 ">
+                                    <p class="inline-block mb-6 text-xl font-bold text-gray-700  ">
                                         <span>Danh mục: {record.category}</span>
 
                                     </p>
-                                    <p class="max-w-md text-gray-700 dark:text-gray-400">
+                                    <p class="max-w-md text-gray-700 ">
                                         {record.description}
                                     </p>
                                 </div>
@@ -86,7 +86,7 @@ const ProductDetail = () => {
                                 </div>
                                 <div class="mb-8">
                                     <h2
-                                        class=" pb-1 mb-4 text-2xl font-bold border-b border-blue-300 dark:text-gray-400 dark:border-gray-600">
+                                        class=" pb-1 mb-4 text-2xl font-bold border-b border-blue-300 ">
                                         Liên hệ</h2>
                                     <div class="flex flex-wrap -mx-2 -mb-2">
                                         <button class="p-1 mb-2 mr-3 bg-color-basic">
