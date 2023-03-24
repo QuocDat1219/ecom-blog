@@ -11,7 +11,7 @@ const Services = () => {
       <section className="services mb  pt-[60px]">
         <Back name="Dịch vụ" title="Các dịch vụ của chúng tôi" cover={img} />
         <div className="container mx-auto sm:px-4 justify-items-center">
-          <div className="flex flex-wrap justify-items-center">
+        <div className="flex flex-wrap justify-items-center">
             <div className="relative sm:flex-grow sm:flex-1 sm:w-[480px]">
               <img
                 className="lg:h-[650px] lg:w-[800px] sm:h-[500px] rounded-[20px]"
@@ -20,8 +20,8 @@ const Services = () => {
               />
             </div>
             <div
-              className="relative sm:flex-grow sm:flex-1 w-[500px] sm:h-[250px] mx-auto justify-items-center sm:ml-[30px] lg:mt-[180px] mt-[20px] md:mt-[140px]"
-              id="text1"
+             className="relative sm:flex-grow sm:flex-1 w-[500px] sm:h-[250px] mx-auto justify-items-center sm:ml-[30px] lg:mt-[180px] mt-[20px] md:mt-[140px]"
+             id="text1"
             >
               <p className="pl-[20px] sm:pt-[30px]">
                 <h2 className="tieude">
