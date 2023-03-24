@@ -14,7 +14,7 @@ const Contact = () => {
               <div className="relative sm:flex-grow sm:flex-1">
                 <select
                   id="countries"
-                  class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 w-[260px] sm:w-full"
+                  class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 w-[260px] lg:w-full"
                 >
                   <option selected>Chọn tỉnh, thành phố</option>
                   <option value="US">United States</option>
@@ -26,12 +26,12 @@ const Contact = () => {
               <div className="relative sm:flex-row sm:flex-1">
                 <select
                   id="countries"
-                  class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block sm:w-full p-2.5 w-[260px]"
+                  class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block lg:w-full p-2.5 w-[260px]"
                 >
                   <option selected>Chọn quận, huyện</option>
                 </select>
               </div>
-              <div className="relative sm:flex-grow sm:flex-1 sm:w-full w-[100%] ">
+              <div className="relative sm:flex-grow sm:flex-1 lg:w-full w-[100%] ">
                 <button className="btntk">Tìm kiếm</button>
               </div>
             </div>

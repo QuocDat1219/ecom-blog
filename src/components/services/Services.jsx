@@ -8,7 +8,7 @@ import "./Services.css";
 const Services = () => {
   return (
     <>
-      <section className="services mb">
+      <section className="services mb  pt-[60px]">
         <Back name="Dịch vụ" title="Các dịch vụ của chúng tôi" cover={img} />
         <div className="container mx-auto sm:px-4 justify-items-center">
           <div className="flex flex-wrap justify-items-center">
@@ -20,7 +20,7 @@ const Services = () => {
               />
             </div>
             <div
-              className="relative sm:flex-grow sm:flex-1 w-[500px] sm:h-[250px] h-[500px]  justify-items-center sm:ml-[30px]"
+              className="relative sm:flex-grow sm:flex-1 w-[500px] sm:h-[250px] mx-auto justify-items-center sm:ml-[30px] lg:mt-[180px] mt-[20px] md:mt-[140px]"
               id="text1"
             >
               <p className="pl-[20px] sm:pt-[30px]">
