@@ -8,7 +8,7 @@ const Contact = () => {
     <>
       <section className="contact mb">
         <div className="containers ">
-          <div className="shadow m-4 rounded-md bg-color-card">
+          <div className="shadow m-4 rounded-md bg-color-card overflow-auto">
             <form className=" justify-center items-center ">
               <h4 className="lg:text-left font-bold text-color-title">Tìm kiếm cửa hàng</h4> <br />
               <div className="flex flex-wrap ">
@@ -32,7 +32,7 @@ const Contact = () => {
                     <option selected>Chọn quận, huyện</option>
                   </select>
                 </div>
-                <div className="relative sm:flex-grow sm:flex-1 lg:w-full w-[100%] m-2">
+                <div className="relative sm:flex-grow sm:flex-1 lg:w-full w-[100%] ">
                   <button className="bg-color-basic w-[100%] rounded-md text-text-color">Tìm kiếm</button>
                 </div>
               </div>

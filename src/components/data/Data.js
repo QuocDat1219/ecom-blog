@@ -133,12 +133,12 @@ export const products = [
       },
     ],
     category: "2",
-    description: "Sạc nhanh và an toànĐặc biệt phù hợp với nhu cầu sạc tại các hộ gia đình.Kiểu dáng công nghiệp hiện đại mang lại trải nghiệm dễ chịu cho người dùng.Kết nối dễ dàng với giao thức OCPP 1.6J.Hỗ trợ 4G, WIFI, Ethernet, RS485.",
+    description: "Sạc nhanh và an toàn Đặc biệt phù hợp với nhu cầu sạc tại các hộ gia đình.Kiểu dáng công nghiệp hiện đại mang lại trải nghiệm dễ chịu cho người dùng.Kết nối dễ dàng với giao thức OCPP 1.6J.Hỗ trợ 4G, WIFI, Ethernet, RS485.",
     detail: "chi tiet ne",
   },
   {
     _id: "3",
-    title: "Nike 3",
+    title: "Sạc DC Sạc nhanh và an toàn phù hợp với nhu cầu sạc tại",
     imagesThumbnail:
       "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
     imagesDetail: [

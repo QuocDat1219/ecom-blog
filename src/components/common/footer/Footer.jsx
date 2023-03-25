@@ -43,7 +43,7 @@ const Footer = () => {
         </div>
         <div className="bg-color-card w-100% h-0.5"></div>
         <div className="p-3 bg-color-basic">
-          <p className="text-center text-text-color font-bold">&copy; 2023 EverEV. All rights reserved.</p>
+          <p className="text-center text-text-title font-bold">&copy; 2023 EverEV. All rights reserved.</p>
         </div>
       </footer>
     </>
