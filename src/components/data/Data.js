@@ -322,22 +322,22 @@ export const tpost = [
 ];
 export const awards = [
   {
-    icon: <i class="fa-solid fa-trophy"></i>,
+    icon: <i className="fa-solid fa-trophy"></i>,
     num: "32 M	",
     name: "Blue Burmin Award",
   },
   {
-    icon: <i class="fa-solid fa-briefcase"></i>,
+    icon: <i className="fa-solid fa-briefcase"></i>,
     num: "43 M",
     name: "Mimo X11 Award",
   },
   {
-    icon: <i class="fa-solid fa-lightbulb"></i>,
+    icon: <i className="fa-solid fa-lightbulb"></i>,
     num: "51 M",
     name: "Australian UGC Award",
   },
   {
-    icon: <i class="fa-solid fa-heart"></i>,
+    icon: <i className="fa-solid fa-heart"></i>,
     num: "42 M",
     name: "IITCA Green Award",
   },
@@ -399,10 +399,10 @@ export const team = [
     address: "GIÁM ĐỐC KỸ THUẬT",
     name: "HOÀNG KIÊN",
     icon: [
-      <i class="fa-brands fa-facebook-f"></i>,
-      <i class="fa-brands fa-linkedin"></i>,
-      <i class="fa-brands fa-twitter"></i>,
-      <i class="fa-brands fa-instagram"></i>,
+      <i className="fa-brands fa-facebook-f"></i>,
+      <i className="fa-brands fa-linkedin"></i>,
+      <i className="fa-brands fa-twitter"></i>,
+      <i className="fa-brands fa-instagram"></i>,
     ],
   },
   {
@@ -411,10 +411,10 @@ export const team = [
     address: "CHỦ TỊCH HĐQT",
     name: "NGUYỄN MẠNH CƯỜNG",
     icon: [
-      <i class="fa-brands fa-facebook-f"></i>,
-      <i class="fa-brands fa-linkedin"></i>,
-      <i class="fa-brands fa-twitter"></i>,
-      <i class="fa-brands fa-instagram"></i>,
+      <i className="fa-brands fa-facebook-f"></i>,
+      <i className="fa-brands fa-linkedin"></i>,
+      <i className="fa-brands fa-twitter"></i>,
+      <i className="fa-brands fa-instagram"></i>,
     ],
   },
   {
@@ -423,10 +423,10 @@ export const team = [
     address: "TỔNG GIÁM ĐỐC",
     name: "CƯỜNG NGUYỄN",
     icon: [
-      <i class="fa-brands fa-facebook-f"></i>,
-      <i class="fa-brands fa-linkedin"></i>,
-      <i class="fa-brands fa-twitter"></i>,
-      <i class="fa-brands fa-instagram"></i>,
+      <i className="fa-brands fa-facebook-f"></i>,
+      <i className="fa-brands fa-linkedin"></i>,
+      <i className="fa-brands fa-twitter"></i>,
+      <i className="fa-brands fa-instagram"></i>,
     ],
   },
   // {
@@ -434,21 +434,21 @@ export const team = [
   //   cover: "../images/customer/team-4.jpg",
   //   address: "2272 Briarwood Drive",
   //   name: "Michael P. Grimaldo",
-  //   icon: [<i class='fa-brands fa-facebook-f'></i>, <i class='fa-brands fa-linkedin'></i>, <i class='fa-brands fa-twitter'></i>, <i class='fa-brands fa-instagram'></i>],
+  //   icon: [<i className='fa-brands fa-facebook-f'></i>, <i className='fa-brands fa-linkedin'></i>, <i className='fa-brands fa-twitter'></i>, <i className='fa-brands fa-instagram'></i>],
   // },
   // {
   //   list: "42",
   //   cover: "../images/customer/team-5.jpg",
   //   address: "2272 Briarwood Drive",
   //   name: "Michael P. Grimaldo",
-  //   icon: [<i class='fa-brands fa-facebook-f'></i>, <i class='fa-brands fa-linkedin'></i>, <i class='fa-brands fa-twitter'></i>, <i class='fa-brands fa-instagram'></i>],
+  //   icon: [<i className='fa-brands fa-facebook-f'></i>, <i className='fa-brands fa-linkedin'></i>, <i className='fa-brands fa-twitter'></i>, <i className='fa-brands fa-instagram'></i>],
   // },
   // {
   //   list: "38",
   //   cover: "../images/customer/team-5.jpg",
   //   address: "Montreal, USA",
   //   name: "Adam K. Jollio",
-  //   icon: [<i class='fa-brands fa-facebook-f'></i>, <i class='fa-brands fa-linkedin'></i>, <i class='fa-brands fa-twitter'></i>, <i class='fa-brands fa-instagram'></i>],
+  //   icon: [<i className='fa-brands fa-facebook-f'></i>, <i className='fa-brands fa-linkedin'></i>, <i className='fa-brands fa-twitter'></i>, <i className='fa-brands fa-instagram'></i>],
   // },
 ];
 export const price = [
@@ -458,25 +458,25 @@ export const price = [
     ptext: "per user, per month",
     list: [
       {
-        icon: <i class="fa-solid fa-check"></i>,
+        icon: <i className="fa-solid fa-check"></i>,
         text: "99.5% Uptime Guarantee",
       },
       {
-        icon: <i class="fa-solid fa-check"></i>,
+        icon: <i className="fa-solid fa-check"></i>,
         text: "120GB CDN Bandwidth",
       },
       {
-        icon: <i class="fa-solid fa-check"></i>,
+        icon: <i className="fa-solid fa-check"></i>,
         text: "5GB Cloud Storage",
       },
       {
         change: "color",
-        icon: <i class="fa-solid fa-x"></i>,
+        icon: <i className="fa-solid fa-x"></i>,
         text: "Personal Help Support",
       },
       {
         change: "color",
-        icon: <i class="fa-solid fa-x"></i>,
+        icon: <i className="fa-solid fa-x"></i>,
         text: "Enterprise SLA",
       },
     ],
@@ -488,24 +488,24 @@ export const price = [
     ptext: "per user, per month",
     list: [
       {
-        icon: <i class="fa-solid fa-check"></i>,
+        icon: <i className="fa-solid fa-check"></i>,
         text: "99.5% Uptime Guarantee",
       },
       {
-        icon: <i class="fa-solid fa-check"></i>,
+        icon: <i className="fa-solid fa-check"></i>,
         text: "150GB CDN Bandwidth",
       },
       {
-        icon: <i class="fa-solid fa-check"></i>,
+        icon: <i className="fa-solid fa-check"></i>,
         text: "10GB Cloud Storage",
       },
       {
-        icon: <i class="fa-solid fa-check"></i>,
+        icon: <i className="fa-solid fa-check"></i>,
         text: "Personal Help Support",
       },
       {
         change: "color",
-        icon: <i class="fa-solid fa-x"></i>,
+        icon: <i className="fa-solid fa-x"></i>,
         text: "Enterprise SLA",
       },
     ],
@@ -516,23 +516,23 @@ export const price = [
     ptext: "2 user, per month",
     list: [
       {
-        icon: <i class="fa-solid fa-check"></i>,
+        icon: <i className="fa-solid fa-check"></i>,
         text: "100% Uptime Guarantee",
       },
       {
-        icon: <i class="fa-solid fa-check"></i>,
+        icon: <i className="fa-solid fa-check"></i>,
         text: "200GB CDN Bandwidth",
       },
       {
-        icon: <i class="fa-solid fa-check"></i>,
+        icon: <i className="fa-solid fa-check"></i>,
         text: "20GB Cloud Storage",
       },
       {
-        icon: <i class="fa-solid fa-check"></i>,
+        icon: <i className="fa-solid fa-check"></i>,
         text: "Personal Help Support",
       },
       {
-        icon: <i class="fa-solid fa-check"></i>,
+        icon: <i className="fa-solid fa-check"></i>,
         text: "Enterprise SLA",
       },
     ],
