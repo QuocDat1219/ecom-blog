@@ -17,7 +17,7 @@ const Filters = () => {
       </a>
 
 
-      <div className=" md:block px-6 py-4 border border-color-basic bg-white rounded-md shadow-sm ">
+      <div className=" md:block px-6 pt-4 bg-color-card rounded-md shadow ">
         <h3 className="font-semibold mb-2 text-color-title">Danh mục</h3>
 
         <ul className="space-y-1">
@@ -46,9 +46,9 @@ const Filters = () => {
             </li>
           ))}
         </ul>
-        <hr className="my-4" />
+        <hr className="my-1" />
 
-        <button class="bg-color-basic hover:bg-blue-400 text-text-color font-bold py-2 px-4 border border-black rounded">
+        <button class="bg-color-basic hover:bg-blue-400 text-text-color font-bold py-2 px-4 border border-black rounded my-2">
           <FontAwesomeIcon icon={faFilter} /> Lọc
         </button>
       </div>

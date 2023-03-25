@@ -8,7 +8,7 @@ const Product = () => {
         <>
             <div className="mt-4 grid gap-y-10 gap-x-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
                 {products.map((item) => (
-                    <div key={item._id} className="group relative border border-color-basic rounded-md">
+                    <div key={item._id} className="group relative bg-color-card rounded-md shadow">
                         <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-color-basic group-hover:opacity-75 lg:aspect-none lg:h-50">
                             <img
                                 src={item.imagesThumbnail}
@@ -31,9 +31,9 @@ const Product = () => {
                             {/* <p className="text-sm font-medium text-gray-900">{product.price}</p> */}
                         </div>
                         <hr />
-                        <div className="pt-2">
+                        <div >
                             <a href={`/productdetail/${item._id}`}>
-                                <button type="button" className="bg-color-basic hover:bg-blue-400 text-text-color font-bold py-2 px-4 border border-blue-700 rounded text-center mr-2 mb-2 w-[100%] ">
+                                <button type="button" className="bg-color-basic hover:bg-blue-400 text-text-color font-bold py-2 px-4 text-center mr-2  w-[100%] rounded-none">
                                     <FontAwesomeIcon icon={faMagnifyingGlass} /> Xem thêm
                                 </button>
                             </a>
