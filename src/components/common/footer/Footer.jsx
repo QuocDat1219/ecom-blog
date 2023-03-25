@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <>
       <div className="bg-color-basic w-[100%] h-[200px] text-text-color">Hello liên hệ </div>
-      <hr className="text-text-color"/>
+      <div className="bg-color-card w-100% h-0.5"></div>
       <footer>
         <div className="bg-color-basic p-3">
           <div className="footer-content flex flex-col md:flex-row md:justify-center md:items-center text-center md:text-left">
@@ -15,12 +15,12 @@ const Footer = () => {
                   alt=""
                 />
               </div>
-              <h3 className="font-medium text-color-title text-center text-[20px]">Công ty Cổ phần EverEV</h3>
+              <h3 className=" text-color-title text-center text-[20px] font-bold">Công ty Cổ phần EverEV</h3>
               <p className="text-text-color">Ever Ev là công ty phân phối, lắp đặt và vận hành sạc ô tô điện hàng đầu Việt Nam</p>
             </div>
 
             <div className="md:mr-8">
-              <h3 className="text-color-title text-center text-[20px]">Liên hệ</h3>
+              <h3 className="text-color-title text-center text-[20px] font-bold">Liên hệ</h3>
               <div className="text-text-color">
                 <p>300B Minh Khai, Phường Minh Khai, Quận Hai Bà Trưng, Hà Nội, Việt Nam</p>
                 <p>0909184567</p>
@@ -29,7 +29,7 @@ const Footer = () => {
             </div>
 
             <div className="justify-center items-center">
-              <h3 className="text-color-title text-center text-[20px]">Địa chỉ</h3>
+              <h3 className="text-color-title text-center text-[20px] font-bold">Địa chỉ</h3>
               <iframe
                 title="EverEV Map"
                 className="w-[200] h-[150] mr-auto ml-auto"
@@ -41,9 +41,9 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="bg-gray-600 w-100% h-0.5"></div>
+        <div className="bg-color-card w-100% h-0.5"></div>
         <div className="p-3 bg-color-basic">
-          <p className="text-center text-text-color">&copy; 2023 EverEV. All rights reserved.</p>
+          <p className="text-center text-text-color font-bold">&copy; 2023 EverEV. All rights reserved.</p>
         </div>
       </footer>
     </>

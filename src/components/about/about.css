@@ -22,9 +22,7 @@
   .about p {
     padding: 0;
   }
-  .about .containers img {
-    margin-top: 50px;
-  }
+ 
 }
 .flex-container {
   display: flex;
@@ -50,7 +48,6 @@
 
 .text-container {
   flex: 1 0 50%;
-  background-color: #f5f5f5;
   padding: 20px;
   border-radius: 20px;
   height: 300px;
@@ -68,14 +65,4 @@
     flex-basis: 100%;
   }
 }
-.HeadingA_2{
-  margin-top: 100px;
-  
-}
-.HeadingA_3{
-  margin-top: 100px;
-}
-.HeadingA_4{
-  margin-top: 100px;
-  margin-bottom: 100px;
-}
+

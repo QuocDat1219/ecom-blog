@@ -12,14 +12,14 @@ const About = () => {
     <>
       <section className="about">
         <Back cover={img} />
-        <div className="HeadingA">
+        <div className="HeadingA ">
           <HeadingAbout title="Chúng tôi là ai" />
         </div>
-        <div className="containers flexs mtop">
-          <div class="image-container">
+        <div className="containers flexs ">
+          <div class="image-container py-2">
             <img src={imgAb} />
           </div>
-          <div className="text-container">
+          <div className="text-container text-text-color bg-color-card break-words overflow-y-scroll shadow">
             <p>
               EverEV là một trong những đơn vị tiên phong trong lĩnh vực sạc ô
               tô điện. Công ty là nhà phân phối chính hãng của nhiều thương hiệu
@@ -37,7 +37,7 @@ const About = () => {
         </div>
 
         <div className="containers flexs mtop">
-          <div class="text-container">
+          <div class="text-container text-text-color bg-color-card break-words overflow-y-scroll shadow" >
             <p>
               EverEV là một trong những đơn vị tiên phong trong lĩnh vực sạc ô
               tô điện. Công ty là nhà phân phối chính hãng của nhiều thương hiệu
@@ -66,7 +66,7 @@ const About = () => {
       <div>
         <Infomation />
       </div>
-      <div className="HeadingA_4">
+      <div className="py-[50px]">
         <HeadingAbout title="Đối tác chiến lược" />
         <div className="About_slide">
           <Sliderimg />

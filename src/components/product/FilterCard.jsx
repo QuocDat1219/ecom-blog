@@ -13,12 +13,12 @@ const Filters = () => {
         className="md:hidden mb-5  w-full text-center px-4 py-2 inline-block text-lg text-gray-700 bg-white shadow-sm border border-gray-200 rounded-md hover:bg-gray-100 hover:text-blue-600"
 
       >
-        Filter by
+        Lọc sản phẩm
       </a>
 
 
       <div className=" md:block px-6 py-4 border border-color-basic bg-white rounded-md shadow-sm ">
-        <h3 className="font-semibold mb-2">Danh mục</h3>
+        <h3 className="font-semibold mb-2 text-color-title">Danh mục</h3>
 
         <ul className="space-y-1">
           {categorys.map((item) => (
@@ -34,7 +34,7 @@ const Filters = () => {
 
         <hr className="my-4 text-color-basic" />
 
-        <h3 className="font-semibold mb-2">Nhãn hàng</h3>
+        <h3 className="font-semibold mb-2 text-color-title">Nhãn hàng</h3>
         <ul className="space-y-1">
           {brands.map((item) => (
             <li key={item._id}>
@@ -48,7 +48,7 @@ const Filters = () => {
         </ul>
         <hr className="my-4" />
 
-        <button class="bg-color-basic hover:bg-blue-400 text-white font-bold py-2 px-4 border border-black rounded">
+        <button class="bg-color-basic hover:bg-blue-400 text-text-color font-bold py-2 px-4 border border-black rounded">
           <FontAwesomeIcon icon={faFilter} /> Lọc
         </button>
       </div>

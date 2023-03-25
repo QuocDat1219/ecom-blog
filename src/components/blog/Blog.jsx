@@ -10,6 +10,9 @@ const Blog = () => {
     <>
       <main>
         <div className="containers">
+          <section className="sideContenthide ">
+            <Side />
+          </section>
           <section className="mainContent">
             {/* <Popular /> */}
             <RecentCard />

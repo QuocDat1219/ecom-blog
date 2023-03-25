@@ -26,7 +26,7 @@ const contentsBlog = () => {
                   </div>
                   <div className="contentBlog_video">
                     <iframe
-                      width="900"
+                      width="100%"
                       height="574"
                       src="https://www.youtube.com/embed/gecOcAL_VUo"
                       title="Trạm sạc tư nhân 22kw chuẩn IEC61851 đầu tiên tại Hà Nội giá điện chỉ 3500 vnd/1kw"
