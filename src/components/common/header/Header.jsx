@@ -18,8 +18,8 @@ function classNames(...classes) {
 
 const Header = () => {
 
-  const setActive = (item) =>{
-    window.localStorage.setItem("avtive",item);
+  const setActive = (item) => {
+    window.localStorage.setItem("avtive", item);
   }
 
   return (
@@ -50,9 +50,8 @@ const Header = () => {
                       <a
                         key={index}
                         href={list.path}
-                        className={`text-text-color hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium ${
-                          window.localStorage.getItem("avtive") == index ? 'bg-gray-700 text-white' : ''
-                        }`}
+                        className={`text-text-color hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium ${window.localStorage.getItem("avtive") == index ? 'bg-gray-700 text-white' : ''
+                          }`}
                         onClick={() => setActive(index)}
 
                       >
@@ -87,9 +86,9 @@ const Header = () => {
                   key={list.text}
                   as="a"
                   href={list.path}
-                  className={'text-text-color hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium'
-                  }
-
+                  className={`text-text-color hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium ${window.localStorage.getItem("avtive") == index ? 'bg-gray-700 text-white' : ''
+                    }`}
+                  onClick={() => setActive(index)}
                 >
                   {list.text}
                 </Disclosure.Button>
