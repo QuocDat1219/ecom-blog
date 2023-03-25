@@ -121,3 +121,12 @@
     flex-basis: calc(33.33% - 1rem);
   }
 }
+.fa-map-marker-alt{
+  color: #6698ff;
+}
+.fa-building{
+  color: #6698ff;
+}
+.fa-id-card{
+  color: #6698ff;
+}

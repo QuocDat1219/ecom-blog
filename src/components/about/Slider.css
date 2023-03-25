@@ -44,5 +44,6 @@
   align-items: center;
 
 }
-  
- 
+.marquee div img {
+  padding-right: 80px; 
+}
