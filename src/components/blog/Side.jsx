@@ -28,13 +28,13 @@ const Side = () => {
       <section className="subscribe mx-auto">
         {/* <h1 className="title">Nhập từ khóa tìm kiếm</h1> */}
         <form action="">
-          <div class="flex items-center">
+          <div className="flex items-center">
             <input
               type="text"
-              class="flex-grow border-gray-400 border-2 p-2 rounded-md mr-4 "
+              className="flex-grow border-gray-400 border-2 p-2 rounded-md mr-4 "
               placeholder="Tìm kiếm..."
             />
-            <button class="bg-color-basic w-[60%] rounded-md text-text-color">
+            <button className="bg-color-basic w-[60%] rounded-md text-text-color">
               <FontAwesomeIcon icon={faMagnifyingGlass} />
             </button>
           </div>
