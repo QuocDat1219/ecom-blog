@@ -17,8 +17,10 @@ function classNames(...classes) {
 }
 
 const Header = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
 
+  const setActive = (item) =>{
+    window.localStorage.setItem("avtive",item);
+  }
 
   return (
 
@@ -49,9 +51,9 @@ const Header = () => {
                         key={index}
                         href={list.path}
                         className={`text-text-color hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium ${
-                          activeIndex === index ? 'bg-gray-700 text-white' : ''
+                          window.localStorage.getItem("avtive") == index ? 'bg-gray-700 text-white' : ''
                         }`}
-                        onClick={() => setActiveIndex(index)}
+                        onClick={() => setActive(index)}
 
                       >
                         {list.text}
