@@ -1,15 +1,15 @@
 .hero {
-  background-image: url("../../../../public/images/banner.png");
+  background-image: url("https://everev.vn/wp-content/uploads/2022/11/Smart-Charging-EV.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  height: 90vh;
+  height: 80vh;
   width: 100%;
+  filter: brightness(70%);
 }
 
 .hero h1 {
   color: #fff;
-  font-size: 60px;
 }
 
 .hero p {

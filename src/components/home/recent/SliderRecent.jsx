@@ -1,29 +1,30 @@
 import React, { useRef, useState } from "react";
-import { featured } from "../../data/Data";
 import Slider from "react-slick";
-import { dataDigitalBestSeller } from "./data";
 import imgGirl from "./images.png";
-import "./FeaturedCard.css";
+// import "./FeaturedCard.css";
+import "./recent.css";
+import { dataDigitalBestSeller } from "./data";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-const FeaturedCard = () => {
+
+const SliderRecent = ({ title, des }) => {
   const [defaultImage, setDefaultImage] = useState({});
   const settings = {
     dots: true,
     infinite: false,
-    arrows: true,
+    arrows: false,
     fade: false,
     speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToShow: 1,
+    slidesToScroll: 1,
     initialSlide: 0,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToShow: 1,
+          slidesToScroll: 1,
           infinite: true,
           dots: true,
         },
@@ -31,9 +32,9 @@ const FeaturedCard = () => {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1,
         },
       },
       {
@@ -61,13 +62,22 @@ const FeaturedCard = () => {
     sliderRef.current.slickPrev();
   };
   return (
-    <>
+    <div className="mt-10">
+      <div className="slider-title pt-5 pb-5 text-center bg-[#97DEFF] flex justify-center">
+        <span className="text-3xl text-center font-bold text-white">
+          {" "}
+          <i class="fa fa-angle-down" aria-hidden="true"></i> {title}
+        </span>
+        <div className="brick"></div>
+      </div>
+      <div className="text-center p-5">{des}</div>
       <div className="slider">
         <Slider {...settings} ref={sliderRef}>
           {dataDigitalBestSeller.map((item) => (
-            <div className="card flex flex-col">
+            <div className="card">
               <div className="card-top">
                 <img
+                  className="object-cover"
                   src={
                     defaultImage[item.title] === item.title
                       ? defaultImage.linkDefault
@@ -76,11 +86,13 @@ const FeaturedCard = () => {
                   alt={item.title}
                   onError={handleErrorImage}
                 />
-              </div>
-              <div className="card-bottom">
-                <span className="category">{item.category}</span>
-                <h1 className="mt-5">{item.title}</h1>
-                <h3>{item.price}</h3>
+              </div>{" "}
+              <div className="card-bottom flex flex-col items-start justify-center">
+                <span className="category text-3xl">{item.category}</span>
+                <h4 className="mt-5">{item.title}</h4>
+                <span className="category">{item.des}</span>
+                <h4 className="mt-4">Danh mục : {item.category}</h4>
+                <button className="mt-3">Đọc tiếp</button>
               </div>
             </div>
           ))}
@@ -90,8 +102,8 @@ const FeaturedCard = () => {
           <span className="prew cursor-pointer" onClick={gotoNext}></span>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
-export default FeaturedCard;
+export default SliderRecent;
