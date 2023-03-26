@@ -3,11 +3,64 @@
   margin-top: 10px;
 }
 
-.recent {
-  /* background-color: #C9EEFF; */
+.recent .text {
+  padding: 30px;
+}
+
+.recent .category span {
+  padding: 4px 15px;
+  border-radius: 2px;
+  font-weight: 600;
+  font-size: 13px;
+  display: inline-block;
+}
+
+.recent .category i {
+  font-size: 20px;
+  color: #bec7d8;
+}
+
+.recent p {
+  color: #72809d;
+}
+
+.recent .button {
+  border-top: 1px solid #e4e8f3;
+  padding: 10px 30px;
+}
+
+.RecentC_img {
+  height: 200px;
+}
+
+.p_location {
+  font-size: 14px;
 
 }
 
+.p_location:hover {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.h5_location {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.recentCard {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.is-divider {
+  background-color: rgba(0, 0, 0, .1);
+  display: block;
+  max-width: 30px;
+  width: 100%;
+  height: 2px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
 
 .slick-slide>div {
   margin: 0 10px;

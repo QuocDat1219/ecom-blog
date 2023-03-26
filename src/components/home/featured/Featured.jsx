@@ -7,7 +7,7 @@ const Featured = () => {
   return (
     <>
       <section className="featured backgrounds">
-        <div className="containers">
+        <div className="containers-full">
           <Heading title="Tin tức" subtitle="" />
           <FeaturedCard />
         </div>
