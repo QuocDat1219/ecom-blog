@@ -51,7 +51,7 @@ const contentsBlog = () => {
                   <div className="pt-10 flex justify-center items-center">
                     <div className="contentBlog_diveder "></div>                   
                   </div>
-                  <div className="pt-5 pb-5 flex justify-center items-center">
+                  <div className="pt-3 pb-5 flex justify-center items-center">
                     <a className="pr-2" href="https://www.facebook.com/sharer.php?u=https://everev.vn/sac-xe-dien-kia-bang-sac-everev-tai-han-quoc/">
                       <FaFacebook className="hover:text-sky-600 text-gray-400" size={32} />
                     </a>
