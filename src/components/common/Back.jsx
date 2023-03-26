@@ -5,7 +5,7 @@ const Back = ({ name, title, cover }) => {
     <>
       <div className='back'>
         <div className='containers pt-[40px]'>
-          <span className="text-[24px] pt-[40px] text-color-title font-bold">{name}</span>
+          <span className="text-[24px] pt-[40px] text-black font-bold">{name}</span>
           <h1 className="text-[50px] text-color-title font-bold">{title}</h1>
         </div>
         <img src={cover} alt='' />
