@@ -8,7 +8,7 @@ const Contact = () => {
     <>
       <section className="contact mb">
         <div className="containers ">
-          <div className="shadow m-4 rounded-md bg-color-card overflow-auto">
+          <div className="shadow mt-4 mb-4 rounded-md bg-color-card overflow-auto">
             <form className=" justify-center items-center ">
               <h4 className="lg:text-left font-bold text-color-title">Tìm kiếm cửa hàng</h4> <br />
               <div className="flex flex-wrap ">
