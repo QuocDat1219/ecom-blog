@@ -39,13 +39,6 @@ const RecentCard = () => {
                   </span>
                 </Link>
               </div>
-              {/* <div className="button flex">
-                <div>
-                  <button className="btn2">{price}</button>{" "}
-                  <label htmlFor="">/sqft</label>
-                </div>
-                <span>{type}</span>
-              </div> */}
             </div>
           );
         })}

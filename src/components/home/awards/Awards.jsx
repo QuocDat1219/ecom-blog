@@ -1,30 +1,27 @@
-import React from "react"
-import Heading from "../../common/Heading"
-import { awards } from "../../data/Data"
-import "./awards.css"
+import React from "react";
+import Heading from "../../common/Heading";
+import { dataDigitalBestSeller } from "../../data/Data";
+import "./awards.css";
 
 const Awards = () => {
   return (
     <>
-      <section className='awards padding'>
-        <div className='containers'>
-          <Heading title='Over 1,24,000+ Happy User Bieng With Us Still They Love Our Services' subtitle='Our Awards' />
-
-          <div className='content grid4 mtop'>
-            {awards.map((val, index) => (
-              <div className='box' key={index}>
-                <div className='icon'>
-                  <span>{val.icon}</span>
-                </div>
-                <h1>{val.num}</h1>
-                <p>{val.name}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <div className="relative awards">
+        <img
+          src="https://everev.vn/wp-content/uploads/2022/11/de4bc02058319e6fc720.jpg"
+          alt=""
+          srcset=""
+        />
+        <div className="awards-title absolute md:top-[30%] ">
+          <Heading
+            title="Dịch vụ vận hành và bảo trì sản phẩm"
+            subtitle="Mọi sản phẩm phải có các quy trình chuẩn mực từ khâu lắp đặt, vận hành và bảo trì. Đội ngũ cán bộ, nhân viên EverEV được đào tạo kỹ và trang bị đúng tiêu chuẩn nghề nghiệp"
+          />
+          <button className="mt-5">Tìm hiểu thêm</button>
+        </div>{" "}
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default Awards
+export default Awards;

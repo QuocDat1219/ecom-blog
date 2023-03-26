@@ -1,10 +1,7 @@
 import React from "react"
-
 const Footer = () => {
   return (
     <>
-      <div className="bg-color-basic w-[100%] h-[200px] text-text-color">Hello liên hệ </div>
-      <div className="bg-color-card w-100% h-0.5"></div>
       <footer>
         <div className="bg-color-basic p-3">
           <div className="footer-content flex flex-col md:flex-row md:justify-center md:items-center text-center md:text-left">

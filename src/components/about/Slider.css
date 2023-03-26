@@ -44,5 +44,24 @@
   align-items: center;
 
 }
-  
- 
+.marquee div img {
+  padding-right: 80px; 
+}
+/* .custom-prev-arrow,
+.custom-next-arrow {
+  width: 50px;
+  height: 50px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.custom-prev-arrow:hover,
+.custom-next-arrow:hover {
+  background-color: #eee;
+} */
