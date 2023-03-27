@@ -19,7 +19,7 @@ const Hero = () => {
           </div>
           <div className="gap-2 flex mt-4">
             <button className="btn-nobg">Tìm hiểu thêm</button>
-            <button className="">Liên hệ ngay</button>
+            <button className="bg-color-button">Liên hệ ngay</button>
           </div>
         </div>
       </section>

@@ -79,7 +79,7 @@ ul {
 button {
   border-radius: 2px;
   padding: 13px 30px;
-  background: #6698FF;
+  /* background: #6698FF; */
   border: none;
   color: #fff;
   cursor: pointer;

@@ -10,7 +10,10 @@ const Contact = () => {
         <div className="containers ">
           <div className="shadow mt-4 mb-4 rounded-md bg-color-card overflow-auto">
             <form className=" justify-center items-center ">
-              <h4 className="lg:text-left font-bold text-color-title">Tìm kiếm cửa hàng</h4> <br />
+              <h4 className="lg:text-left font-bold text-color-title">
+                Tìm kiếm cửa hàng
+              </h4>{" "}
+              <br />
               <div className="flex flex-wrap ">
                 <div className="relative sm:flex-grow sm:flex-1 m-2">
                   <select
@@ -33,12 +36,13 @@ const Contact = () => {
                   </select>
                 </div>
                 <div className="relative sm:flex-grow sm:flex-1 lg:w-full w-[100%] ">
-                  <button className="bg-color-basic w-[100%] rounded-md text-text-color">Tìm kiếm</button>
+                  <button className="bg-color-basic w-[100%] rounded-md text-text-color">
+                    Tìm kiếm
+                  </button>
                 </div>
               </div>
-
             </form>
-            <div className="flex flex-wrap p-4 " >
+            <div className="flex flex-wrap p-4 ">
               <iframe
                 className="rounded-lg"
                 title="Map"
@@ -53,7 +57,7 @@ const Contact = () => {
 
           <div class="flex flex-wrap ">
             <div class="relative sm:flex-grow sm:flex-1">
-              <form >
+              <form>
                 <h4>Thông tin liên hệ</h4> <br />
                 <div>
                   <p>
@@ -65,16 +69,37 @@ const Contact = () => {
             </div>
             <div className="relative sm:flex-grow sm:flex-1">
               <div className="shadow rounded-md bg-color-card">
-                <form >
-                  <h4 className="font-blod text-color-title text-[24px]">Biểu mẫu liên hệ</h4> <br />
+                <form>
+                  <h4 className="font-blod text-color-title text-[24px]">
+                    Biểu mẫu liên hệ
+                  </h4>{" "}
+                  <br />
                   <div>
-                    <input type="text" className="flex-grow border-gray-400 border-2 p-2 rounded-md mr-4 " placeholder="Họ và tên" />
-                    <input type="email" className="flex-grow border-gray-400 border-2 p-2 rounded-md mr-4 " placeholder="Địa chỉ email" />
-                    <input type="number" className="flex-grow border-gray-400 border-2 p-2 rounded-md mr-4 " placeholder="Số điện thoại" />
-                    <input type="text" className="flex-grow border-gray-400 border-2 p-2 rounded-md mr-4 " placeholder="Địa chỉ" />
+                    <input
+                      type="text"
+                      className="flex-grow border-gray-400 border-2 p-2 rounded-md mr-4 "
+                      placeholder="Họ và tên"
+                    />
+                    <input
+                      type="email"
+                      className="flex-grow border-gray-400 border-2 p-2 rounded-md mr-4 "
+                      placeholder="Địa chỉ email"
+                    />
+                    <input
+                      type="number"
+                      className="flex-grow border-gray-400 border-2 p-2 rounded-md mr-4 "
+                      placeholder="Số điện thoại"
+                    />
+                    <input
+                      type="text"
+                      className="flex-grow border-gray-400 border-2 p-2 rounded-md mr-4 "
+                      placeholder="Địa chỉ"
+                    />
                   </div>
                   <textarea cols="28" rows="10"></textarea>
-                  <button className="bg-color-basic w-[100%] rounded-md text-text-color">Gửi liên hệ</button>
+                  <button className="bg-color-basic w-[100%] rounded-md text-text-color">
+                    Gửi liên hệ
+                  </button>
                 </form>
               </div>
             </div>

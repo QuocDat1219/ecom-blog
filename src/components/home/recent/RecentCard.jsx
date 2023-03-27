@@ -17,20 +17,15 @@ const RecentCard = () => {
               </div>
               <div className="text pt-1">
                 <div className="category flexs rounded-md">
-                  <span
-                    className="bg-color-basic text-text-color rounded-md p-1"
-                    
-                  >
+                  <span className="bg-color-basic text-text-color rounded-md p-1">
                     {category}
                   </span>
 
-                  <span
-                     className="bg-color-basic text-text-color rounded-md p-1"
-                  >
+                  <span className="bg-color-basic text-text-color rounded-md p-1">
                     {date}
                   </span>
                 </div>
-                <h4 className="h5_location text-text-color">{name}</h4>
+                <h4 className="h5_location text-text-color pt-3">{name}</h4>
                 <div className="is-divider "></div>
                 <Link to="/tintuc1">
                   <span className="p_location text-text-color hover:text-color-title">

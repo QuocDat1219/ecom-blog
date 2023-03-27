@@ -11,6 +11,7 @@ import Contact from "../contact/Contact";
 import AllProduct from "../product/allproduct";
 import ProductDetail from "../product/productDetail";
 import ContentsBlog from "../contentsBlog/contentsBlog";
+import Location from "../home/location/Location";
 const Pages = () => {
   return (
     <>
@@ -27,6 +28,7 @@ const Pages = () => {
           <Route exact path="/tintuc1" component={ContentsBlog} />
           <Route exact path="/productdetail/:id" component={ProductDetail} />
         </Switch>
+        <Location />
         <Footer />
       </Router>
     </>

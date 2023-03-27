@@ -17,7 +17,7 @@ const Awards = () => {
             title="Dịch vụ vận hành và bảo trì sản phẩm"
             subtitle="Mọi sản phẩm phải có các quy trình chuẩn mực từ khâu lắp đặt, vận hành và bảo trì. Đội ngũ cán bộ, nhân viên EverEV được đào tạo kỹ và trang bị đúng tiêu chuẩn nghề nghiệp"
           />
-          <button className="mt-5">Tìm hiểu thêm</button>
+          <button className="mt-5 bg-color-button">Tìm hiểu thêm</button>
         </div>{" "}
       </div>
     </>
