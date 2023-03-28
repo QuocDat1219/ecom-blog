@@ -16,7 +16,7 @@ const Recent = () => {
           />
           <div className="recent-info ">
             <div className="flex justify-between flex-col md:flex-row  gap-2 mt-10">
-              <div className="bg-[#97DEFF] p-10 flex flex-col justify-center  ">
+              <div className="bg-[#97DEFF] w-[100%] p-10 flex flex-col justify-center  ">
                 <div className="flex flex-col justify-center items-center">
                   <img
                     className="w-[100px] h-[70px] "
@@ -29,7 +29,7 @@ const Recent = () => {
                   </p>
                 </div>
               </div>
-              <div className="bg-[#97DEFF] p-10 flex flex-col justify-center  ">
+              <div className="bg-[#97DEFF] w-[100%]  p-10 flex flex-col justify-center  ">
                 <div className="flex flex-col justify-center items-center">
                   <img
                     className="w-[100px] h-[70px] "
