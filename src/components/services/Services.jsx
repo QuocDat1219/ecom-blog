@@ -16,22 +16,22 @@ const Services = () => {
           <div className="flex flex-wrap justify-items-center justify-center items-center">
             <div className="relative  sm:flex-1.5 sm:w-[400px] py-4">
               <img
-                className="lg:h-[650px] lg:w-[800px] sm:h-[500px] rounded-[20px]"
+                className="lg:h-[600px] lg:w-[800px] sm:h-[500px] rounded-[20px]"
                 src={img2}
                 alt="linh kien"
               />
             </div>
             <div
-              className="flex justify-center items-center sm:flex-grow sm:flex-1 w-[300px] sm:h-[250px] mx-auto  sm:ml-[30px] overflow-y-scroll shadow bg-color-card rounded-lg"
+              className="flex justify-center items-center sm:flex-grow sm:flex-1 w-[300px] sm:h-[350px] mx-auto sm:ml-[30px] overflow-y-scroll shadow bg-color-card rounded-lg"
             >
 
               <div className="p-4 ">
-                <h2 className="tieude font-bold text-[20px] text-color-title">
+                <h2 className="tieude font-bold lg:text-[30px] text-[24px] text-color-title">
                   Một hệ thống sạc cần đảm bảo sạc nhanh, sạc an toàn và luôn
                   sẵn sàng
                 </h2>
                 <br />
-                <p className="text-text-color ">
+                <p className="text-text-color text-[1.4rem] lg:text-justify text-justify ">
                   Hệ thống sạc ô tô có tần suất sử dụng cao, do đó khâu bảo trì
                   bảo dưỡng vô cùng quan trọng để có thể đảm bảo độ sẵn sàng của
                   hệ thống cũng như hệ số an toàn tối đa cho người sử dụng và
