@@ -1,6 +1,6 @@
 import React from "react";
 import "./Footer.css";
-import logo from "../../images/logo.jpg";
+import logo from "../../images/logomoi.png";
 const Footer = () => {
   return (
     <>
@@ -9,12 +9,12 @@ const Footer = () => {
         <div className="bg-color-footer p-3">
           <div className="footer-content grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="company-info md:mr-8 text-center">
-              {/* <div className="w-[120px] h-[120px] ml-auto mr-auto sm:w-[230px] sm:h-[150px]">
+              <div className="w-[200px] h-[200px] ml-auto mr-auto sm:w-[250px] sm:h-[250px]">
                 <img src={logo} alt="" />
-              </div> */}
-              <h3 className="text-color-title text-[50px] font-bold mt-2 ">
+              </div>
+              {/* <h3 className="text-color-title text-[50px] font-bold mt-2 ">
                 THÀNH ĐẠT
-              </h3>
+              </h3> */}
             </div>
             <div className="contact-info ">
               <h3 className="text-color-title text-2xl font-bold text-center">
