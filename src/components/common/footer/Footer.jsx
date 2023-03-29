@@ -6,12 +6,12 @@ const Footer = () => {
     <>
       <div className="bg-color-card w-100% h-0.5"></div>
       <footer>
-        <div className="bg-color-card p-3">
+        <div className="bg-color-footer p-3">
           <div className="footer-content grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="company-info md:mr-8 text-center">
-              <div className="w-[120px] h-[120px] ml-auto mr-auto sm:w-[230px] sm:h-[150px]">
+              {/* <div className="w-[120px] h-[120px] ml-auto mr-auto sm:w-[230px] sm:h-[150px]">
                 <img src={logo} alt="" />
-              </div>
+              </div> */}
               <h3 className="text-color-title text-[50px] font-bold mt-2 ">
                 THÀNH ĐẠT
               </h3>
