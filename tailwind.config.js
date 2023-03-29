@@ -11,6 +11,8 @@ module.exports = {
         "color-button": "#6698FF ",
         "text-cl": "#fff",
         "text-footer": "#205aa7",
+        "color-nav": "#ffff",
+        "text-nav": "#205aa7",
       },
     },
   },

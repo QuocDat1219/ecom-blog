@@ -1,10 +1,10 @@
 export const nav = [
   {
-    text: "HOME",
+    text: "TRANG CHỦ",
     path: "/",
   },
   {
-    text: "ABOUT",
+    text: "VỀ CHÚNG TÔI",
     path: "/about",
   },
   {
@@ -16,7 +16,7 @@ export const nav = [
     path: "/services",
   },
   {
-    text: "BLOG",
+    text: "TIN TỨC",
     path: "/blog",
   },
   // {
@@ -80,30 +80,34 @@ export const products = [
       "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
     imagesDetail: [
       {
-        original: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
-        thumbnail: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
-
+        original:
+          "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
+        thumbnail:
+          "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
       },
       {
-        original: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
-        thumbnail: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
-
+        original:
+          "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
+        thumbnail:
+          "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
       },
       {
-        original: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
-        thumbnail: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
-
+        original:
+          "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
+        thumbnail:
+          "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
       },
       {
-        original: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
-        thumbnail: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
-
+        original:
+          "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
+        thumbnail:
+          "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
       },
     ],
     category: "1",
-    description: "Sạc DC siêu nhanh, công suất 50 kw.Sử dụng giao diện LCD lớn 13 inch hiện đại và thân thiện với người dùng.Được trang bị 3 đầu nối sạc : (CHAdeMO, CCS 1,2, IEC62196-2 Loại2)Sạc siêu nhanh và tương thích với nhiều loại xe.Chất lượng sơn và độ bền được đảm bảo ngay cả trong khi lắp đặt ngoài trời",
+    description:
+      "Sạc DC siêu nhanh, công suất 50 kw.Sử dụng giao diện LCD lớn 13 inch hiện đại và thân thiện với người dùng.Được trang bị 3 đầu nối sạc : (CHAdeMO, CCS 1,2, IEC62196-2 Loại2)Sạc siêu nhanh và tương thích với nhiều loại xe.Chất lượng sơn và độ bền được đảm bảo ngay cả trong khi lắp đặt ngoài trời",
     detail: "chi tiet ne",
-
   },
   {
     _id: "2",
@@ -112,28 +116,33 @@ export const products = [
       "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
     imagesDetail: [
       {
-        original: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
-        thumbnail: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
-
+        original:
+          "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
+        thumbnail:
+          "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
       },
       {
-        original: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
-        thumbnail: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
-
+        original:
+          "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
+        thumbnail:
+          "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
       },
       {
-        original: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
-        thumbnail: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
-
+        original:
+          "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
+        thumbnail:
+          "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
       },
       {
-        original: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
-        thumbnail: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
-
+        original:
+          "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
+        thumbnail:
+          "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
       },
     ],
     category: "2",
-    description: "Sạc nhanh và an toàn Đặc biệt phù hợp với nhu cầu sạc tại các hộ gia đình.Kiểu dáng công nghiệp hiện đại mang lại trải nghiệm dễ chịu cho người dùng.Kết nối dễ dàng với giao thức OCPP 1.6J.Hỗ trợ 4G, WIFI, Ethernet, RS485.",
+    description:
+      "Sạc nhanh và an toàn Đặc biệt phù hợp với nhu cầu sạc tại các hộ gia đình.Kiểu dáng công nghiệp hiện đại mang lại trải nghiệm dễ chịu cho người dùng.Kết nối dễ dàng với giao thức OCPP 1.6J.Hỗ trợ 4G, WIFI, Ethernet, RS485.",
     detail: "chi tiet ne",
   },
   {
@@ -143,24 +152,28 @@ export const products = [
       "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
     imagesDetail: [
       {
-        original: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
-        thumbnail: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
-
+        original:
+          "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
+        thumbnail:
+          "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
       },
       {
-        original: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
-        thumbnail: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
-
+        original:
+          "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
+        thumbnail:
+          "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
       },
       {
-        original: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
-        thumbnail: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
-
+        original:
+          "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
+        thumbnail:
+          "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
       },
       {
-        original: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
-        thumbnail: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
-
+        original:
+          "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
+        thumbnail:
+          "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
       },
     ],
     category: "3",
@@ -174,24 +187,28 @@ export const products = [
       "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
     imagesDetail: [
       {
-        original: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
-        thumbnail: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
-
+        original:
+          "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
+        thumbnail:
+          "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
       },
       {
-        original: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
-        thumbnail: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
-
+        original:
+          "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
+        thumbnail:
+          "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
       },
       {
-        original: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
-        thumbnail: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
-
+        original:
+          "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
+        thumbnail:
+          "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
       },
       {
-        original: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
-        thumbnail: 'https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg',
-
+        original:
+          "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
+        thumbnail:
+          "https://everev.vn/wp-content/uploads/2022/11/Artemis-11-300x300.jpg",
       },
     ],
 
