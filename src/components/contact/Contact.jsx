@@ -36,8 +36,8 @@ const Contact = () => {
                   </select>
                 </div>
                 <div className="relative sm:flex-grow sm:flex-1 lg:w-full w-[100%] ">
-                  <button className="bg-color-basic w-[100%] rounded-md text-text-color">
-                    Tìm kiếm
+                  <button className="bg-color-button w-[100%] h-[45px] mt-2 rounded-md text-text-color">
+                    <i className="fas fa-search"></i>
                   </button>
                 </div>
               </div>
@@ -97,7 +97,7 @@ const Contact = () => {
                     />
                   </div>
                   <textarea cols="28" rows="10"></textarea>
-                  <button className="bg-color-basic w-[100%] rounded-md text-text-color">
+                  <button className="bg-color-button w-[100%] rounded-md text-text-color">
                     Gửi liên hệ
                   </button>
                 </form>

@@ -7,8 +7,8 @@ const Recent = () => {
   const data = {};
   return (
     <>
-      <section className="recent padding ">
-        <div className="containers">
+      <section className="recent padding bg-cyan-50 z-10">
+        <div className="containers ">
           <Heading
             className=""
             title="Sản phẩm"
@@ -16,8 +16,8 @@ const Recent = () => {
           />
           <div className="recent-info ">
             <div className="flex justify-between flex-col md:flex-row  gap-2 mt-10">
-              <div className="bg-[#97DEFF] w-[100%] p-10 flex flex-col justify-center  ">
-                <div className="flex flex-col justify-center items-center">
+              <div className="bg-[#97DEFF] w-[100%] p-10 flex flex-col justify-center [0_35px_60px_-15px_rgba(0,0,0,0.3)] rounded-[10px] ">
+                <div className="flex flex-col justify-center items-center ">
                   <img
                     className="w-[100px] h-[70px] "
                     src="	https://everev.vn/wp-content/uploads/2022/11/AC-500-%C3%97-350-px.png"
@@ -29,7 +29,7 @@ const Recent = () => {
                   </p>
                 </div>
               </div>
-              <div className="bg-[#97DEFF] w-[100%]  p-10 flex flex-col justify-center  ">
+              <div className="bg-[#97DEFF] w-[100%]  p-10 flex flex-col justify-center [0_35px_60px_-15px_rgba(0,0,0,0.3)] rounded-[10px] ">
                 <div className="flex flex-col justify-center items-center">
                   <img
                     className="w-[100px] h-[70px] "

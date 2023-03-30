@@ -41,6 +41,9 @@ const Footer = () => {
                 style={{ border: 0 }}
                 allowFullScreen=""
                 loading="lazy"
+                width="500"
+                height="250"
+                
               ></iframe>
             </div>
           </div>

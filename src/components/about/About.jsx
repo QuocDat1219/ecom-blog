@@ -33,7 +33,7 @@ const About = () => {
           <div class="image-container py-2">
             <img src={imgAb} />
           </div>
-          <div className="text-container text-text-color bg-color-card break-words overflow-y-scroll shadow">
+          <div className="text-container text-text-color bg-color-card break-words overflow-y-hidden shadow">
             <p className="mt-5 ml-5 mr-5 lg-text-[15px] ">
               EverEV là một trong những đơn vị tiên phong trong lĩnh vực sạc ô
               tô điện. Công ty là nhà phân phối chính hãng của nhiều thương hiệu

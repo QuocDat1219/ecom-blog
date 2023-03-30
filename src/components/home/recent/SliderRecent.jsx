@@ -63,15 +63,15 @@ const SliderRecent = ({ title, des }) => {
   };
   return (
     <div className="mt-10">
-      <div className="slider-title pt-5 pb-5 text-center bg-[#97DEFF] flex justify-center">
-        <span className="text-3xl text-center font-bold text-white">
+      <div className="slider-title pt-5 pb-5 text-center bg-color-button flex justify-center">
+        <span className="text-2xl text-center font-bold text-white">
           {" "}
           <i class="fa fa-angle-down" aria-hidden="true"></i> {title}
         </span>
         <div className="brick"></div>
       </div>
       <div className="text-center p-5">{des}</div>
-      <div className="slider">
+      <div className="slider bg-white">
         <Slider {...settings} ref={sliderRef}>
           {dataDigitalBestSeller.map((item) => (
             <div className="card">
