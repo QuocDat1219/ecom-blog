@@ -25,7 +25,7 @@ const Pages = () => {
           <Route exact path="/blog" component={Blog} />
           <Route exact path="/pricing" component={Pricing} />
           <Route exact path="/contact" component={Contact} />
-          <Route exact path="/tintuc1" component={ContentsBlog} />
+          <Route exact path="/blogdetail/:id" component={ContentsBlog} />
           <Route exact path="/productdetail/:id" component={ProductDetail} />
         </Switch>
         <Location />

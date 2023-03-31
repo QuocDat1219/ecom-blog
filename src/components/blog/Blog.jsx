@@ -1,5 +1,4 @@
 import React from "react";
-import Back from "../common/Back";
 import RecentCard from "../home/recent/RecentCard";
 import "../home/recent/recent.css";
 import "./Blog.css";
@@ -14,10 +13,9 @@ const Blog = () => {
             <Side />
           </section>
           <section className="mainContent">
-            {/* <Popular /> */}
+         
             <RecentCard />
-            {/* <Life />
-            <Music /> */}
+        
           </section>
           <section className="sideContent">
             <Side />

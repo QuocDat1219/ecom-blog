@@ -1,18 +1,33 @@
-import { products } from "../data/Data";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+
 const Product = () => {
   const [data, setData] = useState([]);
+  const [dataCate, setDataCate] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios("https://ecom-oto.vercel.app/api/products/");
-      setData(result.data.products);
+      await axios("https://ecom-oto.vercel.app/api/products/").then((response) => {
+        setData(response.data.products);
+      })
+    
+    };
+    const fetchData2 = async () => {
+      await axios("https://ecom-oto.vercel.app/api/category/").then((response) => {
+        setDataCate(response.data.category);
+      })
+    
+      console.log(dataCate);
     };
     fetchData();
+    fetchData2();
   }, []);
+  const categoryProduct = (item) => {
+    const categoryProduct = dataCate.find((category) => category._id === item);
+    return categoryProduct.name;
+  };
   return (
     <>
       <div className="mt-4 grid gap-y-10 gap-x-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
@@ -24,14 +39,14 @@ const Product = () => {
             <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-color-basic group-hover:opacity-75 lg:aspect-none lg:h-50">
               <img
                 src={item.imagesDefault}
-                className="h-full w-full object-cover object-center group-hover:opacity-75"
+                className="h-[300px] w-full object-cover object-center group-hover:opacity-75"
               />
             </div>
             <hr className="w-[80%] mx-auto" />
             <div className="mt-2 flex justify-center pl-[10px] py-1 overflow-hidden">
               <div>
-                <p className="mt-1 text-sm text-text-color  text-center">
-                  {item.idCategory}
+                <p className="mt-1 text-sm text-text-color opacity-60  text-center">
+                  {categoryProduct(item.idCategory)}
                 </p>
                 <h3 className="text-sm text-text-color text-center">
                   <a href={`/productdetail/${item._id}`}>
