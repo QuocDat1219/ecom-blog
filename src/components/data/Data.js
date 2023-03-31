@@ -8,7 +8,11 @@ export const nav = [
     path: "/about",
   },
   {
-    text: "SẢN PHẨM",
+    text: "SẠC ĐIỆN",
+    path: "/allproduct",
+  },
+  {
+    text: "CAMERA",
     path: "/allproduct",
   },
   {
