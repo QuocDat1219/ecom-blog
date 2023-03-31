@@ -23,11 +23,12 @@ const RecentCard = () => {
 
   function categoryPosts(item)  {
     const categoryBlog = dataCate.find((category) => category._id === item);
+    if(categoryBlog)
     return categoryBlog.title;
   };
   return (
     <>
-      {data ? (
+      {dataCate.length != 0 ? (
         <div className="content grid3 mtop md:grid-cols-2 lg:grid-cols-3 sm:grid-cols-2 ">
           {data.map((val, index) => (
             <a href={`blogdetail/${val._id}`}>
