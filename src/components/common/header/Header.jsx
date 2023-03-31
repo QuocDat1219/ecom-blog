@@ -1,27 +1,66 @@
 import React, { useState, useEffect } from "react";
-
-import { nav } from "../../data/Data";
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import "./header.css";
 import logoNav from "../../images/logo.jpg";
-const navigation = [
-  { name: "Dashboard", href: "#", current: true },
-  { name: "Team", href: "#", current: false },
-  { name: "Projects", href: "#", current: false },
-  { name: "Calendar", href: "#", current: false },
-];
+import axios from "axios";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 const Header = () => {
+  const nav = [
+    {
+      text: "TRANG CHỦ",
+      path: "/",
+    },
+    {
+      text: "VỀ CHÚNG TÔI",
+      path: "/about",
+    },
+    {
+      text: "DỊCH VỤ",
+      path: "/services",
+    },
+    {
+      text: "TIN TỨC",
+      path: "/blog",
+    },
+    {
+      text: "LIÊN HỆ",
+      path: "/contact",
+    },
+  ];
+  const [data, setData] = useState([]);
+  const [mappeCate, setMappeCate] = useState([]);
   const setActive = (item) => {
     window.localStorage.setItem("avtive", item);
   };
+  useEffect(() => {
+    const fetchData = async () => {
+      await axios("https://ecom-oto.vercel.app/api/categorycontainer/").then((response) => {
+        
+        const dataRPs = response.data;
+        console.log(dataRPs);
+        if(dataRPs){
+          const mappedProducts = dataRPs.map(dataRP => ({
+            text: dataRP.name.toUpperCase(),
+            path: `/allproduct/${dataRP.slug}`
+          }));
+          setMappeCate(mappedProducts);
+          
+        }
+      })
+    };
 
+    fetchData();
+    
+    
+  }, []);
+  nav.splice(2, 0, ...mappeCate);
+ 
   return (
     <Disclosure as="nav" className="bg-color-nav sticky top-0  z-40">
       {({ open }) => (
@@ -61,11 +100,10 @@ const Header = () => {
                       <a
                         key={index}
                         href={list.path}
-                        className={`text-text-color hover:bg-text-nav hover:text-white rounded-md px-3 py-2 text-sm font-medium  ${
-                          window.localStorage.getItem("avtive") == index
-                            ? "bg-text-nav text-white"
-                            : ""
-                        }`}
+                        className={`text-text-color hover:bg-text-nav hover:text-white rounded-md px-3 py-2 text-sm font-medium  ${window.localStorage.getItem("avtive") == index
+                          ? "bg-text-nav text-white"
+                          : ""
+                          }`}
                         onClick={() => setActive(index)}
                       >
                         {list.text}
@@ -100,11 +138,10 @@ const Header = () => {
                   key={list.text}
                   as="a"
                   href={list.path}
-                  className={`text-text-color hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium ${
-                    window.localStorage.getItem("avtive") == index
-                      ? "bg-gray-700 text-white"
-                      : ""
-                  }`}
+                  className={`text-text-color hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium ${window.localStorage.getItem("avtive") == index
+                    ? "bg-gray-700 text-white"
+                    : ""
+                    }`}
                   onClick={() => setActive(index)}
                 >
                   {list.text}

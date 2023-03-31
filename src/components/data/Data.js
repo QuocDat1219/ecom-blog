@@ -8,14 +8,6 @@ export const nav = [
     path: "/about",
   },
   {
-    text: "SẠC ĐIỆN",
-    path: "/allproduct",
-  },
-  {
-    text: "CAMERA",
-    path: "/allproduct",
-  },
-  {
     text: "DỊCH VỤ",
     path: "/services",
   },
@@ -23,10 +15,6 @@ export const nav = [
     text: "TIN TỨC",
     path: "/blog",
   },
-  // {
-  //   text: "pricing",
-  //   path: "/pricing",
-  // },
   {
     text: "LIÊN HỆ",
     path: "/contact",

@@ -19,7 +19,7 @@ const Pages = () => {
         <Header />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/allproduct" component={AllProduct} />
+          <Route exact path="/allproduct/:id" component={AllProduct} />
           <Route exact path="/about" component={About} />
           <Route exact path="/services" component={Services} />
           <Route exact path="/blog" component={Blog} />

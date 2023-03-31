@@ -8,32 +8,32 @@ const Product = () => {
   const [dataCate, setDataCate] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      await axios("https://ecom-oto.vercel.app/api/products/").then((response) => {
-        setData(response.data.products);
+    const calldata = async () => {
+      await axios.get("https://ecom-oto.vercel.app/api/products/").then((response) => {
+        setData(response.data.Product);
       })
+    }
 
-    };
-    const fetchData2 = async () => {
-      await axios("https://ecom-oto.vercel.app/api/category/").then((response) => {
+    const calldata2 = async () => {
+      await axios.get("https://ecom-oto.vercel.app/api/category/").then((response) => {
+
+
         setDataCate(response.data.category);
       })
-
-      console.log(dataCate);
-    };
-    fetchData();
-    fetchData2();
-  }, []);
+    }
+    calldata();
+    calldata2();
+  },[])
 
   function categoryProduct(item) {
-    const categoryProduct = dataCate.find((category) => category._id === item);
-    if(categoryProduct)
-    return categoryProduct.name;
-  };
+      const categoryProduct = dataCate.find((category) => category._id === item);
+      if (categoryProduct)
+        return categoryProduct.name;
+    };
 
   return (
     <>
-      {dataCate.lenght != 0 ? (
+      {dataCate.length != 0 && data.length != 0 ? (
         <div>
           <div className="mt-4 grid gap-y-10 gap-x-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
             {data.map((item) => (
