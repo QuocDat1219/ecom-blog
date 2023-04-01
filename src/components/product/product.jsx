@@ -1,36 +1,22 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import axios from "axios";
+
 import React, { useState, useEffect } from "react";
 
-const Product = () => {
-  const [data, setData] = useState([]);
-  const [dataCate, setDataCate] = useState([]);
+const Product = (props) => {
+  const dataCate = props.dataCate;
+  const data = props.data;
 
-  useEffect(() => {
-    const calldata = async () => {
-      await axios.get("https://ecom-oto.vercel.app/api/products/").then((response) => {
-        setData(response.data.Product);
-      })
-    }
-
-    const calldata2 = async () => {
-      await axios.get("https://ecom-oto.vercel.app/api/category/").then((response) => {
-
-
-        setDataCate(response.data.category);
-      })
-    }
-    calldata();
-    calldata2();
-  },[])
+ 
 
   function categoryProduct(item) {
-      const categoryProduct = dataCate.find((category) => category._id === item);
-      if (categoryProduct)
-        return categoryProduct.name;
-    };
+    const categoryProduct = dataCate.find((category) => category._id === item);
+    
+    if (categoryProduct)
+      return categoryProduct.name;
+  };
 
+  
   return (
     <>
       {dataCate.length != 0 && data.length != 0 ? (

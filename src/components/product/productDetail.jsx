@@ -29,7 +29,7 @@ const ProductDetail = () => {
 
   useEffect(() => {
     axios("https://ecom-oto.vercel.app/api/products/").then((response) => {
-      const pro = response.data.products;
+      const pro = response.data.Product;
       setData(pro);
     });
 
@@ -42,20 +42,8 @@ const ProductDetail = () => {
     setProduct(foundProduct);
     console.log(product);
   });
-  const datachitiet = [
-    {
-      label: "Chi tiết sản phẩm",
-      value: "dashboard",
-      icon: Square3Stack3DIcon,
-      desc: `Mô tả đi Lập Thuận`,
-    },
-    {
-      label: "Đánh giá",
-      value: "profile",
-      icon: UserCircleIcon,
-      desc: `Đánh giá đi Lập Thuận`,
-    },
-  ];
+
+ 
   return (
     <div>
       <>

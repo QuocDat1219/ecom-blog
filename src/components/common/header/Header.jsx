@@ -41,26 +41,26 @@ const Header = () => {
   useEffect(() => {
     const fetchData = async () => {
       await axios("https://ecom-oto.vercel.app/api/categorycontainer/").then((response) => {
-        
+
         const dataRPs = response.data;
-        console.log(dataRPs);
-        if(dataRPs){
+
+        if (dataRPs) {
           const mappedProducts = dataRPs.map(dataRP => ({
             text: dataRP.name.toUpperCase(),
             path: `/allproduct/${dataRP.slug}`
           }));
           setMappeCate(mappedProducts);
-          
+
         }
       })
     };
 
     fetchData();
-    
-    
+
+
   }, []);
   nav.splice(2, 0, ...mappeCate);
- 
+
   return (
     <Disclosure as="nav" className="bg-color-nav sticky top-0  z-40">
       {({ open }) => (
