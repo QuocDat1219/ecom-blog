@@ -28,8 +28,9 @@ const ProductDetail = () => {
   };
 
   useEffect(() => {
-    axios("https://ecom-oto.vercel.app/api/products/").then((response) => {
-      const pro = response.data.Product;
+    axios(`https://ecom-oto.vercel.app/api/products/getall`).then((response) => {
+      const pro = response.data.products;
+
       setData(pro);
     });
 
@@ -40,10 +41,10 @@ const ProductDetail = () => {
     const foundProduct = data.find((p) => p._id == Number(id.id));
 
     setProduct(foundProduct);
-  
+    console.log(product);
   });
 
- 
+
   return (
     <div>
       <>
@@ -110,32 +111,32 @@ const ProductDetail = () => {
                         </div>
                       </div>
                     </div>
-                    
+
                   </div>
                   <div class="px-6 pb-6 mt-6 border-t w-[100%] border-gray-300  ">
-                      <Tabs value="dashboard">
-                        <TabsHeader>
-                          <Tab value={"mota"}>
-                            <div className="flex items-center gap-2">Mô tả</div>
-                          </Tab>
-                          <Tab value={"danhgia"}>
-                            <div className="flex items-center gap-2">
-                              Đánh giá
-                            </div>
-                          </Tab>
-                        </TabsHeader>
-                        <TabsBody>
-                          <TabPanel value={"mota"}>
-                            {product.description}
-                          </TabPanel>
-                        </TabsBody>
-                        <TabsBody>
-                          <TabPanel  value={"danhgia"} className="">
-                           <Comment/>
-                          </TabPanel>
-                        </TabsBody>
-                      </Tabs>
-                    </div>
+                    <Tabs value="dashboard">
+                      <TabsHeader>
+                        <Tab value={"mota"}>
+                          <div className="flex items-center gap-2">Mô tả</div>
+                        </Tab>
+                        <Tab value={"danhgia"}>
+                          <div className="flex items-center gap-2">
+                            Đánh giá
+                          </div>
+                        </Tab>
+                      </TabsHeader>
+                      <TabsBody>
+                        <TabPanel value={"mota"}>
+                          {product.description}
+                        </TabPanel>
+                      </TabsBody>
+                      <TabsBody>
+                        <TabPanel value={"danhgia"} className="">
+                          <Comment />
+                        </TabPanel>
+                      </TabsBody>
+                    </Tabs>
+                  </div>
                 </div>
               </div>
             </section>
