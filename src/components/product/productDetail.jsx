@@ -40,7 +40,7 @@ const ProductDetail = () => {
     const foundProduct = data.find((p) => p._id == Number(id.id));
 
     setProduct(foundProduct);
-    console.log(product);
+  
   });
 
  
