@@ -10,46 +10,56 @@ import Product from "./product";
 const AllProduct = () => {
   const { id } = useParams();
   const [dataCate, setDataCate] = useState([]);
-  const [allProduct, setAllProduct] = useState([]);
   const [categoriesCTNID, setCategoriesCTNID] = useState([])
+  const [brands, setBrands] = useState([]);
+
+  
 
 
 
   useEffect(() => {
-    const calldata2 = async () => {
+    console.log(id);
+    const calldata = async () => {
       await axios.get("https://ecom-oto.vercel.app/api/category/").then((response) => {
         setDataCate(response.data.category);
       })
     }
-    calldata2();
-    axios.get(
-      "https://ecom-oto.vercel.app/api/products/getall"
-    ).then((response) => {
-      const data = response.data.products;
-      setAllProduct(data)
 
 
-    })
+    const calldata3 = async () => {
+      await axios.get(
+        "https://ecom-oto.vercel.app/api/categorycontainer/"
+      ).then((response) => {
+        const data = response.data;
+        if (data) {
+          const categoryId = data.find((categoryId) => categoryId.slug === id);
+          setCategoriesCTNID(categoryId._id)
 
-    axios.get(
-      "https://ecom-oto.vercel.app/api/categorycontainer/"
-    ).then((response) => {
-      const data = response.data;
-      if (data) {
-        const categoryId = data.find((categoryId) => categoryId.slug === id);
-        setCategoriesCTNID(categoryId._id)
-       
-      }
+        }
 
-    })
+      })
+    }
+    const calldata4 = async () => {
+      await axios.get(
+        "https://ecom-oto.vercel.app/api/brand/"
+      ).then((response) => {
+        const data = response.data;
+        setBrands(data);
 
+      })
+    }
+    calldata();
+    calldata3();
+    calldata4();
   }, []);
 
   const filteredCategories = dataCate.filter(
     (category) => category.idCategoriesContainer == categoriesCTNID
   );
 
-
+  const filteredBrand = brands.filter(
+    (brand) => brand.idCategoriesContainer == categoriesCTNID
+  );
 
 
   return (
@@ -57,12 +67,7 @@ const AllProduct = () => {
       <div className="p-5">
         <BrandSillder />
       </div>
-      <FilterCard dataCate={dataCate} filteredCategories={filteredCategories} categoriesCTNID={categoriesCTNID} />
-
-
-
-
-
+      <FilterCard dataCate={dataCate} filteredCategories={filteredCategories} categoriesCTNID={categoriesCTNID} brands={filteredBrand} />
       <br />
     </>
   );

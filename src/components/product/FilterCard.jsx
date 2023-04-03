@@ -8,7 +8,7 @@ import Path from "./path";
 
 const Filters = (props) => {
   const [selectedCategories, setSelectedCategories] = useState([]);
-  const [brands, setBrands] = useState([]);
+  const [selectedBrands, setSelectedBrands] = useState([]);
   const categories = props.dataCate
   const [productss, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -25,7 +25,7 @@ const Filters = (props) => {
     const calldata = async () => {
       await axios.get(`https://ecom-oto.vercel.app/api/products?page=${currentPage}&&container=${container}`).then((response) => {
         setData(response.data.Product);
-      
+
         setTotalPages(response.data.totalPages)
         const totalpage = response.data.totalPages;
         if (totalpage) {
@@ -42,7 +42,7 @@ const Filters = (props) => {
 
     calldata();
 
-  }, [currentPage,container])
+  }, [currentPage, container])
 
   const handleClick = (page) => {
     handlePageChange(page);
@@ -51,26 +51,6 @@ const Filters = (props) => {
   function handlePageChange(pageNumber) {
     setCurrentPage(pageNumber);
   }
-
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await axios.get(
-          "https://ecom-oto.vercel.app/api/brand/"
-        );
-        const data = response.data;
-
-        setBrands(data);
-
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    fetchData();
-  }, []);
-
-
 
   const handleCategoryChange = (event) => {
     const category = event.target.value;
@@ -83,14 +63,27 @@ const Filters = (props) => {
     }
   };
 
+  const handleBrandChange = (event) => {
+    const brand = event.target.value;
+    const isChecked = event.target.checked;
+
+    if (isChecked) {
+      setSelectedBrands([...selectedBrands, brand]);
+    } else {
+      setSelectedBrands(selectedBrands.filter(b => b !== brand));
+    }
+  };
+
+
   const handlefilterButtonClick = () => {
     const categoryString = selectedCategories.join(',');
-  
-    axios.get(`https://ecom-oto.vercel.app/api/products/fitercategory?categories=${categoryString}`)
+    const brandString = selectedBrands.join(',');
+    console.log(brandString);
+    axios.get(`http://localhost:5000/api/products/fitercategory?categories=${categoryString}&brands=${brandString}`)
       .then(response => {
 
         const datars = response.data.fproducts
-  
+        console.log(datars);
         if (datars.length != 0) {
           setProducts(response.data.fproducts);
           setIsFiterCate(true);
@@ -160,21 +153,21 @@ const Filters = (props) => {
                   <hr className="my-4 text-color-basic" />
                   <h3 className="font-semibold mb-2 text-color-title">Nhãn hàng</h3>
                   <ul className="space-y-1">
-                    {brands.map((data) => (
-                      <li key={data._id}>
+                    {props.brands.map((brand) => (
+                      <li key={brand._id}>
                         <div class="flex items-center">
                           <input
                             id="default-checkbox"
                             type="checkbox"
-                            // onChange={}
-                            value={data._id}
+                            onChange={handleBrandChange}
+                            value={brand._id}
                             class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500  focus:ring-2  "
                           />
                           <label
                             for="checked-checkbox"
                             class="ml-2 text-sm font-medium text-gray-900 "
                           >
-                            {data.title}
+                            {brand.title}
                           </label>
                         </div>
                       </li>

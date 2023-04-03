@@ -21,22 +21,41 @@ const ProductDetail = () => {
   const id = useParams();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [data, setData] = useState([]);
+  const [dataCate, setDataCate] = useState([]);
   const [product, setProduct] = useState(null);
+  const [brands, setBrands] = useState([]);
 
   const onSlide = (currentIndex) => {
     setCurrentIndex(currentIndex);
   };
 
   useEffect(() => {
-    axios(`https://ecom-oto.vercel.app/api/products/getall`).then((response) => {
-      const pro = response.data.products;
+    const calldata = async () => {
+      await axios.get(`https://ecom-oto.vercel.app/api/products/getall`).then((response) => {
+        const pro = response.data.products;
 
-      setData(pro);
-    });
-
-    // data2 = data.find((record) => record._id === id);
-    // console.log(data2);
+        setData(pro);
+      });
+    }
+    const calldata2 = async () => {
+      await axios.get("https://ecom-oto.vercel.app/api/category/").then((response) => {
+        setDataCate(response.data.category);
+      })
+    }
+    const calldata3 = async () => {
+      await axios.get(
+        "https://ecom-oto.vercel.app/api/brand/"
+      ).then((response) => {
+        const data = response.data;
+        setBrands(data);
+        console.log(data);
+      })
+    }
+    calldata();
+    calldata2();
+    calldata3();
   }, []);
+
   useEffect(() => {
     const foundProduct = data.find((p) => p._id == Number(id.id));
 
@@ -44,7 +63,20 @@ const ProductDetail = () => {
     console.log(product);
   });
 
+  function categoryProduct(item) {
+    const categoryProduct = dataCate.find((category) => category._id === item);
 
+    if (categoryProduct)
+      return categoryProduct.name;
+  };
+
+
+  function brandProduct(item) {
+    const brandProduct = brands.find((brand) => brand._id === item);
+
+    if (brandProduct)
+      return brandProduct.title;
+  };
   return (
     <div>
       <>
@@ -61,6 +93,9 @@ const ProductDetail = () => {
                   <div class="w-full mb-8 md:w-1/2 md:mb-0">
                     <div class="sticky top-0 z-30 overflow-hidden ">
                       <ImageGallery
+                        loading={"lazy"}
+                        thumbnailHeight={50}
+
                         items={product.imagesDetail}
                         showFullscreenButton={true}
                         useBrowserFullscreen={true}
@@ -76,7 +111,11 @@ const ProductDetail = () => {
                           {product.name}
                         </h2>
                         <p class="inline-block mb-6 text-xl font-bold text-text-color  ">
-                          <span>Danh mục: {product.idCategory}</span>
+                          <span>Danh mục: {categoryProduct(product.idCategory)}</span>
+                        </p>
+                        <br />
+                        <p class="inline-block mb-6 text-xl font-bold text-text-color  ">
+                          <span>Nhãn hàng: {brandProduct(product.idBrand)}</span>
                         </p>
                         <p class="max-w-md text-text-color">
                           {product.description}
@@ -114,12 +153,12 @@ const ProductDetail = () => {
 
                   </div>
                   <div class="px-6 pb-6 mt-6 border-t w-[100%] border-gray-300  ">
-                    <Tabs value="dashboard">
+                    <Tabs value="dashboard" defaultValue={"mota"}>
                       <TabsHeader>
-                        <Tab value={"mota"}>
+                        <Tab value={"mota"} >
                           <div className="flex items-center gap-2">Mô tả</div>
                         </Tab>
-                        <Tab value={"danhgia"}>
+                        <Tab value={"danhgia"} >
                           <div className="flex items-center gap-2">
                             Đánh giá
                           </div>
