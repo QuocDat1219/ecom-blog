@@ -6,10 +6,11 @@ import Location from "./location/Location";
 import Price from "./price/Price";
 import Recent from "./recent/Recent";
 import Team from "./team/Team";
-
+import Itop from "./Itop/Itop.js";
 const Home = () => {
   return (
     <>
+      <Itop />
       <Hero />
       <Featured />
       <Recent />

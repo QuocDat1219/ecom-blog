@@ -1,0 +1,49 @@
+.scroll-to-top{
+    padding: 9px;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    border: 3px black solid;
+}
+.chat-buttons {
+    position: fixed;
+    bottom: 93px;
+    right: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    z-index: 9999;
+}
+.chat-buttons ul li img {
+    margin-bottom: 10px;
+}
+ .iconZalo{
+    width: 55px;    
+ }
+ .iconPhone{
+    width: 50px;
+ }
+
+ @keyframes zoomInOut {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  .iconPhone {
+    animation-name: zoomInOut;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+  .iconZalo{
+    animation-name: zoomInOut;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
