@@ -79,7 +79,7 @@ const Filters = (props) => {
     const categoryString = selectedCategories.join(',');
     const brandString = selectedBrands.join(',');
     console.log(brandString);
-    axios.get(`http://localhost:5000/api/products/fitercategory?categories=${categoryString}&brands=${brandString}`)
+    axios.get(`https://ecom-oto.vercel.app/api/products/fitercategory?categories=${categoryString}&brands=${brandString}`)
       .then(response => {
 
         const datars = response.data.fproducts
@@ -89,7 +89,7 @@ const Filters = (props) => {
           setIsFiterCate(true);
         }
         else
-          alert("Danh mục rỗng");
+          alert("Không tìm thấy sản phẩm lọc");
       })
       .catch(error => {
         console.log(error);

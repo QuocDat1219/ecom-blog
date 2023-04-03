@@ -1,21 +1,14 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import FilterCard from "./FilterCard";
-
 import { useParams } from "react-router-dom";
 import BrandSillder from "./brandSlider";
 import axios from "axios";
-import Product from "./product";
-
 
 const AllProduct = () => {
   const { id } = useParams();
   const [dataCate, setDataCate] = useState([]);
   const [categoriesCTNID, setCategoriesCTNID] = useState([])
   const [brands, setBrands] = useState([]);
-
-  
-
-
 
   useEffect(() => {
     console.log(id);
@@ -60,7 +53,6 @@ const AllProduct = () => {
   const filteredBrand = brands.filter(
     (brand) => brand.idCategoriesContainer == categoriesCTNID
   );
-
 
   return (
     <>
