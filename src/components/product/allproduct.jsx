@@ -11,7 +11,7 @@ const AllProduct = () => {
   const [brands, setBrands] = useState([]);
 
   useEffect(() => {
-    console.log(id);
+
     const calldata = async () => {
       await axios.get("https://ecom-oto.vercel.app/api/category/").then((response) => {
         setDataCate(response.data.category);

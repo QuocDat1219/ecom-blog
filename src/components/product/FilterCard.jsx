@@ -78,22 +78,26 @@ const Filters = (props) => {
   const handlefilterButtonClick = () => {
     const categoryString = selectedCategories.join(',');
     const brandString = selectedBrands.join(',');
-    console.log(brandString);
-    axios.get(`https://ecom-oto.vercel.app/api/products/fitercategory?categories=${categoryString}&brands=${brandString}`)
-      .then(response => {
 
-        const datars = response.data.fproducts
-        console.log(datars);
-        if (datars.length != 0) {
-          setProducts(response.data.fproducts);
-          setIsFiterCate(true);
-        }
-        else
-          alert("Không tìm thấy sản phẩm lọc");
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    if (categoryString.length == 0 && brandString.length == 0) {
+      alert("Hãy chọn danh mục hoặc nhãn hàng cầm lọc");
+    } else {
+      axios.get(`https://ecom-oto.vercel.app/api/products/fitercategory?categories=${categoryString}&brands=${brandString}`)
+        .then(response => {
+
+          const datars = response.data.fproducts
+          if (datars.length != 0) {
+            setProducts(response.data.fproducts);
+            setIsFiterCate(true);
+          }
+          else
+            alert("Không tìm thấy sản phẩm lọc");
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+
   };
 
   const renderPages = () => {
