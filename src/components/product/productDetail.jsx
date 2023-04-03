@@ -30,6 +30,7 @@ const ProductDetail = () => {
   };
 
   useEffect(() => {
+
     const calldata = async () => {
       await axios.get(`https://ecom-oto.vercel.app/api/products/getall`).then((response) => {
         const pro = response.data.products;
@@ -37,6 +38,7 @@ const ProductDetail = () => {
         setData(pro);
       });
     }
+
     const calldata2 = async () => {
       await axios.get("https://ecom-oto.vercel.app/api/category/").then((response) => {
         setDataCate(response.data.category);
