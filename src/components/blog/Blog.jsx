@@ -13,9 +13,7 @@ const Blog = () => {
             <Side />
           </section>
           <section className="mainContent">
-         
             <RecentCard />
-        
           </section>
           <section className="sideContent">
             <Side />

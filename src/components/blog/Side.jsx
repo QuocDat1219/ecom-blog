@@ -17,42 +17,36 @@ const Side = () => {
   // const catgeory = ["world", "travel", "sport", "fun", "health", "fashion", "business", "technology"]
   return (
     <>
-      {/* <Heading title='Stay Connected' /> */}
-      {/* <SocialMedia /> */}
-
-      <Heading title="Tìm kiếm" />
-
-      <section className="subscribe mx-auto">
-        {/* <h1 className="title">Nhập từ khóa tìm kiếm</h1> */}
-        <form action="">
-          <div className="flex items-center">
-            <div>
-              <div className="justify-center items-center px-4 sm:px-6 lg:px-8 ">
-                <div className="relative">
-                  <input
-                    type="text"
-                    className="pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none"
-                    placeholder="Nhập từ khóa..."
-                  />
-                  <div class="absolute top-4 right-3">
-                    <i class="fa fa-search text-gray-400 z-20 hover:text-gray-500"></i>
+      <div class="grid grid-cols-1">
+        <div class="grid-row">
+          <Heading title="Tìm kiếm" />
+          <section class="subscribe">
+            <form action="">
+              <div class="flex items-center">
+                <div>
+                  <div class="px-4 sm:px-6 lg:px-8">
+                    <div class="relative">
+                      <input
+                        type="text"
+                        class="pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none"
+                        placeholder="Nhập từ khóa..."
+                      />
+                      <div class="absolute top-4 right-3">
+                        <i class="fa fa-search text-gray-400 z-20 hover:text-gray-500"></i>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            {/* <button className="bg-color-button w-[60%] rounded-md text-text-color">
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
-            </button> */}
+            </form>
+          </section>
+        </div>
+        <div class="grid-row">
+          <div>
+            <Heading title="Bài viết mới" />
+            <Tpost />
           </div>
-        </form>
-      </section>
-
-      {/* <section className='banner'>
-        <img src='./images/sidebar-banner-new.jpg' alt='' />
-      </section> */}
-      <div className="Hide">
-        <Heading title="Bài viết mới" />
-        <Tpost />
+        </div>
       </div>
     </>
   );

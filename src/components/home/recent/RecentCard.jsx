@@ -50,7 +50,7 @@ const RecentCard = () => {
                     {val.title}
                   </h4>
                   <div className="is-divider "></div>
-                  <Link to="/tintuc1">
+                  <Link to={`/${val._id}`}>
                     <span className="p_location text-text-color hover:text-color-title">
                       {val.description.slice(0, 40)}...
                       {/* <i className='fa fa-location-dot'></i>  */}
