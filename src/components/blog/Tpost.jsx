@@ -42,7 +42,7 @@ const Tpost = () => {
             </div>
             </a>
           );
-        })}
+        }).slice(-3)}
       </section>
     </>
   );

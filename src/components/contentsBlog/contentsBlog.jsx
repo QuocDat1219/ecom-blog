@@ -7,6 +7,7 @@ import { Link, useParams } from "react-router-dom";
 import Comment from "./Comment";
 import axios from "axios";
 import { FaFacebook, FaTwitter, FaEnvelope, FaPinterest, FaLinkedin } from 'react-icons/fa';
+import VideoBlog from "./videoBlog";
 
 const ContentsBlog = () => {
   const { id } = useParams();
@@ -21,6 +22,9 @@ const ContentsBlog = () => {
     }
     calldata();
   }, [])
+
+  
+
 
 
   return (
@@ -38,15 +42,7 @@ const ContentsBlog = () => {
                 <h6 className="contentBlog_poster">{ }</h6>
               </div>
               <div className="contentBlog_video">
-                <iframe
-                  width="100%"
-                  height="574"
-                  src="https://www.youtube.com/embed/gecOcAL_VUo"
-                  title="Trạm sạc tư nhân 22kw chuẩn IEC61851 đầu tiên tại Hà Nội giá điện chỉ 3500 vnd/1kw"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                ></iframe>
+                {data.video ?  <VideoBlog idyt={data.video}/> : <div><img src={data.imageThumbnail} alt="" /></div> }     
               </div>
               <div className="contentBlog_span">
                 <span>
