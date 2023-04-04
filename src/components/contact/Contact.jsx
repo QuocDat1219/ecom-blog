@@ -71,7 +71,7 @@ const Contact = () => {
                     />
                   </div>
                   <textarea cols="28" rows="10"></textarea>
-                  <button className="bg-color-button w-[100%] rounded-md text-text-color">
+                  <button className="bg-color-button w-[100%] rounded-md text-white">
                     Gửi liên hệ
                   </button>
                 </form>
