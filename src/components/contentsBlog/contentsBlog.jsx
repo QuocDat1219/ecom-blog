@@ -8,7 +8,7 @@ import Comment from "./Comment";
 import axios from "axios";
 import { FaFacebook, FaTwitter, FaEnvelope, FaPinterest, FaLinkedin } from 'react-icons/fa';
 import VideoBlog from "./videoBlog";
-
+import ShowFeedBackBlog from "./ShowFeedBackBlog";
 const ContentsBlog = () => {
   const { id } = useParams();
   const [data, setData] = useState([]);
@@ -69,8 +69,8 @@ const ContentsBlog = () => {
                   <FaLinkedin className="hover:text-[#0073b1] text-gray-400" size={32} />
                 </a>
               </div>
-              <hr />
-              <Comment />
+              <ShowFeedBackBlog propsblogid={data._id}/>
+              <Comment blogid={data._id}/>
             </section>
 
             <section className="sideContent">
@@ -78,8 +78,6 @@ const ContentsBlog = () => {
             </section>
           </div>
         </main>
-
-
       </div>
     </>
   );
