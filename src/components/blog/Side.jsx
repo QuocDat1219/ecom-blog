@@ -17,22 +17,22 @@ const Side = () => {
   // const catgeory = ["world", "travel", "sport", "fun", "health", "fashion", "business", "technology"]
   return (
     <>
-      <div class="grid grid-cols-1">
-        <div class="grid-row">
+      <div className="grid grid-cols-1">
+        <div className="grid-row">
           <Heading title="Tìm kiếm" />
-          <section class="subscribe">
+          <section className="subscribe">
             <form action="">
-              <div class="flex items-center">
+              <div className="flex items-center">
                 <div>
-                  <div class="px-4 sm:px-6 lg:px-8">
-                    <div class="relative">
+                  <div className="px-4 sm:px-6 lg:px-8">
+                    <div className="relative">
                       <input
                         type="text"
-                        class="pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none"
+                        className="pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none"
                         placeholder="Nhập từ khóa..."
                       />
-                      <div class="absolute top-4 right-3">
-                        <i class="fa fa-search text-gray-400 z-20 hover:text-gray-500"></i>
+                      <div className="absolute top-4 right-3">
+                        <i className="fa fa-search text-gray-400 z-20 hover:text-gray-500"></i>
                       </div>
                     </div>
                   </div>
@@ -41,10 +41,10 @@ const Side = () => {
             </form>
           </section>
         </div>
-        <div class="grid-row">
+        <div className="grid-row">
           <div>
-            <Heading title="Bài viết mới" />
-            <Tpost />
+            <Heading title="Bài viết mới"/>
+            <Tpost/>
           </div>
         </div>
       </div>
