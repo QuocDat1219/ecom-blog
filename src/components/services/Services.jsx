@@ -6,8 +6,11 @@ import img2 from "../images/linkkien.jpg";
 import img3 from "../images/tramsac.jpg";
 import "./Services.css";
 import { tpost } from "../data/Data";
-
+import RecentCard from "../home/recent/RecentCard";
 const Services = () => {
+
+
+
   return (
     <>
       <section className="services mb ">
@@ -50,7 +53,7 @@ const Services = () => {
             Dịch vụ vận hành và bảo hành
           </h3>
           <div class="flex flex-wrap justify-between">
-            {tpost
+            {/* {tpost
               .map((val) => (
                 <div class="w-full md:w-1/3 px-4 mb-8 md:mb-0 ">
                   <div class="relative h-0 pb-[100%] mb-4">
@@ -65,7 +68,8 @@ const Services = () => {
                   </p>
                 </div>
               ))
-              .slice(-3)}
+              .slice(-3)} */}
+              <RecentCard/>
           </div>
         </div>
       </section>

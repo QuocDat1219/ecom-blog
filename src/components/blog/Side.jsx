@@ -22,8 +22,8 @@ const Side = ({setDataBlog}) => {
 
   return (
     <>
-      <div class="grid grid-cols-1">
-        <div class="grid-row">
+      <div className="grid grid-cols-1">
+        <div className="grid-row">
           <Heading title="Tìm kiếm" />
           <section class="subscribe">
 
@@ -44,10 +44,10 @@ const Side = ({setDataBlog}) => {
 
           </section>
         </div>
-        <div class="grid-row">
+        <div className="grid-row">
           <div>
-            <Heading title="Bài viết mới" />
-            <Tpost />
+            <Heading title="Bài viết mới"/>
+            <Tpost/>
           </div>
         </div>
       </div>

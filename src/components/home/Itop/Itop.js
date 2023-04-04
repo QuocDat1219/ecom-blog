@@ -1,38 +1,37 @@
 import ScrollToTop from "react-scroll-to-top";
+import React, { useState, useEffect } from "react";
 import "./Itop.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone, faComment } from "@fortawesome/free-solid-svg-icons";
 
 const Itop = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", toggleVisibility);
+
+    return () => {
+      window.removeEventListener("scroll", toggleVisibility);
+    };
+  }, []);
+
+  const toggleVisibility = () => {
+    if (window.pageYOffset > 300) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <>
-      {/* <div className="chat-buttons">
-        <a href="https://zalo.me/0123456789">
-          <button className="chat-button">
-            <img
-              src="https://everev.vn/wp-content/uploads/2023/03/icon-zalo-EverEV.png"
-              alt="Zalo chat icon"
-              className="iconZalo"
-            />
-          </button>
-        </a>
-        <a href="https://m.me/123456789">
-          <button className="chat-button">
-            <img
-              src="https://image.flaticon.com/icons/png/512/2111/2111728.png"
-              alt="Messenger chat icon"
-            />
-          </button>
-        </a>
-        <a href="tel:+123456789">
-          <button className="chat-button">
-            <img
-              src="https://image.flaticon.com/icons/png/512/60/60544.png"
-              alt="Phone icon"
-            />
-          </button>
-        </a>
-      </div> */}
       <div className="chat-buttons">
         <ul>
           <li>
@@ -45,7 +44,7 @@ const Itop = () => {
             </a>
           </li>
           <li>
-            <a href="tel:+123456789">
+            <a href="tel:+0931116080">
               <img
                 src="https://everev.vn/wp-content/uploads/2023/03/icon-call-EverEV.png"
                 alt="Phone icon"
@@ -55,7 +54,14 @@ const Itop = () => {
           </li>
         </ul>
       </div>
-      <ScrollToTop smooth />
+      {/* <ScrollToTop component={CustomScrollToTopArrow} smooth /> */}
+      <div className="scrollButton">
+        {isVisible && (
+          <button onClick={scrollToTop}>
+            <i className="fa fa-chevron-up"></i>
+          </button>
+        )}
+      </div>
     </>
   );
 };
