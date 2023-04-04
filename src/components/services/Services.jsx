@@ -6,7 +6,7 @@ import img2 from "../images/linkkien.jpg";
 import img3 from "../images/tramsac.jpg";
 import "./Services.css";
 import { tpost } from "../data/Data";
-import RecentCard from "../home/recent/RecentCard";
+import RecentCard from "../blog/RecentCard";
 const Services = () => {
 
 
