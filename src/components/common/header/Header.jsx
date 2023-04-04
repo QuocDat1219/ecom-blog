@@ -35,9 +35,7 @@ const Header = () => {
   ];
   const [data, setData] = useState([]);
   const [mappeCate, setMappeCate] = useState([]);
-  const setActive = (item) => {
-    window.localStorage.setItem("avtive", item);
-  };
+
   useEffect(() => {
     const fetchData = async () => {
       await axios("https://ecom-oto.vercel.app/api/categorycontainer/").then((response) => {
@@ -62,7 +60,7 @@ const Header = () => {
   nav.splice(2, 0, ...mappeCate);
 
   return (
-    <Disclosure as="nav" className="bg-color-nav sticky top-0  z-40">
+    <Disclosure as="nav" className="bg-color-nav sticky top-0  z-40 ">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -79,7 +77,7 @@ const Header = () => {
                 </Disclosure.Button>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <div className="flex flex-shrink-0 items-center bg-white rounded-md ">
+                <div className="flex flex-shrink-0 items-center bg-color-nav rounded-md ">
                   <img
                     className="block h-[60px] w-auto lg:hidden"
                     src={logoNav}
@@ -100,11 +98,8 @@ const Header = () => {
                       <a
                         key={index}
                         href={list.path}
-                        className={`text-text-color hover:bg-text-nav hover:text-white rounded-md px-3 py-2 text-sm font-medium  ${window.localStorage.getItem("avtive") == index
-                          ? "bg-text-nav text-white"
-                          : ""
-                          }`}
-                        onClick={() => setActive(index)}
+                        className={`text-text-color hover:bg-text-nav hover:text-white rounded-md px-3 py-4 text-base font-medium  `}
+
                       >
                         {list.text}
                       </a>
@@ -113,21 +108,6 @@ const Header = () => {
                 </div>
               </div>
 
-              {/* <div className="">
-                <input className="search_ip"></input>
-              </div> */}
-
-              {/* <div class="searchBox">
-                <input
-                  class="searchInput"
-                  type="text"
-                  name=""
-                  placeholder="Search"
-                />
-                <button class="searchButton" href="#">
-                  <i class="material-icons">search</i>
-                </button>
-              </div> */}
             </div>
           </div>
 
@@ -138,11 +118,8 @@ const Header = () => {
                   key={list.text}
                   as="a"
                   href={list.path}
-                  className={`text-text-color hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium ${window.localStorage.getItem("avtive") == index
-                    ? "bg-gray-700 text-white"
-                    : ""
-                    }`}
-                  onClick={() => setActive(index)}
+                  className={`text-text-color hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium `}
+
                 >
                   {list.text}
                 </Disclosure.Button>

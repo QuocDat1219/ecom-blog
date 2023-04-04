@@ -1,10 +1,50 @@
+import axios from "axios";
 import React from "react";
+import { useState } from "react";
+import { useEffect } from "react";
 import Heading from "../../common/Heading";
 import "./recent.css";
-import RecentCard from "./RecentCard";
 import SliderRecent from "./SliderRecent";
 const Recent = () => {
-  const data = {};
+  const [category, setCategory] = useState([]);
+  const [categoriesCTNID, setCategoriesCTNID] = useState([]);
+  const [product, setProduct] = useState([]);
+const data={
+
+}
+  useEffect(() => {
+
+    const calldata = async () => {
+      await axios.get("https://ecom-oto.vercel.app/api/category/").then((response) => {
+        setCategory(response.data.category);
+      })
+    }
+
+    const calldata1 = async () => {
+      await axios.get("https://ecom-oto.vercel.app/api/products/getall").then((response) => {
+        setProduct(response.data.products);
+      })
+    }
+
+    const calldata2 = async () => {
+      await axios.get(
+        "https://ecom-oto.vercel.app/api/categorycontainer/"
+      ).then((response) => {
+        const data = response.data;
+        setCategoriesCTNID(data)
+        console.log(data);
+        // if (data) {
+        //   const categoryId = data.find((categoryId) => categoryId.slug === id);
+        //   setCategoriesCTNID(categoryId._id)
+
+        // }
+
+      })
+    }
+    calldata1();
+    calldata2();
+    calldata();
+  },[])
   return (
     <>
       <section className="recent padding">
@@ -44,7 +84,7 @@ const Recent = () => {
               </div>
             </div>
             <SliderRecent
-              title={"SẠC AC"}
+              title={"SẠC DC"}
               des={"Dòng sản phẩm dành cho gia đình, doanh nghiệp quy mô nhỏ"}
               data={data}
             />

@@ -15,15 +15,15 @@ const ContentsBlog = () => {
 
   useEffect(() => {
     const calldata = async () => {
-      await axios.get(`https://ecom-oto.vercel.app/api/blog/${id}`).then((response) => {
+      await axios.get(`https://ecom-oto.vercel.app/api/blog/blogpage?slugs=${id}`).then((response) => {
         const blog = response.data;
-        setData(blog);
+        setData(blog[0]);
       });
     }
     calldata();
   }, [])
 
-  
+
 
 
 
@@ -42,7 +42,7 @@ const ContentsBlog = () => {
                 <h6 className="contentBlog_poster">{ }</h6>
               </div>
               <div className="contentBlog_video">
-                {data.video ?  <VideoBlog idyt={data.video}/> : <div><img src={data.imageThumbnail} alt="" /></div> }     
+                {data.video ? <VideoBlog idyt={data.video} /> : <div><img src={data.imageThumbnail} alt="" /></div>}
               </div>
               <div className="contentBlog_span">
                 <span>
