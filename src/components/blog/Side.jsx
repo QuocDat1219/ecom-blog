@@ -25,15 +25,15 @@ const Side = ({setDataBlog}) => {
       <div className="grid grid-cols-1">
         <div className="grid-row">
           <Heading title="Tìm kiếm" />
-          <section class="subscribe">
+          <section className="subscribe">
 
-            <div class="flex items-center">
+            <div className="flex items-center">
               <div>
-                <div class="px-4 sm:px-6 lg:px-8">
-                  <div class="relative">
+                <div className="px-4 sm:px-6 lg:px-8">
+                  <div className="relative">
                     <input
                       type="text"
-                      class="pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none bg-color-basic bg-opacity-30  "
+                      className="pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none bg-color-basic bg-opacity-30  "
                       placeholder="Nhập từ khóa..."
                       onChange={(e) => setKeyWord(e.target.value)}
                     />

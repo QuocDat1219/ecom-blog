@@ -152,7 +152,7 @@ const ProductDetail = () => {
 
                   </div>
                   <div class="px-6 pb-6 mt-6 border-t w-[100%] border-gray-300  ">
-                    <Tabs value="dashboard" defaultValue={"mota"}>
+                    <Tabs value="dashboard" >
                       <TabsHeader>
                         <Tab value={"mota"} >
                           <div className="flex items-center gap-2">Mô tả</div>

@@ -35,7 +35,7 @@ const Itop = () => {
       <div className="chat-buttons">
         <ul>
           <li>
-            <a href="https://zalo.me/0123456789">
+            <a href="https://zalo.me/0966695052">
               <img
                 src="https://everev.vn/wp-content/uploads/2023/03/icon-zalo-EverEV.png"
                 alt="Zalo chat icon"
@@ -44,7 +44,7 @@ const Itop = () => {
             </a>
           </li>
           <li>
-            <a href="tel:+0931116080">
+            <a href="tel:+0966695052">
               <img
                 src="https://everev.vn/wp-content/uploads/2023/03/icon-call-EverEV.png"
                 alt="Phone icon"
