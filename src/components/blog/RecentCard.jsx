@@ -61,7 +61,7 @@ const RecentCard = ({ dataBlog }) => {
                         {val.title.slice(0, 20)}...
                       </h4>
                       <div className="is-divider "></div>
-                      <Link to={`/${val.slug}`}>
+                      <Link to={`blogdetail/${val.slug}`}>
                         <span className="p_location text-text-color hover:text-color-title">
                           {val.description.slice(0, 40)}...
                           {/* <i className='fa fa-location-dot'></i>  */}
@@ -74,7 +74,7 @@ const RecentCard = ({ dataBlog }) => {
             </div>
           ) : <div className="content grid3 mtop md:grid-cols-2 lg:grid-cols-3 sm:grid-cols-2 ">
             {data.map((val, index) => (
-              <Link href={`blogdetail/${val.slug}`}>
+              <Link to={`blogdetail/${val.slug}`}>
                 <div className="recentCard bg-color-card" key={index}>
                   <div className="RecentC_img">
                     <img src={val.imageThumbnail} className="rounded-md" alt="" />
