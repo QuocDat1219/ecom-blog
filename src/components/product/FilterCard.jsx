@@ -135,17 +135,17 @@ const Filters = (props) => {
                   <ul className="space-y-1">
                     {props.filteredCategories.map((category) => (
                       <li key={category._id}>
-                        <div class="flex items-center">
+                        <div className="flex items-center">
                           <input
                             id="default-checkbox"
                             type="checkbox"
                             value={category._id}
                             onChange={handleCategoryChange}
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500  focus:ring-2 "
+                            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500  focus:ring-2 "
                           />
                           <label
                             for="checked-checkbox"
-                            class="ml-2 text-sm font-medium text-gray-900 "
+                            className="ml-2 text-sm font-medium text-gray-900 "
                           >
                             {category.name}
                           </label>
@@ -159,17 +159,17 @@ const Filters = (props) => {
                   <ul className="space-y-1">
                     {props.brands.map((brand) => (
                       <li key={brand._id}>
-                        <div class="flex items-center">
+                        <div className="flex items-center">
                           <input
                             id="default-checkbox"
                             type="checkbox"
                             onChange={handleBrandChange}
                             value={brand._id}
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500  focus:ring-2  "
+                            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500  focus:ring-2  "
                           />
                           <label
                             for="checked-checkbox"
-                            class="ml-2 text-sm font-medium text-gray-900 "
+                            className="ml-2 text-sm font-medium text-gray-900 "
                           >
                             {brand.title}
                           </label>

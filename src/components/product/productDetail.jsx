@@ -86,11 +86,11 @@ const ProductDetail = () => {
             <div className="containers">
               <Path data={product.name} />
             </div>
-            <section class="overflow-hidden bg-white py-7 ">
-              <div class="max-w-6xl px-4 py-4 mx-auto lg:py-8 md:px-6">
-                <div class="flex flex-wrap -mx-4">
-                  <div class="w-full mb-8 md:w-1/2 md:mb-0">
-                    <div class="sticky top-0 z-30 overflow-hidden ">
+            <section className="overflow-hidden bg-white py-7 ">
+              <div className="max-w-6xl px-4 py-4 mx-auto lg:py-8 md:px-6">
+                <div className="flex flex-wrap -mx-4">
+                  <div className="w-full mb-8 md:w-1/2 md:mb-0">
+                    <div className="sticky top-0 z-30 overflow-hidden ">
                       <ImageGallery
                         loading={"lazy"}
                         thumbnailHeight={50}
@@ -103,47 +103,47 @@ const ProductDetail = () => {
                       />
                     </div>
                   </div>
-                  <div class="w-full px-4 md:w-1/2 ">
-                    <div class="lg:pl-20">
-                      <div class="mb-8 ">
-                        <h2 class="max-w-xl mb-6 text-2xl font-bold  md:text-4xl text-color-title">
+                  <div className="w-full px-4 md:w-1/2 ">
+                    <div className="lg:pl-20">
+                      <div className="mb-8 ">
+                        <h2 className="max-w-xl mb-6 text-2xl font-bold  md:text-4xl text-color-title">
                           {product.name}
                         </h2>
-                        <p class="inline-block mb-6 text-xl font-bold text-text-color  ">
+                        <p className="inline-block mb-6 text-xl font-bold text-text-color  ">
                           <span>Danh mục: {categoryProduct(product.idCategory)}</span>
                         </p>
                         <br />
-                        <p class="inline-block mb-6 text-xl font-bold text-text-color  ">
+                        <p className="inline-block mb-6 text-xl font-bold text-text-color  ">
                           <span>Nhãn hàng: {brandProduct(product.idBrand)}</span>
                         </p>
-                        <p class="max-w-md text-text-color">
+                        <p className="max-w-md text-text-color">
                           {product.description}
                         </p>
                       </div>
 
-                      <div class="mb-8 ">
+                      <div className="mb-8 ">
                         <div>
-                          <div class="flex flex-wrap -mb-2">
+                          <div className="flex flex-wrap -mb-2">
                             <a href="">
-                              <button class="px-4 py-2 mb-2 mr-4 font-semibold border rounded-md hover:border-blue-400 hover:text-black bg-color-button text-text-color">
+                              <button className="px-4 py-2 mb-2 mr-4 font-semibold border rounded-md hover:border-blue-400 hover:text-black bg-color-button text-text-color">
                                 Zalo
                               </button>
                             </a>
                           </div>
                         </div>
                       </div>
-                      <div class="mb-8">
-                        <h2 class=" pb-1 mb-4 text-2xl font-bold border-b border-blue-300 ">
+                      <div className="mb-8">
+                        <h2 className=" pb-1 mb-4 text-2xl font-bold border-b border-blue-300 ">
                           Liên hệ
                         </h2>
-                        <div class="flex flex-wrap -mx-2 -mb-2">
-                          <button class="p-1 mb-2 mr-3 bg-color-button">
+                        <div className="flex flex-wrap -mx-2 -mb-2">
+                          <button className="p-1 mb-2 mr-3 bg-color-button">
                             <FaFacebookF className="w-6 h-6 text-text-color" />
                           </button>
-                          <button class="p-1 mb-2 mr-3 bg-color-button">
+                          <button className="p-1 mb-2 mr-3 bg-color-button">
                             <FaTwitter className="w-6 h-6 text-text-color" />
                           </button>
-                          <button class="p-1 mb-2 mr-3 bg-color-button">
+                          <button className="p-1 mb-2 mr-3 bg-color-button">
                             <HiOutlineMail className="w-6 h-6 text-text-color" />
                           </button>
                         </div>
@@ -151,7 +151,7 @@ const ProductDetail = () => {
                     </div>
 
                   </div>
-                  <div class="px-6 pb-6 mt-6 border-t w-[100%] border-gray-300  ">
+                  <div className="px-6 pb-6 mt-6 border-t w-[100%] border-gray-300  ">
                     <Tabs value="dashboard" >
                       <TabsHeader>
                         <Tab value={"mota"} >

@@ -14,7 +14,7 @@ const Hero = () => {
           </h1>
           <div className="mt-4">
             <button className="btn-watch">
-              <i class="fa-solid fa-play"></i>
+              <i className="fa-solid fa-play"></i>
             </button>
           </div>
           <div className="gap-2 flex mt-4">

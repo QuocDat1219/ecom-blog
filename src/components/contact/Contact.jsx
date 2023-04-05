@@ -27,8 +27,8 @@ const Contact = () => {
             </div>
           </div>
 
-          <div class="flex flex-wrap ">
-            <div class="relative sm:flex-grow sm:flex-1">
+          <div className="flex flex-wrap ">
+            <div className="relative sm:flex-grow sm:flex-1">
               <form className="text-[1.4rem]">
                 <h4>Thông tin liên hệ</h4> <br />
                 <div>

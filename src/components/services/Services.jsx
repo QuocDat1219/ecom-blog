@@ -52,7 +52,7 @@ const Services = () => {
           <h3 className="text-[24px] pb-[20px] text-text-title">
             Dịch vụ vận hành và bảo hành
           </h3>
-          <div class="flex flex-wrap justify-between">
+          <div className="flex flex-wrap justify-between">
             {/* {tpost
               .map((val) => (
                 <div class="w-full md:w-1/3 px-4 mb-8 md:mb-0 ">

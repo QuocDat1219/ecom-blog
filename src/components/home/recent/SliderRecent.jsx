@@ -66,7 +66,7 @@ const SliderRecent = ({ title, des }) => {
       <div className="slider-title pt-5 pb-5 text-center bg-color-button flex justify-center">
         <span className="text-2xl text-center font-bold text-white">
           {" "}
-          <i class="fa fa-angle-down" aria-hidden="true"></i> {title}
+          <i className="fa fa-angle-down" aria-hidden="true"></i> {title}
         </span>
         <div className="brick"></div>
       </div>
