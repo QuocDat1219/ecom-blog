@@ -1,7 +1,7 @@
 import moment from "moment";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-const ShowFeedBackBlog = ({propsblogid}) => {
+const ShowFeedBackBlog = ({ propsblogid }) => {
     const [feedbackblog, setFeedBackBlog] = useState([]);
     useEffect(() => {
         const getFeedback = async () => {
@@ -16,20 +16,28 @@ const ShowFeedBackBlog = ({propsblogid}) => {
             <div className="w-full font-bold text-[20px]">
                 <h1>Bình luận</h1>
             </div>
-            <hr />
-            {feedbackblog.map((item) => (
-                <div>
-                    <div className="font-bold text-[14px] pt-2">
-                        <p>{item.usename}</p>
+            <div className="overflow-y-scroll h-[270px]">
+                <hr />
+                {feedbackblog.map((item) => (
+
+                    <div className="pt-1 pb-1">
+                        <div className="font-bold text-[14px]">
+                            <p>{item.usename}</p>
+                        </div>
+
+                        <div className="text-[13px]">
+                            <p >Thời gian:
+                                <span className="italic text-gray-600 ">{moment(item.createdAt).format("DD-MM-YYYY " + " " + "HH:mm")}</span>
+                            </p>
+                            <p className="text-gray-600">
+                                {item.comment}
+                            </p>
+
+                        </div>
+                        <hr className="" />
                     </div>
-                    <div className="text-[13px] text-gray-500 pb-2">
-                        <p>
-                            {item.comment}
-                        </p>
-                    </div>
-                </div>
-            )).slice(-5)}
-            <hr />
+                ))}
+            </div>
         </div>
     );
 }
