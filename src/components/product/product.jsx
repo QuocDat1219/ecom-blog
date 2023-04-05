@@ -8,16 +8,16 @@ const Product = (props) => {
   const dataCate = props.dataCate;
   const data = props.data;
 
- 
+
 
   function categoryProduct(item) {
     const categoryProduct = dataCate.find((category) => category._id === item);
-    
+
     if (categoryProduct)
       return categoryProduct.name;
   };
 
-  
+
   return (
     <>
       {dataCate.length != 0 && data.length != 0 ? (
@@ -51,7 +51,7 @@ const Product = (props) => {
                 </div>
 
                 <div>
-                  <Link href={`/productdetail/${item._id}`}>
+                  <Link to={`/productdetail/${item._id}`}>
                     <button
                       type="button"
                       className="bg-color-button hover:bg-blue-400 text-text-color font-bold py-2 px-4 text-center mr-2  w-[100%] rounded-none "

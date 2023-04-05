@@ -16,12 +16,12 @@ const FeedBack = ({ idproduct }) => {
     };
     var checkMail =
         /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
- 
+
 
 
     const sendFeedBack = async (e) => {
         e.preventDefault();
-      
+
         if (name == "" || email == "" || noidung == "") {
             toast.warning("Vui lòng không để trống thông tin");
             return;
@@ -30,22 +30,22 @@ const FeedBack = ({ idproduct }) => {
             return;
         }
         await axios.post("https://ecom-oto.vercel.app/api/feedbackproduct/", {
-            email:email,
-            quality:selectedStars,
-            comment:noidung,
-            usename:name,
-            idproduct:idproduct
+            email: email,
+            quality: selectedStars,
+            comment: noidung,
+            usename: name,
+            idproduct: idproduct
         }).then((data) => {
             console.log(data);
             if (data.data.status) {
                 toast.success("Gửi thành công - Cảm ơn bạn đã gửi đánh giá")
             } else
-            toast.success("Lỗi")
+                toast.success("Lỗi")
 
         })
         // toast("Đang xử lý...");
     };
-    
+
     const renderStar = (starIndex) => {
         return (
             <span
@@ -113,7 +113,7 @@ const FeedBack = ({ idproduct }) => {
                     </div>
                 </div>
             </form>
-            <ToastContainer pauseOnHover={false} draggable={false} autoClose={2500} />
+
         </div>
     )
 }
