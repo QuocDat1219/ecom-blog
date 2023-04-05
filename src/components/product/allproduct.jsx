@@ -9,7 +9,7 @@ const AllProduct = () => {
   const [dataCate, setDataCate] = useState([]);
   const [categoriesCTNID, setCategoriesCTNID] = useState([])
   const [brands, setBrands] = useState([]);
-
+  
   useEffect(() => {
 
     const calldata = async () => {
@@ -44,7 +44,7 @@ const AllProduct = () => {
     calldata();
     calldata3();
     calldata4();
-  }, []);
+  }, [id]);
 
   const filteredCategories = dataCate.filter(
     (category) => category.idCategoriesContainer == categoriesCTNID

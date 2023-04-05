@@ -5,6 +5,7 @@ import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import "./header.css";
 import logoNav from "../../images/logo.jpg";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -45,7 +46,7 @@ const Header = () => {
         if (dataRPs) {
           const mappedProducts = dataRPs.map(dataRP => ({
             text: dataRP.name.toUpperCase(),
-            path: `/allproduct/${dataRP.slug}`
+            path: `/${dataRP.slug}`
           }));
           setMappeCate(mappedProducts);
 
@@ -95,14 +96,13 @@ const Header = () => {
                 <div className="hidden sm:ml-6 sm:block ">
                   <div className="flex space-x-4 ">
                     {nav.map((list, index) => (
-                      <a
+                      <Link
                         key={index}
-                        href={list.path}
+                        to={list.path}
                         className={`text-text-color hover:bg-text-nav hover:text-white rounded-md px-3 py-4 text-base font-medium  `}
+                      > {list.text}
+                      </Link>
 
-                      >
-                        {list.text}
-                      </a>
                     ))}
                   </div>
                 </div>
