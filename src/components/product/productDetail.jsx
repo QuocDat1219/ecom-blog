@@ -7,7 +7,8 @@ import React, { useState, useEffect } from "react";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import axios from "axios";
-import Comment from "../contentsBlog/Comment";
+import ShowFeedBack from "./showFeedback";
+import FeedBack from "./feedback";
 import {
   Tabs,
   TabsHeader,
@@ -24,7 +25,6 @@ const ProductDetail = () => {
   const [dataCate, setDataCate] = useState([]);
   const [product, setProduct] = useState(null);
   const [brands, setBrands] = useState([]);
-
   const onSlide = (currentIndex) => {
     setCurrentIndex(currentIndex);
   };
@@ -34,7 +34,6 @@ const ProductDetail = () => {
     const calldata = async () => {
       await axios.get(`https://ecom-oto.vercel.app/api/products/getall`).then((response) => {
         const pro = response.data.products;
-
         setData(pro);
       });
     }
@@ -50,9 +49,10 @@ const ProductDetail = () => {
       ).then((response) => {
         const data = response.data;
         setBrands(data);
-        console.log(data);
       })
     }
+    
+
     calldata();
     calldata2();
     calldata3();
@@ -60,9 +60,7 @@ const ProductDetail = () => {
 
   useEffect(() => {
     const foundProduct = data.find((p) => p._id == Number(id.id));
-
     setProduct(foundProduct);
-    console.log(product);
   });
 
   function categoryProduct(item) {
@@ -71,7 +69,6 @@ const ProductDetail = () => {
     if (categoryProduct)
       return categoryProduct.name;
   };
-
 
   function brandProduct(item) {
     const brandProduct = brands.find((brand) => brand._id === item);
@@ -155,7 +152,7 @@ const ProductDetail = () => {
 
                   </div>
                   <div class="px-6 pb-6 mt-6 border-t w-[100%] border-gray-300  ">
-                    <Tabs value="dashboard" defaultValue={"mota"}>
+                    <Tabs value="dashboard" >
                       <TabsHeader>
                         <Tab value={"mota"} >
                           <div className="flex items-center gap-2">Mô tả</div>
@@ -173,7 +170,8 @@ const ProductDetail = () => {
                       </TabsBody>
                       <TabsBody>
                         <TabPanel value={"danhgia"} className="">
-                          <Comment />
+                          <ShowFeedBack idproductfeedback={product._id}/>
+                          <FeedBack idproduct={product._id}/>
                         </TabPanel>
                       </TabsBody>
                     </Tabs>

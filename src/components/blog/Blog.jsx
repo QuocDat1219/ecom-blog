@@ -1,10 +1,13 @@
-import React from "react";
-import RecentCard from "../home/recent/RecentCard";
+import React, { useState } from "react";
+import RecentCard from "./RecentCard";
 import "../home/recent/recent.css";
 import "./Blog.css";
 import Side from "./Side";
+import { DataObject } from "@mui/icons-material";
 
 const Blog = () => {
+  const [dataBlog, setDataBlog] = useState()
+  console.log(dataBlog);
   return (
     <>
       <main>
@@ -13,10 +16,10 @@ const Blog = () => {
             <Side />
           </section>
           <section className="mainContent">
-            <RecentCard />
+            <RecentCard dataBlog={dataBlog} />
           </section>
           <section className="sideContent">
-            <Side />
+            <Side setDataBlog={setDataBlog} />
           </section>
         </div>
       </main>

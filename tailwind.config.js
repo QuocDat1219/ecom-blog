@@ -11,7 +11,7 @@ module.exports = {
         "color-button": "#6698FF ",
         "text-cl": "#fff",
         "text-footer": "#205aa7",
-        "color-nav": "#ffff",
+        "color-nav": "rgba(255, 255, 255, 0.9)",
         "text-nav": "#205aa7",
       },
     },

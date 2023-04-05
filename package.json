@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^5.0.1",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
     "@fortawesome/fontawesome": "^1.1.8",
     "@fortawesome/fontawesome-svg-core": "^6.3.0",
     "@fortawesome/free-regular-svg-icons": "^6.3.0",
@@ -32,6 +34,7 @@
     "react-scroll-to-top": "^3.0.0",
     "react-slick": "^0.29.0",
     "react-slideshow-image": "^4.2.1",
+    "react-toastify": "^9.1.2",
     "react-youtube": "^10.1.0",
     "slick-carousel": "^1.8.1",
     "web-vitals": "^2.1.4"

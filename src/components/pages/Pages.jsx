@@ -12,11 +12,13 @@ import AllProduct from "../product/allproduct";
 import ProductDetail from "../product/productDetail";
 import ContentsBlog from "../contentsBlog/contentsBlog";
 import Location from "../home/location/Location";
+import { ToastContainer } from 'react-toastify';
 const Pages = () => {
   return (
     <>
       <Router>
         <Header />
+        <ToastContainer />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/allproduct/:id" component={AllProduct} />

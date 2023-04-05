@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { featured } from "../../data/Data";
 import Slider from "react-slick";
 import { dataDigitalBestSeller } from "./data";
@@ -7,7 +7,9 @@ import "./FeaturedCard.css";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-const FeaturedCard = () => {
+
+const FeaturedCard = ({data,dataCate}) => {
+  
   const [defaultImage, setDefaultImage] = useState({});
   const settings = {
     dots: true,
@@ -45,6 +47,13 @@ const FeaturedCard = () => {
       },
     ],
   };
+ 
+
+  function categoryPosts(item) {
+    const categoryBlog = dataCate.find((category) => category._id === item);
+    if (categoryBlog)
+      return categoryBlog.title;
+  };
 
   const handleErrorImage = (data) => {
     setDefaultImage((prev) => ({
@@ -64,23 +73,21 @@ const FeaturedCard = () => {
     <>
       <div className="slider">
         <Slider {...settings} ref={sliderRef}>
-          {dataDigitalBestSeller.map((item) => (
+          {data.map((item) => (
             <div className="card flex flex-col">
               <div className="card-top">
                 <img
                   src={
-                    defaultImage[item.title] === item.title
-                      ? defaultImage.linkDefault
-                      : item.linkImg
+                    item.imageThumbnail
                   }
                   alt={item.title}
                   onError={handleErrorImage}
                 />
               </div>
               <div className="card-bottom">
-                <span className="category">{item.category}</span>
+                <span className="category">{categoryPosts(item.category)}</span>
                 <h1 className="mt-5">{item.title}</h1>
-                <h3>{item.price}</h3>
+                <h3>{item.description.slice(0,40)}...</h3>
               </div>
             </div>
           ))}
