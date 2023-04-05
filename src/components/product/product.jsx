@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Product = (props) => {
   const dataCate = props.dataCate;
@@ -40,24 +41,24 @@ const Product = (props) => {
                       {categoryProduct(item.idCategory)}
                     </p>
                     <h3 className="text-sm text-text-color text-center">
-                      <a href={`/productdetail/${item._id}`}>
+                      <Link to={`/productdetail/${item._id}`}>
                         <span aria-hidden="true" className="absolute inset-0" />
                         {item.name}
-                      </a>
+                      </Link>
                     </h3>
                   </div>
                   {/* <p className="text-sm font-medium text-gray-900">{product.price}</p> */}
                 </div>
 
                 <div>
-                  <a href={`/productdetail/${item._id}`}>
+                  <Link href={`/productdetail/${item._id}`}>
                     <button
                       type="button"
                       className="bg-color-button hover:bg-blue-400 text-text-color font-bold py-2 px-4 text-center mr-2  w-[100%] rounded-none "
                     >
                       <FontAwesomeIcon icon={faMagnifyingGlass} /> Xem thêm
                     </button>
-                  </a>
+                  </Link>
                 </div>
               </div>
             ))}

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Heading from "../../common/Heading";
 import { dataDigitalBestSeller } from "../recent/data.js";
 import "./style.css";
@@ -15,7 +16,7 @@ const Location = () => {
               công ty hoặc dịch vụ
             </p>
           </div>
-          <button className="mt-3 md:mt-0 bg-color-button ">Liên hệ</button>
+          <Link to={"/contact"}><button className="mt-3 md:mt-0 bg-color-button ">Liên hệ</button></Link>
         </div>
       </section>
     </>

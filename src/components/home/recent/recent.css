@@ -30,7 +30,7 @@
 }
 
 .RecentC_img {
-  height: 230px;
+  height: 180px;
 }
 
 .p_location {
@@ -128,8 +128,8 @@
 }
 
 .card-top>img {
-  width: 500px !important;
-  max-height: 580px !important;
+  width: 400px !important;
+  max-height: 400px !important;
   height: auto !important;
   object-fit: cover !important;
   background: none !important;

@@ -29,8 +29,6 @@ const Home = () => {
           setDataCate(blogcate);
       });
     }
-
-    
    
     calldata3();
     calldata4();

@@ -42,7 +42,7 @@ const RecentCard = ({ dataBlog }) => {
           (
             <div className="content grid3 mtop md:grid-cols-2 lg:grid-cols-3 sm:grid-cols-2 ">
               {dataBlog.map((val, index) => (
-                <a href={`blogdetail/${val.slug}`}>
+                <Link href={`blogdetail/${val.slug}`}>
                   <div className="recentCard bg-color-card" key={index}>
                     <div className="RecentC_img">
                       <img src={val.imageThumbnail} className="rounded-md" alt="" />
@@ -69,12 +69,12 @@ const RecentCard = ({ dataBlog }) => {
                       </Link>
                     </div>
                   </div>
-                </a>
+                </Link>
               ))}
             </div>
           ) : <div className="content grid3 mtop md:grid-cols-2 lg:grid-cols-3 sm:grid-cols-2 ">
             {data.map((val, index) => (
-              <a href={`blogdetail/${val.slug}`}>
+              <Link href={`blogdetail/${val.slug}`}>
                 <div className="recentCard bg-color-card" key={index}>
                   <div className="RecentC_img">
                     <img src={val.imageThumbnail} className="rounded-md" alt="" />
@@ -101,7 +101,7 @@ const RecentCard = ({ dataBlog }) => {
 
                   </div>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         : (

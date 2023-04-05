@@ -1,15 +1,15 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Slider from "react-slick";
 import imgGirl from "./images.png";
-// import "./FeaturedCard.css";
-import "./recent.css";
 import { dataDigitalBestSeller } from "./data";
-
+import "./recent.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import axios from "axios";
 
-const SliderRecent = ({ title, des }) => {
+const SliderRecent = ({ title, des,product }) => {
   const [defaultImage, setDefaultImage] = useState({});
+ 
   const settings = {
     dots: true,
     infinite: false,
@@ -46,6 +46,7 @@ const SliderRecent = ({ title, des }) => {
       },
     ],
   };
+
 
   const handleErrorImage = (data) => {
     setDefaultImage((prev) => ({
