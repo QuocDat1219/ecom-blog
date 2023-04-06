@@ -30,7 +30,7 @@ const Filters = (props) => {
   useEffect(() => {
 
     const calldata6 = async () => {
-      await axios.get(`http://localhost:5000/api/products/fitercontainerslug?page=${currentPage}&slug=${id}`).then((response) => {
+      await axios.get(`http://ecom-oto.vercel.app/api/products/fitercontainerslug?page=${currentPage}&slug=${id}`).then((response) => {
         console.log(response.data.products);
         setProducts(response.data.products);
         setTotalPages(response.data.totalPages)
