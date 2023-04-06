@@ -1,6 +1,11 @@
 .contact form div {
   display: flex;
 }
+.btntk{
+  width:100%;
+  height: 38px;
+  padding: 0px;
+}
 .contact textarea {
   border: 1px solid rgba(0, 0, 0, 0.1);
   width: 100%;

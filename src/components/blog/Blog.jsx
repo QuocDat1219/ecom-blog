@@ -1,20 +1,30 @@
-import React from "react"
-import Back from "../common/Back"
-import RecentCard from "../home/recent/RecentCard"
-import "../home/recent/recent.css"
-import img from "../images/about.jpg"
+import React, { useState } from "react";
+import RecentCard from "./RecentCard";
+import "../home/recent/recent.css";
+import "./Blog.css";
+import Side from "./Side";
+import { DataObject } from "@mui/icons-material";
 
 const Blog = () => {
+  const [dataBlog, setDataBlog] = useState()
+  console.log(dataBlog);
   return (
     <>
-      <section className='blog-out mb'>
-        <Back name='Blog' title='Blog Grid - Our Blogs' cover={img} />
-        <div className='container recent'>
-          <RecentCard />
+      <main>
+        <div className="containers">
+          <section className="sideContenthide ">
+            <Side />
+          </section>
+          <section className="mainContent">
+            <RecentCard dataBlog={dataBlog} />
+          </section>
+          <section className="sideContent">
+            <Side setDataBlog={setDataBlog} />
+          </section>
         </div>
-      </section>
+      </main>
     </>
-  )
-}
+  );
+};
 
-export default Blog
+export default Blog;

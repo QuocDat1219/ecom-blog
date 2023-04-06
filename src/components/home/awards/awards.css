@@ -1,34 +1,31 @@
 .awards {
-  background-color: #122947;
-  color: #fff;
+  /* background-color: #122947; */
+  /* background-image: url("https://everev.vn/wp-content/uploads/2022/11/de4bc02058319e6fc720.jpg"); */
   text-align: center;
+  display: flex !important;
+  justify-content: center;
+  border-top: 4px solid #6698ff;
 }
-.awards .heading {
-  display: flex;
-  flex-direction: column-reverse;
+
+.awards img {
+  height: 90vb;
+  object-fit: cover !important;
+  filter: brightness(50%);
 }
-.awards .heading p {
-  color: #27ae60;
+
+.awards-title {
+  width: 50%;
 }
-.awards .heading h1 {
-  color: #fff;
-  font-size: 30px;
-  font-weight: 400;
+
+
+
+.awards h2 {
+  font-size: 37px !important;
+  font-weight: bold !important;
 }
-.awards .icon {
-  width: 100px;
-  height: 100px;
-  line-height: 100px;
-  margin: auto;
-  margin-top: 50px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 4% 50%;
-  font-size: 32px;
-  color: #ffffff;
-}
-.awards h1 {
-  font-size: 50px;
-}
+
 .awards p {
-  color: grey;
+  font-size: 19px !important;
+  color: white;
+  text-align: center;
 }
