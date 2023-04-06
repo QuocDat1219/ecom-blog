@@ -1,32 +1,38 @@
 import { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFilter, faGlasses } from "@fortawesome/free-solid-svg-icons";
 import Product from "./product";
 import axios from "axios";
 import Path from "./path";
-import { Link } from "react-router-dom";
-
+import { Link, useParams } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faFilter, faGlasses } from "@fortawesome/free-solid-svg-icons";
 
 const Filters = (props) => {
+  const { id } = useParams();
+  const [dataCate, setDataCate] = useState([]);
+  const [categoriesCTNID, setCategoriesCTNID] = useState([])
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedBrands, setSelectedBrands] = useState([]);
   const categories = props.dataCate
-  const [productss, setProducts] = useState([]);
+  const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [displayPages, setDisplayPages] = useState([]);
-  const [data, setData] = useState([]);
+ 
   const [totalPages, setTotalPages] = useState(1);
   const [isFiterCate, setIsFiterCate] = useState(false);
+
+
   const visiblePageCount = 3;
   const startPage = Math.max(currentPage - Math.floor(visiblePageCount / 2), 1);
   const endPage = Math.min(startPage + visiblePageCount - 1, totalPages);
-  const container = props.categoriesCTNID
+  const [brands, setBrands] = useState([]);
 
   useEffect(() => {
-    const calldata = async () => {
-      await axios.get(`https://ecom-oto.vercel.app/api/products?page=${currentPage}&&container=${container}`).then((response) => {
-        setData(response.data.Product);
 
+    const calldata6 = async () => {
+      await axios.get(`http://localhost:5000/api/products/fitercontainerslug?page=${currentPage}&slug=${id}`).then((response) => {
+        console.log(response.data.products);
+        setProducts(response.data.products);
         setTotalPages(response.data.totalPages)
         const totalpage = response.data.totalPages;
         if (totalpage) {
@@ -41,9 +47,60 @@ const Filters = (props) => {
       })
     }
 
+    calldata6();
+    
+    const calldata3 = async () => {
+      await axios.get(
+        "https://ecom-oto.vercel.app/api/categorycontainer/"
+      ).then((response) => {
+        const data = response.data;
+        if (data) {
+          const categoryId = data.find((categoryId) => categoryId.slug === id);
+          setCategoriesCTNID(categoryId._id)
+
+        }
+
+      })
+    }
+    calldata3();
+    const calldata = async () => {
+      await axios.get("https://ecom-oto.vercel.app/api/category/").then((response) => {
+        setDataCate(response.data.category);
+      })
+    }
     calldata();
 
-  }, [currentPage, container])
+
+    const calldata4 = async () => {
+      await axios.get(
+        "https://ecom-oto.vercel.app/api/brand/"
+      ).then((response) => {
+        const data = response.data;
+        setBrands(data);
+
+      })
+    }
+
+
+    calldata4();
+  }, [currentPage,id])
+
+  const filteredCategories = dataCate.filter(
+    (category) => category.idCategoriesContainer == categoriesCTNID
+  );
+
+  const filteredBrand = brands.filter(
+    (brand) => brand.idCategoriesContainer == categoriesCTNID
+  );
+
+
+  function categoryProduct(item) {
+    const categoryProduct = dataCate.find((category) => category._id === item);
+
+    if (categoryProduct)
+      return categoryProduct.name;
+  };
+
 
   const handleClick = (page) => {
     handlePageChange(page);
@@ -134,7 +191,7 @@ const Filters = (props) => {
                   <h3 className="font-semibold mb-2 text-color-title">Danh mục</h3>
 
                   <ul className="space-y-1">
-                    {props.filteredCategories.map((category) => (
+                    {filteredCategories.map((category) => (
                       <li key={category._id}>
                         <div className="flex items-center">
                           <input
@@ -158,7 +215,7 @@ const Filters = (props) => {
                   <hr className="my-4 text-color-basic" />
                   <h3 className="font-semibold mb-2 text-color-title">Nhãn hàng</h3>
                   <ul className="space-y-1">
-                    {props.brands.map((brand) => (
+                    {filteredBrand.map((brand) => (
                       <li key={brand._id}>
                         <div className="flex items-center">
                           <input
@@ -189,11 +246,52 @@ const Filters = (props) => {
 
               </aside>
               <main className="md:w-2/3 lg:w-3/4 w-4/4 px-3">
-                {
+                <div className="mt-4 grid gap-y-10 gap-x-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+                  {products.map((item) => (
+                    <div
+                      key={item._id}
+                      className="group relative bg-color-card rounded-md shadow overflow-hidden"
+                    >
+                      <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-color-basic group-hover:opacity-75 lg:aspect-none lg:h-50">
+                        <img
+                          src={item.imagesDefault}
+                          className="h-[300px] w-full object-cover object-center group-hover:opacity-75"
+                        />
+                      </div>
+                      <hr className="w-[80%] mx-auto" />
+                      <div className="mt-2 flex justify-center pl-[10px] py-1 overflow-hidden">
+                        <div>
+                          <p className="mt-1 text-sm text-text-color opacity-60  text-center">
+                            {categoryProduct(item.idCategory)}
+                          </p>
+                          <h3 className="text-sm text-text-color text-center">
+                            <Link to={`/productdetail/${item._id}`}>
+                              <span aria-hidden="true" className="absolute inset-0" />
+                              {item.name}
+                            </Link>
+                          </h3>
+                        </div>
+                        {/* <p className="text-sm font-medium text-gray-900">{product.price}</p> */}
+                      </div>
+
+                      <div>
+                        <Link to={`/productdetail/${item._id}`}>
+                          <button
+                            type="button"
+                            className="bg-color-button hover:bg-blue-400 text-text-color font-bold py-2 px-4 text-center mr-2  w-[100%] rounded-none "
+                          >
+                            <FontAwesomeIcon icon={faMagnifyingGlass} /> Xem thêm
+                          </button>
+                        </Link>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                {/* {
                   productss.length == 0 ? <Product data={data} dataCate={categories} />
                     : <Product data={productss} dataCate={categories} />
 
-                }
+                } */}
               </main>
             </div>
           </div>

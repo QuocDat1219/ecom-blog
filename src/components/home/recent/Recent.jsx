@@ -1,20 +1,22 @@
 import axios from "axios";
 import React from "react";
 import react, { useState, useEffect, useRef } from "react";
-
 import Heading from "../../common/Heading";
 import "./recent.css";
 import Slider from "react-slick";
 import imgGirl from "./images.png";
-import { dataDigitalBestSeller } from "./data";
 import "./recent.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
 
+import { getProductsAll } from "../../../features/product/productSlice";
+import { useDispatch, useSelector } from "react-redux";
+
+
+
 const Recent = () => {
   const [category, setCategory] = useState([]);
-  const [product, setProduct] = useState([]);
   const [defaultImage, setDefaultImage] = useState({});
 
   const settings = {
@@ -81,22 +83,12 @@ const Recent = () => {
     }
 
 
-    const calldata = async () => {
-      await axios.get(
-        "https://ecom-oto.vercel.app/api/products/getall"
-      ).then((response) => {
-        const data = response.data.products
-
-        if (data)
-          setProduct(data)
-      })
-    }
-
-    calldata();
+    
     calldata1();
 
 
   }, [])
+  
   function categoryProduct(item) {
     const categoryProduct = category.find((categorys) => categorys._id === item);
 
@@ -104,6 +96,13 @@ const Recent = () => {
       return categoryProduct.name;
   };
 
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getProductsAll());
+  }, []);
+  
+  const productState = useSelector((state) => state.product.products);
+ 
   return (
     <>
       <section className="recent padding">
@@ -153,7 +152,7 @@ const Recent = () => {
               <div className="text-center p-5">Hãy chọn sản phẩm cho chính mình</div>
               <div className="slider bg-white ">
                 <Slider {...settings} ref={sliderRef}>
-                  {product.map((item) => (
+                  {productState.map((item) => (
                     <Link to={`/productdetail/${item._id}`}>
                       <div className="card overflow-auto" key={item._id}>
                         <div className="card-top ">

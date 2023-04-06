@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Product = (props) => {
   const dataCate = props.dataCate;
   const data = props.data;
-
+  console.log(props.data);
 
 
   function categoryProduct(item) {
