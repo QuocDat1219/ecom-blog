@@ -83,12 +83,12 @@ const Recent = () => {
     }
 
 
-    
+
     calldata1();
 
 
   }, [])
-  
+
   function categoryProduct(item) {
     const categoryProduct = category.find((categorys) => categorys._id === item);
 
@@ -100,52 +100,21 @@ const Recent = () => {
   useEffect(() => {
     dispatch(getProductsAll());
   }, []);
-  
+
   const productState = useSelector((state) => state.product.products);
- 
+
   return (
     <>
       <section className="recent padding">
         <div className="containers ">
-          <Heading
-            className=""
-            title="Sản phẩm"
-            subtitle="“EverEV là nhà phân phối chính hãng của các thương hiệu sạc ô tô hàng đầu thế giới như Starcharge, COSTEL, FIRMER.. được chia thành 2 dòng sản phẩm:"
-          />
+
           <div className="recent-info ">
-            <div className="flex justify-between flex-col md:flex-row  gap-2 mt-10">
-              <div className="bg-[#97DEFF]  w-[100%] p-10 flex flex-col justify-center shadow-md shadow-offset-x-2 shadow-offset-y-2 shadow-blur-2 shadow-color-gray-500 rounded-[10px] ">
-                <div className="flex flex-col justify-center items-center ">
-                  <img
-                    className="w-[100px] h-[70px] "
-                    src="	https://everev.vn/wp-content/uploads/2022/11/AC-500-%C3%97-350-px.png"
-                    alt=""
-                  />
-                  <p className="text-2xl font-bold">Các hệ thống sạc ô tô AC</p>
-                  <p>
-                    Dòng sản phẩm dành cho gia đình, doanh nghiệp quy mô nhỏ
-                  </p>
-                </div>
-              </div>
-              <div className="bg-[#97DEFF] w-[100%]  p-10 flex flex-col justify-center shadow-md shadow-offset-x-2 shadow-offset-y-2 shadow-blur-2 shadow-color-gray-500 rounded-[10px] ">
-                <div className="flex flex-col justify-center items-center">
-                  <img
-                    className="w-[100px] h-[70px] "
-                    src="	https://everev.vn/wp-content/uploads/2022/11/AC-500-%C3%97-350-px.png"
-                    alt=""
-                  />
-                  <p className="text-2xl font-bold">Các hệ thống sạc ô tô AC</p>
-                  <p>
-                    Dòng sản phẩm dành cho gia đình, doanh nghiệp quy mô nhỏ
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="mt-10">
+
+            <div className="mb-2">
               <div className="slider-title pt-5 pb-5 text-center bg-color-button flex justify-center">
                 <span className="text-2xl text-center font-bold text-white">
                   {" "}
-                  <i class="fa fa-angle-down" aria-hidden="true"></i> Tất cả sản phẩm
+                  <i class="fa fa-angle-down" aria-hidden="true"></i> Sản phẩm
                 </span>
                 <div className="brick"></div>
               </div>
@@ -182,7 +151,39 @@ const Recent = () => {
                 </div>
               </div>
             </div>
-
+            <Heading
+              className=""
+              title="Sản phẩm"
+              subtitle="“EverEV là nhà phân phối chính hãng của các thương hiệu sạc ô tô hàng đầu thế giới như Starcharge, COSTEL, FIRMER.. được chia thành 2 dòng sản phẩm:"
+            />
+            <div className="flex justify-between flex-col md:flex-row  gap-2 mt-10">
+              <div className="bg-[#97DEFF]  w-[100%] p-10 flex flex-col justify-center shadow-md shadow-offset-x-2 shadow-offset-y-2 shadow-blur-2 shadow-color-gray-500 rounded-[10px] ">
+                <div className="flex flex-col justify-center items-center ">
+                  <img
+                    className="w-[100px] h-[70px] "
+                    src="	https://everev.vn/wp-content/uploads/2022/11/AC-500-%C3%97-350-px.png"
+                    alt=""
+                  />
+                  <p className="text-2xl font-bold">Các hệ thống sạc ô tô AC</p>
+                  <p>
+                    Dòng sản phẩm dành cho gia đình, doanh nghiệp quy mô nhỏ
+                  </p>
+                </div>
+              </div>
+              <div className="bg-[#97DEFF] w-[100%]  p-10 flex flex-col justify-center shadow-md shadow-offset-x-2 shadow-offset-y-2 shadow-blur-2 shadow-color-gray-500 rounded-[10px] ">
+                <div className="flex flex-col justify-center items-center">
+                  <img
+                    className="w-[100px] h-[70px] "
+                    src="	https://everev.vn/wp-content/uploads/2022/11/AC-500-%C3%97-350-px.png"
+                    alt=""
+                  />
+                  <p className="text-2xl font-bold">Các hệ thống sạc ô tô AC</p>
+                  <p>
+                    Dòng sản phẩm dành cho gia đình, doanh nghiệp quy mô nhỏ
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

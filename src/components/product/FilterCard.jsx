@@ -1,35 +1,29 @@
 import { useEffect, useState } from "react";
-import Product from "./product";
 import axios from "axios";
 import Path from "./path";
 import { Link, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import { faFilter, faGlasses } from "@fortawesome/free-solid-svg-icons";
+import { faFilter } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch, useSelector } from "react-redux";
+import { getBrandsSlugCTN } from "../../features/brand/brandSlice";
+import { getCategorysSlugCTN } from "../../features/pcategory/pcategorySlice";
 
 const Filters = (props) => {
   const { id } = useParams();
-  const [dataCate, setDataCate] = useState([]);
-  const [categoriesCTNID, setCategoriesCTNID] = useState([])
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedBrands, setSelectedBrands] = useState([]);
-  const categories = props.dataCate
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [displayPages, setDisplayPages] = useState([]);
- 
   const [totalPages, setTotalPages] = useState(1);
   const [isFiterCate, setIsFiterCate] = useState(false);
-
-
   const visiblePageCount = 3;
   const startPage = Math.max(currentPage - Math.floor(visiblePageCount / 2), 1);
   const endPage = Math.min(startPage + visiblePageCount - 1, totalPages);
-  const [brands, setBrands] = useState([]);
-
+  const dispatch = useDispatch();
   useEffect(() => {
 
-    const calldata6 = async () => {
+    const calldata = async () => {
       await axios.get(`https://ecom-oto.vercel.app/api/products/fitercontainerslug?page=${currentPage}&slug=${id}`).then((response) => {
         console.log(response.data.products);
         setProducts(response.data.products);
@@ -41,61 +35,27 @@ const Filters = (props) => {
           for (let i = 1; i <= totalpage; i++) {
             pageNumbers.push(i);
           }
-          setDisplayPages(pageNumbers);
+     
         }
 
       })
     }
 
-    calldata6();
-    
-    const calldata3 = async () => {
-      await axios.get(
-        "https://ecom-oto.vercel.app/api/categorycontainer/"
-      ).then((response) => {
-        const data = response.data;
-        if (data) {
-          const categoryId = data.find((categoryId) => categoryId.slug === id);
-          setCategoriesCTNID(categoryId._id)
-
-        }
-
-      })
-    }
-    calldata3();
-    const calldata = async () => {
-      await axios.get("https://ecom-oto.vercel.app/api/category/").then((response) => {
-        setDataCate(response.data.category);
-      })
-    }
     calldata();
 
+  }, [currentPage, id])
 
-    const calldata4 = async () => {
-      await axios.get(
-        "https://ecom-oto.vercel.app/api/brand/"
-      ).then((response) => {
-        const data = response.data;
-        setBrands(data);
+  useEffect(() => {
+    dispatch(getBrandsSlugCTN(id));
+    dispatch(getCategorysSlugCTN(id));
+  }, [id]);
 
-      })
-    }
-
-
-    calldata4();
-  }, [currentPage,id])
-
-  const filteredCategories = dataCate.filter(
-    (category) => category.idCategoriesContainer == categoriesCTNID
-  );
-
-  const filteredBrand = brands.filter(
-    (brand) => brand.idCategoriesContainer == categoriesCTNID
-  );
+  const brandState = useSelector((state) => state.brand.Brands);
+  const pCategoryState = useSelector((state) => state.pCategory.pCategories);
 
 
   function categoryProduct(item) {
-    const categoryProduct = dataCate.find((category) => category._id === item);
+    const categoryProduct = pCategoryState.find((category) => category._id === item);
 
     if (categoryProduct)
       return categoryProduct.name;
@@ -144,7 +104,7 @@ const Filters = (props) => {
         .then(response => {
 
           const datars = response.data.fproducts
-          if (datars.length != 0) {
+          if (datars.length !== 0) {
             setProducts(response.data.fproducts);
             setIsFiterCate(true);
           }
@@ -191,7 +151,7 @@ const Filters = (props) => {
                   <h3 className="font-semibold mb-2 text-color-title">Danh mục</h3>
 
                   <ul className="space-y-1">
-                    {filteredCategories.map((category) => (
+                    {pCategoryState.map((category) => (
                       <li key={category._id}>
                         <div className="flex items-center">
                           <input
@@ -215,7 +175,7 @@ const Filters = (props) => {
                   <hr className="my-4 text-color-basic" />
                   <h3 className="font-semibold mb-2 text-color-title">Nhãn hàng</h3>
                   <ul className="space-y-1">
-                    {filteredBrand.map((brand) => (
+                    {brandState.map((brand) => (
                       <li key={brand._id}>
                         <div className="flex items-center">
                           <input
@@ -287,18 +247,14 @@ const Filters = (props) => {
                     </div>
                   ))}
                 </div>
-                {/* {
-                  productss.length == 0 ? <Product data={data} dataCate={categories} />
-                    : <Product data={productss} dataCate={categories} />
-
-                } */}
+            
               </main>
             </div>
           </div>
         </section>
       </div>
       <br />
-      {isFiterCate == true ? <div> </div> :
+      {isFiterCate === true ? <div> </div> :
 
         <div className="containers justify-center flex items-center ">
           <nav aria-label="Page navigation example">

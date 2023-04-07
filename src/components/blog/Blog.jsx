@@ -7,7 +7,7 @@ import { DataObject } from "@mui/icons-material";
 
 const Blog = () => {
   const [dataBlog, setDataBlog] = useState()
-  console.log(dataBlog);
+
   return (
     <>
       <main>

@@ -5,7 +5,7 @@ const BrandSillder = () => {
     <>
       <div>
         <Marquee behavior="scroll" direction="left" speed={90}>
-          {brands.map((item, index) => (
+          {brands.map((item) => (
             <div key={item._id}>
               <img
                 src={item.image}

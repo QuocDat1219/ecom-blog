@@ -7,9 +7,10 @@ import "./FeaturedCard.css";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Link } from "react-router-dom";
 
-const FeaturedCard = ({data,dataCate}) => {
-  
+const FeaturedCard = ({ data, dataCate }) => {
+
   const [defaultImage, setDefaultImage] = useState({});
   const settings = {
     dots: true,
@@ -47,7 +48,7 @@ const FeaturedCard = ({data,dataCate}) => {
       },
     ],
   };
- 
+
 
   function categoryPosts(item) {
     const categoryBlog = dataCate.find((category) => category._id === item);
@@ -74,22 +75,25 @@ const FeaturedCard = ({data,dataCate}) => {
       <div className="slider">
         <Slider {...settings} ref={sliderRef}>
           {data.map((item) => (
-            <div className="card flex flex-col">
-              <div className="card-top">
-                <img
-                  src={
-                    item.imageThumbnail
-                  }
-                  alt={item.title}
-                  onError={handleErrorImage}
-                />
+            <Link to={`blogdetail/${item.slug}`}>
+              <div className="card flex flex-col">
+                <div className="">
+                  <img
+                    src={
+                      item.imageThumbnail
+                    }
+                    alt={item.title}
+                    onError={handleErrorImage}
+                    style={{ height: "180px", width: "250px" }}
+                  />
+                </div>
+                <div className="card-bottom">
+                  <span className="category">{categoryPosts(item.category)}</span>
+                  <h1 className="mt-5">{item.title}</h1>
+                  <h3>{item.description.slice(0, 40)}...</h3>
+                </div>
               </div>
-              <div className="card-bottom">
-                <span className="category">{categoryPosts(item.category)}</span>
-                <h1 className="mt-5">{item.title}</h1>
-                <h3>{item.description.slice(0,40)}...</h3>
-              </div>
-            </div>
+            </Link>
           ))}
         </Slider>
         <div>
