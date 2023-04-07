@@ -95,7 +95,6 @@ const Comment = (blogid) => {
                     </div>
                 </div>
             </form>
-            <ToastContainer pauseOnHover={false} draggable={false} autoClose={2500} />
         </div>
     )
 }
