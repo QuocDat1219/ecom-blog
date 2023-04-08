@@ -14,13 +14,6 @@ const Comment = (blogid) => {
     /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     const sendFeedBackBlog = async (e) => {
         e.preventDefault();
-        console.log({
-            email:email,
-            comment:noidung,
-            usename:name,
-            website: trangweb,
-            idblog:blogid
-        })
         if (name == "" || email == "" || noidung == "") {
             toast.warning("Vui lòng không để trống thông tin có đánh dấu *");
             return;
@@ -102,7 +95,6 @@ const Comment = (blogid) => {
                     </div>
                 </div>
             </form>
-            <ToastContainer pauseOnHover={false} draggable={false} autoClose={2500} />
         </div>
     )
 }

@@ -26,11 +26,12 @@ const ShowFeedBackBlog = ({ propsblogid }) => {
                         </div>
 
                         <div className="text-[13px]">
-                            <p >Thời gian:
-                                <span className="italic text-gray-600 ">{moment(item.createdAt).format("DD-MM-YYYY " + " " + "HH:mm")}</span>
+                            <p className=" text-gray-400">Thời gian:{" "}
+                                <span className="italic text-gray-600 ">{moment(item.createdAt).format("DD-MM-YYYY")}</span>
                             </p>
-                            <p className="text-gray-600">
-                                {item.comment}
+                            <p  className="text-gray-400 ">Nội dung:{" "}
+                            <span className="italic text-gray-600 ">{item.comment}</span>
+                             
                             </p>
 
                         </div>
