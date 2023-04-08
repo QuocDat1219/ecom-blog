@@ -5,7 +5,6 @@ import './StarRating.css';
 const ShowFeedBackProduct = ({ idproductfeedback }) => {
     const [feedbackproduct, setFeedbackProduct] = useState([]);
 
-    console.log(idproductfeedback);
     const renderStar = (starIndex) => {
         return (
             <span
@@ -20,7 +19,7 @@ const ShowFeedBackProduct = ({ idproductfeedback }) => {
     useEffect(() => {
         const getFeedback = async () => {
             await axios.get(`https://ecom-oto.vercel.app/api/feedbackproduct/feedback?idproducts=${idproductfeedback}`).then((response) => {
-                console.log(response.data);
+               
                 setFeedbackProduct(response.data);
             });
         }

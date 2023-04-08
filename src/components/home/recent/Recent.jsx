@@ -9,7 +9,7 @@ import "./recent.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
-
+import imgerror from "../../images/imgerror.png";
 import { getProductsAll } from "../../../features/product/productSlice";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -102,7 +102,7 @@ const Recent = () => {
   }, []);
 
   const productState = useSelector((state) => state.product.products);
-
+  
   return (
     <>
       <section className="recent padding">
@@ -127,9 +127,8 @@ const Recent = () => {
                         <div className="card-top ">
                           <img
                             className="object-cover "
-                            src={
-                              item.imagesDefault
-                            }
+                            src={item.imagesDefault? item.imagesDefault.secure_url : imgerror}
+
                             alt={item.name}
                             onError={handleErrorImage}
                           />

@@ -8,6 +8,7 @@ import { faFilter } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { getBrandsSlugCTN } from "../../features/brand/brandSlice";
 import { getCategorysSlugCTN } from "../../features/pcategory/pcategorySlice";
+import imgerror from "../images/imgerror.png";
 
 const Filters = (props) => {
   const { id } = useParams();
@@ -25,7 +26,7 @@ const Filters = (props) => {
 
     const calldata = async () => {
       await axios.get(`https://ecom-oto.vercel.app/api/products/fitercontainerslug?page=${currentPage}&slug=${id}`).then((response) => {
-        console.log(response.data.products);
+      
         setProducts(response.data.products);
         setTotalPages(response.data.totalPages)
         const totalpage = response.data.totalPages;
@@ -35,7 +36,7 @@ const Filters = (props) => {
           for (let i = 1; i <= totalpage; i++) {
             pageNumbers.push(i);
           }
-     
+
         }
 
       })
@@ -214,7 +215,7 @@ const Filters = (props) => {
                     >
                       <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-color-basic group-hover:opacity-75 lg:aspect-none lg:h-50">
                         <img
-                          src={item.imagesDefault}
+                          src={item.imagesDefault ? item.imagesDefault.secure_url : imgerror}
                           className="h-[300px] w-full object-cover object-center group-hover:opacity-75"
                         />
                       </div>
@@ -247,7 +248,7 @@ const Filters = (props) => {
                     </div>
                   ))}
                 </div>
-            
+
               </main>
             </div>
           </div>

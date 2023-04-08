@@ -9,6 +9,7 @@ import axios from "axios";
 import { FaFacebook, FaTwitter, FaEnvelope, FaPinterest, FaLinkedin } from 'react-icons/fa';
 import VideoBlog from "./videoBlog";
 import ShowFeedBackBlog from "./ShowFeedBackBlog";
+import imgerror from "../images/imgerror.png"
 const ContentsBlog = () => {
   const { id } = useParams();
   const [data, setData] = useState([]);
@@ -42,7 +43,7 @@ const ContentsBlog = () => {
                 <h6 className="contentBlog_poster">{ }</h6>
               </div>
               <div className="contentBlog_video">
-                {data.video ? <VideoBlog idyt={data.video} /> : <div><img src={data.imageThumbnail} alt="" /></div>}
+                {data.video ? <VideoBlog idyt={data.video} /> : <div> <img src={data.imageThumbnail != undefined ? data.imageThumbnail.secure_url : imgerror} style={{ height: "500px" }} alt="" /></div>}
               </div>
               <div className="contentBlog_span">
                 <span>
@@ -69,8 +70,8 @@ const ContentsBlog = () => {
                   <FaLinkedin className="hover:text-[#0073b1] text-gray-400" size={32} />
                 </a>
               </div>
-              <ShowFeedBackBlog propsblogid={data._id}/>
-              <Comment blogid={data._id}/>
+              <ShowFeedBackBlog propsblogid={data._id} />
+              <Comment blogid={data._id} />
             </section>
 
             <section className="sideContent">
