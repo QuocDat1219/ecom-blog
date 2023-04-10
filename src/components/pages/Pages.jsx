@@ -21,7 +21,6 @@ const Pages = () => {
         <ToastContainer />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/allproduct/:id" component={AllProduct} />
           <Route exact path="/about" component={About} />
           <Route exact path="/services" component={Services} />
           <Route exact path="/blog" component={Blog} />
@@ -29,6 +28,7 @@ const Pages = () => {
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/blogdetail/:id" component={ContentsBlog} />
           <Route exact path="/productdetail/:id" component={ProductDetail} />
+          <Route exact path="/:id" component={AllProduct} />
         </Switch>
         <Location />
         <Footer />

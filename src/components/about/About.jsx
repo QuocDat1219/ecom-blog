@@ -248,12 +248,12 @@ const About = () => {
       <div className="slider">
         <SimpleSlider />
       </div>
-      <div className="HeadingA_3">
+      {/* <div className="HeadingA_3">
         <HeadingAbout title="Thông tin về công ty" />
-      </div>
-      <div>
+      </div> */}
+      {/* <div>
         <Infomation />
-      </div>
+      </div> */}
       <div className="py-[50px]">
         <HeadingAbout title="Đối tác chiến lược" />
         <div className="About_slide">

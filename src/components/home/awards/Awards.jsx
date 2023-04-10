@@ -10,7 +10,6 @@ const Awards = () => {
         <img
           src="https://everev.vn/wp-content/uploads/2022/11/de4bc02058319e6fc720.jpg"
           alt=""
-          srcset=""
         />
         <div className="awards-title absolute md:top-[30%] ">
           <Heading

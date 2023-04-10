@@ -1,31 +1,33 @@
 import { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFilter, faGlasses } from "@fortawesome/free-solid-svg-icons";
-import Product from "./product";
 import axios from "axios";
 import Path from "./path";
-
+import { Link, useParams } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faFilter } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch, useSelector } from "react-redux";
+import { getBrandsSlugCTN } from "../../features/brand/brandSlice";
+import { getCategorysSlugCTN } from "../../features/pcategory/pcategorySlice";
+import imgerror from "../images/imgerror.png";
 
 const Filters = (props) => {
+  const { id } = useParams();
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedBrands, setSelectedBrands] = useState([]);
-  const categories = props.dataCate
-  const [productss, setProducts] = useState([]);
+  const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [displayPages, setDisplayPages] = useState([]);
-  const [data, setData] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
   const [isFiterCate, setIsFiterCate] = useState(false);
   const visiblePageCount = 3;
   const startPage = Math.max(currentPage - Math.floor(visiblePageCount / 2), 1);
   const endPage = Math.min(startPage + visiblePageCount - 1, totalPages);
-  const container = props.categoriesCTNID
-
+  const dispatch = useDispatch();
   useEffect(() => {
-    const calldata = async () => {
-      await axios.get(`https://ecom-oto.vercel.app/api/products?page=${currentPage}&&container=${container}`).then((response) => {
-        setData(response.data.Product);
 
+    const calldata = async () => {
+      await axios.get(`https://ecom-oto.vercel.app/api/products/fitercontainerslug?page=${currentPage}&slug=${id}`).then((response) => {
+      
+        setProducts(response.data.products);
         setTotalPages(response.data.totalPages)
         const totalpage = response.data.totalPages;
         if (totalpage) {
@@ -34,7 +36,7 @@ const Filters = (props) => {
           for (let i = 1; i <= totalpage; i++) {
             pageNumbers.push(i);
           }
-          setDisplayPages(pageNumbers);
+
         }
 
       })
@@ -42,7 +44,24 @@ const Filters = (props) => {
 
     calldata();
 
-  }, [currentPage, container])
+  }, [currentPage, id])
+
+  useEffect(() => {
+    dispatch(getBrandsSlugCTN(id));
+    dispatch(getCategorysSlugCTN(id));
+  }, [id]);
+
+  const brandState = useSelector((state) => state.brand.Brands);
+  const pCategoryState = useSelector((state) => state.pCategory.pCategories);
+
+
+  function categoryProduct(item) {
+    const categoryProduct = pCategoryState.find((category) => category._id === item);
+
+    if (categoryProduct)
+      return categoryProduct.name;
+  };
+
 
   const handleClick = (page) => {
     handlePageChange(page);
@@ -86,7 +105,7 @@ const Filters = (props) => {
         .then(response => {
 
           const datars = response.data.fproducts
-          if (datars.length != 0) {
+          if (datars.length !== 0) {
             setProducts(response.data.fproducts);
             setIsFiterCate(true);
           }
@@ -125,27 +144,27 @@ const Filters = (props) => {
           <div className="container max-w-screen-xl mx-auto px-4">
             <div className="flex flex-col md:flex-row -mx-4">
               <aside className="md:w-1/3 lg:w-1/4 px-4 py-4">
-                <a className="md:hidden mb-5  w-full text-center px-4 py-2 inline-block text-lg text-gray-700 bg-white shadow-sm border border-gray-200 rounded-md hover:bg-gray-100 hover:text-blue-600">
+                <div className="md:hidden mb-5  w-full text-center px-4 py-2 inline-block text-lg text-gray-700 bg-white shadow-sm border border-gray-200 rounded-md hover:bg-gray-100 hover:text-blue-600">
                   Lọc sản phẩm
-                </a>
+                </div>
 
                 <div className=" md:block px-6 pt-4 bg-color-card rounded-md shadow ">
                   <h3 className="font-semibold mb-2 text-color-title">Danh mục</h3>
 
                   <ul className="space-y-1">
-                    {props.filteredCategories.map((category) => (
+                    {pCategoryState.map((category) => (
                       <li key={category._id}>
-                        <div class="flex items-center">
+                        <div className="flex items-center">
                           <input
                             id="default-checkbox"
                             type="checkbox"
                             value={category._id}
                             onChange={handleCategoryChange}
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500  focus:ring-2 "
+                            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500  focus:ring-2 "
                           />
                           <label
                             for="checked-checkbox"
-                            class="ml-2 text-sm font-medium text-gray-900 "
+                            className="ml-2 text-sm font-medium text-gray-900 "
                           >
                             {category.name}
                           </label>
@@ -157,19 +176,19 @@ const Filters = (props) => {
                   <hr className="my-4 text-color-basic" />
                   <h3 className="font-semibold mb-2 text-color-title">Nhãn hàng</h3>
                   <ul className="space-y-1">
-                    {props.brands.map((brand) => (
+                    {brandState.map((brand) => (
                       <li key={brand._id}>
-                        <div class="flex items-center">
+                        <div className="flex items-center">
                           <input
                             id="default-checkbox"
                             type="checkbox"
                             onChange={handleBrandChange}
                             value={brand._id}
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500  focus:ring-2  "
+                            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500  focus:ring-2  "
                           />
                           <label
                             for="checked-checkbox"
-                            class="ml-2 text-sm font-medium text-gray-900 "
+                            className="ml-2 text-sm font-medium text-gray-900 "
                           >
                             {brand.title}
                           </label>
@@ -188,18 +207,55 @@ const Filters = (props) => {
 
               </aside>
               <main className="md:w-2/3 lg:w-3/4 w-4/4 px-3">
-                {
-                  productss.length == 0 ? <Product data={data} dataCate={categories} />
-                    : <Product data={productss} dataCate={categories} />
+                <div className="mt-4 grid gap-y-10 gap-x-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+                  {products.map((item) => (
+                    <div
+                      key={item._id}
+                      className="group relative bg-color-card rounded-md shadow overflow-hidden"
+                    >
+                      <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-color-basic group-hover:opacity-75 lg:aspect-none lg:h-50">
+                        <img
+                          src={item.imagesDefault ? item.imagesDefault.secure_url : imgerror}
+                          className="h-[300px] w-full object-cover object-center group-hover:opacity-75"
+                        />
+                      </div>
+                      <hr className="w-[80%] mx-auto" />
+                      <div className="mt-2 flex justify-center pl-[10px] py-1 overflow-hidden">
+                        <div>
+                          <p className="mt-1 text-sm text-text-color opacity-60  text-center">
+                            {categoryProduct(item.idCategory)}
+                          </p>
+                          <h3 className="text-sm text-text-color text-center">
+                            <Link to={`/productdetail/${item._id}`}>
+                              <span aria-hidden="true" className="absolute inset-0" />
+                              {item.name}
+                            </Link>
+                          </h3>
+                        </div>
+                        {/* <p className="text-sm font-medium text-gray-900">{product.price}</p> */}
+                      </div>
 
-                }
+                      <div>
+                        <Link to={`/productdetail/${item._id}`}>
+                          <button
+                            type="button"
+                            className="bg-color-button hover:bg-blue-400 text-text-color font-bold py-2 px-4 text-center mr-2  w-[100%] rounded-none "
+                          >
+                            <FontAwesomeIcon icon={faMagnifyingGlass} /> Xem thêm
+                          </button>
+                        </Link>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
               </main>
             </div>
           </div>
         </section>
       </div>
       <br />
-      {isFiterCate == true ? <div> </div> :
+      {isFiterCate === true ? <div> </div> :
 
         <div className="containers justify-center flex items-center ">
           <nav aria-label="Page navigation example">

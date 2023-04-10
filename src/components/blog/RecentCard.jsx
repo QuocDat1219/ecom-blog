@@ -3,7 +3,7 @@ import "../home/recent/recent.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
-
+import imgerror from "../images/imgerror.png"
 const RecentCard = ({ dataBlog }) => {
   const [data, setData] = useState([]);
   const [dataCate, setDataCate] = useState([]);
@@ -35,6 +35,11 @@ const RecentCard = ({ dataBlog }) => {
     if (categoryBlog)
       return categoryBlog.title;
   };
+
+  function imgBlog(item) {
+    console.log(item);
+    return
+  };
   return (
     <>
       {dataCate.length != 0 ?
@@ -42,10 +47,10 @@ const RecentCard = ({ dataBlog }) => {
           (
             <div className="content grid3 mtop md:grid-cols-2 lg:grid-cols-3 sm:grid-cols-2 ">
               {dataBlog.map((val, index) => (
-                <a href={`blogdetail/${val.slug}`}>
+                <Link href={`blogdetail/${val.slug}`}>
                   <div className="recentCard bg-color-card" key={index}>
                     <div className="RecentC_img">
-                      <img src={val.imageThumbnail} className="rounded-md" alt="" />
+                      <img src={val.imageThumbnail ? val.imageThumbnail.secure_url : imgerror} className="rounded-md" alt="" />
                     </div>
                     <div className="text pt-1">
                       <div className="category flexs rounded-md">
@@ -61,23 +66,25 @@ const RecentCard = ({ dataBlog }) => {
                         {val.title.slice(0, 20)}...
                       </h4>
                       <div className="is-divider "></div>
-                      <Link to={`/${val.slug}`}>
+                      <Link to={`blogdetail/${val.slug}`}>
                         <span className="p_location text-text-color hover:text-color-title">
-                          {val.description.slice(0, 40)}...
+                          <div dangerouslySetInnerHTML={{ __html: val.description.slice(0, 40) }}>
+
+                          </div>
                           {/* <i className='fa fa-location-dot'></i>  */}
                         </span>
                       </Link>
                     </div>
                   </div>
-                </a>
+                </Link>
               ))}
             </div>
           ) : <div className="content grid3 mtop md:grid-cols-2 lg:grid-cols-3 sm:grid-cols-2 ">
             {data.map((val, index) => (
-              <a href={`blogdetail/${val.slug}`}>
+              <Link to={`blogdetail/${val.slug}`}>
                 <div className="recentCard bg-color-card" key={index}>
                   <div className="RecentC_img">
-                    <img src={val.imageThumbnail} className="rounded-md" alt="" />
+                    <img src={val.imageThumbnail ? val.imageThumbnail.secure_url : imgerror} className="rounded-md" alt="" />
                   </div>
                   <div className="text pt-1">
                     <div className="category flexs rounded-md">
@@ -95,13 +102,14 @@ const RecentCard = ({ dataBlog }) => {
                     <div className="is-divider "></div>
 
                     <span className="p_location text-text-color hover:text-color-title">
-                      {val.description.slice(0, 40)}...
-                      {/* <i className='fa fa-location-dot'></i>  */}
+                      <div dangerouslySetInnerHTML={{ __html: val.description.slice(0, 40) }}>
+
+                      </div>
                     </span>
 
                   </div>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         : (

@@ -11,8 +11,6 @@ const Side = ({setDataBlog}) => {
     const callapi = async () => {
       await axios.get(`https://ecom-oto.vercel.app/api/blog/search?keyword=${keyWord}`).then((response) => {
         const data = response.data
-        console.log(data);
-        setDataBlog(data)
       })
     }
     callapi();

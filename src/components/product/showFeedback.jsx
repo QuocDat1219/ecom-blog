@@ -5,7 +5,6 @@ import './StarRating.css';
 const ShowFeedBackProduct = ({ idproductfeedback }) => {
     const [feedbackproduct, setFeedbackProduct] = useState([]);
 
-    console.log(idproductfeedback);
     const renderStar = (starIndex) => {
         return (
             <span
@@ -20,7 +19,7 @@ const ShowFeedBackProduct = ({ idproductfeedback }) => {
     useEffect(() => {
         const getFeedback = async () => {
             await axios.get(`https://ecom-oto.vercel.app/api/feedbackproduct/feedback?idproducts=${idproductfeedback}`).then((response) => {
-                console.log(response.data);
+               
                 setFeedbackProduct(response.data);
             });
         }
@@ -39,13 +38,17 @@ const ShowFeedBackProduct = ({ idproductfeedback }) => {
                             <p>{item.usename}</p>
                         </div>
                         <div className="text-[13px] ">
-                            <p className=" text-gray-400">Thời gian:
-                                <span className="italic text-gray-600 ">{moment(item.createdAt).format("DD-MM-YYYY " + " " + "HH:mm")}</span>
+                            <p className=" text-gray-400">Thời gian:{" "}
+                                <span className="italic text-gray-600 ">{moment(item.createdAt).format("DD-MM-YYYY")}</span>
                             </p>
+                            <p className=" text-gray-400">Đánh giá:{" "}
                             {[...Array(item.quality)].map((n, i) => renderStar(i))}{" "}
+                            </p>
+                            
 
-                            <p  className="text-gray-600 ">
-                                {item.comment}
+                            <p  className="text-gray-400 ">Nội dung:{" "}
+                            <span className="italic text-gray-600 ">{item.comment}</span>
+                             
                             </p>
                         </div>
                         <hr />

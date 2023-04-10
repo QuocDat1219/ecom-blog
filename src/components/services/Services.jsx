@@ -1,13 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import img from "../images/sacdien.jpg";
 import Back from "../common/Back";
 import "../home/featured/Featured.css";
 import img2 from "../images/linkkien.jpg";
 import img3 from "../images/tramsac.jpg";
 import "./Services.css";
-import RecentCard from "../blog/RecentCard";
-const Services = () => {
+import axios from "axios";
+import imgerror from "../images/imgerror.png"
 
+const Services = () => {
+  const [data, setData] = useState([]);
+  const [dataCate, setDataCate] = useState([]);
+
+  useEffect(() => {
+    axios("https://ecom-oto.vercel.app/api/blog/").then((response) => {
+      const blog = response.data;
+      if (blog)
+        setData(blog);
+
+    });
+    
+  }, []);
 
 
   return (
@@ -51,13 +64,13 @@ const Services = () => {
           <h3 className="text-[24px] pb-[20px] text-text-title">
             Dịch vụ vận hành và bảo hành
           </h3>
-          <div class="flex flex-wrap justify-between">
-            {/* {tpost
+          <div className="flex flex-wrap justify-between">
+            {data
               .map((val) => (
                 <div class="w-full md:w-1/3 px-4 mb-8 md:mb-0 ">
                   <div class="relative h-0 pb-[100%] mb-4">
                     <img
-                      src={val.cover}
+                      src={val.imageThumbnail? val.imageThumbnail.secure_url : imgerror}
                       alt="Item 3"
                       class="absolute inset-0 w-full h-full object-cover rounded-[20px] shadow"
                     />
@@ -67,8 +80,8 @@ const Services = () => {
                   </p>
                 </div>
               ))
-              .slice(-3)} */}
-           
+              .slice(-3)}
+
           </div>
         </div>
       </section>
