@@ -10,15 +10,21 @@ import { FaFacebook, FaTwitter, FaEnvelope, FaPinterest, FaLinkedin } from 'reac
 import VideoBlog from "./videoBlog";
 import ShowFeedBackBlog from "./ShowFeedBackBlog";
 import imgerror from "../images/imgerror.png"
+import { EditorState, convertToRaw, convertFromRaw } from "draft-js";
+import draftToHtml from "draftjs-to-html";
+
 const ContentsBlog = () => {
   const { id } = useParams();
   const [data, setData] = useState([]);
+  const [editorContent, setEditorContent] = useState(EditorState.createEmpty());
 
   useEffect(() => {
     const calldata = async () => {
       await axios.get(`https://ecom-oto.vercel.app/api/blog/blogpage?slugs=${id}`).then((response) => {
         const blog = response.data;
         setData(blog[0]);
+        setEditorContent(EditorState.createWithContent(convertFromRaw(JSON.parse(blog[0].description))));
+
       });
     }
     calldata();
@@ -47,7 +53,11 @@ const ContentsBlog = () => {
               </div>
               <div className="contentBlog_span">
                 <span>
-                  {data.description}
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: draftToHtml(convertToRaw(editorContent.getCurrentContent())),
+                    }}
+                  ></div>
                 </span>
               </div>
               <div className="pt-10 flex justify-center items-center">

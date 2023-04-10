@@ -85,8 +85,8 @@ const FeaturedCard = ({ data, dataCate }) => {
                 </div>
                 <div className="card-bottom">
                   <span className="category">{categoryPosts(item.category)}</span>
-                  <h1 className="mt-5">{item.title}</h1>
-                  <h3>{item.description.slice(0, 40)}...</h3>
+                  <h1 className="mt-5 font-bold">{item.title}</h1>
+
                 </div>
               </div>
             </Link>
