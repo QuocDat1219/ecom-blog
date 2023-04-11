@@ -57,7 +57,9 @@ const ContentsBlog = () => {
                     dangerouslySetInnerHTML={{
                       __html: draftToHtml(convertToRaw(editorContent.getCurrentContent())),
                     }}
-                  ></div>
+                  >
+                    
+                  </div>
                 </span>
               </div>
               <div className="pt-10 flex justify-center items-center">
