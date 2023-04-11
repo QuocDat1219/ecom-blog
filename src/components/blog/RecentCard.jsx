@@ -63,7 +63,7 @@ const RecentCard = ({ dataBlog }) => {
                       <div className="is-divider "></div>
                       <Link to={`blogdetail/${val.slug}`}>
                         <span className="p_location text-text-color hover:text-color-title">
-                          {val.description.slice(0, 40)}...
+                          {val.description.slice(0, 20)}...
                           {/* <i className='fa fa-location-dot'></i>  */}
                         </span>
                       </Link>

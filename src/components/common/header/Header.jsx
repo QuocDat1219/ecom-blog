@@ -102,12 +102,10 @@ const Header = () => {
                         className={`text-text-color hover:bg-text-nav hover:text-white rounded-md px-3 py-4 text-base font-medium  `}
                       > {list.text}
                       </Link>
-
                     ))}
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
 
