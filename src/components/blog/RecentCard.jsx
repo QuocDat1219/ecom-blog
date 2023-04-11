@@ -66,14 +66,7 @@ const RecentCard = ({ dataBlog }) => {
                         {val.title.slice(0, 20)}...
                       </h4>
                       <div className="is-divider "></div>
-                      <Link to={`blogdetail/${val.slug}`}>
-                        <span className="p_location text-text-color hover:text-color-title">
-                          <div dangerouslySetInnerHTML={{ __html: val.description.slice(0, 40) }}>
 
-                          </div>
-                          {/* <i className='fa fa-location-dot'></i>  */}
-                        </span>
-                      </Link>
                     </div>
                   </div>
                 </Link>
@@ -101,12 +94,7 @@ const RecentCard = ({ dataBlog }) => {
                     </h4>
                     <div className="is-divider "></div>
 
-                    <span className="p_location text-text-color hover:text-color-title">
-                      <div dangerouslySetInnerHTML={{ __html: val.description.slice(0, 40) }}>
-
-                      </div>
-                    </span>
-
+                   
                   </div>
                 </div>
               </Link>

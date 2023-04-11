@@ -28,6 +28,7 @@ const Pages = () => {
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/blogdetail/:id" component={ContentsBlog} />
           <Route exact path="/productdetail/:id" component={ProductDetail} />
+          <Route exact path="/productdetail/" component={Home} />
           <Route exact path="/:id" component={AllProduct} />
         </Switch>
         <Location />
