@@ -2,7 +2,7 @@ import React from "react";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import "./Slider.css";
-const Example = () => {
+const Example = ({ datas }) => {
   const Arrow = ({ direction, clickFunction, glyph }) => (
     <div className={`slide-arrow ${direction}`} onClick={clickFunction}>
       {glyph}
@@ -25,45 +25,41 @@ const Example = () => {
   };
   return (
     <div className="slide-container">
-      <Slide {...properties}>
-        <div className="each-slide-effect">
-          <div style={{ backgroundImage: `url(${images[0]})` }}>
-            <span>
-              <strong>Chất lượng: </strong> EverEV khẳng định sẽ luôn cung cấp
-              tới khách hàng các sản phẩm chính hãng từ các thương hiệu uy tín
-              hàng đầu.
-              <br />
-              <strong>Chuyên nghiệp: </strong> Mọi sản phẩm phải có các quy
-              trình chuẩn mực từ khâu lắp đặt, vận hành và bảo trì. Đội ngũ cán
-              bộ, nhân viên EverEV được đào tạo kỹ và trang bị đúng tiêu chuẩn
-              nghề nghiệp.
-              <br />
-              <strong>Tiên phong: </strong> EverEV thành lập với tâm thế nhà
-              tiên phong trong lĩnh vực sạc ô tô và sẽ nỗ lực không ngừng duy
-              trì tâm thế đó thông qua việc học hỏi, cập nhật không ngừng về
-              công nghệ và xu thế.
-            </span>
+      {datas.map((item) => (
+        <Slide {...properties}>
+          <div className="each-slide-effect">
+            <div
+              style={{ backgroundImage: `url(${item.imgslide1.secure_url})` }}
+            >
+              <span>
+                <strong>Chất lượng: </strong> {item.chatluong}
+                <br />
+                <strong>Chuyên nghiệp: </strong> {item.chuyennghiep}
+                <br />
+                <strong>Tiên phong: </strong> {item.tienphong}
+              </span>
+            </div>
           </div>
-        </div>
-        <div className="each-slide-effect">
-          <div style={{ backgroundImage: `url(${images[1]})` }}>
-            <span>
-              <strong>Tầm nhìn</strong>: EverEV sẽ trở thành một trong những
-              công ty hàng đầu về phân phối, lắp đặt và cung ứng các dịch vụ vận
-              hành, bảo trì, sửa chữa sạc ô tô trên phạm vi cả nước.
-            </span>
+          <div className="each-slide-effect">
+            <div
+              style={{ backgroundImage: `url(${item.imgslide2.secure_url})` }}
+            >
+              <span>
+                <strong>Tầm nhìn</strong>: {item.tamnhin}
+              </span>
+            </div>
           </div>
-        </div>
-        <div className="each-slide-effect">
-          <div style={{ backgroundImage: `url(${images[2]})` }}>
-            <span>
-              <strong>Sứ mệnh:</strong> Góp phần thúc đẩy nhanh sự phát triển
-              của ngành ô tô điện Việt Nam vì một tương lai phát triển bền vững
-              của đất nước.
-            </span>
+          <div className="each-slide-effect">
+            <div
+              style={{ backgroundImage: `url(${item.imgslide3.secure_url})` }}
+            >
+              <span>
+                <strong>Sứ mệnh:</strong> {item.sumang}
+              </span>
+            </div>
           </div>
-        </div>
-      </Slide>
+        </Slide>
+      ))}
     </div>
   );
 };

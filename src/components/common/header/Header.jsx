@@ -38,26 +38,36 @@ const Header = () => {
   const [data, setData] = useState([]);
   const [mappeCate, setMappeCate] = useState([]);
 
+  const [info, setInfo] = useState([]);
+  useEffect(() => {
+    const getInfoweb = async () => {
+      await axios
+        .get("https://ecom-oto.vercel.app/api/info/")
+        .then((response) => {
+          setInfo(response.data);
+        });
+    };
+    getInfoweb();
+  }, []);
+
   useEffect(() => {
     const fetchData = async () => {
-      await axios("https://ecom-oto.vercel.app/api/categorycontainer/").then((response) => {
+      await axios("https://ecom-oto.vercel.app/api/categorycontainer/").then(
+        (response) => {
+          const dataRPs = response.data;
 
-        const dataRPs = response.data;
-
-        if (dataRPs) {
-          const mappedProducts = dataRPs.map(dataRP => ({
-            text: dataRP.name.toUpperCase(),
-            path: `/${dataRP.slug}`
-          }));
-          setMappeCate(mappedProducts);
-
+          if (dataRPs) {
+            const mappedProducts = dataRPs.map((dataRP) => ({
+              text: dataRP.name.toUpperCase(),
+              path: `/${dataRP.slug}`,
+            }));
+            setMappeCate(mappedProducts);
+          }
         }
-      })
+      );
     };
 
     fetchData();
-
-
   }, []);
   nav.splice(2, 0, ...mappeCate);
 
@@ -103,14 +113,14 @@ const Header = () => {
                           key={index}
                           to={list.path}
                           className={`text-text-color hover:bg-text-nav hover:text-white rounded-md px-3 py-4 text-base font-medium  `}
-                        > {list.text}
+                        >
+                          {" "}
+                          {list.text}
                         </Link>
-
                       ))}
                     </div>
                   </div>
                 </div>
-
               </div>
             </div>
 
@@ -122,7 +132,6 @@ const Header = () => {
                       key={list.text}
                       as="a"
                       className={`text-text-color hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium `}
-
                     >
                       {list.text}
                     </Disclosure.Button>

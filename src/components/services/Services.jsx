@@ -6,33 +6,47 @@ import img2 from "../images/linkkien.jpg";
 import img3 from "../images/tramsac.jpg";
 import "./Services.css";
 import axios from "axios";
-import imgerror from "../images/imgerror.png"
+import imgerror from "../images/imgerror.png";
 
 const Services = () => {
   const [data, setData] = useState([]);
   const [dataCate, setDataCate] = useState([]);
-
+  const [imgeHeader, setimgeHeader] = useState("");
+  const [titleH, settitleH] = useState("");
+  const [title1, settitle1] = useState("");
+  const [imageTitle, setimageTitle] = useState("");
+  const [imgbody2, setimgbody2] = useState("");
   useEffect(() => {
     axios("https://ecom-oto.vercel.app/api/blog/").then((response) => {
       const blog = response.data;
-      if (blog)
-        setData(blog);
-
+      if (blog) setData(blog);
     });
-    
   }, []);
 
+  useEffect(() => {
+    axios
+      .get("https://ecom-oto.vercel.app/api/company-service/")
+      .then((response) => {
+        setimgeHeader(response.data[0].imgheader.secure_url);
+        settitleH(response.data[0].titleheader);
+        settitle1(response.data[0].titlebody1);
+        setimageTitle(response.data[0].imgbody1.secure_url);
+        setimgbody2(response.data[0].imgbody2.secure_url);
+        console.log(response);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   return (
     <>
       <section className="services mb ">
-        <Back name="Dịch vụ" title="Các dịch vụ của chúng tôi" cover={img} />
+        <Back name="Dịch vụ" title={titleH} cover={imgeHeader} />
         <div className="containers mx-auto sm:px-4 justify-items-center">
           <div className="flex flex-wrap justify-items-center justify-center items-center">
             <div className="relative  sm:flex-1.5 sm:w-[400px] py-4">
               <img
                 className="lg:h-[600px] lg:w-[800px] sm:h-[500px] rounded-[20px]"
-                src={img2}
+                src={imageTitle}
                 alt="linh kien"
               />
             </div>
@@ -44,13 +58,7 @@ const Services = () => {
                 </h2> */}
                 <br />
                 <p className="text-text-color text-[1.4rem] lg:text-justify text-justify ">
-                  Hệ thống sạc ô tô có tần suất sử dụng cao, do đó khâu bảo trì
-                  bảo dưỡng vô cùng quan trọng để có thể đảm bảo độ sẵn sàng của
-                  hệ thống cũng như hệ số an toàn tối đa cho người sử dụng và
-                  phương tiện. <br /> EverEV là đơn vị uy tín trong việc cung
-                  cấp các dịch vụ lắp đặt, vận hành và bảo trì các hệ thống sạc
-                  ô tô. EverEV được ủy quyền là đơn vị bảo trì toàn bộ sạc ô tô
-                  của Vinfast trên cả nước.
+                  {title1}
                 </p>
               </div>
             </div>
@@ -58,7 +66,7 @@ const Services = () => {
         </div>
 
         <div className="imgdai">
-          <Back cover={img3} />
+          <Back cover={imgbody2} />
         </div>
         <div className="containers text-center pt-[20px]">
           <h3 className="text-[24px] pb-[20px] text-text-title">
@@ -70,7 +78,11 @@ const Services = () => {
                 <div class="w-full md:w-1/3 px-4 mb-8 md:mb-0 ">
                   <div class="relative h-0 pb-[100%] mb-4">
                     <img
-                      src={val.imageThumbnail? val.imageThumbnail.secure_url : imgerror}
+                      src={
+                        val.imageThumbnail
+                          ? val.imageThumbnail.secure_url
+                          : imgerror
+                      }
                       alt="Item 3"
                       class="absolute inset-0 w-full h-full object-cover rounded-[20px] shadow"
                     />
@@ -81,7 +93,6 @@ const Services = () => {
                 </div>
               ))
               .slice(-3)}
-
           </div>
         </div>
       </section>
