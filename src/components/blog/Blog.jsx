@@ -3,10 +3,9 @@ import RecentCard from "./RecentCard";
 import "../home/recent/recent.css";
 import "./Blog.css";
 import Side from "./Side";
-import { DataObject } from "@mui/icons-material";
 
 const Blog = () => {
-  const [dataBlog, setDataBlog] = useState()
+  const [dataBlog, setDataBlog] = useState();
 
   return (
     <>
