@@ -13,11 +13,11 @@ const Hero = ({ imgheader, titleheader }) => {
           <h1 className="text-white text-[33px] md:text-[30px] lg:text-[43px] font-bold">
             {titleheader}
           </h1>
-          <div className="mt-4">
+          {/* <div className="mt-4">
             <button className="btn-watch">
               <i className="fa-solid fa-play"></i>
             </button>
-          </div>
+          </div> */}
           <div className="gap-2 flex mt-4">
             <Link to={"/services"}>
               {" "}
