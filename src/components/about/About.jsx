@@ -226,10 +226,10 @@ const About = () => {
                 </div>
               )}
             </div>
-            <div class="image-container">
-              <img src={imgAb} />
-              <div class="image-container-two">
-                <img src={imgAb} />
+            <div className="image-container">
+              <img src={item.imgstartupstory1.secure_url} />
+              <div className="image-container-two">
+                <img src={item.imgstartupstory2.secure_url} />
               </div>
             </div>
           </div>
