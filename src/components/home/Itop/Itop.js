@@ -3,9 +3,22 @@ import React, { useState, useEffect } from "react";
 import "./Itop.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone, faComment } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 
 const Itop = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [info, setInfo] = useState([]);
+
+  useEffect(() => {
+    const getInfoweb = async () => {
+      await axios
+        .get("https://ecom-oto.vercel.app/api/info/")
+        .then((response) => {
+          setInfo(response.data);
+        });
+    };
+    getInfoweb();
+  }, []);
 
   useEffect(() => {
     window.addEventListener("scroll", toggleVisibility);
@@ -30,12 +43,12 @@ const Itop = () => {
     });
   };
 
-  return (
+  return info.length != 0 ? (
     <>
       <div className="chat-buttons">
         <ul>
           <li>
-            <a href="https://zalo.me/0966695052">
+            <a href={`https://zalo.me/${info[0].zalo}`}>
               <img
                 src="https://everev.vn/wp-content/uploads/2023/03/icon-zalo-EverEV.png"
                 alt="Zalo chat icon"
@@ -44,7 +57,7 @@ const Itop = () => {
             </a>
           </li>
           <li>
-            <a href="tel:+0966695052">
+            <a href={`tel:+${info[0].hotline}`}>
               <img
                 src="https://everev.vn/wp-content/uploads/2023/03/icon-call-EverEV.png"
                 alt="Phone icon"
@@ -63,6 +76,8 @@ const Itop = () => {
         )}
       </div>
     </>
+  ) : (
+    <></>
   );
 };
 

@@ -71,7 +71,7 @@ const Header = () => {
   }, []);
   nav.splice(2, 0, ...mappeCate);
 
-  return (
+  return info.length != 0 ? (
     <>
       <Itop />
       <Disclosure as="nav" className="bg-color-nav sticky top-0  z-40 ">
@@ -94,12 +94,12 @@ const Header = () => {
                   <div className="flex flex-shrink-0 items-center bg-color-nav rounded-md ">
                     <img
                       className="block h-[60px] w-auto lg:hidden"
-                      src={logoNav}
+                      src={info[0].logo.secure_url}
                       alt="Your Company"
                     />
                     <img
                       className="hidden h-[60px] w-auto lg:block"
-                      src={logoNav}
+                      src={info[0].logo.secure_url}
                       alt="Your Company"
                     />
                   </div>
@@ -143,6 +143,8 @@ const Header = () => {
         )}
       </Disclosure>
     </>
+  ) : (
+    <></>
   );
 };
 

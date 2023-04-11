@@ -4,6 +4,16 @@ import logo from "../../images/logomoi.png";
 import axios from "axios";
 const Footer = () => {
   const [info, setInfo] = useState([]);
+  useEffect(() => {
+    const getInfoweb = async () => {
+      await axios
+        .get("https://ecom-oto.vercel.app/api/info/")
+        .then((response) => {
+          setInfo(response.data);
+        });
+    };
+    getInfoweb();
+  }, []);
 
   return info.length != 0 ? (
     <>
@@ -25,7 +35,7 @@ const Footer = () => {
               <div className="text-text-color">
                 <p>
                   <i className="fas fa-map-marker-alt mr-2"></i>
-                  Địa chỉ liên hệ: {info[0].address}.
+                  Địa chỉ liên hệ: {info[0].address}
                 </p>
                 <a href="tel:#" className="text-text-color ">
                   <i className="fas fa-phone-alt fa-rotate-90 fa-xs mr-2"></i>
