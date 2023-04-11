@@ -1,10 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import { featured } from "../../data/Data";
 import Slider from "react-slick";
-import { dataDigitalBestSeller } from "./data";
 import imgGirl from "./images.png";
 import "./FeaturedCard.css";
-
+import imgerror from "../../images/imgerror.png";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
@@ -79,9 +77,7 @@ const FeaturedCard = ({ data, dataCate }) => {
               <div className="card flex flex-col">
                 <div className="">
                   <img
-                    src={
-                      item.imageThumbnail
-                    }
+                    src={item.imageThumbnail ? item.imageThumbnail.secure_url : imgerror}
                     alt={item.title}
                     onError={handleErrorImage}
                     style={{ height: "180px", width: "250px" }}
@@ -89,8 +85,8 @@ const FeaturedCard = ({ data, dataCate }) => {
                 </div>
                 <div className="card-bottom">
                   <span className="category">{categoryPosts(item.category)}</span>
-                  <h1 className="mt-5">{item.title}</h1>
-                  <h3>{item.description.slice(0, 40)}...</h3>
+                  <h1 className="mt-5 font-bold">{item.title}</h1>
+
                 </div>
               </div>
             </Link>

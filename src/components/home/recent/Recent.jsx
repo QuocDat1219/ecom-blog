@@ -9,13 +9,13 @@ import "./recent.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
-
+import imgerror from "../../images/imgerror.png";
 import { getProductsAll } from "../../../features/product/productSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 
 
-const Recent = () => {
+const Recent = ({ titleprodcut1, titleprodcut2 }) => {
   const [category, setCategory] = useState([]);
   const [defaultImage, setDefaultImage] = useState({});
 
@@ -118,7 +118,7 @@ const Recent = () => {
                 </span>
                 <div className="brick"></div>
               </div>
-              <div className="text-center p-5">Hãy chọn sản phẩm cho chính mình</div>
+              <div className="text-center p-5">{titleprodcut1}</div>
               <div className="slider bg-white ">
                 <Slider {...settings} ref={sliderRef}>
                   {productState.map((item) => (
@@ -127,9 +127,8 @@ const Recent = () => {
                         <div className="card-top ">
                           <img
                             className="object-cover "
-                            src={
-                              item.imagesDefault
-                            }
+                            src={item.imagesDefault ? item.imagesDefault.secure_url : imgerror}
+
                             alt={item.name}
                             onError={handleErrorImage}
                           />
@@ -154,7 +153,7 @@ const Recent = () => {
             <Heading
               className=""
               title="Sản phẩm"
-              subtitle="“EverEV là nhà phân phối chính hãng của các thương hiệu sạc ô tô hàng đầu thế giới như Starcharge, COSTEL, FIRMER.. được chia thành 2 dòng sản phẩm:"
+              subtitle={titleprodcut2}
             />
             <div className="flex justify-between flex-col md:flex-row  gap-2 mt-10">
               <div className="bg-[#97DEFF]  w-[100%] p-10 flex flex-col justify-center shadow-md shadow-offset-x-2 shadow-offset-y-2 shadow-blur-2 shadow-color-gray-500 rounded-[10px] ">

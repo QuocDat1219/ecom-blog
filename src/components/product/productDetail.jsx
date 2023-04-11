@@ -116,9 +116,7 @@ const ProductDetail = () => {
                         <p className="inline-block mb-6 text-xl font-bold text-text-color  ">
                           <span>Nhãn hàng: {brandProduct(product.idBrand)}</span>
                         </p>
-                        <p className="max-w-md text-text-color">
-                          {product.description}
-                        </p>
+                      
                       </div>
 
                       <div className="mb-8 ">

@@ -6,6 +6,7 @@ import img2 from "../images/linkkien.jpg";
 import img3 from "../images/tramsac.jpg";
 import "./Services.css";
 import axios from "axios";
+import imgerror from "../images/imgerror.png"
 
 const Services = () => {
   const [data, setData] = useState([]);
@@ -18,8 +19,6 @@ const Services = () => {
         setData(blog);
 
     });
-  
-
     
   }, []);
 
@@ -71,7 +70,7 @@ const Services = () => {
                 <div class="w-full md:w-1/3 px-4 mb-8 md:mb-0 ">
                   <div class="relative h-0 pb-[100%] mb-4">
                     <img
-                      src={val.imageThumbnail}
+                      src={val.imageThumbnail? val.imageThumbnail.secure_url : imgerror}
                       alt="Item 3"
                       class="absolute inset-0 w-full h-full object-cover rounded-[20px] shadow"
                     />

@@ -12,7 +12,7 @@ const FeedBack = ({ idproduct }) => {
     const [noidung, setnoidung] = useState("");
     const handleStarClick = (starIndex) => {
         setSelectedStars(starIndex + 1);
-        console.log(selectedStars);
+
     };
     var checkMail =
         /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -36,7 +36,7 @@ const FeedBack = ({ idproduct }) => {
             usename: name,
             idproduct: idproduct
         }).then((data) => {
-            console.log(data);
+           
             if (data.data.status) {
                 toast.success("Gửi thành công - Cảm ơn bạn đã gửi đánh giá")
             } else

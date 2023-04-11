@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { tpost } from "../data/Data";
 import "./Tpost.css";
 import axios from "axios";
-import moment from "moment";
+import imgerror from "../images/imgerror.png"
 const Tpost = () => {
   const [data, setData] = useState([]);
   const [dataCate, setDataCate] = useState([]);
@@ -34,7 +33,7 @@ const Tpost = () => {
             <a href={`blogdetail/${val.slug}`}>
               <div className="box flexSB">
                 <div className="img">
-                  <img src={val.imageThumbnail} alt="" />
+                  <img src={val.imageThumbnail ? val.imageThumbnail.secure_url : imgerror} alt="" />
                 </div>
                 <div className="text">
                   <h1 className="title">{val.title.slice(0, 40)}...</h1>
