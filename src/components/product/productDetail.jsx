@@ -154,9 +154,9 @@ const ProductDetail = () => {
                           <button className="p-1 mb-2 mr-3 bg-color-button">
                             <FaFacebookF className="w-6 h-6 text-text-color" />
                           </button>
-                          <button className="p-1 mb-2 mr-3 bg-color-button">
+                          {/* <button className="p-1 mb-2 mr-3 bg-color-button">
                             <FaTwitter className="w-6 h-6 text-text-color" />
-                          </button>
+                          </button> */}
                           <button className="p-1 mb-2 mr-3 bg-color-button">
                             <HiOutlineMail className="w-6 h-6 text-text-color" />
                           </button>
