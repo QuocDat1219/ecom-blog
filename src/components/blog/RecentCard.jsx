@@ -22,7 +22,6 @@ const RecentCard = ({ dataBlog }) => {
         )
       );
       if (blog) setData(blog);
-      console.log(editorContent);
     });
     axios("https://ecom-oto.vercel.app/api/blogcategory/").then((response) => {
       const blogcate = response.data;
@@ -46,11 +45,11 @@ const RecentCard = ({ dataBlog }) => {
         dataFiter.length != 0 ? (
           <div className="content grid3 mtop md:grid-cols-2 lg:grid-cols-3 sm:grid-cols-2 ">
             {dataBlog.map((val, index) => (
-              <Link to={`blogdetail/${val.slug}`}>
+              <Link href={`blogdetail/${val.slug}`}>
                 <div className="recentCard bg-color-card" key={index}>
                   <div className="RecentC_img">
                     <img
-                      src={val.imageThumbnail.secure_url}
+                      src={val.imageThumbnail}
                       className="rounded-md"
                       alt=""
                     />
@@ -71,7 +70,7 @@ const RecentCard = ({ dataBlog }) => {
                     <div className="is-divider "></div>
                     <Link to={`blogdetail/${val.slug}`}>
                       <span className="p_location text-text-color hover:text-color-title">
-                        {val.description.slice(0, 20)}...
+                       Xem thêm...
                       </span>
                     </Link>
                   </div>
@@ -108,13 +107,7 @@ const RecentCard = ({ dataBlog }) => {
 
                     <span
                       className="p_location text-text-color hover:text-color-title"
-                      dangerouslySetInnerHTML={{
-                        __html:
-                          draftToHtml(
-                            convertToRaw(editorContent.getCurrentContent())
-                          ).slice(0, 40) + "...",
-                      }}
-                    ></span>
+                    >Xem thêm...</span>
                   </div>
                 </div>
               </Link>

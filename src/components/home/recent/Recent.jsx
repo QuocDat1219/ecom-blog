@@ -173,7 +173,7 @@ const Recent = ({ titleprodcut1, titleprodcut2 }) => {
                 <div className="flex flex-col justify-center items-center">
                   <img
                     className="w-[100px] h-[70px] "
-                    src="	https://everev.vn/wp-content/uploads/2022/11/AC-500-%C3%97-350-px.png"
+                    src="https://everev.vn/wp-content/uploads/2022/11/AC-500-×-350-px-1.png"
                     alt=""
                   />
                   <p className="text-2xl font-bold">Các hệ thống sạc ô tô AC</p>
