@@ -83,7 +83,7 @@ const ProductDetail = () => {
   useEffect(() => {
     const getInfoweb = async () => {
       await axios
-        .get("https://ecom-oto.vercel.app/api/info/")
+        .get(`${process.env.REACT_APP_API_URL}info/`)
         .then((response) => {
           setZalo(response.data[0].zalo);
           setfb(response.data[0].facebook);
