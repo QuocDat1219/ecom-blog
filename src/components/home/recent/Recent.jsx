@@ -76,7 +76,7 @@ const Recent = ({ titleprodcut1, titleprodcut2 }) => {
   useEffect(() => {
     const calldata1 = async () => {
       await axios
-        .get("https://ecom-oto.vercel.app/api/category/")
+        .get(`${process.env.REACT_APP_API_URL}category/`)
         .then((response) => {
           const data = response.data.category;
           if (data) setCategory(data);

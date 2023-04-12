@@ -17,7 +17,7 @@ const Services = () => {
   const [imageTitle, setimageTitle] = useState("");
   const [imgbody2, setimgbody2] = useState("");
   useEffect(() => {
-    axios("https://ecom-oto.vercel.app/api/blog/").then((response) => {
+    axios(`${process.env.REACT_APP_API_URL}blog/`).then((response) => {
       const blog = response.data;
       if (blog) setData(blog);
     });
@@ -25,7 +25,7 @@ const Services = () => {
 
   useEffect(() => {
     axios
-      .get("https://ecom-oto.vercel.app/api/company-service/")
+      .get(`${process.env.REACT_APP_API_URL}company-service/`)
       .then((response) => {
         setimgeHeader(response.data[0].imgheader.secure_url);
         settitleH(response.data[0].titleheader);

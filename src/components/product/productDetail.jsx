@@ -35,7 +35,7 @@ const ProductDetail = () => {
   useEffect(() => {
     const calldata = async () => {
       await axios
-        .get(`https://ecom-oto.vercel.app/api/products/getall`)
+        .get(`${process.env.REACT_APP_API_URL}products/getall`)
         .then((response) => {
           const pro = response.data.products;
           setData(pro);
@@ -44,14 +44,14 @@ const ProductDetail = () => {
 
     const calldata2 = async () => {
       await axios
-        .get("https://ecom-oto.vercel.app/api/category/")
+        .get(`${process.env.REACT_APP_API_URL}category/`)
         .then((response) => {
           setDataCate(response.data.category);
         });
     };
     const calldata3 = async () => {
       await axios
-        .get("https://ecom-oto.vercel.app/api/brand/")
+        .get(`${process.env.REACT_APP_API_URL}brand/`)
         .then((response) => {
           const data = response.data;
           setBrands(data);

@@ -42,7 +42,7 @@ const Header = () => {
   useEffect(() => {
     const getInfoweb = async () => {
       await axios
-        .get("https://ecom-oto.vercel.app/api/info/")
+        .get(`${process.env.REACT_APP_API_URL}info/`)
         .then((response) => {
           setInfo(response.data);
         });
@@ -52,7 +52,7 @@ const Header = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      await axios("https://ecom-oto.vercel.app/api/categorycontainer/").then(
+      await axios(`${process.env.REACT_APP_API_URL}categorycontainer/`).then(
         (response) => {
           const dataRPs = response.data;
 

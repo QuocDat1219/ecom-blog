@@ -8,12 +8,12 @@ const Tpost = () => {
   const [dataCate, setDataCate] = useState([]);
 
   useEffect(() => {
-    axios("https://ecom-oto.vercel.app/api/blog/").then((response) => {
+    axios(`${process.env.REACT_APP_API_URL}blog/`).then((response) => {
       const blog = response.data;
       setData(blog);
       console.log(blog);
     });
-    axios("https://ecom-oto.vercel.app/api/blogcategory/").then((response) => {
+    axios(`${process.env.REACT_APP_API_URL}blogcategory/`).then((response) => {
       const blogcate = response.data;
       setDataCate(blogcate);
     });

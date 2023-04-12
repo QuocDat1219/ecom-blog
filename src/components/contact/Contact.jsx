@@ -29,7 +29,7 @@ const Contact = () => {
       return;
     }
     await axios
-      .post("http://localhost:5000/api/contact/", {
+      .post(`${process.env.REACT_APP_API_URL}contact/`, {
         name: name,
         email,
         email,
@@ -52,7 +52,7 @@ const Contact = () => {
   useEffect(() => {
     const getInfoweb = async () => {
       await axios
-        .get("https://ecom-oto.vercel.app/api/info/")
+        .get(`${process.env.REACT_APP_API_URL}info/`)
         .then((response) => {
           setInfo(response.data);
         });
