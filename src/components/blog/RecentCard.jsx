@@ -22,6 +22,7 @@ const RecentCard = ({ dataBlog }) => {
         )
       );
       if (blog) setData(blog);
+      console.log(editorContent);
     });
     axios("https://ecom-oto.vercel.app/api/blogcategory/").then((response) => {
       const blogcate = response.data;
@@ -45,11 +46,11 @@ const RecentCard = ({ dataBlog }) => {
         dataFiter.length != 0 ? (
           <div className="content grid3 mtop md:grid-cols-2 lg:grid-cols-3 sm:grid-cols-2 ">
             {dataBlog.map((val, index) => (
-              <Link href={`blogdetail/${val.slug}`}>
+              <Link to={`blogdetail/${val.slug}`}>
                 <div className="recentCard bg-color-card" key={index}>
                   <div className="RecentC_img">
                     <img
-                      src={val.imageThumbnail}
+                      src={val.imageThumbnail.secure_url}
                       className="rounded-md"
                       alt=""
                     />

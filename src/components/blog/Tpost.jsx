@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Tpost.css";
 import axios from "axios";
 import imgerror from "../images/imgerror.png"
+import { Link } from "react-router-dom";
 const Tpost = () => {
   const [data, setData] = useState([]);
   const [dataCate, setDataCate] = useState([]);
@@ -30,7 +31,7 @@ const Tpost = () => {
       <section className="tpost">
         {data.map((val) => {
           return (
-            <a href={`blogdetail/${val.slug}`}>
+            <Link to={`../blogdetail/${val.slug}`}>
               <div className="box flexSB">
                 <div className="img">
                   <img src={val.imageThumbnail ? val.imageThumbnail.secure_url : imgerror} alt="" />
@@ -40,7 +41,7 @@ const Tpost = () => {
                   {/* <span>a year ago</span> */}
                 </div>
               </div>
-            </a>
+            </Link>
           );
         }).slice(-5)}
       </section>

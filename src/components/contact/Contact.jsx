@@ -64,7 +64,7 @@ const Contact = () => {
       <section className="contact mb">
         <div className="containers ">
           <div className="shadow mt-4 mb-4 rounded-md bg-color-card overflow-auto">
-            <h4 className="lg:text-left text-[40px] font-bold text-color-title">
+            <h4 className="lg:text-left text-[40px] font-bold text-color-title pl-3">
               Vị trí
             </h4>{" "}
             <div className="flex flex-wrap p-4 ">

@@ -25,8 +25,7 @@ const ProductDetail = () => {
   const [dataCate, setDataCate] = useState([]);
   const [product, setProduct] = useState(null);
   const [brands, setBrands] = useState([]);
-  const [info, setInfo] = useState([]);
-
+  const [zalo, setZalo] = useState([]);
   const onSlide = (currentIndex) => {
     setCurrentIndex(currentIndex);
   };
@@ -84,7 +83,7 @@ const ProductDetail = () => {
       await axios
         .get("https://ecom-oto.vercel.app/api/info/")
         .then((response) => {
-          setInfo(response.data);
+          setZalo(response.data[0].zalo);
         });
     };
     getInfoweb();
@@ -138,7 +137,7 @@ const ProductDetail = () => {
                       <div className="mb-8 ">
                         <div>
                           <div className="flex flex-wrap -mb-2">
-                            <a href={`https://zalo.me/${info[0].zalo}`}>
+                            <a href={`https://zalo.me/${zalo}`}>
                               <button className="px-4 py-2 mb-2 mr-4 font-semibold border rounded-md hover:border-blue-400 hover:text-black bg-color-button text-text-color">
                                 Zalo
                               </button>
@@ -153,9 +152,6 @@ const ProductDetail = () => {
                         <div className="flex flex-wrap -mx-2 -mb-2">
                           <button className="p-1 mb-2 mr-3 bg-color-button">
                             <FaFacebookF className="w-6 h-6 text-text-color" />
-                          </button>
-                          <button className="p-1 mb-2 mr-3 bg-color-button">
-                            <FaTwitter className="w-6 h-6 text-text-color" />
                           </button>
                           <button className="p-1 mb-2 mr-3 bg-color-button">
                             <HiOutlineMail className="w-6 h-6 text-text-color" />

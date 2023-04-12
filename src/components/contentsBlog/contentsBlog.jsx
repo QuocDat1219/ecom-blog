@@ -14,21 +14,23 @@ import { EditorState, convertToRaw, convertFromRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
 
 const ContentsBlog = () => {
-  const { id } = useParams();
+  const { id} = useParams();
   const [data, setData] = useState([]);
   const [editorContent, setEditorContent] = useState(EditorState.createEmpty());
 
   useEffect(() => {
+    console.log(id);
     const calldata = async () => {
       await axios.get(`https://ecom-oto.vercel.app/api/blog/blogpage?slugs=${id}`).then((response) => {
         const blog = response.data;
+        console.log(blog);
         setData(blog[0]);
         setEditorContent(EditorState.createWithContent(convertFromRaw(JSON.parse(blog[0].description))));
 
       });
     }
     calldata();
-  }, [])
+  }, [id])
 
 
 
