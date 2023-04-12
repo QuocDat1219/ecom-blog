@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Footer.css";
-import logo from "../../images/logomoi.png";
+import {Link} from "react-router-dom";
 import axios from "axios";
 const Footer = () => {
   const [info, setInfo] = useState([]);
@@ -23,7 +23,9 @@ const Footer = () => {
           <div className="footer-content grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="company-info md:mr-8 text-center">
               <div className="w-[80px] h-[80px] ml-auto mr-auto sm:w-[250px] sm:h-[250px] md:w-[100px] md:h-[100px] xl:w-[150px] xl:h-[150px]">
+                <Link to="/">
                 <img src={info[0].logo.secure_url} alt="" />
+                </Link>
               </div>
 
               <span>{info[0].slogan}</span>
