@@ -25,33 +25,37 @@ const ProductDetail = () => {
   const [dataCate, setDataCate] = useState([]);
   const [product, setProduct] = useState(null);
   const [brands, setBrands] = useState([]);
+  const [info, setInfo] = useState([]);
+
   const onSlide = (currentIndex) => {
     setCurrentIndex(currentIndex);
   };
 
   useEffect(() => {
-
     const calldata = async () => {
-      await axios.get(`https://ecom-oto.vercel.app/api/products/getall`).then((response) => {
-        const pro = response.data.products;
-        setData(pro);
-      });
-    }
+      await axios
+        .get(`https://ecom-oto.vercel.app/api/products/getall`)
+        .then((response) => {
+          const pro = response.data.products;
+          setData(pro);
+        });
+    };
 
     const calldata2 = async () => {
-      await axios.get("https://ecom-oto.vercel.app/api/category/").then((response) => {
-        setDataCate(response.data.category);
-      })
-    }
+      await axios
+        .get("https://ecom-oto.vercel.app/api/category/")
+        .then((response) => {
+          setDataCate(response.data.category);
+        });
+    };
     const calldata3 = async () => {
-      await axios.get(
-        "https://ecom-oto.vercel.app/api/brand/"
-      ).then((response) => {
-        const data = response.data;
-        setBrands(data);
-      })
-    }
-    
+      await axios
+        .get("https://ecom-oto.vercel.app/api/brand/")
+        .then((response) => {
+          const data = response.data;
+          setBrands(data);
+        });
+    };
 
     calldata();
     calldata2();
@@ -66,16 +70,26 @@ const ProductDetail = () => {
   function categoryProduct(item) {
     const categoryProduct = dataCate.find((category) => category._id === item);
 
-    if (categoryProduct)
-      return categoryProduct.name;
-  };
+    if (categoryProduct) return categoryProduct.name;
+  }
 
   function brandProduct(item) {
     const brandProduct = brands.find((brand) => brand._id === item);
 
-    if (brandProduct)
-      return brandProduct.title;
-  };
+    if (brandProduct) return brandProduct.title;
+  }
+
+  useEffect(() => {
+    const getInfoweb = async () => {
+      await axios
+        .get("https://ecom-oto.vercel.app/api/info/")
+        .then((response) => {
+          setInfo(response.data);
+        });
+    };
+    getInfoweb();
+  }, []);
+
   return (
     <div>
       <>
@@ -94,7 +108,6 @@ const ProductDetail = () => {
                       <ImageGallery
                         loading={"lazy"}
                         thumbnailHeight={50}
-
                         items={product.imagesDetail}
                         showFullscreenButton={true}
                         useBrowserFullscreen={true}
@@ -110,19 +123,22 @@ const ProductDetail = () => {
                           {product.name}
                         </h2>
                         <p className="inline-block mb-6 text-xl font-bold text-text-color  ">
-                          <span>Danh mục: {categoryProduct(product.idCategory)}</span>
+                          <span>
+                            Danh mục: {categoryProduct(product.idCategory)}
+                          </span>
                         </p>
                         <br />
                         <p className="inline-block mb-6 text-xl font-bold text-text-color  ">
-                          <span>Nhãn hàng: {brandProduct(product.idBrand)}</span>
+                          <span>
+                            Nhãn hàng: {brandProduct(product.idBrand)}
+                          </span>
                         </p>
-                      
                       </div>
 
                       <div className="mb-8 ">
                         <div>
                           <div className="flex flex-wrap -mb-2">
-                            <a href="">
+                            <a href={`https://zalo.me/${info[0].zalo}`}>
                               <button className="px-4 py-2 mb-2 mr-4 font-semibold border rounded-md hover:border-blue-400 hover:text-black bg-color-button text-text-color">
                                 Zalo
                               </button>
@@ -147,15 +163,14 @@ const ProductDetail = () => {
                         </div>
                       </div>
                     </div>
-
                   </div>
                   <div className="px-6 pb-6 mt-6 border-t w-[100%] border-gray-300  ">
-                    <Tabs value="dashboard" >
+                    <Tabs value="dashboard">
                       <TabsHeader>
-                        <Tab value={"mota"} >
+                        <Tab value={"mota"}>
                           <div className="flex items-center gap-2">Mô tả</div>
                         </Tab>
-                        <Tab value={"danhgia"} >
+                        <Tab value={"danhgia"}>
                           <div className="flex items-center gap-2">
                             Đánh giá
                           </div>
@@ -168,8 +183,8 @@ const ProductDetail = () => {
                       </TabsBody>
                       <TabsBody>
                         <TabPanel value={"danhgia"} className="">
-                          <ShowFeedBack idproductfeedback={product._id}/>
-                          <FeedBack idproduct={product._id}/>
+                          <ShowFeedBack idproductfeedback={product._id} />
+                          <FeedBack idproduct={product._id} />
                         </TabPanel>
                       </TabsBody>
                     </Tabs>

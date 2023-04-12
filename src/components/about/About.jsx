@@ -227,9 +227,9 @@ const About = () => {
               )}
             </div>
             <div class="image-container">
-              <img src={imgAb} />
+              <img src={item.imgstartupstory1.secure_url} />
               <div class="image-container-two">
-                <img src={imgAb} />
+                <img src={item.imgstartupstory2.secure_url} />
               </div>
             </div>
           </div>
