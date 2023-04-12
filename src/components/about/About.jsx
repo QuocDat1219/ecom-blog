@@ -27,7 +27,7 @@ const About = () => {
 
   useEffect(() => {
     axios
-      .get("https://ecom-oto.vercel.app/api/about-us/")
+      .get(`${process.env.REACT_APP_API_URL}about-us/`)
       .then((response) => {
         setDataABS(response.data);
       })

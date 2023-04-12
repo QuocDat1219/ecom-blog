@@ -14,7 +14,7 @@ const RecentCard = ({ dataBlog }) => {
   const [editorContent, setEditorContent] = useState(EditorState.createEmpty());
 
   useEffect(() => {
-    axios("https://ecom-oto.vercel.app/api/blog/").then((response) => {
+    axios(`${process.env.REACT_APP_API_URL}blog/`).then((response) => {
       const blog = response.data;
       setEditorContent(
         EditorState.createWithContent(
@@ -23,7 +23,7 @@ const RecentCard = ({ dataBlog }) => {
       );
       if (blog) setData(blog);
     });
-    axios("https://ecom-oto.vercel.app/api/blogcategory/").then((response) => {
+    axios(`${process.env.REACT_APP_API_URL}blogcategory/`).then((response) => {
       const blogcate = response.data;
       if (blogcate) setDataCate(blogcate);
     });
@@ -70,7 +70,7 @@ const RecentCard = ({ dataBlog }) => {
                     <div className="is-divider "></div>
                     <Link to={`blogdetail/${val.slug}`}>
                       <span className="p_location text-text-color hover:text-color-title">
-                       Xem thêm...
+                        Xem thêm...
                       </span>
                     </Link>
                   </div>
@@ -105,9 +105,9 @@ const RecentCard = ({ dataBlog }) => {
                     </h4>
                     <div className="is-divider "></div>
 
-                    <span
-                      className="p_location text-text-color hover:text-color-title"
-                    >Xem thêm...</span>
+                    <span className="p_location text-text-color hover:text-color-title">
+                      Xem thêm...
+                    </span>
                   </div>
                 </div>
               </Link>

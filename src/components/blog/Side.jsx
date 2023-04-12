@@ -4,19 +4,18 @@ import Heading from "./Heading";
 import Tpost from "./Tpost";
 import axios from "axios";
 
-
-const Side = ({setDataBlog}) => {
+const Side = ({ setDataBlog }) => {
   const [keyWord, setKeyWord] = useState();
   useEffect(() => {
     const callapi = async () => {
-      await axios.get(`https://ecom-oto.vercel.app/api/blog/search?keyword=${keyWord}`).then((response) => {
-        const data = response.data
-      })
-    }
+      await axios
+        .get(`https://ecom-oto.vercel.app/api/blog/search?keyword=${keyWord}`)
+        .then((response) => {
+          const data = response.data;
+        });
+    };
     callapi();
-
-  }, [keyWord])
-
+  }, [keyWord]);
 
   return (
     <>
@@ -24,7 +23,6 @@ const Side = ({setDataBlog}) => {
         <div className="grid-row">
           <Heading title="Tìm kiếm" />
           <section className="subscribe">
-
             <div className="flex items-center">
               <div>
                 <div className="px-4 sm:px-6 lg:px-8">
@@ -39,13 +37,12 @@ const Side = ({setDataBlog}) => {
                 </div>
               </div>
             </div>
-
           </section>
         </div>
         <div className="grid-row">
           <div>
-            <Heading title="Bài viết mới"/>
-            <Tpost/>
+            <Heading title="Bài viết mới" />
+            <Tpost />
           </div>
         </div>
       </div>

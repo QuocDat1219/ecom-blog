@@ -10,23 +10,22 @@ const Featured = () => {
   const [data, setData] = useState([]);
   const [dataCate, setDataCate] = useState([]);
 
-
   useEffect(() => {
     const calldata3 = async () => {
-      axios.get("https://ecom-oto.vercel.app/api/blog/").then((response) => {
+      axios.get(`${process.env.REACT_APP_API_URL}blog/`).then((response) => {
         const blog = response.data;
-        if (blog)
-          setData(blog);
+        if (blog) setData(blog);
       });
-    }
+    };
 
     const calldata4 = async () => {
-      axios.get("https://ecom-oto.vercel.app/api/blogcategory/").then((response) => {
-        const blogcate = response.data;
-        if (blogcate)
-          setDataCate(blogcate);
-      });
-    }
+      axios
+        .get(`${process.env.REACT_APP_API_URL}blogcategory/`)
+        .then((response) => {
+          const blogcate = response.data;
+          if (blogcate) setDataCate(blogcate);
+        });
+    };
 
     calldata3();
     calldata4();

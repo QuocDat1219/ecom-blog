@@ -23,28 +23,26 @@ const Filters = (props) => {
   const endPage = Math.min(startPage + visiblePageCount - 1, totalPages);
   const dispatch = useDispatch();
   useEffect(() => {
-
     const calldata = async () => {
-      await axios.get(`https://ecom-oto.vercel.app/api/products/fitercontainerslug?page=${currentPage}&slug=${id}`).then((response) => {
-      
-        setProducts(response.data.products);
-        setTotalPages(response.data.totalPages)
-        const totalpage = response.data.totalPages;
-        if (totalpage) {
-
-          let pageNumbers = [];
-          for (let i = 1; i <= totalpage; i++) {
-            pageNumbers.push(i);
+      await axios
+        .get(
+          `${process.env.REACT_APP_API_URL}products/fitercontainerslug?page=${currentPage}&slug=${id}`
+        )
+        .then((response) => {
+          setProducts(response.data.products);
+          setTotalPages(response.data.totalPages);
+          const totalpage = response.data.totalPages;
+          if (totalpage) {
+            let pageNumbers = [];
+            for (let i = 1; i <= totalpage; i++) {
+              pageNumbers.push(i);
+            }
           }
-
-        }
-
-      })
-    }
+        });
+    };
 
     calldata();
-
-  }, [currentPage, id])
+  }, [currentPage, id]);
 
   useEffect(() => {
     dispatch(getBrandsSlugCTN(id));
@@ -54,14 +52,13 @@ const Filters = (props) => {
   const brandState = useSelector((state) => state.brand.Brands);
   const pCategoryState = useSelector((state) => state.pCategory.pCategories);
 
-
   function categoryProduct(item) {
-    const categoryProduct = pCategoryState.find((category) => category._id === item);
+    const categoryProduct = pCategoryState.find(
+      (category) => category._id === item
+    );
 
-    if (categoryProduct)
-      return categoryProduct.name;
-  };
-
+    if (categoryProduct) return categoryProduct.name;
+  }
 
   const handleClick = (page) => {
     handlePageChange(page);
@@ -78,7 +75,7 @@ const Filters = (props) => {
     if (isChecked) {
       setSelectedCategories([...selectedCategories, category]);
     } else {
-      setSelectedCategories(selectedCategories.filter(c => c !== category));
+      setSelectedCategories(selectedCategories.filter((c) => c !== category));
     }
   };
 
@@ -89,50 +86,52 @@ const Filters = (props) => {
     if (isChecked) {
       setSelectedBrands([...selectedBrands, brand]);
     } else {
-      setSelectedBrands(selectedBrands.filter(b => b !== brand));
+      setSelectedBrands(selectedBrands.filter((b) => b !== brand));
     }
   };
 
-
   const handlefilterButtonClick = () => {
-    const categoryString = selectedCategories.join(',');
-    const brandString = selectedBrands.join(',');
+    const categoryString = selectedCategories.join(",");
+    const brandString = selectedBrands.join(",");
 
     if (categoryString.length == 0 && brandString.length == 0) {
       alert("Hãy chọn danh mục hoặc nhãn hàng cầm lọc");
     } else {
-      axios.get(`https://ecom-oto.vercel.app/api/products/fitercategory?categories=${categoryString}&brands=${brandString}`)
-        .then(response => {
-
-          const datars = response.data.fproducts
+      axios
+        .get(
+          `https://ecom-oto.vercel.app/api/products/fitercategory?categories=${categoryString}&brands=${brandString}`
+        )
+        .then((response) => {
+          const datars = response.data.fproducts;
           if (datars.length !== 0) {
             setProducts(response.data.fproducts);
             setIsFiterCate(true);
-          }
-          else
-            alert("Không tìm thấy sản phẩm lọc");
+          } else alert("Không tìm thấy sản phẩm lọc");
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     }
-
   };
 
   const renderPages = () => {
-    return Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i).map((page) => (
+    return Array.from(
+      { length: endPage - startPage + 1 },
+      (_, i) => startPage + i
+    ).map((page) => (
       <li key={page}>
         <button
-          className={`px-3 py-2 leading-tight text-gray-500 bg-white border ${currentPage === page
-            ? "bg-gray-100 text-gray-700"
-            : "border-gray-300 hover:bg-gray-100 hover:text-gray-700"
-            }`}
+          className={`px-3 py-2 leading-tight text-gray-500 bg-white border ${
+            currentPage === page
+              ? "bg-gray-100 text-gray-700"
+              : "border-gray-300 hover:bg-gray-100 hover:text-gray-700"
+          }`}
           onClick={() => handleClick(page)}
         >
           {page}
         </button>
       </li>
-    ))
+    ));
   };
 
   return (
@@ -149,7 +148,9 @@ const Filters = (props) => {
                 </div>
 
                 <div className=" md:block px-6 pt-4 bg-color-card rounded-md shadow ">
-                  <h3 className="font-semibold mb-2 text-color-title">Danh mục</h3>
+                  <h3 className="font-semibold mb-2 text-color-title">
+                    Danh mục
+                  </h3>
 
                   <ul className="space-y-1">
                     {pCategoryState.map((category) => (
@@ -174,7 +175,9 @@ const Filters = (props) => {
                   </ul>
 
                   <hr className="my-4 text-color-basic" />
-                  <h3 className="font-semibold mb-2 text-color-title">Nhãn hàng</h3>
+                  <h3 className="font-semibold mb-2 text-color-title">
+                    Nhãn hàng
+                  </h3>
                   <ul className="space-y-1">
                     {brandState.map((brand) => (
                       <li key={brand._id}>
@@ -198,13 +201,13 @@ const Filters = (props) => {
                   </ul>
                   <hr className="my-1" />
 
-                  <button class="bg-color-button hover:bg-blue-400 text-text-color font-bold py-2 px-4 border border-black rounded my-2 "
+                  <button
+                    class="bg-color-button hover:bg-blue-400 text-text-color font-bold py-2 px-4 border border-black rounded my-2 "
                     onClick={handlefilterButtonClick}
                   >
                     <FontAwesomeIcon icon={faFilter} /> Lọc
                   </button>
                 </div>
-
               </aside>
               <main className="md:w-2/3 lg:w-3/4 w-4/4 px-3">
                 <div className="mt-4 grid gap-y-10 gap-x-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
@@ -215,7 +218,11 @@ const Filters = (props) => {
                     >
                       <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-color-basic group-hover:opacity-75 lg:aspect-none lg:h-50">
                         <img
-                          src={item.imagesDefault ? item.imagesDefault.secure_url : imgerror}
+                          src={
+                            item.imagesDefault
+                              ? item.imagesDefault.secure_url
+                              : imgerror
+                          }
                           className="h-[300px] w-full object-cover object-center group-hover:opacity-75"
                         />
                       </div>
@@ -227,7 +234,10 @@ const Filters = (props) => {
                           </p>
                           <h3 className="text-sm text-text-color text-center">
                             <Link to={`/productdetail/${item._id}`}>
-                              <span aria-hidden="true" className="absolute inset-0" />
+                              <span
+                                aria-hidden="true"
+                                className="absolute inset-0"
+                              />
                               {item.name}
                             </Link>
                           </h3>
@@ -241,22 +251,23 @@ const Filters = (props) => {
                             type="button"
                             className="bg-color-button hover:bg-blue-400 text-text-color font-bold py-2 px-4 text-center mr-2  w-[100%] rounded-none "
                           >
-                            <FontAwesomeIcon icon={faMagnifyingGlass} /> Xem thêm
+                            <FontAwesomeIcon icon={faMagnifyingGlass} /> Xem
+                            thêm
                           </button>
                         </Link>
                       </div>
                     </div>
                   ))}
                 </div>
-
               </main>
             </div>
           </div>
         </section>
       </div>
       <br />
-      {isFiterCate === true ? <div> </div> :
-
+      {isFiterCate === true ? (
+        <div> </div>
+      ) : (
         <div className="containers justify-center flex items-center ">
           <nav aria-label="Page navigation example">
             <ul class="inline-flex -space-x-px ">
@@ -264,10 +275,11 @@ const Filters = (props) => {
                 <button
                   href="#"
                   aria-current="page"
-                  className={`px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border ${currentPage === 1
-                    ? "bg-gray-100 text-gray-700"
-                    : "border-gray-300 hover:bg-gray-100 hover:text-gray-700"
-                    } rounded-l-lg`}
+                  className={`px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border ${
+                    currentPage === 1
+                      ? "bg-gray-100 text-gray-700"
+                      : "border-gray-300 hover:bg-gray-100 hover:text-gray-700"
+                  } rounded-l-lg`}
                   onClick={() => handleClick(currentPage - 1)}
                   disabled={currentPage === 1}
                 >
@@ -278,10 +290,11 @@ const Filters = (props) => {
               <li>
                 <button
                   href="#"
-                  className={`px-3 py-2 leading-tight text-gray-500 bg-white border ${currentPage === totalPages
-                    ? "bg-gray-100 text-gray-700"
-                    : "border-gray-300 hover:bg-gray-100 hover:text-gray-700"
-                    } rounded-r-lg`}
+                  className={`px-3 py-2 leading-tight text-gray-500 bg-white border ${
+                    currentPage === totalPages
+                      ? "bg-gray-100 text-gray-700"
+                      : "border-gray-300 hover:bg-gray-100 hover:text-gray-700"
+                  } rounded-r-lg`}
                   onClick={() => handleClick(currentPage + 1)}
                   disabled={currentPage === totalPages}
                 >
@@ -291,8 +304,7 @@ const Filters = (props) => {
             </ul>
           </nav>
         </div>
-      }
-
+      )}
     </>
   );
 };
