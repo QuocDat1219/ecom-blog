@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getBrandsSlugCTN } from "../../features/brand/brandSlice";
 import { getCategorysSlugCTN } from "../../features/pcategory/pcategorySlice";
 import imgerror from "../images/imgerror.png";
-
+import { toast } from "react-toastify";
 const Filters = (props) => {
   const { id } = useParams();
   const [selectedCategories, setSelectedCategories] = useState([]);
@@ -95,7 +95,7 @@ const Filters = (props) => {
     const brandString = selectedBrands.join(",");
 
     if (categoryString.length == 0 && brandString.length == 0) {
-      alert("Hãy chọn danh mục hoặc nhãn hàng cầm lọc");
+      toast.error("Hãy chọn danh mục hoặc nhãn hàng cầm lọc");
     } else {
       axios
         .get(
@@ -106,7 +106,7 @@ const Filters = (props) => {
           if (datars.length !== 0) {
             setProducts(response.data.fproducts);
             setIsFiterCate(true);
-          } else alert("Không tìm thấy sản phẩm lọc");
+          } else toast.error("Không tìm thấy sản phẩm lọc");
         })
         .catch((error) => {
           console.log(error);

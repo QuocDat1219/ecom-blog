@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import "./StarRating.css";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const FeedBack = ({ idproduct }) => {
   const [selectedStars, setSelectedStars] = useState(0);
