@@ -26,6 +26,8 @@ const ProductDetail = () => {
   const [product, setProduct] = useState(null);
   const [brands, setBrands] = useState([]);
   const [zalo, setZalo] = useState([]);
+  const [fb, setfb] = useState([]);
+  const [gmail, setGmail] = useState([]);
   const onSlide = (currentIndex) => {
     setCurrentIndex(currentIndex);
   };
@@ -84,6 +86,8 @@ const ProductDetail = () => {
         .get("https://ecom-oto.vercel.app/api/info/")
         .then((response) => {
           setZalo(response.data[0].zalo);
+          setfb(response.data[0].facebook);
+          setGmail(response.data[0].gmail);
         });
     };
     getInfoweb();
@@ -150,12 +154,16 @@ const ProductDetail = () => {
                           Liên hệ
                         </h2>
                         <div className="flex flex-wrap -mx-2 -mb-2">
-                          <button className="p-1 mb-2 mr-3 bg-color-button">
-                            <FaFacebookF className="w-6 h-6 text-text-color" />
-                          </button>
-                          <button className="p-1 mb-2 mr-3 bg-color-button">
-                            <HiOutlineMail className="w-6 h-6 text-text-color" />
-                          </button>
+                          <a href={fb}>
+                            <button className="p-1 mb-2 mr-3 bg-color-button">
+                              <FaFacebookF className="w-6 h-6 text-text-color" />
+                            </button>
+                          </a>
+                          <a href={`mailto:${gmail}`}>
+                            <button className="p-1 mb-2 mr-3 bg-color-button">
+                              <HiOutlineMail className="w-6 h-6 text-text-color" />
+                            </button>
+                          </a>
                         </div>
                       </div>
                     </div>
@@ -174,7 +182,11 @@ const ProductDetail = () => {
                       </TabsHeader>
                       <TabsBody>
                         <TabPanel value={"mota"}>
-                          {product.description}
+                          <div
+                            dangerouslySetInnerHTML={{
+                              __html: `${product.description}`,
+                            }}
+                          ></div>
                         </TabPanel>
                       </TabsBody>
                       <TabsBody>

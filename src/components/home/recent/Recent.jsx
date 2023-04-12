@@ -13,12 +13,14 @@ import imgerror from "../../images/imgerror.png";
 import { getProductsAll } from "../../../features/product/productSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-
-
 const Recent = ({ titleprodcut1, titleprodcut2 }) => {
   const [category, setCategory] = useState([]);
   const [defaultImage, setDefaultImage] = useState({});
-
+  const [homeapi, setHomeapi] = useState([]);
+  const [title1, settitle1] = useState([]);
+  const [titel2, settitel2] = useState([]);
+  const [descriptionsanpham1, setdescriptionsanpham1] = useState([]);
+  const [descriptionsanpham2, setdescriptionsanpham2] = useState([]);
   const settings = {
     dots: false,
     infinite: false,
@@ -73,32 +75,42 @@ const Recent = ({ titleprodcut1, titleprodcut2 }) => {
 
   useEffect(() => {
     const calldata1 = async () => {
-      await axios.get(
-        "https://ecom-oto.vercel.app/api/category/"
-      ).then((response) => {
-        const data = response.data.category
-        if (data)
-          setCategory(data)
-      })
-    }
-
-
-
+      await axios
+        .get("https://ecom-oto.vercel.app/api/category/")
+        .then((response) => {
+          const data = response.data.category;
+          if (data) setCategory(data);
+        });
+    };
     calldata1();
-
-
-  }, [])
+  }, []);
 
   function categoryProduct(item) {
-    const categoryProduct = category.find((categorys) => categorys._id === item);
+    const categoryProduct = category.find(
+      (categorys) => categorys._id === item
+    );
 
-    if (categoryProduct)
-      return categoryProduct.name;
-  };
+    if (categoryProduct) return categoryProduct.name;
+  }
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProductsAll());
+  }, []);
+
+  useEffect(() => {
+    const getInfoweb = async () => {
+      await axios
+        .get("https://ecom-oto.vercel.app/api/home/")
+        .then((response) => {
+          setHomeapi(response.data);
+          settitle1(response.data[0].titlesanpham1);
+          setdescriptionsanpham1(response.data[0].descriptionsanpham1);
+          settitel2(response.data[0].titlesanpham2);
+          setdescriptionsanpham2(response.data[0].descriptionsanpham2);
+        });
+    };
+    getInfoweb();
   }, []);
 
   const productState = useSelector((state) => state.product.products);
@@ -107,9 +119,7 @@ const Recent = ({ titleprodcut1, titleprodcut2 }) => {
     <>
       <section className="recent padding">
         <div className="containers ">
-
           <div className="recent-info ">
-
             <div className="mb-2">
               <div className="slider-title pt-5 pb-5 text-center bg-color-button flex justify-center">
                 <span className="text-2xl text-center font-bold text-white">
@@ -127,8 +137,11 @@ const Recent = ({ titleprodcut1, titleprodcut2 }) => {
                         <div className="card-top ">
                           <img
                             className="object-cover "
-                            src={item.imagesDefault ? item.imagesDefault.secure_url : imgerror}
-
+                            src={
+                              item.imagesDefault
+                                ? item.imagesDefault.secure_url
+                                : imgerror
+                            }
                             alt={item.name}
                             onError={handleErrorImage}
                           />
@@ -136,7 +149,9 @@ const Recent = ({ titleprodcut1, titleprodcut2 }) => {
                         <div className="card-bottom flex flex-col items-start justify-center">
                           <span className="category text-3xl">{item.name}</span>
                           <h4 className="mt-5">{item.title}</h4>
-                          <h4 className="mt-4">Danh mục : {categoryProduct(item.idCategory)}</h4>
+                          <h4 className="mt-4">
+                            Danh mục : {categoryProduct(item.idCategory)}
+                          </h4>
                           <h4 className="mt-4">Xem chi tiết</h4>
                           <Link to={`/productdetail/${item._id}`}></Link>
                         </div>
@@ -145,16 +160,18 @@ const Recent = ({ titleprodcut1, titleprodcut2 }) => {
                   ))}
                 </Slider>
                 <div>
-                  <span className="next cursor-pointer" onClick={gotoPrev}></span>
-                  <span className="prew cursor-pointer" onClick={gotoNext}></span>
+                  <span
+                    className="next cursor-pointer"
+                    onClick={gotoPrev}
+                  ></span>
+                  <span
+                    className="prew cursor-pointer"
+                    onClick={gotoNext}
+                  ></span>
                 </div>
               </div>
             </div>
-            <Heading
-              className=""
-              title="Sản phẩm"
-              subtitle={titleprodcut2}
-            />
+            <Heading className="" title="Sản phẩm" subtitle={titleprodcut2} />
             <div className="flex justify-between flex-col md:flex-row  gap-2 mt-10">
               <div className="bg-[#97DEFF]  w-[100%] p-10 flex flex-col justify-center shadow-md shadow-offset-x-2 shadow-offset-y-2 shadow-blur-2 shadow-color-gray-500 rounded-[10px] ">
                 <div className="flex flex-col justify-center items-center ">
@@ -163,10 +180,8 @@ const Recent = ({ titleprodcut1, titleprodcut2 }) => {
                     src="	https://everev.vn/wp-content/uploads/2022/11/AC-500-%C3%97-350-px.png"
                     alt=""
                   />
-                  <p className="text-2xl font-bold">Các hệ thống sạc ô tô AC</p>
-                  <p>
-                    Dòng sản phẩm dành cho gia đình, doanh nghiệp quy mô nhỏ
-                  </p>
+                  <p className="text-2xl font-bold">{title1}</p>
+                  <p>{descriptionsanpham1}</p>
                 </div>
               </div>
               <div className="bg-[#97DEFF] w-[100%]  p-10 flex flex-col justify-center shadow-md shadow-offset-x-2 shadow-offset-y-2 shadow-blur-2 shadow-color-gray-500 rounded-[10px] ">
@@ -176,10 +191,8 @@ const Recent = ({ titleprodcut1, titleprodcut2 }) => {
                     src="	https://everev.vn/wp-content/uploads/2022/11/AC-500-%C3%97-350-px.png"
                     alt=""
                   />
-                  <p className="text-2xl font-bold">Các hệ thống sạc ô tô AC</p>
-                  <p>
-                    Dòng sản phẩm dành cho gia đình, doanh nghiệp quy mô nhỏ
-                  </p>
+                  <p className="text-2xl font-bold">{titel2}</p>
+                  <p>{descriptionsanpham2}</p>
                 </div>
               </div>
             </div>

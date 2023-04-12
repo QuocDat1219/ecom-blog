@@ -67,7 +67,7 @@ const ContentsBlog = () => {
               <div className="pt-10 flex justify-center items-center">
                 <div className="contentBlog_diveder "></div>
               </div>
-              <div className="pt-5 pb-5 flex justify-center items-center">
+              {/* <div className="pt-5 pb-5 flex justify-center items-center">
                 <a className="pr-2" href="https://www.facebook.com/sharer.php?u=https://everev.vn/sac-xe-dien-kia-bang-sac-everev-tai-han-quoc/">
                   <FaFacebook className="hover:text-sky-600 text-gray-400" size={32} />
                 </a>
@@ -83,7 +83,7 @@ const ContentsBlog = () => {
                 <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://everev.vn/sac-xe-dien-kia-bang-sac-everev-tai-han-quoc/&title=S%E1%BA%A1c%20xe%20%C4%91i%E1%BB%87n%20KIA%2C%20Huyndai%20b%E1%BA%B1ng%20s%E1%BA%A1c%20EverEV%20t%E1%BA%A1i%20H%C3%A0n%20Qu%E1%BB%91c">
                   <FaLinkedin className="hover:text-[#0073b1] text-gray-400" size={32} />
                 </a>
-              </div>
+              </div> */}
               <ShowFeedBackBlog propsblogid={data._id} />
               <Comment blogid={data._id} />
             </section>
