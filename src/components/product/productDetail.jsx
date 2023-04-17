@@ -28,6 +28,7 @@ const ProductDetail = () => {
   const [zalo, setZalo] = useState([]);
   const [fb, setfb] = useState([]);
   const [gmail, setGmail] = useState([]);
+  const [priceformat, setPrice] = useState(0);
   const onSlide = (currentIndex) => {
     setCurrentIndex(currentIndex);
   };
@@ -142,6 +143,13 @@ const ProductDetail = () => {
                         <p className="inline-block mb-6 text-xl font-bold text-text-color  ">
                           <span>
                             Nhãn hàng: {brandProduct(product.idBrand)}
+                          </span>
+                        </p>
+                        <br />
+                        <p className="inline-block mb-6 text-xl font-bold text-text-color  ">
+                          <span>Giá: </span>
+                          <span className="text-red-600">
+                           {new Intl.NumberFormat({ style: 'currency', currency: 'VND' }).format(product.price)} VNĐ
                           </span>
                         </p>
                       </div>
