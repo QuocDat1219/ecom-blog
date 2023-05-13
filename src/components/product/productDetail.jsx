@@ -17,6 +17,9 @@ import {
   TabPanel,
 } from "@material-tailwind/react";
 import { Square3Stack3DIcon, UserCircleIcon } from "@heroicons/react/24/solid";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import { addItem } from "../../redux/action/cartActions";
 
 const ProductDetail = () => {
   const id = useParams();
@@ -29,6 +32,8 @@ const ProductDetail = () => {
   const [fb, setfb] = useState([]);
   const [gmail, setGmail] = useState([]);
   const [priceformat, setPrice] = useState(0);
+  const [quantity, setQuantity] = useState(1);
+  const dispatch = useDispatch();
   const onSlide = (currentIndex) => {
     setCurrentIndex(currentIndex);
   };
@@ -96,11 +101,19 @@ const ProductDetail = () => {
 
   const getDescription = (item) => {
     if (item) {
-        return {
-            __html: item.replace(/\r?\n/g, ''),
-        };
+      return {
+        __html: item.replace(/\r?\n/g, ""),
+      };
     }
-};
+  };
+
+  const handleAddToCart = (e) => {
+ 
+    if (quantity && id.id) {
+      dispatch(addItem(id.id, quantity));
+      toast.success("Sản phẩm đã được thểm vào giỏ hàng");
+    }
+  };
 
   return (
     <div>
@@ -149,19 +162,39 @@ const ProductDetail = () => {
                         <p className="inline-block mb-6 text-xl font-bold text-text-color  ">
                           <span>Giá: </span>
                           <span className="text-red-600">
-                           {new Intl.NumberFormat({ style: 'currency', currency: 'VND' }).format(product.price)} VNĐ
+                            {new Intl.NumberFormat({
+                              style: "currency",
+                              currency: "VND",
+                            }).format(product.price)}{" "}
+                            VNĐ
                           </span>
                         </p>
                       </div>
-
+                      <select
+                        data-te-select-init
+                        value={quantity}
+                        onChange={(e) => setQuantity(e.target.value)}
+                      >
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="8">9</option>
+                        <option value="8">10</option>
+                      </select>
                       <div className="mb-8 ">
                         <div>
                           <div className="flex flex-wrap -mb-2">
-                            <a href={`https://zalo.me/${zalo}`}>
-                              <button className="px-4 py-2 mb-2 mr-4 font-semibold border rounded-md hover:border-blue-400 hover:text-black bg-color-button text-text-color">
-                                Zalo
-                              </button>
-                            </a>
+                            <button
+                              onClick={handleAddToCart}
+                              className="px-4 py-2 mb-2 mr-4 font-semibold border rounded-md hover:border-blue-400 hover:text-black bg-color-button text-text-color"
+                            >
+                              Thêm vào giỏ hàng
+                            </button>
                           </div>
                         </div>
                       </div>
@@ -187,37 +220,40 @@ const ProductDetail = () => {
                   <div className="px-6 pb-6 mt-6 border-t w-[100%] border-gray-300 ">
                     <Tabs value="mota">
                       <TabsHeader>
-                        <Tab value="mota">Mô tả
-                        </Tab>
+                        <Tab value="mota">Mô tả</Tab>
                         <Tab value="danhgia" className="z-30">
-                            Đánh giá
+                          Đánh giá
                         </Tab>
                       </TabsHeader>
-                        <TabsBody animate={{
+                      <TabsBody
+                        animate={{
                           initial: { y: 250 },
                           mount: { y: 0 },
                           unmount: { y: 250 },
-                        }}>
-                          <TabPanel value="mota">
-                            <span>Mô tả</span>
-                            <br />
-                            <div
-                              dangerouslySetInnerHTML={{
-                                __html: `${product.description}`,
-                              }}
-                            ></div>
-                          </TabPanel >
-                        </TabsBody >
-                        <TabsBody animate={{
+                        }}
+                      >
+                        <TabPanel value="mota">
+                          <span>Mô tả</span>
+                          <br />
+                          <div
+                            dangerouslySetInnerHTML={{
+                              __html: `${product.description}`,
+                            }}
+                          ></div>
+                        </TabPanel>
+                      </TabsBody>
+                      <TabsBody
+                        animate={{
                           initial: { y: 250 },
                           mount: { y: 0 },
                           unmount: { y: 250 },
-                        }}>
-                          <TabPanel value="danhgia" >
-                            <ShowFeedBack idproductfeedback={product._id} />
-                            <FeedBack idproduct={product._id} />
-                          </TabPanel>
-                        </TabsBody>
+                        }}
+                      >
+                        <TabPanel value="danhgia">
+                          <ShowFeedBack idproductfeedback={product._id} />
+                          <FeedBack idproduct={product._id} />
+                        </TabPanel>
+                      </TabsBody>
                     </Tabs>
                   </div>
                 </div>

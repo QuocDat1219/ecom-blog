@@ -12,6 +12,7 @@ import AllProduct from "../product/allproduct";
 import ProductDetail from "../product/productDetail";
 import ContentsBlog from "../contentsBlog/contentsBlog";
 import Location from "../home/location/Location";
+import Carts from "../Cart/Carts";
 import { ToastContainer } from 'react-toastify';
 const Pages = () => {
   return (
@@ -29,6 +30,7 @@ const Pages = () => {
           <Route exact path="/blogdetail/:id" component={ContentsBlog} />
           <Route exact path="/productdetail/:id" component={ProductDetail} />
           <Route exact path="/productdetail/" component={Home} />
+          <Route exact path="/cart" component={Carts} />
           <Route exact path="/:id" component={AllProduct} />
         </Switch>
         <Location />

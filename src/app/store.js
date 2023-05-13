@@ -5,6 +5,7 @@ import pCategoryReducer from "../features/pcategory/pcategorySlice";
 import bCategoryReducer from "../features/bcategory/bcategorySlice";
 import blogReducer from "../features/blogs/blogSlice";
 import catecontainerReducer from "../features/catecontainer/catecontainerSlice";
+import { cartReducer } from '../redux/reducers/cartReducers';
 
 export const store = configureStore({
   reducer: {
@@ -15,5 +16,7 @@ export const store = configureStore({
     blogs: blogReducer,
     CateContainer: catecontainerReducer,
     brand: brandReducer,
+    cart: cartReducer,
+
   },
 });

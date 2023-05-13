@@ -93,16 +93,16 @@ const Header = () => {
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                   <div className="flex flex-shrink-0 items-center bg-color-nav rounded-md ">
                     <Link to="/">
-                    <img
-                      className="block h-[60px] w-auto lg:hidden"
-                      src={info[0].logo.secure_url}
-                      alt="Your Company"
-                    />
-                    <img
-                      className="hidden h-[60px] w-auto lg:block"
-                      src={info[0].logo.secure_url}
-                      alt="Your Company"
-                    />
+                      <img
+                        className="block h-[60px] w-auto lg:hidden"
+                        src={info[0].logo.secure_url}
+                        alt="Your Company"
+                      />
+                      <img
+                        className="hidden h-[60px] w-auto lg:block"
+                        src={info[0].logo.secure_url}
+                        alt="Your Company"
+                      />
                     </Link>
                   </div>
                 </div>
