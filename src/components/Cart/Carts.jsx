@@ -7,7 +7,7 @@ import axios from "axios";
 import { addItem, removeItem } from "../../redux/action/cartActions";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
-
+import emty from "../images/empty-cart.png";
 // import { useNavigate } from "react-router-dom";
 
 // import { useStateContext } from '../Context/CartContext';
@@ -330,7 +330,9 @@ const Carts = () => {
       </div>
     </>
   ) : (
-    <div>Giỏ hàng rỗng</div>
+    <div className="flex justify-center">
+      <img src={emty} className="h-[600px] w-[800px]" />
+      </div>
   );
 };
 
