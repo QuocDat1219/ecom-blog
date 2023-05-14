@@ -238,7 +238,17 @@ const Filters = (props) => {
                                 aria-hidden="true"
                                 className="absolute inset-0"
                               />
-                              {item.name}
+                              <p>{item.name}</p>
+                              <p className="inline-block mb-6 text-text-color  ">
+                                <span>Giá: </span>
+                                <span className="text-red-600 font-bold">
+                                  {new Intl.NumberFormat({
+                                    style: "currency",
+                                    currency: "VND",
+                                  }).format(item.price)}{" "}
+                                  VNĐ
+                                </span>
+                              </p>
                             </Link>
                           </h3>
                         </div>

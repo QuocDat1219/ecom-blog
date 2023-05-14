@@ -1,136 +1,68 @@
 import React, { Component, useState } from "react";
-import { Link } from "react-router-dom";
 import Background from "./login.jpg";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import { useSelector, useDispatch } from "react-redux";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+import { signup, signupGoogle } from "../../redux/action/auth";
 import PuffLoader from "react-spinners/PuffLoader";
 // import "./button.scss";
+const InitState = {
+  firstname: "",
+  lastname: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+};
 const Register = () => {
-  const [fname, setFname] = useState("");
-  const [lname, setLname] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [userType, setUserType] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const nagivate = useNavigate();
+  const dispatch = useDispatch();
 
   //Biểu thức chính quy
+  const [sForm, setsForm] = useState(InitState);
   var checkMail =
     /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
   var checkPassword =
     /^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-  const handleSubmit = async (e) => {
+
+  const handleChange = (e) =>
+    setsForm({
+      ...sForm,
+      [e.target.name]: e.target.value,
+    });
+
+  function handleOnSubmit(e) {
     e.preventDefault();
-    setIsLoading(true);
-    setUserType("");
-    //Kiểm tra dữ liệu nhập của người dùng
-    if (fname == "" || lname == "" || email == "" || password == "") {
+    if (
+      sForm.firstname == "" ||
+      sForm.lastname == "" ||
+      sForm.email == "" ||
+      sForm.password == "" ||
+      sForm.confirmPassword == "" ||
+      sForm.mobile == ""
+    ) {
       toast.warning("Vui lòng nhập đầy đủ thông tin đăng ký!");
-      setIsLoading(false);
       return;
-    } else if (!checkPassword.test(password) || password.length == "") {
-      toast.warning("Mật khẩu không hợp lệ!");
-      setIsLoading(false);
+    } else if (sForm.password.length < 8) {
+      toast.warning("Độ dài mật khẩu trên 8 kí tự");
       return;
-    } else if (!checkMail.test(email) || email.length == "") {
+    } else if (!checkPassword.test(sForm.password)) {
+      toast.warning(
+        "Mật khẩu phải có chữ hoa, chữ thường số và kí tự đặc biệt"
+      );
+      return;
+    } else if (!checkMail.test(sForm.email) || sForm.email.length == "") {
       toast.warning("Email không hợp lệ!");
-      setIsLoading(false);
       return;
-    } else if (password != confirmPassword) {
-      toast.warning("Mật khẩu và nhập lại mật khẩu không trùng khớp...");
-      setIsLoading(false);
-      return;
+    } else if (sForm.password === sForm.confirmPassword) {
+      console.log(sForm);
+      dispatch(signup(sForm, nagivate));
+    } else {
+      toast.success("Nhập lại mật khẩu không chính xác");
     }
-    //Xử lý đăng ký
-    // toast("Đang xử lý...");
-    await axios
-      .post("https://api-vuon-thong-minh.onrender.com/users/register", {
-        fname: fname,
-        email: email,
-        lname: lname,
-        password: password,
-        userType: userType,
-      })
-      .then((data) => {
-        if (data.data.error == "User Exists") {
-          toast.warning("Email already registered");
-        } else if (data.data.status == "ok") {
-          createData();
-        } else {
-          toast.error("Đăng ký không thành công");
-        }
-      });
-  };
-  const createData = async () => {
-    await axios
-      .post("https://api-vuon-thong-minh.onrender.com/datas/createdata", {
-        email: email,
-        nhietdo: 0,
-        doam: 0,
-        mhsensor: 0,
-        ultrasonic: 0,
-        connect: "disconnect",
-        reset: "0",
-        idtelegram: "",
-        control: [
-          {
-            name: "Control 1",
-            status: 0,
-            digital: "D4",
-          },
-          {
-            name: "Control 2",
-            status: 0,
-            digital: "D7",
-          },
-          {
-            name: "Control 3",
-            status: 0,
-            digital: "D8",
-          },
-        ],
-        sensor: [
-          {
-            name: "Nhiệt độ",
-            status: "0",
-            timeword: "6:00",
-            timeout: "15:00",
-            nofi: "Email",
-            limit: 0,
-          },
-          {
-            name: "Độ ẩm",
-            status: "0",
-            timeword: "6:00",
-            timeout: "15:00",
-            nofi: "Email",
-            limit: 0,
-          },
-          {
-            name: "Ultrasonic",
-            status: "0",
-            timeword: "6:00",
-            timeout: "15:00",
-            nofi: "Email",
-            limit: 0,
-          },
-          {
-            name: "MH",
-            status: "0",
-            timeword: "6:00",
-            timeout: "15:00",
-            nofi: "Email",
-            limit: 0,
-          },
-        ],
-      })
-      .then((data) => {
-        setIsLoading(false);
-        toast.success("Đăng ký thành công");
-        setTimeout((window.location.href = "/login"), 2000);
-      });
-  };
+  }
+
   return (
     <div>
       <div>
@@ -146,37 +78,48 @@ const Register = () => {
           <div class="login">
             <div class="container">
               <h1>
-                Đăng kí tài khoản
+                Đăng ký tài khoản
                 <br />
-                IoT -<span style={{ color: "#07bc0c" }}> Green House</span>
+                <span style={{ color: "#07bc0c" }}>DDYB - Electronic</span>
               </h1>
 
               <div class="login-form">
-                <form action="" onSubmit={handleSubmit}>
+                <form action="">
                   <input
                     type="text"
-                    placeholder="Nhập First name "
-                    onChange={(e) => setFname(e.target.value)}
+                    placeholder="Nhập họ "
+                    name="firstname"
+                    onChange={handleChange}
                   />
                   <input
                     type="text"
-                    placeholder="Nhập Last name"
-                    onChange={(e) => setLname(e.target.value)}
+                    name="lastname"
+                    placeholder="Nhập tên"
+                    onChange={handleChange}
+                  />
+                  <input
+                    type="number"
+                    name="mobile"
+                    placeholder="nhập số điện thoại"
+                    onChange={handleChange}
                   />
                   <input
                     type="email"
+                    name="email"
                     placeholder="E-mail "
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={handleChange}
                   />
                   <input
                     type="password"
+                    name="password"
                     placeholder="Mật khẩu"
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={handleChange}
                   />
                   <input
                     type="password"
+                    name="confirmPassword"
                     placeholder="Nhập lại mật khẩu"
-                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    onChange={handleChange}
                   />
 
                   <div
@@ -195,14 +138,12 @@ const Register = () => {
                     </Link>
                   </div>
 
-                  <button type="submit" disabled={isLoading} className="btn-dn">
-                    {isLoading ? (
-                      <div className="flex justify-center items-center">
-                        <PuffLoader color="#eaeae8" size={40} />
-                      </div>
-                    ) : (
-                      "Đăng ký"
-                    )}
+                  <button
+                    type="submit"
+                    className="btn-dn"
+                    onClick={handleOnSubmit}
+                  >
+                    Đăng ký
                   </button>
                 </form>
               </div>

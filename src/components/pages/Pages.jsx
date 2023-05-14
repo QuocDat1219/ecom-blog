@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../common/header/Header";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "../home/Home";
 import Footer from "../common/footer/Footer";
 import About from "../about/About";
@@ -22,20 +22,22 @@ const Pages = () => {
       <Router>
         <Header />
         <ToastContainer />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/about" component={About} />
-          <Route exact path="/services" component={Services} />
-          <Route exact path="/blog" component={Blog} />
-          <Route exact path="/pricing" component={Pricing} />
-          <Route exact path="/contact" component={Contact} />
-          <Route exact path="/blogdetail/:id" component={ContentsBlog} />
-          <Route exact path="/productdetail/:id" component={ProductDetail} />
-          <Route exact path="/productdetail/" component={Home} />
-          <Route exact path="/cart" component={Carts} />
-          <Route exact path="/:id" component={AllProduct} />
-        </Switch>
-        <Location />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/blogdetail/:id" element={<ContentsBlog />} />
+          <Route path="/productdetail/:id" element={<ProductDetail />} />
+          <Route path="/productdetail/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/cart" element={<Carts />} />
+          <Route path="/:id" element={<AllProduct />} />
+        </Routes>
+        <Location />  
         <Footer />
       </Router>
     </>

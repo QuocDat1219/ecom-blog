@@ -6,7 +6,7 @@ import bCategoryReducer from "../features/bcategory/bcategorySlice";
 import blogReducer from "../features/blogs/blogSlice";
 import catecontainerReducer from "../features/catecontainer/catecontainerSlice";
 import { cartReducer } from '../redux/reducers/cartReducers';
-
+import { loginReducer } from "../redux/reducers/auth";
 export const store = configureStore({
   reducer: {
     product: productReducer,
@@ -17,6 +17,6 @@ export const store = configureStore({
     CateContainer: catecontainerReducer,
     brand: brandReducer,
     cart: cartReducer,
-
+    login: loginReducer,
   },
 });

@@ -204,7 +204,7 @@ const ProductDetail = () => {
                         <option value="9">9</option>
                         <option value="10">10</option>
                       </select>
-                      
+
                       <div className="mb-8 pt-[20px]">
                         <div>
                           <div className="flex flex-wrap -mb-2">
