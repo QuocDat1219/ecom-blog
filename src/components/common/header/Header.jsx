@@ -34,6 +34,14 @@ const Header = () => {
       text: "LIÊN HỆ",
       path: "/contact",
     },
+    {
+      text: "GIỎ HÀNG",
+      path: "/cart",
+    },
+    {
+      text: "ĐĂNG NHẬP",
+      path: "/login",
+    },
   ];
   const [data, setData] = useState([]);
   const [mappeCate, setMappeCate] = useState([]);
@@ -111,20 +119,30 @@ const Header = () => {
                   <div className="hidden sm:ml-6 sm:block md:block">
                     <div className="flex space-x-4 ">
                       {nav.map((list, index) => (
-                        <Link
-                          key={index}
-                          to={list.path}
-                          className={`text-text-color hover:bg-text-nav hover:text-white rounded-md px-3 py-4 text-base font-medium  `}
-                        >
-                          {" "}
-                          {list.text}
-                        </Link>
+                        <>
+                          <Link
+                            key={index}
+                            to={list.path}
+                            className={`text-text-color hover:bg-text-nav hover:text-white rounded-md px-3 py-4 text-base font-medium  `}
+                          >
+                            {" "}
+                            {list.text}
+                          </Link>
+                        </>
                       ))}
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+{/*             
+            <div className="flex flex-1 items-center justify-end sm:items-stretch sm:justify-center sticky md:text-center">
+              <div className="hidden sm:ml-6 sm:block md:block">
+                <div className="flex space-x-4 ">
+                  <button style={{ color: "red" }}>aaaaaaaaaaaaa</button>
+                </div>
+              </div>
+            </div> */}
 
             <Disclosure.Panel className="sm:hidden">
               <div className="space-y-1 px-2 pt-2 pb-3">
