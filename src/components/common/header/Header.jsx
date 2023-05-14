@@ -104,12 +104,10 @@ const Header = () => {
                       <img
                         className="block h-[60px] w-auto lg:hidden"
                         src={info[0].logo.secure_url}
-                        alt="Your Company"
                       />
                       <img
                         className="hidden h-[60px] w-auto lg:block"
                         src={info[0].logo.secure_url}
-                        alt="Your Company"
                       />
                     </Link>
                   </div>

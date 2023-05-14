@@ -45,7 +45,7 @@ const RecentCard = ({ dataBlog }) => {
         dataFiter.length != 0 ? (
           <div className="content grid3 mtop md:grid-cols-2 lg:grid-cols-3 sm:grid-cols-2 ">
             {dataBlog.map((val, index) => (
-              <Link href={`blogdetail/${val.slug}`}>
+              <Link href={`../blogdetail/${val.slug}`}>
                 <div className="recentCard bg-color-card" key={index}>
                   <div className="RecentC_img">
                     <img
@@ -68,7 +68,7 @@ const RecentCard = ({ dataBlog }) => {
                       {val.title.slice(0, 20)}...
                     </h4>
                     <div className="is-divider "></div>
-                    <Link to={`blogdetail/${val.slug}`}>
+                    <Link to={`../blogdetail/${val.slug}`}>
                       <span className="p_location text-text-color hover:text-color-title">
                         Xem thêm...
                       </span>
@@ -81,7 +81,7 @@ const RecentCard = ({ dataBlog }) => {
         ) : (
           <div className="content grid3 mtop md:grid-cols-2 lg:grid-cols-3 sm:grid-cols-2 ">
             {data.map((val, index) => (
-              <Link to={`blogdetail/${val.slug}`}>
+              <Link to={`../blogdetail/${val.slug}`}>
                 <div className="recentCard bg-color-card" key={index}>
                   <div className="RecentC_img">
                     <img

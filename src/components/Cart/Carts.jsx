@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { MdDelete } from "react-icons/md";
 import "./Carts.css";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
@@ -30,8 +30,11 @@ const Carts = () => {
 
   const totalPrice = (price, qty) => {
     const total = price * qty;
-
-    return total;
+    const formattedTotal = total.toLocaleString({
+      style: "currency",
+      currency: "VND",
+    });
+    return formattedTotal;
   };
 
   const calculateTotalPrice = () => {
@@ -131,9 +134,9 @@ const Carts = () => {
                               dispatch(removeItem(item.product));
                               toast.success("Đã xóa sản phẩm");
                             }}
-                            className="hover:text-red-500"
+                            className="text-red-500 text-2xl"
                           >
-                            (Xóa sản phẩm)
+                            <MdDelete />
                           </small>
                         </button>
                       </td>
@@ -148,7 +151,7 @@ const Carts = () => {
                             />
                           </div>
                           <div
-                            class="inline-flex rounded-md shadow-sm"
+                            class="inline-flex rounded-md shadow-sm w-20"
                             role="group"
                           >
                             <button
@@ -159,7 +162,7 @@ const Carts = () => {
                                 );
                                 toast.success("Đã thay đổi số lượng");
                               }}
-                              class="px-3 py-1 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"
+                              className="px-4 py-1 text-xl font-medium text-gray-900 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"
                             >
                               -
                             </button>
@@ -171,7 +174,7 @@ const Carts = () => {
                                 toast.success("Đã thay đổi số lượng");
                               }}
                               type="button"
-                              class="px-3 py-1 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"
+                              className="px-4 py-1 text-xl font-medium text-gray-900 bg-white border border-gray-200 rounded-r-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"
                             >
                               +
                             </button>
@@ -179,13 +182,17 @@ const Carts = () => {
                         </div>
                       </td>
                       <td className="hidden text-right md:table-cell">
-                        <span className="text-sm lg:text-base font-medium">
-                          {item.price}
+                        <span className="text-sm lg:text-base font-medium text-red-500">
+                          {new Intl.NumberFormat({
+                            style: "currency",
+                            currency: "VND",
+                          }).format(item.price)}{" "}
+                          VNĐ
                         </span>
                       </td>
                       <td className="text-right">
-                        <span className="text-sm lg:text-base font-medium">
-                          {totalPrice(item.price, item.qty)}
+                        <span className="text-sm lg:text-base font-medium text-red-500">
+                          {totalPrice(item.price, item.qty)} VNĐ
                         </span>
                       </td>
                     </tr>
@@ -255,7 +262,13 @@ const Carts = () => {
                       Tổng tiền sản phẩm
                     </div>
                     <div className="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-                      {totalPrices}
+                      <span className="text-red-500">
+                        {new Intl.NumberFormat({
+                          style: "currency",
+                          currency: "VND",
+                        }).format(totalPrices)}{" "}
+                        VNĐ
+                      </span>
                     </div>
                   </div>
 
@@ -264,7 +277,13 @@ const Carts = () => {
                       Chi phí vận chuyển
                     </div>
                     <div className="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-                      {shipPrices}
+                      <span className="text-red-500">
+                        {new Intl.NumberFormat({
+                          style: "currency",
+                          currency: "VND",
+                        }).format(shipPrices)}{" "}
+                        VNĐ
+                      </span>
                     </div>
                   </div>
                   {voucherPrices != 0 ? (
@@ -301,7 +320,13 @@ const Carts = () => {
                       Tổng thanh toán
                     </div>
                     <div className="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-                      {total}
+                      <span className="text-red-500">
+                        {new Intl.NumberFormat({
+                          style: "currency",
+                          currency: "VND",
+                        }).format(total)}{" "}
+                        VNĐ
+                      </span>
                     </div>
                   </div>
                   <a href="#">
@@ -331,8 +356,11 @@ const Carts = () => {
     </>
   ) : (
     <div className="flex justify-center">
-      <img src={emty} className="h-[600px] w-[800px] animate-pulse hover:skew-y-3" />
-      </div>
+      <img
+        src={emty}
+        className="h-[600px] w-[800px] animate-pulse hover:skew-y-3"
+      />
+    </div>
   );
 };
 

@@ -7,6 +7,7 @@ import { signin, signinGoogle } from "../../redux/action/auth";
 import PuffLoader from "react-spinners/PuffLoader";
 import { useGoogleLogin } from "@react-oauth/google";
 import imgGoogle from "./image/Google__G__Logo.svg.png";
+import imgFacebook from "./image/Facebook_F_icon.svg.png";
 import axios from "axios";
 import "./login.css";
 import "./button.scss";
@@ -129,6 +130,29 @@ const Login = () => {
     dispatch(signinGoogle(accessToken, navigate));
   }
   const login = useGoogleLogin({ onSuccess: handleGoogleLoginSuccess });
+
+  const loginFb = async (e) => {
+    const accessToken = e.access_token;
+    const typeLogin = "facebook";
+    const callApi = await axios
+      .post("https://ecom-z3we.onrender.com/api/users/login", {
+        accessToken,
+        typeLogin,
+      })
+      .then((result) => {
+        toast.success("Đăng nhập thành công !");
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+        if (err.response.status == 400) {
+          toast.error("Ú sờ chưa tồn tại vui lòng đăng ký dùm");
+        }
+      });
+  };
+  const onFailure = (e) => {
+    console.log(e);
+  };
   return (
     <div>
       <div className="parent clearfix">
@@ -150,26 +174,26 @@ const Login = () => {
 
             <div class="login-form">
               <div>
-                {/* <Link to={""} >
-                <img src={facebook} alt="facebook_logo" />
-                <OAuth2Login
-                  buttonText="Facebook"
-                  authorizationUrl="https://www.facebook.com/dialog/oauth"
-                  responseType="token"
-                  clientId="203369009102213"
-                  redirectUri="http://localhost:3000/"
-                  scope="public_profile"
-                  onSuccess={loginFb}
-                  onFailure={onFailure}
-                />
-              </Link> */}
+                <Link to={""}>
+                  <img
+                    src={imgFacebook}
+                    alt="facebook_logo"
+                    className="w-5 h-5"
+                  />
+                  <OAuth2Login
+                    buttonText="Facebook"
+                    authorizationUrl="https://www.facebook.com/dialog/oauth"
+                    responseType="token"
+                    clientId="203369009102213"
+                    redirectUri="http://localhost:3000/"
+                    scope="public_profile"
+                    onSuccess={loginFb}
+                    onFailure={onFailure}
+                  />
+                </Link>
                 <div></div>
                 <Link onClick={() => login()}>
-                  <img
-                    src={imgGoogle}
-                    alt="google_logo"
-                    className="w-100 h-100"
-                  />
+                  <img src={imgGoogle} alt="google_logo" className="w-5 h-5" />
                   Google
                 </Link>
               </div>
