@@ -19,6 +19,10 @@ export const nav = [
     text: "LIÊN HỆ",
     path: "/contact",
   },
+  {
+    text: "GIỎ HÀNG",
+    path: "/cart",
+  },
 ];
 export const categorys = [
   {

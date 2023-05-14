@@ -108,7 +108,6 @@ const ProductDetail = () => {
   };
 
   const handleAddToCart = (e) => {
- 
     if (quantity && id.id) {
       dispatch(addItem(id.id, quantity));
       toast.success("Sản phẩm đã được thểm vào giỏ hàng");
@@ -170,7 +169,8 @@ const ProductDetail = () => {
                           </span>
                         </p>
                       </div>
-                      <select
+
+                      {/* <select
                         data-te-select-init
                         value={quantity}
                         onChange={(e) => setQuantity(e.target.value)}
@@ -183,10 +183,29 @@ const ProductDetail = () => {
                         <option value="6">6</option>
                         <option value="7">7</option>
                         <option value="8">8</option>
-                        <option value="8">9</option>
-                        <option value="8">10</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                      </select> */}
+
+                      <select
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[120px] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        value={quantity}
+                        onChange={(e) => setQuantity(e.target.value)}
+                      >
+                        <option selected>Chọn số lượng</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
                       </select>
-                      <div className="mb-8 ">
+                      
+                      <div className="mb-8 pt-[20px]">
                         <div>
                           <div className="flex flex-wrap -mb-2">
                             <button
