@@ -71,7 +71,7 @@ const Contact = () => {
               <iframe
                 className="rounded-lg"
                 title="Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15668.21859539116!2d107.01874597697699!3d10.959244640974278!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174e41307aed27b%3A0x4336319d41d1791f!2z4bqlcCAxLCBUcuG6o25nIEJvbSwgxJDhu5NuZyBOYWksIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1680585142489!5m2!1svi!2s"
+                src={info[0].iframeggmap}
                 width="100%"
                 height="450"
                 allowFullScreen=""
