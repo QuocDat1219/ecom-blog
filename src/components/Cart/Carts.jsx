@@ -129,6 +129,7 @@ const Carts = () => {
                           <small
                             onClick={() => {
                               dispatch(removeItem(item.product));
+                              toast.success("Đã xóa sản phẩm");
                             }}
                             className="hover:text-red-500"
                           >
