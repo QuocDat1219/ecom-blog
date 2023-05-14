@@ -13,7 +13,9 @@ import ProductDetail from "../product/productDetail";
 import ContentsBlog from "../contentsBlog/contentsBlog";
 import Location from "../home/location/Location";
 import Carts from "../Cart/Carts";
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer } from "react-toastify";
+import Login from "../Auth/Login";
+import Register from "../Auth/Register";
 const Pages = () => {
   return (
     <>
