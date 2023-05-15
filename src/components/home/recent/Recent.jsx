@@ -147,20 +147,24 @@ const Recent = ({ titleprodcut1, titleprodcut2 }) => {
                           />
                         </div>{" "}
                         <div className="card-bottom flex flex-col items-start justify-center">
-                          <span className="category text-3xl">{item.name}</span>
-                          <h4 className="mt-5">{item.title}</h4>
-                          <h3 className="mt-4 text-red-500 text-xl font-bold">
+                          <span className="category text-3xl font-bold">
+                            {item.name}
+                          </span>
+                          <h4 className="mt-5 ">{item.title}</h4>
+                          <h3 className="mt-4 text-red-500 text-2xl font-bold">
                             {new Intl.NumberFormat({
                               style: "currency",
                               currency: "VND",
                             }).format(item.price)}{" "}
                             VNĐ
                           </h3>
-                          <h4 className="mt-4">
+                          <h4 className="mt-4 text-black font-medium">
                             Danh mục : {categoryProduct(item.idCategory)}
                           </h4>
 
-                          <h4 className="mt-4">Xem chi tiết</h4>
+                          <h4 className="mt-4 hover:text-[#6698FF]">
+                            Xem chi tiết
+                          </h4>
                           <Link to={`/productdetail/${item._id}`}></Link>
                         </div>
                       </div>
