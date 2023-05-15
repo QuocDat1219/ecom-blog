@@ -169,34 +169,84 @@ const Login = () => {
             <h1>
               Đăng nhập
               <br />
-              <span style={{ color: "#6698FF" }}> DDYB - Electronic</span>
+              <span style={{ color: "#6698FF" }}> DDYB - Electronic </span>
             </h1>
 
             <div class="login-form">
-              <div>
-                <Link to={""}>
-                  <img
-                    src={imgFacebook}
-                    alt="facebook_logo"
-                    className="w-5 h-5"
-                  />
-                  <OAuth2Login
-                    buttonText="Facebook"
-                    authorizationUrl="https://www.facebook.com/dialog/oauth"
-                    responseType="token"
-                    clientId="203369009102213"
-                    redirectUri="http://localhost:3000/"
-                    scope="public_profile"
-                    onSuccess={loginFb}
-                    onFailure={onFailure}
-                  />
-                </Link>
-                <div></div>
-                <Link onClick={() => login()}>
-                  <img src={imgGoogle} alt="google_logo" className="w-5 h-5" />
-                  Google
-                </Link>
+              {/* <div className="flex justify-center gap-10">
+                <div className="bg-blue-gray-900">
+                  <Link to={""} className="w-[130px] h-[100px] block">
+                    <img
+                      src={imgFacebook}
+                      alt="facebook_logo"
+                      className="w-[3.25rem] h-[3.25rem]"
+                    />
+                    <OAuth2Login
+                      className="text-black bg-green-600 w-[130px]"
+                      buttonText="Facebook"
+                      authorizationUrl="https://www.facebook.com/dialog/oauth"
+                      responseType="token"
+                      clientId="203369009102213"
+                      redirectUri="http://localhost:3000/"
+                      scope="public_profile"
+                      onSuccess={loginFb}
+                      onFailure={onFailure}
+                    />
+                  </Link>
+                </div>
+
+                <div className="bg-orange-500">
+                  <Link onClick={() => login()} className="w-[130px] h-[100px] block">
+                    <img
+                      src={imgGoogle}
+                      alt="google_logo"
+                      className="w-[3.25rem] h-[3.25rem]"
+                    />
+                    Google
+                  </Link>
+                </div> */}
+              <div className="flex justify-center gap-10">
+                <div className="">
+                  <button className="w-[130px] h-[100px] flex items-center justify-center space-x-2 text-black">
+                    <Link
+                      to={""}
+                      className="w-full h-full flex items-center justify-center"
+                    >
+                      <img
+                        src={imgFacebook}
+                        alt="facebook_logo"
+                        className="w-[3.25rem] h-[3.25rem]"
+                      />
+                      <OAuth2Login
+                        className="ml-0 text-black w-[180px] h-[48px]"
+                        buttonText="Facebook"
+                        authorizationUrl="https://www.facebook.com/dialog/oauth"
+                        responseType="token"
+                        clientId="203369009102213"
+                        redirectUri="http://localhost:3000/"
+                        scope="public_profile"
+                        onSuccess={loginFb}
+                        onFailure={onFailure}
+                      />
+                    </Link>
+                  </button>
+                </div>
+
+                <div className="">
+                  <button
+                    className="w-[130px] h-[100px] flex items-center justify-center"
+                    onClick={() => login()}
+                  >
+                    <img
+                      src={imgGoogle}
+                      alt="google_logo"
+                      className="w-[3.25rem] h-[3.25rem]"
+                    />
+                    <span className="text-black ml-[25px]">Google</span>
+                  </button>
+                </div>
               </div>
+              <h6 className="pt-[20px]"><b>Hoặc đăng nhập bằng</b></h6>
               <form action="">
                 <input
                   type="email"

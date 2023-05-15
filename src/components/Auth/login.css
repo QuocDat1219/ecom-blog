@@ -115,7 +115,7 @@
     font-weight: bolder;
   }
   .login .container .login-form {
-    margin-top: 50px;
+    margin-top: 30px;
   }
   .login .container .login-form form {
     display: -ms-grid;
@@ -304,7 +304,7 @@
       margin-top: 40px;
     }
     .login .container .login-form {
-      margin-top: 90px;
+      margin-top: 10px;
     }
     .login .container .login-form form input {
       height: 45px;
