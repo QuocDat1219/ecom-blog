@@ -48,7 +48,7 @@ const Carts = () => {
 
   const calculateTotal = () => {
     let total = 0;
-    total = totalPrices + shipPrices + voucherPrices;
+    total = totalPrices + shipPrices - voucherPrices;
 
     return total;
   };
@@ -86,7 +86,6 @@ const Carts = () => {
   const handleRemoveFromCart = (id) => {
     dispatch(removeItem(id));
   };
-  console.log(cartItems);
   return cartData.length != 0 ? (
     <>
       <h1 className="justify-center text-center text-[50px] text-[#6698FF] font-bold">
@@ -309,8 +308,13 @@ const Carts = () => {
                         </button>
                         Mã giảm giá "{voucherTitle}"
                       </div>
-                      <div className="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-green-700">
-                        {voucherPrices}
+                      <div className="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-green-600">
+                        -
+                        {new Intl.NumberFormat({
+                          style: "currency",
+                          currency: "VND",
+                        }).format(voucherPrices)}{" "}
+                        VNĐ
                       </div>
                     </div>
                   ) : null}

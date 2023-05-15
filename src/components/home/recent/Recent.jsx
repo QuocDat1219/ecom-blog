@@ -149,9 +149,17 @@ const Recent = ({ titleprodcut1, titleprodcut2 }) => {
                         <div className="card-bottom flex flex-col items-start justify-center">
                           <span className="category text-3xl">{item.name}</span>
                           <h4 className="mt-5">{item.title}</h4>
+                          <h3 className="mt-4 text-red-500 text-xl font-bold">
+                            {new Intl.NumberFormat({
+                              style: "currency",
+                              currency: "VND",
+                            }).format(item.price)}{" "}
+                            VNĐ
+                          </h3>
                           <h4 className="mt-4">
                             Danh mục : {categoryProduct(item.idCategory)}
                           </h4>
+
                           <h4 className="mt-4">Xem chi tiết</h4>
                           <Link to={`/productdetail/${item._id}`}></Link>
                         </div>
