@@ -122,6 +122,8 @@ const Login = () => {
     e.preventDefault();
     if (email !== "" && password !== "") {
       dispatch(signin({ email, password }, navigate));
+    } else {
+      toast.error("Vui lòng nhập đầy đủ thông tin đăng nhập");
     }
   }
   function handleGoogleLoginSuccess(tokenResponse) {
@@ -246,7 +248,9 @@ const Login = () => {
                   </button>
                 </div>
               </div>
-              <h6 className="pt-[20px]"><b>Hoặc đăng nhập bằng</b></h6>
+              <h6 className="pt-[20px]">
+                <b>Hoặc đăng nhập bằng</b>
+              </h6>
               <form action="">
                 <input
                   type="email"

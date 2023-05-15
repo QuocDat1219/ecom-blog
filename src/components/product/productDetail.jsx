@@ -146,20 +146,22 @@ const ProductDetail = () => {
                         <h2 className="max-w-xl mb-6 text-2xl font-bold  md:text-4xl text-color-title">
                           {product.name}
                         </h2>
-                        <p className="inline-block mb-6 text-xl font-bold text-text-color  ">
-                          <span>
-                            Danh mục: {categoryProduct(product.idCategory)}
+                        <p className="inline-block mb-6 text-xl font-bold text-gray-700  ">
+                          Danh mục:{" "}
+                          <span className="text-xl font-bold text-text-color">
+                            {categoryProduct(product.idCategory)}
                           </span>
                         </p>
                         <br />
-                        <p className="inline-block mb-6 text-xl font-bold text-text-color  ">
-                          <span>
-                            Nhãn hàng: {brandProduct(product.idBrand)}
+                        <p className="inline-block mb-6 text-xl font-bold text-gray-700 ">
+                          Nhãn hàng:{" "}
+                          <span className="text-xl font-bold text-text-color">
+                            {brandProduct(product.idBrand)}
                           </span>
                         </p>
                         <br />
-                        <p className="inline-block mb-6 text-xl font-bold text-text-color  ">
-                          <span>Giá: </span>
+                        <p className="inline-block mb-6 text-xl font-bold text-gray-700  ">
+                          Giá:{" "}
                           <span className="text-red-600">
                             {new Intl.NumberFormat({
                               style: "currency",

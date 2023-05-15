@@ -31,10 +31,6 @@ const Header = () => {
       path: "/blog",
     },
     {
-      text: "LIÊN HỆ",
-      path: "/contact",
-    },
-    {
       text: "GIỎ HÀNG",
       path: "/cart",
     },
@@ -133,7 +129,7 @@ const Header = () => {
                 </div>
               </div>
             </div>
-          {/*             
+            {/*             
             <div className="flex flex-1 items-center justify-end sm:items-stretch sm:justify-center sticky md:text-center">
               <div className="hidden sm:ml-6 sm:block md:block">
                 <div className="flex space-x-4 ">

@@ -95,9 +95,12 @@ const Carts = () => {
         <div className="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5">
           <div className="flex-1 ">
             <div class="overflow-x-scroll h-[400px]">
-              <table className="w-full text-sm lg:text-base" cellspacing="0">
+              <table
+                className="w-full text-sm lg:text-base text-center"
+                cellspacing="0"
+              >
                 <thead>
-                  <tr className="h-12 uppercase">
+                  <tr className="h-12 uppercase text-center">
                     <th className="md:table-cell">Ảnh </th>
                     <th className="text-center">Sản phẩm</th>
                     <th className="lg:text-right text-left pl-5 lg:pl-0">
@@ -123,7 +126,7 @@ const Carts = () => {
                         </a>
                       </td>
                       <td>
-                        <p className="mb-2 md:ml-4 truncate max-w-[130px] mx-auto ">
+                        <p className="mb-2 md:text-center truncate max-w-[130px] mx-auto ">
                           {item.title}
                         </p>
 

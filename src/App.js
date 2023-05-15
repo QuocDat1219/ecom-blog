@@ -1,7 +1,11 @@
-import "./App.css"
-import Ad from "./components/Ads/Ads"
-import Pages from "./components/pages/Pages"
+import "./App.css";
+import Ad from "./components/Ads/Ads";
+import Pages from "./components/pages/Pages";
 function App() {
-  return <><Pages /><Ad /></>
+  return (
+    <>
+      <Pages />
+    </>
+  );
 }
-export default App
+export default App;
