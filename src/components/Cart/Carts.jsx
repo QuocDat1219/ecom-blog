@@ -337,9 +337,11 @@ const Carts = () => {
                     </div>
                   </div>
                   <a href="#">
-                    <button class="flex justify-center w-full px-10 py-3 mt-6 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center hover:bg-gray-700 focus:shadow-outline focus:outline-none">
-                      <Link to={"/checkout"} className="flex items-center">
-                        <svg className="text-white"
+                    {" "}
+                    <Link to={"/checkout"} >
+                      <button class="flex justify-center w-full px-10 py-3 mt-6 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center hover:bg-gray-700 focus:shadow-outline focus:outline-none">
+                        <svg
+                          className="text-white"
                           aria-hidden="true"
                           data-prefix="far"
                           data-icon="credit-card"
@@ -353,8 +355,8 @@ const Carts = () => {
                           ></path>
                         </svg>
                         <span className="ml-2 mt-1 text-white">Thanh toán</span>
-                      </Link>
-                    </button>
+                      </button>{" "}
+                    </Link>
                   </a>
                 </div>
               </div>
