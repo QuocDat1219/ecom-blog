@@ -207,7 +207,7 @@ const Login = () => {
                     Google
                   </Link>
                 </div> */}
-              <div className="flex justify-center gap-10">
+              <div className="flex justify-center gap-10 lg:w-[500px] w-[351px]">
                 <div className="">
                   <button className="w-[130px] h-[100px] flex items-center justify-center space-x-2 text-black">
                     <Link

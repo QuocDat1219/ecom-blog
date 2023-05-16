@@ -365,7 +365,7 @@ const Carts = () => {
     <div className="flex justify-center">
       <img
         src={emty}
-        className="h-[600px] w-[800px] animate-pulse hover:skew-y-3"
+        className="lg:h-[600px] lg:w-[800px] animate-pulse hover:skew-y-3 "
       />
     </div>
   );
