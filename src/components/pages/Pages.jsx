@@ -17,6 +17,7 @@ import { ToastContainer } from "react-toastify";
 import Login from "../Auth/Login";
 import Register from "../Auth/Register";
 import UserProfile from "../User/User";
+import Checkout from "../Checkout/checkout";
 const Pages = () => {
   return (
     <>
@@ -38,6 +39,7 @@ const Pages = () => {
           <Route path="/cart" element={<Carts />} />
           <Route path="/:id" element={<AllProduct />} />
           <Route path="/userinfo" element={<UserProfile />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
         <Location />
         <Footer />

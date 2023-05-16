@@ -338,6 +338,7 @@ const Carts = () => {
                   </div>
                   <a href="#">
                     <button className="flex justify-center w-full px-10 py-3 mt-6 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center hover:bg-gray-700 focus:shadow-outline focus:outline-none">
+                      <Link to={"/checkout"} >
                       <svg
                         aria-hidden="true"
                         data-prefix="far"
@@ -352,6 +353,7 @@ const Carts = () => {
                         />
                       </svg>
                       <span className="ml-2 mt-5px">Thanh toán</span>
+                      </Link>
                     </button>
                   </a>
                 </div>
