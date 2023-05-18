@@ -18,11 +18,13 @@ import Login from "../Auth/Login";
 import Register from "../Auth/Register";
 import UserProfile from "../User/User";
 import Checkout from "../Checkout/checkout";
+import Headergiohang from "../Headergiohang/headergiohang";
 const Pages = () => {
   return (
     <>
       <Router>
         <Header />
+        <Headergiohang/>
         <ToastContainer />
         <Routes>
           <Route path="/" element={<Home />} />
