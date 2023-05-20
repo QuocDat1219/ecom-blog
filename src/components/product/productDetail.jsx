@@ -146,74 +146,78 @@ const ProductDetail = () => {
                   <div className="w-full px-4 md:w-1/2 ">
                     <div className="lg:pl-20">
                       <div className="mb-8 ">
-                        <h2 className="max-w-xl mb-6 text-2xl font-bold  md:text-4xl text-color-title">
+                        <h2 className="max-w-xl mb-6 text-3xl font-bold md:text-4xl text-color-title">
                           {product.name}
                         </h2>
-                        <p className="inline-block mb-6 text-xl font-bold text-gray-700  ">
+                        <p className="inline-block mb-6 text-md text-gray-700  ">
                           Danh mục:{" "}
                           <span className="text-xl font-bold text-text-color">
                             {categoryProduct(product.idCategory)}
                           </span>
                         </p>
                         <br />
-                        <p className="inline-block mb-6 text-xl font-bold text-gray-700 ">
+                        <p className="inline-block mb-6 text-md text-gray-700 ">
                           Nhãn hàng:{" "}
                           <span className="text-xl font-bold text-text-color">
                             {brandProduct(product.idBrand)}
                           </span>
                         </p>
                         <br />
-                        <p className="inline-block mb-6 text-xl font-bold text-gray-700  ">
-                          Giá:{" "}
-                          <span className="text-red-600">
-                            {new Intl.NumberFormat({
-                              style: "currency",
-                              currency: "VND",
-                            }).format(product.price)}{" "}
-                            VNĐ
+                        <p className="inline-block mb-6 text-md text-gray-700 ">
+                          Số lượng:{" "}
+                          <span className="text-xl font-bold text-text-color">
+                            {product.quantity}
                           </span>
                         </p>
+                        <br />
+                        <p className="inline-block mb-6 text-md text-gray-700 ">
+                          Đã bán:{" "}
+                          <span className="text-xl font-bold text-text-color">
+                            {product.sold}
+                          </span>
+                        </p>
+                        <div>
+                          <p className="inline-block mb-6 text-md text-gray-700  ">
+                            Giá:{" "}
+                            <span className="text-red-600 text-xl font-bold">
+                              {new Intl.NumberFormat({
+                                style: "currency",
+                                currency: "VND",
+                              }).format(product.price)}{" "}
+                              VNĐ
+                            </span>
+                          </p>
+                        </div>
                       </div>
-
-                      {/* <select
-                        data-te-select-init
-                        value={quantity}
-                        onChange={(e) => setQuantity(e.target.value)}
-                      >
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                      </select> */}
-
-                      <select
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[120px] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        value={quantity}
-                        onChange={(e) => setQuantity(e.target.value)}
-                      >
-                        <option selected>Chọn số lượng</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                      </select>
-
-                      <div className="mb-8 pt-[20px]">
+                      <div className="mb-8 pt-[20px] flex">
+                        <select
+                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[120px] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                          value={quantity}
+                          onChange={(e) => setQuantity(e.target.value)}
+                        >
+                          <option selected>Chọn số lượng</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                        </select>
+                        &nbsp;
                         <div>
                           <div className="flex flex-wrap -mb-2">
-                            {isauth == true ? (
+                            {product.quantity == 0 ? (
+                              <button
+                                disabled
+                                className="px-4 py-2 mb-2 mr-4 disabled:opacity-50 disabled:cursor-not-allowed font-semibold border rounded-md hover:border-blue-400 hover:text-black bg-color-button text-text-color"
+                              >
+                                Hết hàng
+                              </button>
+                            ) : isauth == true ? (
                               <button
                                 onClick={handleAddToCart}
                                 className="px-4 py-2 mb-2 mr-4 font-semibold border rounded-md hover:border-blue-400 hover:text-black bg-color-button text-text-color"
