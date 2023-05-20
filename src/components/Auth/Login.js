@@ -248,7 +248,7 @@ const Login = () => {
                   </button>
                 </div>
               </div>
-              <h6 className="pt-[20px]">
+              <h6 className="pt-[20px] text-center">
                 <b>Hoặc đăng nhập bằng</b>
               </h6>
               <form action="">
@@ -269,13 +269,23 @@ const Login = () => {
                 <div
                   class="forget-pass"
                   style={{
-                    textAlign: "right",
+                    textAlign: "left",
                   }}
                 >
                   <Link to={"/Register"}>
                     <a href="#">
                       Chưa có tài khoản? <b>Đăng kí tại đây!</b>
                     </a>
+                  </Link>
+                </div>
+                <div
+                  class="forget-pass"
+                  style={{
+                    textAlign: "left",
+                  }}
+                >
+                  <Link to={"/Register"}>
+                    <a href="#">Quên mật khẩu?</a>
                   </Link>
                 </div>
 

@@ -44,6 +44,7 @@ export const loginReducer = (state = initialstate, { type, payload }) => {
       // This thing is done for showing user info in userprofilepage
       localStorage.setItem("userrole", payload.role);
       localStorage.setItem("username", payload.lastname);
+      localStorage.setItem("userfirstname", payload.lastname);
       localStorage.setItem("useremail", payload.email);
       localStorage.setItem("usercreatedAt", payload.createdAt);
       return {
@@ -85,6 +86,7 @@ export const loginReducer = (state = initialstate, { type, payload }) => {
       localStorage.removeItem("username");
       localStorage.removeItem("useremail");
       localStorage.removeItem("usercreatedAt");
+      localStorage.removeItem("userfirstname");
       return {
         ...initialstate,
       };

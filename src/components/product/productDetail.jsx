@@ -1,5 +1,6 @@
 // import { products } from "../data/Data";
 import { FaFacebookF, FaTwitter } from "react-icons/fa";
+import { SiZalo } from "react-icons/si";
 import { HiOutlineMail } from "react-icons/hi";
 import { Link, useParams } from "react-router-dom";
 import Path from "./path";
@@ -149,35 +150,35 @@ const ProductDetail = () => {
                         <h2 className="max-w-xl mb-6 text-3xl font-bold md:text-4xl text-color-title">
                           {product.name}
                         </h2>
-                        <p className="inline-block mb-6 text-md text-gray-700  ">
+                        <p className="inline-block mb-1 text-md text-gray-700  ">
                           Danh mục:{" "}
-                          <span className="text-xl font-bold text-text-color">
+                          <span className="text-md font-bold text-text-color">
                             {categoryProduct(product.idCategory)}
                           </span>
                         </p>
                         <br />
-                        <p className="inline-block mb-6 text-md text-gray-700 ">
+                        <p className="inline-block mb-1 text-md text-gray-700 ">
                           Nhãn hàng:{" "}
-                          <span className="text-xl font-bold text-text-color">
+                          <span className="text-md font-bold text-text-color">
                             {brandProduct(product.idBrand)}
                           </span>
                         </p>
                         <br />
-                        <p className="inline-block mb-6 text-md text-gray-700 ">
+                        <p className="inline-block mb-1 text-md text-gray-700 ">
                           Số lượng:{" "}
-                          <span className="text-xl font-bold text-text-color">
+                          <span className="text-md font-bold text-text-color">
                             {product.quantity}
                           </span>
                         </p>
                         <br />
-                        <p className="inline-block mb-6 text-md text-gray-700 ">
+                        <p className="inline-block mb-1 text-md text-gray-700 ">
                           Đã bán:{" "}
-                          <span className="text-xl font-bold text-text-color">
+                          <span className="text-md font-bold text-text-color">
                             {product.sold}
                           </span>
                         </p>
                         <div>
-                          <p className="inline-block mb-6 text-md text-gray-700  ">
+                          <p className="inline-block text-md text-gray-700  ">
                             Giá:{" "}
                             <span className="text-red-600 text-xl font-bold">
                               {new Intl.NumberFormat({
@@ -243,14 +244,19 @@ const ProductDetail = () => {
                           Liên hệ
                         </h2>
                         <div className="flex flex-wrap -mx-2 -mb-2">
+                          <a href={zalo}>
+                            <button className="p-1 mb-2 mr-3 bg-blue-800 rounded-full">
+                              <SiZalo className="w-6 h-6 text-white" />
+                            </button>
+                          </a>
                           <a href={fb}>
-                            <button className="p-1 mb-2 mr-3 bg-color-button">
-                              <FaFacebookF className="w-6 h-6 text-text-color" />
+                            <button className="p-1 mb-2 mr-3 bg-blue-800 rounded-full">
+                              <FaFacebookF className="w-6 h-6 text-white" />
                             </button>
                           </a>
                           <a href={`mailto:${gmail}`}>
-                            <button className="p-1 mb-2 mr-3 bg-color-button">
-                              <HiOutlineMail className="w-6 h-6 text-text-color" />
+                            <button className="p-1 mb-2 mr-3 bg-blue-800 rounded-full">
+                              <HiOutlineMail className="w-6 h-6 text-white" />
                             </button>
                           </a>
                         </div>
@@ -273,7 +279,9 @@ const ProductDetail = () => {
                         }}
                       >
                         <TabPanel value="mota">
-                          <span>Mô tả</span>
+                          <span className="text-xl font-bold uppercase font-sans">
+                            Mô tả sản phẩm
+                          </span>
                           <br />
                           <div
                             dangerouslySetInnerHTML={{

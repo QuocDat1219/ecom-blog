@@ -20,10 +20,12 @@ export const login = (creds) => async (dispatch) => {
   }
 };
 
-export const logout = () => {
+export const logout = (navigate) => async (dispatch) => {
   // to remove all userinfo at the time of user logout
+
   toast.success("Đăng xuất thành công");
-  return {
+  navigate("/");
+  return dispatch({
     type: LOGOUT_GET,
-  };
+  });
 };

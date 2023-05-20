@@ -27,7 +27,7 @@ const ShowFeedBackProduct = ({ idproductfeedback }) => {
   return (
     <div>
       <div className="w-full font-bold text-[20px]">
-        <h1>Đánh giá</h1>
+        <span className="text-xl font-bold uppercase font-sans">Đánh giá</span>
       </div>
       <div className="overflow-y-scroll h-[350px]">
         <hr />
