@@ -4,6 +4,7 @@ import "./StarRating.css";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useSelector } from "react-redux";
 const FeedBack = ({ idproduct }) => {
   const [selectedStars, setSelectedStars] = useState(0);
   const [totalStars, setTotalStars] = useState(5);
@@ -13,6 +14,7 @@ const FeedBack = ({ idproduct }) => {
   const handleStarClick = (starIndex) => {
     setSelectedStars(starIndex + 1);
   };
+  const { isauth } = useSelector((store) => store.login);
   var checkMail =
     /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
@@ -121,12 +123,22 @@ const FeedBack = ({ idproduct }) => {
         </div>
         <div className="flex flex-wrap -mx-3 mb-2">
           <div className="w-full px-3">
-            <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="submit"
-            >
-              PHẢN HỒI
-            </button>
+            {isauth == true ? (
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                type="submit"
+              >
+                PHẢN HỒI
+              </button>
+            ) : (
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed focus:shadow-outline"
+                type="submit"
+                disabled
+              >
+                Đăng nhập để đánh giá
+              </button>
+            )}
           </div>
         </div>
       </form>

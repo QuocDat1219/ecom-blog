@@ -3,13 +3,14 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
-
+import { useSelector } from "react-redux";
+import { FiSend } from "react-icons/fi";
 const Comment = (blogid) => {
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
   const [noidung, setnoidung] = useState("");
   const [trangweb, settrangweb] = useState("");
-
+  const { isauth } = useSelector((store) => store.login);
   var checkMail =
     /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
   const sendFeedBackBlog = async (e) => {
@@ -111,14 +112,26 @@ const Comment = (blogid) => {
           </div>
         </div>
         <div className="flex flex-wrap -mx-3 mb-2">
-          <div className="w-full px-3">
-            <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="submit"
-            >
-              PHẢN HỒI
-            </button>
-          </div>
+          {isauth == true ? (
+            <div className="w-full px-3">
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                type="submit"
+              >
+                <FiSend />
+              </button>
+            </div>
+          ) : (
+            <div className="w-full px-3">
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed focus:shadow-outline"
+                type="submit"
+                disabled
+              >
+                <FiSend />
+              </button>
+            </div>
+          )}
         </div>
       </form>
     </div>
