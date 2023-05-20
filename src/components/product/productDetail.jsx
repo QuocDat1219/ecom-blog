@@ -1,7 +1,7 @@
 // import { products } from "../data/Data";
 import { FaFacebookF, FaTwitter } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Path from "./path";
 import React, { useState, useEffect } from "react";
 import ImageGallery from "react-image-gallery";
@@ -17,7 +17,7 @@ import {
   TabPanel,
 } from "@material-tailwind/react";
 import { Square3Stack3DIcon, UserCircleIcon } from "@heroicons/react/24/solid";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { addItem } from "../../redux/action/cartActions";
 
@@ -33,6 +33,9 @@ const ProductDetail = () => {
   const [gmail, setGmail] = useState([]);
   const [priceformat, setPrice] = useState(0);
   const [quantity, setQuantity] = useState(1);
+  //auth
+  const { isauth } = useSelector((store) => store.login);
+
   const dispatch = useDispatch();
   const onSlide = (currentIndex) => {
     setCurrentIndex(currentIndex);
@@ -109,7 +112,7 @@ const ProductDetail = () => {
 
   const handleAddToCart = (e) => {
     if (quantity && id.id) {
-      dispatch(addItem(id.id, quantity));
+      dispatch(addItem(id.id, Number(quantity)));
       toast.success("Sản phẩm đã được thểm vào giỏ hàng");
     }
   };
@@ -210,12 +213,24 @@ const ProductDetail = () => {
                       <div className="mb-8 pt-[20px]">
                         <div>
                           <div className="flex flex-wrap -mb-2">
-                            <button
-                              onClick={handleAddToCart}
-                              className="px-4 py-2 mb-2 mr-4 font-semibold border rounded-md hover:border-blue-400 hover:text-black bg-color-button text-text-color"
-                            >
-                              Thêm vào giỏ hàng
-                            </button>
+                            {isauth == true ? (
+                              <button
+                                onClick={handleAddToCart}
+                                className="px-4 py-2 mb-2 mr-4 font-semibold border rounded-md hover:border-blue-400 hover:text-black bg-color-button text-text-color"
+                              >
+                                Thêm vào giỏ hàng
+                              </button>
+                            ) : (
+                              <Link
+                                to="/login"
+                                onClick={() =>
+                                  toast.error("Bạn cần đăng nhập trước!")
+                                }
+                                className="px-4 py-2 mb-2 mr-4 font-semibold border rounded-md hover:border-blue-400 hover:text-black bg-color-button text-text-color"
+                              >
+                                Đăng nhập
+                              </Link>
+                            )}
                           </div>
                         </div>
                       </div>

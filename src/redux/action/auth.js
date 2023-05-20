@@ -25,8 +25,6 @@ export const signin = (data2, navigate) => async (dispatch) => {
     navigate("/");
     return dispatch({ type: LOGIN_GET_SUCCESS, payload: data });
   } catch (err) {
-    console.log(err);
-
     if (err.response.data.message == "Invalid Credentials") {
       toast.error("Sai tài khoản hoặc mật khẩu");
     }

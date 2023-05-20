@@ -7,6 +7,8 @@ import logoNav from "../../images/logo.jpg";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Itop from "../../home/Itop/Itop";
+import { useDispatch } from "react-redux";
+import { loadUser } from "../../../redux/action/auth";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -30,19 +32,17 @@ const Header = () => {
       text: "TIN TỨC",
       path: "/blog",
     },
-    {
-      text: "GIỎ HÀNG",
-      path: "/cart",
-    },
-    {
-      text: "ĐĂNG NHẬP",
-      path: "/login",
-    },
   ];
   const [data, setData] = useState([]);
   const [mappeCate, setMappeCate] = useState([]);
-
   const [info, setInfo] = useState([]);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadUser());
+  });
+
   useEffect(() => {
     const getInfoweb = async () => {
       await axios

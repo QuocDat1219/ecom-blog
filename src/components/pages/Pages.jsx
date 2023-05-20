@@ -24,8 +24,20 @@ const Pages = () => {
     <>
       <Router>
         <Header />
-        <Headergiohang/>
-        <ToastContainer />
+        <Headergiohang />
+        <ToastContainer
+          position="top-right"
+          autoClose={2000}
+          limit={1}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
