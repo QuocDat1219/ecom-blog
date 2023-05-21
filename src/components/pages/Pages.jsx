@@ -19,6 +19,8 @@ import Register from "../Auth/Register";
 import UserProfile from "../User/User";
 import Checkout from "../Checkout/checkout";
 import Headergiohang from "../Headergiohang/headergiohang";
+import ForgotPassword from "../Auth/forgotpassword/fogotpassword";
+import ChangPassWord from "../Auth/forgotpassword/changepassword";
 const Pages = () => {
   return (
     <>
@@ -26,17 +28,17 @@ const Pages = () => {
         <Header />
         <Headergiohang />
         <ToastContainer
-          position="top-right"
-          autoClose={2000}
-          limit={1}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
+        // position="top-right"
+        // autoClose={2000}
+        // limit={1}
+        // hideProgressBar={false}
+        // newestOnTop={false}
+        // closeOnClick
+        // rtl={false}
+        // pauseOnFocusLoss
+        // draggable
+        // pauseOnHover
+        // theme="light"
         />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -54,6 +56,8 @@ const Pages = () => {
           <Route path="/:id" element={<AllProduct />} />
           <Route path="/userinfo" element={<UserProfile />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/forgotpassword" element={<ForgotPassword />} />
+          <Route path="/changepassword/:token" element={<ChangPassWord />} />
         </Routes>
         <Location />
         <Footer />
