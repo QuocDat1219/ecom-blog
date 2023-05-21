@@ -16,7 +16,6 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -165,7 +164,6 @@ const Login = () => {
             <span></span>
           </div>
         </div>
-        <ToastContainer pauseOnHover={false} draggable={false} />
         <div class="login">
           <div class="container">
             <h1>
@@ -284,7 +282,7 @@ const Login = () => {
                     textAlign: "left",
                   }}
                 >
-                  <Link to={"/Register"}>
+                  <Link to={"/forgotpassword"}>
                     <a href="#">Quên mật khẩu?</a>
                   </Link>
                 </div>
