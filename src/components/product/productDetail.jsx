@@ -26,6 +26,7 @@ const ProductDetail = () => {
   const id = useParams();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [data, setData] = useState([]);
+  const { cart } = useSelector((state) => state.cart);
   const [dataCate, setDataCate] = useState([]);
   const [product, setProduct] = useState(null);
   const [brands, setBrands] = useState([]);
@@ -34,8 +35,21 @@ const ProductDetail = () => {
   const [gmail, setGmail] = useState([]);
   const [priceformat, setPrice] = useState(0);
   const [quantity, setQuantity] = useState(1);
+  const [count, setCount] = useState(1);
+  const [click, setClick] = useState(false);
   //auth
   const { isauth } = useSelector((store) => store.login);
+
+
+  const incrementCount = () => {
+    setCount(count + 1);
+  };
+
+  const decrementCount = () => {
+    if (count > 1) {
+      setCount(count - 1);
+    }
+  };
 
   const dispatch = useDispatch();
   const onSlide = (currentIndex) => {
@@ -111,10 +125,25 @@ const ProductDetail = () => {
     }
   };
 
-  const handleAddToCart = (e) => {
-    if (quantity && id.id) {
-      dispatch(addItem(id.id, Number(quantity)));
-      toast.success("Sản phẩm đã được thểm vào giỏ hàng");
+  // const handleAddToCart = (e) => {
+  //   if (quantity && id.id) {
+  //     dispatch(addItem(id.id, Number(quantity)));
+  //     toast.success("Sản phẩm đã được thểm vào giỏ hàng");
+  //   }
+  // };
+
+  const addToCartHandler = (id) => {
+    const isItemExists = cart && cart.find((i) => i._id === id);
+    if (isItemExists) {
+      toast.error("Item already in cart!");
+    } else {
+      if (data.stock < 1) {
+        toast.error("Product stock limited!");
+      } else {
+        const cartData = { ...data, qty: count };
+        dispatch(addItem(cartData));
+        toast.success("Item added to cart successfully!");
+      }
     }
   };
 
@@ -191,7 +220,7 @@ const ProductDetail = () => {
                         </div>
                       </div>
                       <div className="mb-8 pt-[20px] flex">
-                        <select
+                        {/* <select
                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[120px] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                           value={quantity}
                           onChange={(e) => setQuantity(e.target.value)}
@@ -207,7 +236,26 @@ const ProductDetail = () => {
                           <option value="8">8</option>
                           <option value="9">9</option>
                           <option value="10">10</option>
-                        </select>
+                        </select> */}
+                <div className="flex items-center justify-between pr-3">
+                  <div>
+                    <button
+                      className="bg-gradient-to-r from-teal-400 to-teal-500 text-white font-bold rounded-l-lg px-4 py-2 shadow-lg hover:opacity-75 transition duration-300 ease-in-out"
+                      onClick={decrementCount}
+                    >
+                      -
+                    </button>
+                    <span className="bg-gray-200 text-gray-800 font-medium px-4 py-[11px]">
+                      {count}
+                    </span>
+                    <button
+                      className="bg-gradient-to-r from-teal-400 to-teal-500 text-white font-bold rounded-r-lg px-4 py-2 shadow-lg hover:opacity-75 transition duration-300 ease-in-out"
+                      onClick={incrementCount}
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
                         &nbsp;
                         <div>
                           <div className="flex flex-wrap -mb-2">
@@ -220,7 +268,7 @@ const ProductDetail = () => {
                               </button>
                             ) : isauth == true ? (
                               <button
-                                onClick={handleAddToCart}
+                                onClick={addToCartHandler}
                                 className="px-4 py-2 mb-2 mr-4 font-semibold border rounded-md hover:border-blue-400 hover:text-black bg-color-button text-text-color"
                               >
                                 Thêm vào giỏ hàng
