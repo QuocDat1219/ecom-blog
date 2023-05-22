@@ -109,7 +109,7 @@ const Filters = (props) => {
           } else toast.error("Không tìm thấy sản phẩm lọc");
         })
         .catch((error) => {
-          console.log(error);
+          toast.error("Đã xảy ra lỗi");
         });
     }
   };

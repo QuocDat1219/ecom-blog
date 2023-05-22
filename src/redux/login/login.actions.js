@@ -15,7 +15,6 @@ export const login = (creds) => async (dispatch) => {
     // return console.log(res);
     return dispatch({ type: LOGIN_GET_SUCCESS, payload: data });
   } catch (e) {
-    console.log(e);
     return dispatch({ type: LOGIN_GET_ERROR, payload: e.message });
   }
 };

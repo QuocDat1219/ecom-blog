@@ -93,11 +93,8 @@ export const signinGoogle = (accessToken, navigate) => async (dispatch) => {
 
     return dispatch({ type: LOGIN_GET_SUCCESS, payload: data });
   } catch (err) {
-    console.log(err);
     if (err.response.data.message == "User don't exist!") {
       const { data } = await api.signUpGoogle(accessToken);
-      console.log(data.result);
-
       navigate("/");
       return dispatch({ type: LOGIN_GET_SUCCESS, payload: data.result });
     }
@@ -111,7 +108,6 @@ export const signup = (formData, navigate) => async (dispatch) => {
     // signup user
 
     const { data } = await api.signUp(formData);
-    console.log(data);
 
     toast.success("Đăng ký thành công");
     navigate("/");
@@ -131,7 +127,6 @@ export const signupGoogle = (accessToken, navigate) => async (dispatch) => {
     navigate("/");
     return dispatch({ type: LOGIN_GET_SUCCESS, payload: data });
   } catch (err) {
-    console.log(err);
     if (err.response.status == "500") {
       return toast.error("Email đã tồn tại");
     }

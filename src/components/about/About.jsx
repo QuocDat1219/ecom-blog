@@ -10,6 +10,7 @@ import Infomation from "./AboutInfomation";
 import Sliderimg from "./Slide";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import { toast } from "react-toastify";
 const About = () => {
   const [showText, setShowText] = useState(false);
   const [showTexFirst, setShowTextFirst] = useState(false);
@@ -31,7 +32,7 @@ const About = () => {
       .then((response) => {
         setDataABS(response.data);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => toast.error("Đã xảy ra lỗi"));
   }, []);
 
   return dataABS != undefined ? (

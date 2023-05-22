@@ -5,11 +5,10 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useSelector } from "react-redux";
+import { WindowsFilled } from "@ant-design/icons";
 const FeedBack = ({ idproduct }) => {
   const [selectedStars, setSelectedStars] = useState(0);
   const [totalStars, setTotalStars] = useState(5);
-  const [name, setname] = useState("");
-  const [email, setemail] = useState("");
   const [noidung, setnoidung] = useState("");
   const handleStarClick = (starIndex) => {
     setSelectedStars(starIndex + 1);
@@ -21,19 +20,22 @@ const FeedBack = ({ idproduct }) => {
   const sendFeedBack = async (e) => {
     e.preventDefault();
 
-    if (name == "" || email == "" || noidung == "") {
-      toast.warning("Vui lòng không để trống thông tin");
+    const userinfoStr = localStorage.getItem("user_infos");
+    const userinfo = JSON.parse(userinfoStr);
+    if (noidung == "") {
+      toast.warning("Nhập phản hồi của bạn");
       return;
-    } else if (!checkMail.test(email) || email.length == "") {
-      toast.warning("Email không hợp lệ");
+    }
+    if (selectedStars == 0) {
+      toast.warning("Vui lòng chọn đánh giá");
       return;
     }
     await axios
       .post(`${process.env.REACT_APP_API_URL}feedbackproduct/`, {
-        email: email,
+        email: userinfo.email,
         quality: selectedStars,
         comment: noidung,
-        usename: name,
+        usename: userinfo.lastname + " " + userinfo.firstname,
         idproduct: idproduct,
       })
       .then((data) => {
@@ -86,40 +88,6 @@ const FeedBack = ({ idproduct }) => {
             required
             onChange={(e) => setnoidung(e.target.value)}
           ></textarea>
-        </div>
-        <div className="flex flex-wrap -mx-3 mb-6">
-          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label
-              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              htmlFor="grid-name"
-            >
-              Tên <span className="text-red-500">*</span>
-            </label>
-            <input
-              className="appearance-none block w-full  text-gray-700  border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-name"
-              type="text"
-              placeholder="Nhập tên"
-              required
-              onChange={(e) => setname(e.target.value)}
-            />
-          </div>
-          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label
-              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              htmlFor="grid-email"
-            >
-              Email <span className="text-red-500">*</span>
-            </label>
-            <input
-              className="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-email"
-              type="email"
-              placeholder="Nhập email"
-              required
-              onChange={(e) => setemail(e.target.value)}
-            />
-          </div>
         </div>
         <div className="flex flex-wrap -mx-3 mb-2">
           <div className="w-full px-3">

@@ -7,6 +7,7 @@ import img3 from "../images/tramsac.jpg";
 import "./Services.css";
 import axios from "axios";
 import imgerror from "../images/imgerror.png";
+import { toast } from "react-toastify";
 
 const Services = () => {
   const [data, setData] = useState([]);
@@ -32,9 +33,8 @@ const Services = () => {
         settitle1(response.data[0].titlebody1);
         setimageTitle(response.data[0].imgbody1.secure_url);
         setimgbody2(response.data[0].imgbody2.secure_url);
-        console.log(response);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => toast.error("Đã xảy ra lỗi"));
   }, []);
 
   return (
