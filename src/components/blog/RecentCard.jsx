@@ -30,7 +30,6 @@ const RecentCard = ({ dataBlog }) => {
 
     if (dataBlog == undefined) {
     } else {
-      console.log(dataBlog.length);
       setDataFiter(dataBlog);
     }
   }, [dataBlog]);

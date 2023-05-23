@@ -142,10 +142,8 @@ const Login = () => {
       })
       .then((result) => {
         toast.success("Đăng nhập thành công !");
-        console.log(result);
       })
       .catch((err) => {
-        console.log(err.response.data);
         if (err.response.status == 400) {
           toast.error("Ú sờ chưa tồn tại vui lòng đăng ký dùm");
         }

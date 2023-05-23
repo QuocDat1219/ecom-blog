@@ -26,13 +26,11 @@ const ContentsBlog = () => {
   const [editorContent, setEditorContent] = useState(EditorState.createEmpty());
 
   useEffect(() => {
-    console.log(id);
     const calldata = async () => {
       await axios
         .get(`${process.env.REACT_APP_API_URL}blog/blogpage?slugs=${id}`)
         .then((response) => {
           const blog = response.data;
-          console.log(blog);
           setData(blog[0]);
           setEditorContent(
             EditorState.createWithContent(

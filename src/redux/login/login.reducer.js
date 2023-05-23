@@ -7,7 +7,6 @@ import {
 } from "./login.types";
 
 let local = localStorage.getItem("userrole");
-console.log(local);
 
 var checkAdminAuth = false;
 if (local == "admin") {

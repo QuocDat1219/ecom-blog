@@ -11,7 +11,6 @@ const Tpost = () => {
     axios(`${process.env.REACT_APP_API_URL}blog/`).then((response) => {
       const blog = response.data;
       setData(blog);
-      console.log(blog);
     });
     axios(`${process.env.REACT_APP_API_URL}blogcategory/`).then((response) => {
       const blogcate = response.data;

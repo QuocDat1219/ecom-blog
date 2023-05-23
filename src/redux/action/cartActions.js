@@ -29,7 +29,6 @@ export const addItem = (id, qty) => async (dispatch, getState) => {
         qty,
       },
     });
-    console.log(getState());
     localStorage.setItem(
       "cartItems",
       JSON.stringify(getState().cart.cartItems)
@@ -53,7 +52,7 @@ export const removeItem = (id) => async (dispatch, getState) => {
       JSON.stringify(getState().cart.cartItems)
     );
   } catch (error) {
-    console.log(error);
+    toast.error("Đã xay ra lỗi");
   }
 };
 
@@ -66,7 +65,7 @@ export const saveShippingAddress = (data) => async (dispatch) => {
     });
     localStorage.setItem("shippingAddress", JSON.stringify(data));
   } catch (error) {
-    console.log(error);
+    toast.error("Đã xảy ra lỗi");
   }
 };
 
@@ -79,6 +78,6 @@ export const savePaymentMethod = (data) => async (dispatch) => {
     });
     localStorage.setItem("paymentMethod", JSON.stringify(data));
   } catch (error) {
-    console.log(error);
+    toast.error("Đã xảy ra lỗi");
   }
 };

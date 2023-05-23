@@ -7,7 +7,6 @@ import {
 } from "../const/actionsTypes";
 
 let local = localStorage.getItem("userrole");
-console.log(local);
 
 var checkAdminAuth = false;
 if (local == "admin") {
@@ -38,8 +37,6 @@ export const loginReducer = (state = initialstate, { type, payload }) => {
       };
     }
     case LOGIN_GET_SUCCESS: {
-      console.log(payload);
-
       localStorage.setItem("user_infos", JSON.stringify(payload));
       localStorage.setItem("token", payload.token);
       localStorage.setItem("userfirstname", payload.firstname);
