@@ -104,7 +104,7 @@ const UserProfile = () => {
 
   const userCreate = localStorage.getItem("usercreatedAt") || "";
 
-  return cartData.length != 0 ? (
+  return (
     <div className="home w-full">
       <div className="homeContainer w-3/4 ml-auto mr-auto p-10">
         <div>
@@ -228,8 +228,6 @@ const UserProfile = () => {
         </div>
       </div>
     </div>
-  ) : (
-    <div className="flex justify-center">Rong</div>
-  );
+  )
 };
 export default UserProfile;
