@@ -1,4 +1,7 @@
 import "./User.scss";
+import { Link } from "react-router-dom";
+import { addItem, removeItem } from "../../redux/action/cartActions";
+import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import React, { useContext, useEffect, useState, useReducer } from "react";
 import "./ProfileCard.css";
@@ -21,132 +24,87 @@ const UserProfile = () => {
   const [newPasswordPL, setNewPasswordPL] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const userData = localStorage.getItem("token") || "";
+  const [totalPrices, setTotalPrices] = useState(0);
+  const [total, setTotal] = useState(0);
+  const [shipPrices, setShipPrices] = useState(30000);
+  const [voucher, setVoucher] = useState();
+  const [voucherPrices, setVoucherPrices] = useState(0);
+  const [voucherTitle, setVoucherTitle] = useState("");
 
-  // const userEmail = window.localStorage.getItem("Emaildetails");
-  // let urls =
-  //   "https://api-vuon-thong-minh.onrender.com/datas/datadetail/" + userEmail;
-  // useEffect(() => {
-  //   axios
-  //     .post("https://api-vuon-thong-minh.onrender.com/users/user-data", {
-  //       token: window.localStorage.getItem("token"),
-  //     })
-  //     .then((data) => {
-  //       console.log(data.data.data);
-  //       if (data.data.data === "token expired") {
-  //         window.localStorage.clear();
-  //         window.localStorage.setItem("loggedIn", "false");
-  //         window.localStorage.getItem("loggedIn");
-  //         window.location.href = "/login";
-  //       }
-  //       setData(data.data.data);
-  //     });
+  const [userId, userPassword] = userData.split(":");
+  const dispatch = useDispatch();
 
-  //   axios.get(urls).then((data) => {
-  //     // console.log(data.data.data.idtelegram);
-  //     setDataIDtelegram(data.data.data.idtelegram);
-  //   });
-  // }, []);
+  const cart = useSelector((state) => state.cart);
+  const { cartItems } = cart;
+  let cartData = JSON.parse(localStorage.getItem("cartItems")) || [];
 
-  // const handleChangePassword = async (e) => {
-  //   e.preventDefault();
+  const totalPrice = (price, qty) => {
+    const total = price * qty;
+    const formattedTotal = total.toLocaleString({
+      style: "currency",
+      currency: "VND",
+    });
+    return formattedTotal;
+  };
 
-  //   if (newPassword === "" || oldPassword === "" || newPasswordPL === "") {
-  //     toast.warning("Vui lòng nhập đầy đủ thông tin!");
-  //   } else if (!checkPassword.test(newPassword) || newPassword.length === "") {
-  //     toast.error("Mật khẩu phải có chữ hoa, số và kí tự đặc biệt!");
-  //   } else if (newPassword != newPasswordPL) {
-  //     toast.error("Nhập lại mật khẩu không trùng khớp");
-  //   } else {
-  //     await axios
-  //       .post("https://api-vuon-thong-minh.onrender.com/users/changepassword", {
-  //         tokenold: window.localStorage.getItem("token"),
-  //         newpassword: newPassword,
-  //         oldpassword: oldPassword,
-  //       })
-  //       .then(function (response) {
-  //         // console.log(response);
-  //         if (response.data.error === "Passwords don't match") {
-  //           toast.error("Mật khẩu cũ không đúng");
-  //         } else if (response.data.status === "verified") {
-  //           toast.success("Đổi mật khẩu thành công");
-  //         }
-  //       })
-  //       .catch(function (error) {
-  //         console.log(error);
-  //         toast.warning("Đổi mật khẩu không thành công");
-  //       });
-  //   }
-  // };
+  const calculateTotalPrice = () => {
+    let totalPrice = 0;
+    cartData.forEach((item) => {
+      totalPrice += item.price * item.qty;
+    });
 
-  // const editidtelegram = async () => {
-  //   await axios
-  //     .post("https://api-vuon-thong-minh.onrender.com/datas/updatedht", {
-  //       email: window.localStorage.getItem("Emaildetails"),
-  //       idtelegram: idtelegrams,
-  //     })
-  //     .then(function (data) {
-  //       setIsLoading(false);
-  //       toast.promise(
-  //         new Promise((resolve, reject) => {
-  //           setTimeout(() => {
-  //             resolve();
-  //           }, 2000);
-  //         }),
-  //         {
-  //           pending: "Đang xử lí....",
-  //           success: "Đổi thông tin thành công",
-  //         },
-  //         {
-  //           autoClose: 2000,
-  //         }
-  //       );
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //       toast.error("Lỗi");
-  //     });
-  // };
+    return totalPrice;
+  };
 
-  // const handleClickSave = async (e) => {
-  //   e.preventDefault();
-  //   setIsLoading(true);
-  //   if (
-  //     fnamees === data.fname &&
-  //     lnamees === data.lname &&
-  //     idtelegrams == dataidtelegram
-  //   ) {
-  //     setIsLoading(false);
-  //     toast.warning("Thông tin không thay đổi");
-  //   } else if (fnamees === "" || lnamees === "") {
-  //     setIsLoading(false);
-  //     toast.warning("Vui lòng nhập đủ thông tin");
-  //   } else {
-  //     // toast("Đang xử lý...");
-  //     await axios
-  //       .post("https://api-vuon-thong-minh.onrender.com/users/edituser", {
-  //         token: window.localStorage.getItem("token"),
-  //         lname: lnamees,
-  //         fname: fnamees,
-  //       })
-  //       .then(function (data) {
-  //         // console.log(data);
+  const calculateTotal = () => {
+    let total = 0;
+    total = totalPrices + shipPrices - voucherPrices;
 
-  //         setData(data.data.data);
-  //         editidtelegram();
-  //       })
-  //       .catch(function (error) {
-  //         console.log(error);
-  //         toast.error("Lỗi");
-  //       });
-  //   }
-  // };
+    return total;
+  };
+  useEffect(() => {
+    const totalPrice = calculateTotalPrice();
+    setTotalPrices(totalPrice);
+    const total = calculateTotal();
+    setTotal(total);
+  }, [cartData]);
+
+  const vouchers = [
+    {
+      ma: "123",
+      dis: 10000,
+    },
+    {
+      ma: "Ma1",
+      dis: 15000,
+    },
+  ];
+
+  const addVoucher = () => {
+    const existingVoucher = vouchers.find(
+      (vc) => vc.ma.toLowerCase() === voucher.toLowerCase()
+    );
+
+    if (existingVoucher) {
+      setVoucherTitle(existingVoucher.ma);
+      setVoucherPrices(existingVoucher.dis);
+      toast("Voucher đã nhập thành công");
+    } else {
+      toast("Voucher không tồn tại");
+    }
+  };
+  const handleRemoveFromCart = (id) => {
+    dispatch(removeItem(id));
+  };
   const userName = localStorage.getItem("username") || "";
   const userEmail = localStorage.getItem("useremail") || "";
   const userMobile = localStorage.getItem("usermobile") || "";
   const userFirstName = localStorage.getItem("userfirstname") || "";
 
   const userCreate = localStorage.getItem("usercreatedAt") || "";
-  return (
+
+  return cartData.length != 0 ? (
     <div className="home w-full">
       <div className="homeContainer w-3/4 ml-auto mr-auto p-10">
         <div>
@@ -218,59 +176,60 @@ const UserProfile = () => {
                   <th>Tổng giá</th>
                 </tr>
               </thead>
+
               <tbody>
-                <tr>
-                  <td className=" pb-4 md:table-cell ">
-                    <a href="#">
-                      <img
-                        src={avatar}
-                        className="w-20 h-20 rounded mx-auto rounded-lg shadow-lg"
-                        alt="Thumbnail"
-                      />
-                    </a>
-                  </td>
-                  <td>
-                    <p className="mb-2 md:text-center truncate max-w-[130px] mx-auto ">
-                      Atermix
-                    </p>
-                  </td>
-                  <td className="justify-center md:justify-center md:flex mt-6">
-                    <div className="w-20 h-10 ">
-                      <div className="relative flex w-full h-8">
-                        <input
-                          type="text"
-                          value="1"
-                          className="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black "
-                          disabled
+                {cartData.map((item, index) => (
+                  <tr>
+                    <td className=" pb-4 md:table-cell ">
+                      <a href="#">
+                        <img
+                          src={item.image}
+                          className="w-20 h-20 rounded mx-auto rounded-lg shadow-lg"
+                          alt="Thumbnail"
                         />
+                      </a>
+                    </td>
+                    <td>
+                      <p className="mb-2 md:text-center truncate max-w-[130px] mx-auto ">
+                        {item.title}
+                      </p>
+                    </td>
+                    <td className="justify-center md:justify-center md:flex mt-6">
+                      <div className="w-20 h-10 ">
+                        <div className="relative flex w-full h-8">
+                          <input
+                            type="text"
+                            value={item.qty}
+                            className="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black "
+                            disabled
+                          />
+                        </div>
                       </div>
-                    </div>
-                  </td>
-                  <td className="text-center md:table-cell">
-                    <span className="text-sm lg-text-left lg:text-base font-medium text-red-500">
-                      {new Intl.NumberFormat({
-                        style: "currency",
-                        currency: "VND",
-                      }).format(100000)}{" "}
-                      VNĐ
-                    </span>
-                  </td>
-                  <td className="text-center md:table-cell">
-                    <span className="text-sm text-center lg:text-base font-medium text-red-500">
-                      {new Intl.NumberFormat({
-                        style: "currency",
-                        currency: "VND",
-                      }).format(100000)}{" "}
-                      VNĐ
-                    </span>
-                  </td>
-                </tr>
+                    </td>
+                    <td className="text-center md:table-cell">
+                      <span className="text-gray-700">
+                        {new Intl.NumberFormat({
+                          style: "currency",
+                          currency: "VND",
+                        }).format(item.price)}{" "}
+                        VNĐ
+                      </span>
+                    </td>
+                    <td className="text-center md:table-cell">
+                    <span className="text-sm lg:text-base font-medium text-red-500">
+                          {totalPrice(item.price, item.qty)} VNĐ
+                        </span>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
         </div>
       </div>
     </div>
+  ) : (
+    <div className="flex justify-center">Rong</div>
   );
 };
 export default UserProfile;
