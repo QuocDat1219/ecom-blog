@@ -1,278 +1,628 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useEffect } from "react";
-import axios from "axios";
-import { addItem, removeItem } from "../../redux/action/cartActions";
-import { toast } from "react-toastify";
-import { useDispatch, useSelector } from "react-redux";
-import emty from "../images/empty-cart.png";
+import React, { useEffect, useState } from "react";
 import "./checkout.css";
+import { TiTick } from "react-icons/ti";
+import { Link } from "react-router-dom";
+import { FaShippingFast, FaAddressCard } from "react-icons/fa";
+import { MdPayment } from "react-icons/md";
+import {
+  AiOutlineFileDone,
+  AiOutlineProfile,
+  AiOutlineMail,
+  AiOutlinePhone,
+} from "react-icons/ai";
+import { GrUserExpert } from "react-icons/gr";
+import git from "../images/save-money.gif";
+import gitcheck from "../images/verified.gif";
+import paypal from "../images/paypal.jpg";
+import momo from "../images/MoMo_Logo.png";
+import cod from "../images/cod.jpg";
+import LogoGHTK from "../images/Logo-GHTK.png";
+import LogoVT from "../images/Logo-Viettel-Post-Red.png";
+import { useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import axios from "axios";
+// import {
+//   createOrder,
+//   getMoney,
+//   resetOrder,
+// } from "../redux/action/orderActions";
+// import { resetCart } from "../redux/action/cartActions";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+const steps = [
+  {
+    name: "Thông tin người nhận",
+    icon: <AiOutlineProfile />,
+  },
+  {
+    name: "Thông tin giao hàng",
+    icon: <FaShippingFast />,
+  },
+  {
+    name: "Thanh toán",
+    icon: <MdPayment />,
+  },
+  {
+    name: "Hoàn thành",
+    icon: <AiOutlineFileDone />,
+  },
+];
+
+const Shipping = [
+  {
+    id: 1,
+    name: "Giao hàng tiết kiệm",
+    image: LogoGHTK,
+    time_shipping: "3 đến 5 ngày",
+    price: 35000,
+  },
+  {
+    id: 2,
+    name: "Viettel Post",
+    image: LogoVT,
+    time_shipping: "2 đến 4 ngày",
+    price: 40000,
+  },
+];
+
+const payments = [
+  {
+    id: 1,
+    name: "PayPal",
+    image: paypal,
+  },
+  {
+    id: 2,
+    name: "MoMo",
+    image: momo,
+  },
+  {
+    id: 3,
+    name: "Nhận hàng thanh toán",
+    image: cod,
+  },
+];
 const Checkout = () => {
-  const userData = localStorage.getItem("token") || "";
-  const [totalPrices, setTotalPrices] = useState(0);
-  const [total, setTotal] = useState(0);
-  const [shipPrices, setShipPrices] = useState(30000);
-  const [voucher, setVoucher] = useState();
-  const [voucherPrices, setVoucherPrices] = useState(0);
-  const [voucherTitle, setVoucherTitle] = useState("");
-
-  const [userId, userEmail, userPassword] = userData.split(":");
-  const dispatch = useDispatch();
-
+  const dispatch = new useDispatch();
+  let total = JSON.parse(localStorage.getItem("total")) || 0;
+  const [userId, setUserId] = useState(localStorage.getItem("userid") || "");
+  const [userName, setUserName] = useState(
+    localStorage.getItem("username") || ""
+  );
+  const [userMobile, setUserMobile] = useState(
+    localStorage.getItem("usermobile") || ""
+  );
+  const [userEmail, setUserEmail] = useState(
+    localStorage.getItem("useremail") || ""
+  );
+  const [currentStep, setCurrentStep] = useState(1);
+  const [complete, setComplete] = useState(false);
+  const [shipping, setShipping] = useState();
+  const [payment, setPayment] = useState(payments[0]);
+  const [totalprice, setTotalprice] = useState(total);
+  const [usdAmount, setUsdAmount] = useState(0);
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
-  let cartData = JSON.parse(localStorage.getItem("cartItems")) || [];
 
-  const totalPrice = (price, qty) => {
+  const sumPrice = (price, qty) => {
     const total = price * qty;
-    const formattedTotal = total.toLocaleString({
-      style: "currency",
-      currency: "VND",
-    });
-    return formattedTotal;
-  };
-
-  const calculateTotalPrice = () => {
-    let totalPrice = 0;
-    cartData.forEach((item) => {
-      totalPrice += item.price * item.qty;
-    });
-
-    return totalPrice;
-  };
-
-  const calculateTotal = () => {
-    let total = 0;
-    total = totalPrices + shipPrices - voucherPrices;
-
     return total;
   };
-  useEffect(() => {
-    const totalPrice = calculateTotalPrice();
-    setTotalPrices(totalPrice);
-    const total = calculateTotal();
-    setTotal(total);
-  }, [cartData]);
+  // const orderCreate = useSelector((state) => state.orderCreate);
+  // const { isloading, issuccess, order } = orderCreate;
+  // const orderMoney = useSelector((state) => state.orderGetMoney);
+  // const { money } = orderMoney;
 
-  const vouchers = [
-    {
-      ma: "123",
-      dis: 10000,
-    },
-    {
-      ma: "Ma1",
-      dis: 15000,
-    },
-  ];
+  // useEffect(() => {
+  //   dispatch(getMoney());
+  // }, []);
+  // useEffect(() => {
+  //   if (shipping) {
+  //     const price = shipping.price + total;
+  //     setTotalprice(price);
+  //     if (money) {
+  //       const usdValue = price / money.VND.value;
+  //       setUsdAmount(usdValue.toFixed(2));
+  //     }
+  //   }
+  // }, [shipping]);
 
-  const addVoucher = () => {
-    const existingVoucher = vouchers.find(
-      (vc) => vc.ma.toLowerCase() === voucher.toLowerCase()
-    );
+  // const handerClickCheckOut = () => {
+  //   setComplete(true);
+  //   setCurrentStep(1);
+  //   dispatch(createOrder(cartItems, payment, shipping, userId, totalprice));
+  // };
+  // useEffect(() => {
+  //   if (isloading == true) {
+  //     console.log("loading");
+  //   }
+  //   if (issuccess == true) {
+  //     console.log("success");
+  //     dispatch(resetCart());
+  //     dispatch(resetOrder());
+  //   }
+  // }, [isloading, issuccess]);
 
-    if (existingVoucher) {
-      setVoucherTitle(existingVoucher.ma);
-      setVoucherPrices(existingVoucher.dis);
-      toast("Voucher đã nhập thành công");
-    } else {
-      toast("Voucher không tồn tại");
+  const handerClicknext = () => {
+    if (currentStep == 2 && shipping == undefined) {
+      toast.warning("Hãy chọn đơn vị vận chuyển");
+      return;
     }
-  };
-  const handleRemoveFromCart = (id) => {
-    dispatch(removeItem(id));
+    if (currentStep == 3 && payment == 0) {
+      toast.warning("Hãy chọn phương thức thanh toán");
+      return;
+    }
+    setCurrentStep((prev) => prev + 1);
   };
 
-  return cartData.length != 0 ? (
-    <div classNameName="maincontainer">
-      <div className="container mx-auto sm:px-4">
-        <div className="py-5 text-center font-bold text-[25px]">Checkout</div>
-        <div className="flex flex-wrap ">
-          <div className="md:w-1/3 pr-4 pl-4 md:order-2 mb-4">
-            <h4 className="flex justify-between items-center mb-3">
-              <span className="text-gray-700">Giỏ hàng của bạn</span>
-            </h4>
-            {cartData.map((item, index) => (
-              <ul className="flex flex-col pl-0 border rounded border-gray-300 mb-3">
-                <li className="relative  py-3 px-6 -mb-px border border-r-0 border-l-0 border-gray-300 no-underline flex justify-between lh-condensed">
-                  <div>
-                    <h6 className="text-gray-700">{item.title} <span className="text-blue-600 text-[15px]"> x {item.qty}</span></h6>
-                  </div>
-                  <span className="text-gray-700">
-                    {new Intl.NumberFormat({
-                      style: "currency",
-                      currency: "VND",
-                    }).format(item.price)}{" "}
-                    VNĐ
-                  </span>
-                </li>
-                {/* <li className="relative py-3 px-6 -mb-px border border-r-0 border-l-0 border-gray-300 no-underline flex justify-between bg-gray-100">
-                  <div className="text-green-500">
-                    <h6 className="my-0">Promo code</h6>
-                    <small>EXAMPLE CODE</small>
-                  </div>
-                  <span className="text-green-500">  {new Intl.NumberFormat({
-                          style: "currency",
-                          currency: "VND",
-                        }).format(voucherPrices)}{" "}
-                        VNĐ</span>
-                </li> */}
-                {/* <li className="relative  py-3 px-6 -mb-px border border-r-0 border-l-0 border-gray-300 no-underline flex justify-between">
-                  <span>Total (USD)</span>
-                  <strong>$20</strong>
-                </li> */}
-              </ul>
-            ))}
-            <div className="">
-              <ul>
-              <li className="relative  py-3 px-6 -mb-px border border-r-0 border-l-0 border-gray-300 no-underline flex justify-between">
-                  <span>Vận chuyển (VND)</span>
-                  <span className="text-green-300">
-                        {new Intl.NumberFormat({
-                          style: "currency",
-                          currency: "VND",
-                        }).format(shipPrices)}{" "}
-                        VNĐ
-                      </span>
-                </li>
-                <li className="relative  py-3 px-6 -mb-px border border-r-0 border-l-0 border-gray-300 no-underline flex justify-between">
-                  <span>Tổng cộng (VND)</span>
-                  <span className="text-red-500">
-                        {new Intl.NumberFormat({
-                          style: "currency",
-                          currency: "VND",
-                        }).format(total)}{" "}
-                        VNĐ
-                      </span>
-                </li>
-              </ul>
+  return (
+    <>
+      <div className="flex justify-evenly z-10 pb-10 pt-10 border rounded-full mb-5">
+        {steps?.map((step, i) => (
+          <div
+            key={i}
+            className={`step-item ${currentStep === i + 1 && "active"} ${
+              (i + 1 < currentStep || complete) && "complete"
+            } `}
+          >
+            <div className="step">
+              {i + 1 < currentStep || complete ? (
+                <TiTick size={24} className="text-green-500" />
+              ) : (
+                step.icon
+              )}
             </div>
-            {/* <form className="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300 p-2">
-              <div className="relative flex items-stretch w-full">
-                <input
-                  type="text"
-                  className="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded"
-                  placeholder="Promo code"
-                />
-                <div className="input-group-append">
-                  <button
-                    type="button"
-                    className="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-gray-600 text-white hover:bg-gray-700"
+            <p className="text-gray-500">{step.name}</p>
+          </div>
+        ))}
+      </div>
+
+      {!complete ? (
+        <div className="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32 pt-1">
+          <div className="px-4 pt-8">
+            <p className="text-xl font-medium">Sản phẩm đã chọn</p>
+            <p className="text-gray-400">
+              Kiểm tra các mặt hàng của bạn. Và chọn một phương thức vận chuyển
+              phù hợp.
+            </p>
+            <div className="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6 overflow-y-scroll">
+              {cartItems.map((item) => (
+                <div className="flex flex-col rounded-lg bg-white sm:flex-row">
+                  <img
+                    className="m-2 h-24 w-28 rounded-md border object-cover object-center"
+                    src={item.image}
+                    alt=""
+                  />
+                  <div className="flex w-full flex-col px-4 py-4">
+                    <span className="font-semibold">{item.title}</span>
+                    <span className="float-right text-gray-400">
+                      {item.price.toLocaleString("vi-VN", {
+                        style: "currency",
+                        currency: "VND",
+                      })}{" "}
+                      x {item.qty}
+                    </span>
+                    <p className="text-lg font-bold">
+                      {sumPrice(item.price, item.qty).toLocaleString("vi-VN", {
+                        style: "currency",
+                        currency: "VND",
+                      })}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            {currentStep == 3 ? (
+              <>
+                <p className="mt-8 text-lg font-medium">
+                  Phương thức thanh toán
+                </p>
+                <div className="h-[350px] overflow-y-scroll">
+                  <form className="mt-5 grid gap-6">
+                    {payments.map((item, index) => (
+                      <div className="relative" key={item.id}>
+                        {item.name == "PayPal" ? (
+                          <input
+                            className="peer hidden"
+                            id={`radio_${index}`}
+                            type="radio"
+                            name="radio"
+                            onClick={() => setPayment(item)}
+                            required
+                            checked
+                          />
+                        ) : (
+                          <input
+                            className="peer hidden"
+                            id={`radio_${index}`}
+                            type="radio"
+                            name="radio"
+                            onClick={() => setPayment(item)}
+                            required
+                          />
+                        )}
+
+                        <span className="peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
+                        <label
+                          className="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4"
+                          for={`radio_${index}`}
+                        >
+                          <img
+                            className="w-14 h-10 object-contain rounded-lg"
+                            src={item.image}
+                            alt=""
+                          />
+                          <div className="ml-5">
+                            <span className="mt-2 font-semibold">
+                              {item.name}
+                            </span>
+                          </div>
+                        </label>
+                      </div>
+                    ))}
+                  </form>
+                </div>
+              </>
+            ) : (
+              <>
+                <p className="mt-8 text-lg font-medium">Đơn vị vận chuyển</p>
+                <form className="mt-5 grid gap-6">
+                  {Shipping.map((item, index) => (
+                    <div className="relative" key={item.id}>
+                      <input
+                        className="peer hidden"
+                        id={`radio_${index}`}
+                        type="radio"
+                        name="radio"
+                        onClick={() => setShipping(item)}
+                      />
+                      <span className="peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
+                      <label
+                        className="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4"
+                        for={`radio_${index}`}
+                      >
+                        <img
+                          className="w-14 h-10 object-contain rounded-lg"
+                          src={item.image}
+                          alt=""
+                        />
+                        <div className="ml-5">
+                          <span className="mt-2 font-semibold">
+                            {item.name}
+                          </span>
+                          <p className="text-slate-500 text-sm leading-6 text-left">
+                            {item.time_shipping}
+                          </p>
+                        </div>
+                      </label>
+                    </div>
+                  ))}
+                </form>
+              </>
+            )}
+          </div>
+          <div className="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0 ">
+            <div>
+              {currentStep == 1 ? (
+                <div className="">
+                  <p className="text-xl font-medium">Thông tin</p>
+                  <p className="text-gray-400">
+                    Xem lại thông tin trước khi đặt hàng
+                  </p>
+                  <label
+                    for="email"
+                    className="mt-4 mb-2 block text-sm font-medium"
                   >
-                    Redeem
+                    Tên người nhận
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      value={userName}
+                      onChange={(e) => setUserName(e.target.value)}
+                      className="w-full rounded-md border py-3 border-gray-200  pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                      required
+                    />
+
+                    <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
+                      <GrUserExpert />
+                    </div>
+                  </div>
+                  <label
+                    for="card-holder"
+                    className="mt-4 mb-2 block text-sm font-medium"
+                  >
+                    Email
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="email"
+                      value={userEmail}
+                      onChange={(e) => setUserEmail(e.target.value)}
+                      className="w-full rounded-md border py-3 border-gray-200  pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                      required
+                    />
+                    <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
+                      <AiOutlineMail />
+                    </div>
+                  </div>
+                  <label
+                    for="card-holder"
+                    className="mt-4 mb-2 block text-sm font-medium"
+                  >
+                    Số điện thoại
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      value={userMobile}
+                      onChange={(e) => setUserMobile(e.target.value)}
+                      className="w-full rounded-md border py-3 border-gray-200  pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                      placeholder="Nhập số điện thoại"
+                      required
+                    />
+                    <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
+                      <AiOutlinePhone />
+                    </div>
+                  </div>
+
+                  <button className="mt-4 mb-8 w-full rounded-md bg-[#6698ff] px-6 py-3 font-medium text-white">
+                    Thay đổi thông tin
                   </button>
                 </div>
-              </div>
-            </form> */}
-          </div>
-          <div className="md:w-2/3 pr-4 pl-4 md:order-1">
-            <h4 className="mb-3">Billing address</h4>
-            <form className="needs-validation" novalidate>
-              <div className="flex flex-wrap ">
-                <div className="md:w-1/2 pr-4 pl-4 mb-3">
-                  <label for="firstName">Nhập họ</label>
-                  <input
-                    type="text"
-                    className="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded"
-                    id="firstName"
-                    placeholder=""
-                    value=""
-                    required
-                  />
-                  <div className="hidden mt-1 text-sm text-red">
-                    Valid first name is required.
-                  </div>
-                </div>
-                <div className="md:w-1/2 pr-4 pl-4 mb-3">
-                  <label for="lastName">Tên</label>
-                  <input
-                    type="text"
-                    className="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded"
-                    id="lastName"
-                    placeholder=""
-                    value=""
-                    required
-                  />
-                  <div className="hidden mt-1 text-sm text-red">
-                    Valid last name is required.
-                  </div>
-                </div>
-              </div>
-              <div className="mb-3">
-                <label for="email">
-                  Email <span className="text-gray-700"></span>
-                </label>
-                <input
-                  type="email"
-                  className="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded"
-                  id="email"
-                  placeholder="Nhập email"
-                />
-                <div className="hidden mt-1 text-sm text-red">
-                  Please enter a valid email address for shipping updates.
-                </div>
-              </div>
-              <div className="mb-3">
-                <label for="address">Địa chỉ</label>
-                <input
-                  type="text"
-                  className="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded"
-                  id="address"
-                  placeholder="Địa chỉ"
-                  required
-                />
-                <div className="hidden mt-1 text-sm text-red">
-                  Please enter your shipping address.
-                </div>
-              </div>
-              <div className="mb-3">
-                <label for="address2">
-                  Số điện thoại <span className="text-gray-700"></span>
-                </label>
-                <input
-                  type="number"
-                  className="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded"
-                  id="sdt"
-                  placeholder=""
-                />
-              </div>
-              <hr className="mb-4" />
-              <div className="my-3 mb-10">
-                <h4 className="mb-3 flex flex-row sm:flex-col items-center justify-center">
-                  Payment
-                </h4>
-                <ul className="payment-methods flex flex-col sm:flex-row items-center justify-center">
-                  <li className="payment-method paypal sm:w-full sm:mb-3 ml-[23px] mb-[10px]">
-                    <input name="payment_methods" type="radio" id="paypal" />
-                    <label htmlFor="paypal">PayPal</label>
-                  </li>
+              ) : currentStep == 2 ? (
+                <div className="">
+                  <p className="text-xl font-medium">Địa chỉ giao hàng</p>
+                  <p className="text-gray-400">
+                    Xem lại địa chỉ giao hàng trước khi đặt hàng
+                  </p>
+                  <label
+                    for="email"
+                    className="mt-4 mb-2 block text-sm font-medium"
+                  >
+                    Tỉnh/ Thành phố
+                  </label>
+                  <div className="relative">
+                    <select
+                      id="countries"
+                      className="bg-gray-50 border pl-9 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                    >
+                      <option selected>Choose a country</option>
+                      <option value="US">United States</option>
+                      <option value="CA">Canada</option>
+                      <option value="FR">France</option>
+                      <option value="DE">Germany</option>
+                    </select>
 
-                  <li className="payment-method pagseguro sm:w-full sm:mb-3  mb-[10px]">
-                    <input name="payment_methods" type="radio" id="pagseguro" />
-                    <label htmlFor="pagseguro">PagSeguro</label>
-                  </li>
-
-                  <li className="payment-method bankslip sm:w-full sm:mb-3  mb-[10px]">
-                    <input name="payment_methods" type="radio" id="bankslip" />
-                    <label htmlFor="bankslip">Boleto</label>
-                  </li>
-                </ul>
-              </div>
-              <hr className="mb-4" />
+                    <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
+                      <FaAddressCard />
+                    </div>
+                  </div>
+                  <label
+                    for="card-holder"
+                    className="mt-4 mb-2 block text-sm font-medium"
+                  >
+                    Quận/ Huyện
+                  </label>
+                  <div className="relative">
+                    <select
+                      id="countries"
+                      className="bg-gray-50 border pl-9 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                    >
+                      <option selected>Choose a country</option>
+                      <option value="US">United States</option>
+                      <option value="CA">Canada</option>
+                      <option value="FR">France</option>
+                      <option value="DE">Germany</option>
+                    </select>
+                    <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
+                      <FaAddressCard />
+                    </div>
+                  </div>
+                  <label
+                    for="card-holder"
+                    className="mt-4 mb-2 block text-sm font-medium"
+                  >
+                    Phương/ xã
+                  </label>
+                  <div className="relative">
+                    <select
+                      id="countries"
+                      className="bg-gray-50 border pl-9 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                    >
+                      <option selected>Choose a country</option>
+                      <option value="US">United States</option>
+                      <option value="CA">Canada</option>
+                      <option value="FR">France</option>
+                      <option value="DE">Germany</option>
+                    </select>
+                    <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
+                      <FaAddressCard />
+                    </div>
+                  </div>
+                  <label
+                    for="card-no"
+                    className="mt-4 mb-2 block text-sm font-medium"
+                  >
+                    Số nhà
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      id=""
+                      name=""
+                      className="w-full rounded-md border py-3 border-gray-200  pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                      placeholder="Số nhà"
+                    />
+                    <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
+                      <FaAddressCard />
+                    </div>
+                  </div>
+                  <button className="mt-4 mb-8 w-full rounded-md bg-[#6698ff] px-6 py-3 font-medium text-white">
+                    Thay đổi thông tin
+                  </button>
+                </div>
+              ) : currentStep == 3 && payment?.name == "PayPal" ? (
+                <div className="lg:pt-24 sm:pt-2 ">
+                  <h3 className="">PayPal</h3>
+                  <p className="text-gray-400 font-normal">
+                    {" "}
+                    Với PayPal, người dùng có thể tạo tài khoản miễn phí và liên
+                    kết nó với tài khoản ngân hàng của mình hoặc thẻ tín dụng để
+                    thực hiện các giao dịch trực tuyến. PayPal cung cấp một
+                    phương thức an toàn và bảo mật để chuyển tiền và mua sắm
+                    trực tuyến mà không cần tiết lộ thông tin tài chính cá nhân
+                    cho người nhận.
+                  </p>
+                </div>
+              ) : currentStep == 3 &&
+                payment?.name == "Nhận hàng thanh toán" ? (
+                <div className="lg:pt-64 sm:pt-2">
+                  <p className="text-xl font-medium">Nhận hàng thanh toán</p>
+                  <p className="text-gray-400">
+                    {" "}
+                    Phương thức thanh toán truyền thống nhất, trong đó khách
+                    hàng trả tiền mặt khi nhận hàng. Bạn có thể chấp nhận thanh
+                    toán tiền mặt trực tiếp từ khách hàng hoặc thông qua đại lý
+                    vận chuyển.
+                  </p>
+                </div>
+              ) : (
+                <></>
+              )}
+              {currentStep == 4 ? (
+                <div></div>
+              ) : (
+                <>
+                  <div className="mt-6 border-t border-b py-2">
+                    <div className="flex items-center justify-between">
+                      <p className="text-sm font-medium text-gray-900">
+                        Tổng tiền sản phẩm
+                      </p>
+                      <p className="font-semibold text-gray-900">
+                        {total.toLocaleString("vi-VN", {
+                          style: "currency",
+                          currency: "VND",
+                        })}
+                      </p>
+                    </div>
+                    {shipping ? (
+                      <div className="flex items-center justify-between">
+                        <p className="text-sm font-medium text-gray-900">
+                          Phí giao hàng
+                        </p>
+                        <p className="font-semibold text-[#6698ff]">
+                          +{" "}
+                          {shipping.price.toLocaleString("vi-VN", {
+                            style: "currency",
+                            currency: "VND",
+                          })}
+                        </p>
+                      </div>
+                    ) : null}
+                  </div>
+                  <div className="mt-6 flex items-center justify-between">
+                    <p className="text-sm font-medium text-gray-900">
+                      Tổng thanh toán
+                    </p>
+                    <p className="text-2xl font-semibold text-gray-900">
+                      {totalprice.toLocaleString("vi-VN", {
+                        style: "currency",
+                        currency: "VND",
+                      })}
+                    </p>
+                  </div>
+                </>
+              )}
+            </div>
+            {currentStep == 3 && payment?.name == "Nhận hàng thanh toán" ? (
               <button
-                className=" align-middle text-center select-none border font-normal whitespace-no-wrap rounded  no-underline bg-blue-600 text-white hover:bg-blue-600 py-3 px-4 leading-tight text-xl block w-full mb-8 mt-8"
-                type="button"
+                // onClick={handerClickCheckOut}
+                className="mt-4 mb-8 w-full rounded-md bg-[#6698ff] px-6 py-3 font-medium text-white "
               >
-                Continue to checkout
+                Đặt hàng
               </button>
-            </form>
+            ) : currentStep == 3 && payment?.name == "PayPal" ? (
+              <PayPalScriptProvider
+                options={{
+                  "client-id":
+                    "AWdV3fBfwbxlAQyQO1FpzMo9tzwsNy2dCo1TiGxsZwro_qFF8MD9x6Kruo3Uwj3BH5uyc_-FoW5BzjLW",
+                }}
+              >
+                <PayPalButtons
+                  createOrder={(data, actions) => {
+                    return actions.order.create({
+                      purchase_units: [
+                        {
+                          amount: {
+                            currency_code: "USD",
+                            value: usdAmount,
+                          },
+                        },
+                      ],
+                    });
+                  }}
+                  onApprove={(data, actions) => {
+                    return actions.order.capture().then((details) => {
+                      console.log(details);
+
+                       if (details.status == "COMPLETED") /*handerClickCheckOut()*/;
+                      toast.success("Thanh toán thành công");
+                    });
+                  }}
+                />
+              </PayPalScriptProvider>
+            ) : (
+              <></>
+            )}
           </div>
         </div>
-      </div>
-    </div>
-  ) : (
-    <div className="flex justify-center">
-      Rong
-    </div>
+      ) : (
+        <div>
+          <div class="pyro">
+            <div class="before"></div>
+            <div class="after"></div>
+          </div>
+          <div className="grid-flow-col flex justify-center">
+            <p className="text-[30px] mt-10 font-bold">
+              Đã đặt đơn hàng thành công
+            </p>
+            <div className="mt-4">
+              <img src={gitcheck} width="60px" height="40px"></img>
+            </div>
+          </div>
+
+          <Link to={"/sale"}>
+            <button className="mt-4 mb-8 text-[15px] lg:w-[20%] sm:w-full md:w-1/3 rounded-md bg-[#fe2c6d] px-6 py-3 font-medium text-white  ">
+              Tiếp tục mua hàng
+            </button>
+          </Link>
+        </div>
+      )}
+
+      {!complete && (
+        <div className="grid grid-flow-col justify-center p-4">
+          {currentStep != 1 ? (
+            <button
+              className=" w-full rounded-md bg-[#6698ff] px-3 py-3 font-medium text-white "
+              onClick={() => {
+                setCurrentStep((prev) => prev - 1);
+              }}
+            >
+              Trở về
+            </button>
+          ) : null}
+          {currentStep === steps.length - 1 ? null : (
+            <button
+              className=" w-full rounded-md bg-[#6698ff] px-3 py-3 font-medium text-white ml-5"
+              onClick={handerClicknext}
+            >
+              Tiếp tục
+            </button>
+          )}
+        </div>
+      )}
+    </>
   );
 };
 
