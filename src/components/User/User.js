@@ -1,4 +1,7 @@
 import "./User.scss";
+import { Link } from "react-router-dom";
+import { addItem, removeItem } from "../../redux/action/cartActions";
+import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import {
   Tabs,
@@ -48,6 +51,7 @@ const UserProfile = () => {
   const userFirstName = localStorage.getItem("userfirstname") || "";
 
   const userCreate = localStorage.getItem("usercreatedAt") || "";
+
   return (
     <div className="home w-full">
       <div className="homeContainer w-3/4 ml-auto mr-auto p-10">
@@ -194,6 +198,6 @@ const UserProfile = () => {
         </div>
       </div>
     </div>
-  );
+  )
 };
 export default UserProfile;
