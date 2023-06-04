@@ -23,11 +23,13 @@ var checkPassword =
   /^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
 const UserProfile = () => {
+  const userId = JSON.parse(window.localStorage.getItem("user_infos"));
+  const iduser = userId._id;
   const [alloder, setAllOder] = useState([]);
   useEffect(() => {
     const getalloder = async () => {
       await axios
-        .get(`${process.env.REACT_APP_API_URL}orders/getallorder`)
+        .get(`${process.env.REACT_APP_API_URL}orders/getorderuser/${iduser}`)
         .then((response) => {
           setAllOder(response.data);
         });

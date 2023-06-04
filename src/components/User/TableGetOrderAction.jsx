@@ -29,8 +29,9 @@ const TableAntdAction = ({ orderData }) => {
   useEffect(() => {
     dispatch(getProductsAll());
   }, []);
-  const userId = window.localStorage.getItem("userid");
-  useEffect(() => {}, [userId]);
+  const userId = JSON.parse(window.localStorage.getItem("user_infos"));
+  const iduser = userId._id;
+  useEffect(() => {}, [iduser]);
   const getProductNameById = (productId) => {
     const pro = products.find((item) => item._id == productId);
     return pro ? pro.name : "Sản phẩm không tồn tại";

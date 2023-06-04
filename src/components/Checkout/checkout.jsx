@@ -122,7 +122,7 @@ const Checkout = () => {
   // console.log(shipping.price);
 
   const paymentmanager = () => {
-    const payPrice = tong / 23000;
+    const payPrice = totalprice / 23000;
     setThanhToan(payPrice.toFixed(2));
     return payPrice.toFixed(2);
   };
@@ -499,7 +499,7 @@ const Checkout = () => {
                         Tổng tiền sản phẩm
                       </p>
                       <p className="font-semibold text-gray-900">
-                        {tong.toLocaleString("vi-VN", {
+                        {total.toLocaleString("vi-VN", {
                           style: "currency",
                           currency: "VND",
                         })}
