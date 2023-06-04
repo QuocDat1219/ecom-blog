@@ -124,7 +124,7 @@ const TableAntdAction = ({ orderData }) => {
           <button
             onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
             type="button"
-            className="text-white bg-[#fe2c6d] hover:bg-[#fe2c6d]/90 focus:ring-4 focus:outline-none focus:ring-[#fe2c6d]/50 font-medium rounded-lg text-sm px-3.5 py-2 text-center inline-flex items-center mr-2 mb-2"
+            className="text-white bg-[#007bff] hover:bg-[#007bff]/90 focus:ring-4 focus:outline-none focus:ring-[#007bff]/50 font-medium rounded-lg text-sm px-3.5 py-2 text-center inline-flex items-center mr-2 mb-2"
           >
             <AiOutlineSearch />
             Tìm kiếm
@@ -215,7 +215,7 @@ const TableAntdAction = ({ orderData }) => {
       width: "25%",
       render: (text, record) => (
         <button
-          className="text-white bg-[#fe2c6d] hover:bg-[#fe2c6d]/90 focus:ring-4 focus:outline-none focus:ring-[#fe2c6d]/50 font-medium rounded-lg text-sm px-3.5 py-2 text-center inline-flex items-center mr-2 mb-2"
+          className="text-white bg-[#007bff] hover:bg-[#007bff]/90 focus:ring-4 focus:outline-none focus:ring-[#007bff]/50 font-medium rounded-lg text-sm px-3.5 py-2 text-center inline-flex items-center mr-2 mb-2"
           onClick={() => showModal(record.products)}
         >
           Chi tiết ({JSON.parse(record.products).length})
@@ -251,7 +251,7 @@ const TableAntdAction = ({ orderData }) => {
       width: "15%",
       render: (text, record) => (
         <button
-          className="text-white bg-[#fe2c6d] hover:bg-[#fe2c6d]/90 focus:ring-4 focus:outline-none focus:ring-[#fe2c6d]/50 font-medium rounded-lg text-sm px-3.5 py-2 text-center inline-flex items-center mr-2 mb-2"
+          className="text-white bg-[#007bff] hover:bg-[#007bff]/90 focus:ring-4 focus:outline-none focus:ring-[#007bff]/50 font-medium rounded-lg text-sm px-3.5 py-2 text-center inline-flex items-center mr-2 mb-2"
           onClick={() => showModalCancel(record.id)}
         >
           Hủy

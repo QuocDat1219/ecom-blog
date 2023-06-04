@@ -106,7 +106,7 @@ const UserProfile = () => {
       <div className="orderhistory w-full ml-auto mr-auto p-10">
         <div className="px-6 pb-6 mt-6 border-t w-[100%] border-gray-300 ">
           <Tabs value="tatca">
-            <TabsHeader>
+            <TabsHeader className="bg-[#007bff]">
               <Tab value="tatca">Tất cả</Tab>
               <Tab value="xuly" className="z-30">
                 Đang xử lý
