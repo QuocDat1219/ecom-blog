@@ -27,7 +27,7 @@ const UserProfile = () => {
   useEffect(() => {
     const getalloder = async () => {
       await axios
-        .get("http://localhost:5000/api/orders/getallorder")
+        .get(`${process.env.REACT_APP_API_URL}orders/getallorder`)
         .then((response) => {
           setAllOder(response.data);
         });
@@ -198,6 +198,6 @@ const UserProfile = () => {
         </div>
       </div>
     </div>
-  )
+  );
 };
 export default UserProfile;

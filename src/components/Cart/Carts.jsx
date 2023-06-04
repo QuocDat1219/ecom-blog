@@ -48,7 +48,7 @@ const Carts = () => {
 
   const calculateTotal = () => {
     let total = 0;
-    total = totalPrices + shipPrices - voucherPrices;
+    total = totalPrices - voucherPrices;
 
     return total;
   };
@@ -56,6 +56,7 @@ const Carts = () => {
     const totalPrice = calculateTotalPrice();
     setTotalPrices(totalPrice);
     const total = calculateTotal();
+    window.localStorage.setItem("total", total);
     setTotal(total);
   }, [cartData]);
 
@@ -159,13 +160,14 @@ const Carts = () => {
                             <button
                               type="button"
                               onClick={() => {
-                                item.qty != 1 ?
-                                dispatch(
-                                  addItem(
-                                    item.product,
-                                    Number(item.qty - 1)
-                                  )
-                                ) : dispatch(removeItem(item.product));
+                                item.qty != 1
+                                  ? dispatch(
+                                      addItem(
+                                        item.product,
+                                        Number(item.qty - 1)
+                                      )
+                                    )
+                                  : dispatch(removeItem(item.product));
                               }}
                               className="px-4 py-1 text-xl font-medium text-gray-900 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"
                             >
@@ -277,7 +279,7 @@ const Carts = () => {
                     </div>
                   </div>
 
-                  <div className="flex justify-between pt-4 border-b">
+                  {/* <div className="flex justify-between pt-4 border-b">
                     <div className="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
                       Chi phí vận chuyển
                     </div>
@@ -290,7 +292,7 @@ const Carts = () => {
                         VNĐ
                       </span>
                     </div>
-                  </div>
+                  </div> */}
                   {voucherPrices != 0 ? (
                     <div className="flex justify-between pt-4 border-b">
                       <div className="flex lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-gray-800">

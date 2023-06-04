@@ -100,48 +100,47 @@ const Checkout = () => {
   const [shipping, setShipping] = useState();
   const [payment, setPayment] = useState(payments[0]);
   const [totalprice, setTotalprice] = useState(total);
-  const [usdAmount, setUsdAmount] = useState(0);
   const cart = useSelector((state) => state.cart);
+  const [sumship, setSumship] = useState(0);
   const { cartItems } = cart;
 
   const sumPrice = (price, qty) => {
     const total = price * qty;
     return total;
   };
-  // const orderCreate = useSelector((state) => state.orderCreate);
-  // const { isloading, issuccess, order } = orderCreate;
-  // const orderMoney = useSelector((state) => state.orderGetMoney);
-  // const { money } = orderMoney;
+  const [thanhtoan, setThanhToan] = useState(0);
+  const [tong, setTong] = useState(0);
+  const id = window.localStorage.getItem("user_infos");
 
-  // useEffect(() => {
-  //   dispatch(getMoney());
-  // }, []);
-  // useEffect(() => {
-  //   if (shipping) {
-  //     const price = shipping.price + total;
-  //     setTotalprice(price);
-  //     if (money) {
-  //       const usdValue = price / money.VND.value;
-  //       setUsdAmount(usdValue.toFixed(2));
-  //     }
-  //   }
-  // }, [shipping]);
+  useEffect(() => {
+    if (shipping) {
+      const priceship = shipping.price + total;
+      setTotalprice(priceship);
+    }
+  }, [shipping]);
 
-  // const handerClickCheckOut = () => {
-  //   setComplete(true);
-  //   setCurrentStep(1);
-  //   dispatch(createOrder(cartItems, payment, shipping, userId, totalprice));
-  // };
-  // useEffect(() => {
-  //   if (isloading == true) {
-  //     console.log("loading");
-  //   }
-  //   if (issuccess == true) {
-  //     console.log("success");
-  //     dispatch(resetCart());
-  //     dispatch(resetOrder());
-  //   }
-  // }, [isloading, issuccess]);
+  // console.log(shipping.price);
+
+  const paymentmanager = () => {
+    const payPrice = tong / 23000;
+    setThanhToan(payPrice.toFixed(2));
+    return payPrice.toFixed(2);
+  };
+
+  const handleOrder = async () => {
+    const cart = window.localStorage.getItem("cartItems");
+    axios
+      .post(`${process.env.REACT_APP_API_URL}orders/createOrder`, {
+        products: JSON.parse(cart),
+        namePayment: "Paypal",
+        statusPayment: "Đã thanh toán",
+        orderby: JSON.parse(id)._id,
+        totalprice: totalprice,
+      })
+      .then(() => {
+        toast.success("Đặt hàng thành công");
+      });
+  };
 
   const handerClicknext = () => {
     if (currentStep == 2 && shipping == undefined) {
@@ -500,7 +499,7 @@ const Checkout = () => {
                         Tổng tiền sản phẩm
                       </p>
                       <p className="font-semibold text-gray-900">
-                        {total.toLocaleString("vi-VN", {
+                        {tong.toLocaleString("vi-VN", {
                           style: "currency",
                           currency: "VND",
                         })}
@@ -545,6 +544,7 @@ const Checkout = () => {
             ) : currentStep == 3 && payment?.name == "PayPal" ? (
               <PayPalScriptProvider
                 options={{
+                  components: "buttons",
                   "client-id":
                     "Ae_5iJYWFGJUR7mT3-KZaTj3U4O9uaxZE7Yy98NiKfXTCdkS7PrHW-NvljIMRfrWeXiSLFBwgcXEZrS7",
                 }}
@@ -555,8 +555,7 @@ const Checkout = () => {
                       purchase_units: [
                         {
                           amount: {
-                            currency_code: "USD",
-                            value: usdAmount,
+                            value: paymentmanager(),
                           },
                         },
                       ],
@@ -565,11 +564,9 @@ const Checkout = () => {
                   onApprove={(data, actions) => {
                     return actions.order.capture().then((details) => {
                       console.log(details);
-
-                      if (
-                        details.status == "COMPLETED" /*handerClickCheckOut()*/
-                      );
-                      toast.success("Thanh toán thành công");
+                      if (details.status === "COMPLETED") {
+                        handleOrder();
+                      }
                     });
                   }}
                 />
