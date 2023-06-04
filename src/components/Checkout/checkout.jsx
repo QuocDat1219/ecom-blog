@@ -546,7 +546,7 @@ const Checkout = () => {
               <PayPalScriptProvider
                 options={{
                   "client-id":
-                    "AWdV3fBfwbxlAQyQO1FpzMo9tzwsNy2dCo1TiGxsZwro_qFF8MD9x6Kruo3Uwj3BH5uyc_-FoW5BzjLW",
+                    "Ae_5iJYWFGJUR7mT3-KZaTj3U4O9uaxZE7Yy98NiKfXTCdkS7PrHW-NvljIMRfrWeXiSLFBwgcXEZrS7",
                 }}
               >
                 <PayPalButtons
@@ -566,7 +566,9 @@ const Checkout = () => {
                     return actions.order.capture().then((details) => {
                       console.log(details);
 
-                       if (details.status == "COMPLETED") /*handerClickCheckOut()*/;
+                      if (
+                        details.status == "COMPLETED" /*handerClickCheckOut()*/
+                      );
                       toast.success("Thanh toán thành công");
                     });
                   }}
