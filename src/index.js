@@ -5,7 +5,7 @@ import { store } from "./app/store";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "@material-tailwind/react";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("fb-root"));
 root.render(
   <Provider store={store}>
     <React.StrictMode>
