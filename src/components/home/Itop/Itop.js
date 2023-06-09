@@ -4,7 +4,7 @@ import "./Itop.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone, faComment } from "@fortawesome/free-solid-svg-icons";
 import logozalo from "./zalo-logo.png";
-import phone from "./phone.png";
+import phone from "./calling.png";
 import axios from "axios";
 
 const Itop = () => {
