@@ -22,6 +22,7 @@ import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import axios from "axios";
+import ninja from "../images/cover.png"
 // import {
 //   createOrder,
 //   getMoney,
@@ -58,8 +59,8 @@ const Shipping = [
   },
   {
     id: 2,
-    name: "Viettel Post",
-    image: LogoVT,
+    name: "Ninja Van",
+    image: ninja,
     time_shipping: "2 đến 4 ngày",
     price: 40000,
   },
