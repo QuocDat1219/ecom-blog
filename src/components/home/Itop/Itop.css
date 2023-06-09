@@ -78,7 +78,7 @@
   } */
   .scrollButton {
     position: fixed;
-    bottom: 20px;
+    bottom: 100px;
     right: 45px;
     z-index: 1;
     z-index: 9999;
