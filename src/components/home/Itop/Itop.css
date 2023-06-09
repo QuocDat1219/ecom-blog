@@ -1,8 +1,8 @@
 
 .chat-buttons {
     position: fixed;
-    bottom: 70px;
-    right: 35px;
+    bottom: 150px;
+    right: 25px;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -34,6 +34,7 @@
     animation-duration: 2s;
     animation-iteration-count: infinite;
     animation-direction: alternate;
+    background-image: none;
   }
   .iconZalo{
     animation-name: zoomInOut;
@@ -79,7 +80,7 @@
   .scrollButton {
     position: fixed;
     bottom: 100px;
-    right: 45px;
+    right: 30px;
     z-index: 1;
     z-index: 9999;
   }
