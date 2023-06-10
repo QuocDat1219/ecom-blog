@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import "./Itop.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone, faComment } from "@fortawesome/free-solid-svg-icons";
+import logozalo from "./zalo-logo.png";
+import phone from "./calling.png";
 import axios from "axios";
 
 const Itop = () => {
@@ -50,7 +52,7 @@ const Itop = () => {
           <li>
             <a href={`https://zalo.me/${info[0].zalo}`}>
               <img
-                src="https://everev.vn/wp-content/uploads/2023/03/icon-zalo-EverEV.png"
+                src={logozalo}
                 alt="Zalo chat icon"
                 className="iconZalo"
               />
@@ -59,7 +61,7 @@ const Itop = () => {
           <li>
             <a href={`tel:+${info[0].hotline}`}>
               <img
-                src="https://everev.vn/wp-content/uploads/2023/03/icon-call-EverEV.png"
+                src={phone}
                 alt="Phone icon"
                 className="iconPhone"
               />

@@ -1,8 +1,8 @@
 
 .chat-buttons {
     position: fixed;
-    bottom: 70px;
-    right: 35px;
+    bottom: 150px;
+    right: 25px;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -78,8 +78,8 @@
   } */
   .scrollButton {
     position: fixed;
-    bottom: 20px;
-    right: 45px;
+    bottom: 100px;
+    right: 30px;
     z-index: 1;
     z-index: 9999;
   }
