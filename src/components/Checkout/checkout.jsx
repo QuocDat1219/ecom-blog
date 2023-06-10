@@ -17,12 +17,13 @@ import paypal from "../images/paypal.jpg";
 import momo from "../images/MoMo_Logo.png";
 import cod from "../images/cod.jpg";
 import LogoGHTK from "../images/Logo-GHTK.png";
-import LogoVT from "../images/Logo-Viettel-Post-Red.png";
+import QRmomo from "../images/QRnhantien.jpg";
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import axios from "axios";
-import ninja from "../images/cover.png"
+import ninja from "../images/cover.png";
+
 // import {
 //   createOrder,
 //   getMoney,
@@ -383,17 +384,13 @@ const Checkout = () => {
                     Tỉnh/ Thành phố
                   </label>
                   <div className="relative">
-                    <select
-                      id="countries"
-                      className="bg-gray-50 border pl-9 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-                    >
-                      <option selected>Choose a country</option>
-                      <option value="US">United States</option>
-                      <option value="CA">Canada</option>
-                      <option value="FR">France</option>
-                      <option value="DE">Germany</option>
-                    </select>
-
+                  <input
+                      type="text"
+                      id=""
+                      name=""
+                      className="w-full rounded-md border py-3 border-gray-200  pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                      placeholder="Tỉnh thành phố..."
+                    />
                     <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
                       <FaAddressCard />
                     </div>
@@ -405,16 +402,13 @@ const Checkout = () => {
                     Quận/ Huyện
                   </label>
                   <div className="relative">
-                    <select
-                      id="countries"
-                      className="bg-gray-50 border pl-9 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-                    >
-                      <option selected>Choose a country</option>
-                      <option value="US">United States</option>
-                      <option value="CA">Canada</option>
-                      <option value="FR">France</option>
-                      <option value="DE">Germany</option>
-                    </select>
+                  <input
+                      type="text"
+                      id=""
+                      name=""
+                      className="w-full rounded-md border py-3 border-gray-200  pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                      placeholder="Quận huyện..."
+                    />
                     <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
                       <FaAddressCard />
                     </div>
@@ -423,19 +417,16 @@ const Checkout = () => {
                     for="card-holder"
                     className="mt-4 mb-2 block text-sm font-medium"
                   >
-                    Phương/ xã
+                    Phường/ xã
                   </label>
                   <div className="relative">
-                    <select
-                      id="countries"
-                      className="bg-gray-50 border pl-9 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-                    >
-                      <option selected>Choose a country</option>
-                      <option value="US">United States</option>
-                      <option value="CA">Canada</option>
-                      <option value="FR">France</option>
-                      <option value="DE">Germany</option>
-                    </select>
+                  <input
+                      type="text"
+                      id=""
+                      name=""
+                      className="w-full rounded-md border py-3 border-gray-200  pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                      placeholder="Phường xã"
+                    />
                     <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
                       <FaAddressCard />
                     </div>
@@ -452,7 +443,7 @@ const Checkout = () => {
                       id=""
                       name=""
                       className="w-full rounded-md border py-3 border-gray-200  pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                      placeholder="Số nhà"
+                      placeholder="Số nhà..."
                     />
                     <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
                       <FaAddressCard />
@@ -465,26 +456,26 @@ const Checkout = () => {
               ) : currentStep == 3 && payment?.name == "PayPal" ? (
                 <div className="lg:pt-24 sm:pt-2 ">
                   <h3 className="">PayPal</h3>
-                  <p className="text-gray-400 font-normal">
+                  <p className="text-black font-normal">
                     {" "}
-                    Với PayPal, người dùng có thể tạo tài khoản miễn phí và liên
-                    kết nó với tài khoản ngân hàng của mình hoặc thẻ tín dụng để
-                    thực hiện các giao dịch trực tuyến. PayPal cung cấp một
-                    phương thức an toàn và bảo mật để chuyển tiền và mua sắm
-                    trực tuyến mà không cần tiết lộ thông tin tài chính cá nhân
-                    cho người nhận.
+                    Hệ thống thanh toán cự kỳ bảo mật <br></br>
+                    Mạng lưới hệ thống rộng khắp, sử dụng trên toàn thế giới một cách nhanh chóng<br></br>
+                    An toàn khi giao dịch cho cả người bán và người mua (tính năng có thể đòi lại số tiền sau khi đã gửi tiền đến tài khoản khác khi bị lừa đảo). <br></br>
+                    Dịch vụ hỗ trợ chăm sóc khách hàng tốt và nhanh chóng. <br></br>
+                    Hạn chế bị lộ thông tin tài khoản ngân hàng, vì mỗi lần thanh toán, bạn không phải nhập số thẻ thanh toán quốc tế (VISA, Mastercard) vì đã cung cấp cho PayPal khi đăng ký tạo tài khoản.
                   </p>
                 </div>
+                ) : currentStep == 3 && payment?.name == "MoMo" ? (
+                  <div className="lg:pt-24 sm:pt-2 ">
+                    <img src={QRmomo} className="w-[360px] h-[450px] ml-[150px]" />
+                  </div>
               ) : currentStep == 3 &&
                 payment?.name == "Nhận hàng thanh toán" ? (
                 <div className="lg:pt-64 sm:pt-2">
                   <p className="text-xl font-medium">Nhận hàng thanh toán</p>
-                  <p className="text-gray-400">
+                  <p className="text-black">
                     {" "}
-                    Phương thức thanh toán truyền thống nhất, trong đó khách
-                    hàng trả tiền mặt khi nhận hàng. Bạn có thể chấp nhận thanh
-                    toán tiền mặt trực tiếp từ khách hàng hoặc thông qua đại lý
-                    vận chuyển.
+                    Phương thức thanh toán truyền , nhận hàng và thanh toán cho shipper
                   </p>
                 </div>
               ) : (
@@ -572,7 +563,14 @@ const Checkout = () => {
                   }}
                 />
               </PayPalScriptProvider>
-            ) : (
+            ) : currentStep == 3 && payment?.name == "MoMo" ?(
+              <button
+                // onClick={handerClickCheckOut}
+                className="mt-4 mb-8 w-full rounded-md bg-[#6698ff] px-6 py-3 font-medium text-white "
+              >
+                Chờ xác nhận nhé !!
+              </button>
+            ):(
               <></>
             )}
           </div>
