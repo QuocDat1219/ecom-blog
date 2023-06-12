@@ -132,3 +132,11 @@ export const signupGoogle = (accessToken, navigate) => async (dispatch) => {
     }
   }
 };
+
+export const logout = (navigate) => async (dispatch) => {
+  toast.success("Đăng xuất thành công");
+  navigate("/");
+  return dispatch({
+    type: LOGOUT_GET,
+  });
+};

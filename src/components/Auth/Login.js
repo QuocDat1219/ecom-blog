@@ -19,104 +19,6 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   axios
-  //     .post("https://api-vuon-thong-minh.onrender.com/users/user-data", {
-  //       token: window.localStorage.getItem("token"),
-  //     })
-  //     .then((data) => {
-  //       if (data.data.data == "token expired") {
-  //         window.localStorage.clear();
-  //         window.localStorage.setItem("loggedIn", "false");
-  //         window.localStorage.getItem("loggedIn");
-  //       }
-  //     });
-  // }, []);
-
-  // function handleSubmit(e) {
-  //   e.preventDefault();
-
-  //   setIsLoading(true);
-
-  //   if (email == "" || password == "") {
-  //     toast.warning("Vui lòng nhập đủ thông tin");
-  //     setIsLoading(false);
-  //   } else {
-  //     // toast("Đang xử lý");
-  //     document.getElementById("submit").disabled = true;
-  //     fetch("https://api-vuon-thong-minh.onrender.com/users/login-user", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Accept: "application/json",
-  //         "Access-Control-Allow-Origin": "*",
-  //       },
-  //       body: JSON.stringify({
-  //         email,
-  //         password,
-  //       }),
-  //     })
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         console.log(data, "userRegister");
-  //         if (data.status == "ok") {
-  //           toast.success("Đăng nhập thành công");
-  //           window.localStorage.setItem("token", data.data);
-
-  //           loginRequest();
-  //         } else {
-  //           setIsLoading(false);
-  //           toast.error("Sai email hoặc mật khẩu! ");
-  //         }
-  //       });
-  //     const loginRequest = async () => {
-  //       await fetch(
-  //         "https://api-vuon-thong-minh.onrender.com/users/user-data",
-  //         {
-  //           method: "POST",
-  //           crossDomain: true,
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //             Accept: "application/json",
-  //             "Access-Control-Allow-Origin": "*",
-  //           },
-  //           body: JSON.stringify({
-  //             token: window.localStorage.getItem("token"),
-  //           }),
-  //         }
-  //       )
-  //         .then((res) => res.json())
-  //         .then((data) => {
-  //           //console.log(data);
-
-  //           window.localStorage.setItem("loggedIn", "true");
-  //           window.localStorage.setItem("Emaildetails", data.data.email);
-  //           window.localStorage.setItem(
-  //             "Namedateils",
-  //             data.data.fname + " " + data.data.lname
-  //           );
-  //           window.localStorage.setItem("dtUser", JSON.stringify(data.data));
-
-  //           if (data.data.userType == "Admin") {
-  //             setIsLoading(false);
-  //             window.localStorage.setItem("isadmin", "true");
-  //             window.location.href = "/adminhome";
-  //           } else {
-  //             setIsLoading(false);
-  //             window.localStorage.setItem("isadmin", "false");
-  //             window.location.href = "/home";
-  //           }
-
-  //           if (data.data == "token expired") {
-  //             setIsLoading(false);
-  //             alert("Token expired login again");
-  //             window.localStorage.clear();
-  //             window.location.href = "/login";
-  //           }
-  //         });
-  //     };
-  //   }
-  // }
   function handleSubmit(e) {
     e.preventDefault();
     if (email !== "" && password !== "") {
@@ -136,7 +38,7 @@ const Login = () => {
     const accessToken = e.access_token;
     const typeLogin = "facebook";
     const callApi = await axios
-      .post("https://ecom-z3we.onrender.com/api/users/login", {
+      .post(`${process.env.REACT_APP_API_URL}user/login`, {
         accessToken,
         typeLogin,
       })
@@ -171,38 +73,6 @@ const Login = () => {
             </h1>
 
             <div class="login-form">
-              {/* <div className="flex justify-center gap-10">
-                <div className="bg-blue-gray-900">
-                  <Link to={""} className="w-[130px] h-[100px] block">
-                    <img
-                      src={imgFacebook}
-                      alt="facebook_logo"
-                      className="w-[3.25rem] h-[3.25rem]"
-                    />
-                    <OAuth2Login
-                      className="text-black bg-green-600 w-[130px]"
-                      buttonText="Facebook"
-                      authorizationUrl="https://www.facebook.com/dialog/oauth"
-                      responseType="token"
-                      clientId="203369009102213"
-                      redirectUri="http://localhost:3000/"
-                      scope="public_profile"
-                      onSuccess={loginFb}
-                      onFailure={onFailure}
-                    />
-                  </Link>
-                </div>
-
-                <div className="bg-orange-500">
-                  <Link onClick={() => login()} className="w-[130px] h-[100px] block">
-                    <img
-                      src={imgGoogle}
-                      alt="google_logo"
-                      className="w-[3.25rem] h-[3.25rem]"
-                    />
-                    Google
-                  </Link>
-                </div> */}
               <div className="flex justify-center gap-10 lg:w-[500px] w-[351px]">
                 <div className="">
                   <button className="w-[130px] h-[100px] flex items-center justify-center space-x-2 text-black">

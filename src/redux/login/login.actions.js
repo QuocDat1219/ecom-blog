@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import {
   LOGIN_GET_LOADING,
@@ -8,9 +9,10 @@ import {
   LOGOUT_GET,
 } from "./login.types";
 export const login = (creds) => async (dispatch) => {
+  const navigate  = useNavigate();
   dispatch({ type: LOGIN_GET_LOADING });
   try {
-    let res = await axios.post("http://localhost:5000/api/user/login", creds);
+    let res = await axios.post(`${process.env.REACT_APP_API_URL}user/login`, creds);
     let data = await res.data;
     // return console.log(res);
     return dispatch({ type: LOGIN_GET_SUCCESS, payload: data });
@@ -21,9 +23,8 @@ export const login = (creds) => async (dispatch) => {
 
 export const logout = (navigate) => async (dispatch) => {
   // to remove all userinfo at the time of user logout
-
-  toast.success("Đăng xuất thành công");
   navigate("/");
+  toast.success("Đăng xuất thành công");
   return dispatch({
     type: LOGOUT_GET,
   });

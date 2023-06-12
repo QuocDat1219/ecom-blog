@@ -24,18 +24,25 @@ var checkPassword =
 
 const UserProfile = () => {
   const userId = JSON.parse(window.localStorage.getItem("user_infos"));
-  const iduser = userId._id;
+  const iduser = userId ? userId._id : null; // Kiểm tra nếu userId tồn tại, thì lấy giá trị _id, ngược lại gán giá trị null cho iduser
   const [alloder, setAllOder] = useState([]);
+
   useEffect(() => {
-    const getalloder = async () => {
-      await axios
-        .get(`${process.env.REACT_APP_API_URL}orders/getorderuser/${iduser}`)
-        .then((response) => {
+    if (iduser) {
+      const getalloder = async () => {
+        try {
+          const response = await axios.get(
+            `${process.env.REACT_APP_API_URL}orders/getorderuser/${iduser}`
+          );
           setAllOder(response.data);
-        });
-    };
-    getalloder();
-  }, []);
+        } catch (error) {
+          // Xử lý lỗi nếu cần thiết
+        }
+      };
+
+      getalloder();
+    }
+  }, [iduser]);
 
   const dangxuly =
     alloder.filter((order) => order.orderStatus === "Đang xử lý") || [];
