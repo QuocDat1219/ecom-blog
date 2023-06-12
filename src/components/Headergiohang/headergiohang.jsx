@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import LogoutIcon from "@mui/icons-material/Logout";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { logout } from "../../redux/login/login.actions";
+import { logout } from "../../redux/action/auth";
 import { useState } from "react";
 import {
   CAvatar,
@@ -22,15 +22,16 @@ const Headergiohang = () => {
   const { cartItems } = cart;
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const handleLogout = () => {
     dispatch(logout(navigate));
     setOpenDropdown(false);
   };
-  
+
   const toggleDropdown = () => {
     setOpenDropdown(!openDropdown);
   };
-  
+
   return (
     <nav className="flex text-black">
       <div className="lg:ml-[93%] ml-[70%] pb-[10px]">
@@ -55,25 +56,29 @@ const Headergiohang = () => {
             onClick={toggleDropdown}
           >
             <ToastContainer />
-            <CDropdownToggle placement="bottom-end" className="py-0" caret={false}>
+            <CDropdownToggle
+              placement="bottom-end"
+              className="py-0"
+              caret={false}
+            >
               <HiOutlineUserCircle className="w-10 h-10 mt-[11px] text-[#6698ff]" />
             </CDropdownToggle>
             {openDropdown && (
               <CDropdownMenu className="pt-0 pb-2 px-0 mt-2 w-48 absolute z-50 bg-white rounded shadow-lg border border-gray-200">
-              <CDropdownHeader className="bg-gray-200 text-black px-4 py-2 font-semibold">
-                User
-              </CDropdownHeader>
-              <CDropdownItem className="px-4 py-2 hover:bg-gray-100">
-                <Link to="/userinfo" className="flex items-center">
-                  <AccountCircleIcon className="mr-2" /> Thông tin cá nhân
-                </Link>
-              </CDropdownItem>
-              <CDropdownItem className="py-2 hover:bg-gray-100" >
-                <Link onClick={handleLogout}>
-                <LogoutIcon className="mr-2" /> Đăng xuất
-                </Link>
-              </CDropdownItem>
-            </CDropdownMenu>
+                <CDropdownHeader className="bg-gray-200 text-black px-4 py-2 font-semibold">
+                  User
+                </CDropdownHeader>
+                <CDropdownItem className="px-4 py-2 hover:bg-gray-100">
+                  <Link to="/userinfo" className="flex items-center">
+                    <AccountCircleIcon className="mr-2" /> Thông tin cá nhân
+                  </Link>
+                </CDropdownItem>
+                <CDropdownItem className="py-2 hover:bg-gray-100">
+                  <Link onClick={handleLogout}>
+                    <LogoutIcon className="mr-2" /> Đăng xuất
+                  </Link>
+                </CDropdownItem>
+              </CDropdownMenu>
             )}
           </CDropdown>
         </div>
