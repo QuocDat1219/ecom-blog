@@ -40,7 +40,7 @@ const ChangPassWord = () => {
       <input
         type="password"
         name="password"
-        placeholder="E-mail"
+        placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         className="border border-gray-300 rounded-lg py-2 px-4 mt-4 w-full"
@@ -49,7 +49,7 @@ const ChangPassWord = () => {
       <input
         type="password"
         name="confirmpassword"
-        placeholder="E-mail"
+        placeholder="Nhập lại mật khẩu"
         value={confirmpassword}
         onChange={(e) => setConfirmPassword(e.target.value)}
         className="border border-gray-300 rounded-lg py-2 px-4 mt-4 w-full"
