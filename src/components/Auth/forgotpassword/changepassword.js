@@ -32,7 +32,7 @@ const ChangPassWord = () => {
     }
   };
   return (
-    <div className="bg-gray-100 py-4 px-2">
+    <div className="bg-gray-100 flex justify-center items-center h-screen">
     <div className="container mx-auto">
       <h6 className="text-center font-bold">
         <b>Hoặc đăng nhập bằng</b>
@@ -40,7 +40,7 @@ const ChangPassWord = () => {
       <input
         type="password"
         name="password"
-        placeholder="Password"
+        placeholder="Password mới"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         className="border border-gray-300 rounded-lg py-2 px-4 mt-4 w-full"
