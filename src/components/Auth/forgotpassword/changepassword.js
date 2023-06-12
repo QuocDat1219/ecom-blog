@@ -32,42 +32,45 @@ const ChangPassWord = () => {
     }
   };
   return (
-    <div>
-      <div className="container">
-        <h6>
-          <b>Hoặc đăng nhập bằng</b>
-        </h6>
-        <input
-          type="password"
-          name="pasword"
-          placeholder="E-mail "
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-
-        <input
-          type="confirmpassword"
-          name="confirmpassword"
-          placeholder="E-mail "
-          value={confirmpassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-        />
-        <div
-          class="forget-pass"
-          style={{
-            textAlign: "left",
-          }}
-        ></div>
-        <button
-          type="submit"
-          id="submit"
-          onClick={handleSubmit}
-          className="btn-dn"
-        >
-          Thay đổi mật khẩu
-        </button>
+    <div className="bg-gray-100 py-4 px-2">
+    <div className="container mx-auto">
+      <h6 className="text-center font-bold">
+        <b>Hoặc đăng nhập bằng</b>
+      </h6>
+      <input
+        type="password"
+        name="password"
+        placeholder="E-mail"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        className="border border-gray-300 rounded-lg py-2 px-4 mt-4 w-full"
+      />
+  
+      <input
+        type="password"
+        name="confirmpassword"
+        placeholder="E-mail"
+        value={confirmpassword}
+        onChange={(e) => setConfirmPassword(e.target.value)}
+        className="border border-gray-300 rounded-lg py-2 px-4 mt-4 w-full"
+      />
+  
+      <div className="text-left mt-4">
+        <a href="#" className="text-blue-500 hover:underline">
+          Quên mật khẩu?
+        </a>
       </div>
+  
+      <button
+        type="submit"
+        id="submit"
+        onClick={handleSubmit}
+        className="bg-blue-500 text-white rounded-lg py-2 px-4 mt-4 w-full"
+      >
+        Thay đổi mật khẩu
+      </button>
     </div>
+  </div>
   );
 };
 
