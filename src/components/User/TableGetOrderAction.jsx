@@ -50,7 +50,6 @@ const TableAntdAction = ({ orderData }) => {
     return total;
   };
   const showModal = (products) => {
-    console.log(JSON.parse(products));
     setSelectedOrder(JSON.parse(products));
     setModalProduct(true);
   };
@@ -68,7 +67,6 @@ const TableAntdAction = ({ orderData }) => {
           status: "Đã hủy",
         }
       );
-      console.log(response);
       if (response.status === 200) {
         toast.success("Hủy đơn hàng thành công");
         setModalCancel(false);
@@ -84,8 +82,6 @@ const TableAntdAction = ({ orderData }) => {
     confirm();
     setSearchText(selectedKeys[0]);
     setSearchedColumn(dataIndex);
-    console.log(selectedKeys[0]);
-    console.log(dataIndex);
   };
   const handleReset = (clearFilters, confirm, dataIndex) => {
     clearFilters();
@@ -215,7 +211,7 @@ const TableAntdAction = ({ orderData }) => {
       width: "25%",
       render: (text, record) => (
         <button
-          className="text-white bg-[#007bff] hover:bg-[#007bff]/90 focus:ring-4 focus:outline-none focus:ring-[#007bff]/50 font-medium rounded-lg text-sm px-3.5 py-2 text-center inline-flex items-center mr-2 mb-2"
+          className="text-white bg-[#74b9ff] hover:bg-[#007bff]/90 focus:ring-4 focus:outline-none focus:ring-[#007bff]/50 font-medium rounded-lg text-sm px-3.5 py-2 text-center inline-flex items-center mr-2 mb-2"
           onClick={() => showModal(record.products)}
         >
           Chi tiết ({JSON.parse(record.products).length})
@@ -251,7 +247,7 @@ const TableAntdAction = ({ orderData }) => {
       width: "15%",
       render: (text, record) => (
         <button
-          className="text-white bg-[#007bff] hover:bg-[#007bff]/90 focus:ring-4 focus:outline-none focus:ring-[#007bff]/50 font-medium rounded-lg text-sm px-3.5 py-2 text-center inline-flex items-center mr-2 mb-2"
+          className="text-white bg-[#e74c3c] hover:bg-[#c0392b]/90 focus:ring-4 focus:outline-none focus:ring-[#c0392b]/50 font-medium rounded-lg text-sm px-3.5 py-2 text-center inline-flex items-center mr-2 mb-2"
           onClick={() => showModalCancel(record.id)}
         >
           Hủy
@@ -277,7 +273,7 @@ const TableAntdAction = ({ orderData }) => {
           <button
             onClick={() => setModalCancel(false)}
             type="button"
-            className="text-white bg-[#007bff] hover:bg-[#007bff]/90 focus:ring-4 focus:outline-none focus:ring-[#007bff]/50 font-medium rounded-lg text-sm px-3.5 py-2 text-center inline-flex items-center mr-2 mb-2"
+            className="text-white bg-[#e74c3c] hover:bg-[#c0392b]/90 focus:ring-4 focus:outline-none focus:ring-[#c0392b]/50 font-medium rounded-lg text-sm px-3.5 py-2 text-center inline-flex items-center mr-2 mb-2"
           >
             <AiOutlineCloseCircle />
             <p className="mx-1">Đóng</p>
@@ -285,7 +281,7 @@ const TableAntdAction = ({ orderData }) => {
           <button
             onClick={() => handleCancelOrder()}
             type="button"
-            className="text-white bg-[#007bff] hover:bg-[#007bff]/90 focus:ring-4 focus:outline-none focus:ring-[#007bff]/50 font-medium rounded-lg text-sm px-3.5 py-2 text-center inline-flex items-center mr-2 mb-2"
+            className="text-white bg-[#2ecc71] hover:bg-[#27ae60]/90 focus:ring-4 focus:outline-none focus:ring-[#27ae60]/50 font-medium rounded-lg text-sm px-3.5 py-2 text-center inline-flex items-center mr-2 mb-2"
           >
             <AiOutlineMessage />
             <p className="mx-1">Xác nhận</p>

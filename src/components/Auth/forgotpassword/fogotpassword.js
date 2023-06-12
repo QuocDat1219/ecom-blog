@@ -11,7 +11,7 @@ const ForgotPassword = () => {
 
   const handleSubmit = () => {
     axios
-      .post(`${process.env.REACT_APP_API_URL}user/forgot-password-token`, {
+      .post(`http://localhost:5000/api/user/forgot-password-token`, {
         email,
       })
       .then((result) => {
@@ -24,7 +24,7 @@ const ForgotPassword = () => {
   return (
     <div className="flex justify-center items-center pt-[20px] pb-[40px]">
     <div className="w-full max-w-md">
-      <h6 className="mb-2 font-bold">Nhập email muốn lấy lại mật khẩu</h6>
+      <h6 className="mb-2 font-bold">Nhập email để lấy lại mật khẩu</h6>
       <input
         type="email"
         name="email"

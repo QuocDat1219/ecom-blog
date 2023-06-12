@@ -129,15 +129,6 @@ const Header = () => {
                 </div>
               </div>
             </div>
-            {/*             
-            <div className="flex flex-1 items-center justify-end sm:items-stretch sm:justify-center sticky md:text-center">
-              <div className="hidden sm:ml-6 sm:block md:block">
-                <div className="flex space-x-4 ">
-                  <button style={{ color: "red" }}>aaaaaaaaaaaaa</button>
-                </div>
-              </div>
-            </div> */}
-
             <Disclosure.Panel className="sm:hidden">
               <div className="space-y-1 px-2 pt-2 pb-3">
                 {nav.map((list, index) => (

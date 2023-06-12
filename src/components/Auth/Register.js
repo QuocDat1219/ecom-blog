@@ -67,22 +67,22 @@ const Register = () => {
       <div>
         <div className="parent clearfix">
           <div className="bg-illustration">
-            <div class="burger-btn">
+            <div className="burger-btn">
               <span></span>
               <span></span>
               <span></span>
             </div>
           </div>
           <ToastContainer pauseOnHover={false} draggable={false} />
-          <div class="login">
-            <div class="container">
+          <div className="login">
+            <div className="container">
               <h1>
                 Đăng ký tài khoản
                 <br />
                 <span style={{ color: "#07bc0c" }}>DDYB - Electronic</span>
               </h1>
 
-              <div class="login-form">
+              <div className="login-form">
                 <form action="">
                   <input
                     type="text"
@@ -122,7 +122,7 @@ const Register = () => {
                   />
 
                   <div
-                    class="forget-pass"
+                    className="forget-pass"
                     style={{
                       fontSize: "16px",
                       fontWeight: "normal",

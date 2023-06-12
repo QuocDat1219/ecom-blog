@@ -101,7 +101,7 @@ const Recent = ({ titleprodcut1, titleprodcut2 }) => {
   useEffect(() => {
     const getInfoweb = async () => {
       await axios
-        .get("https://ecom-oto.vercel.app/api/home/")
+        .get(`${process.env.REACT_APP_API_URL}home/`)
         .then((response) => {
           setHomeapi(response.data);
           settitle1(response.data[0].titlesanpham1);
@@ -124,7 +124,7 @@ const Recent = ({ titleprodcut1, titleprodcut2 }) => {
               <div className="slider-title pt-5 pb-5 text-center bg-color-button flex justify-center">
                 <span className="text-2xl text-center font-bold text-white">
                   {" "}
-                  <i class="fa fa-angle-down" aria-hidden="true"></i> Sản phẩm
+                  <i className="fa fa-angle-down" aria-hidden="true"></i> Sản phẩm
                 </span>
                 <div className="brick"></div>
               </div>
@@ -132,7 +132,7 @@ const Recent = ({ titleprodcut1, titleprodcut2 }) => {
               <div className="slider bg-white ">
                 <Slider {...settings} ref={sliderRef}>
                   {productState.map((item) => (
-                    <Link to={`/productdetail/${item._id}`}>
+                    <Link key={item.id} to={`/productdetail/${item._id}`}>
                       <div className="card overflow-auto" key={item._id}>
                         <div className="card-top ">
                           <img

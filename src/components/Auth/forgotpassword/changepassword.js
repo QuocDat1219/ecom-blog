@@ -23,6 +23,7 @@ const ChangPassWord = () => {
         })
         .then((result) => {
           toast.success("Mật khẩu đã được cập nhật");
+          navigate("/login");
         })
         .catch((err) => {
           toast.error("Mã đã hết hạn");
@@ -35,7 +36,7 @@ const ChangPassWord = () => {
     <div className="bg-gray-100 py-4 px-2">
     <div className="container mx-auto">
       <h6 className="text-center font-bold">
-        <b>Hoặc đăng nhập bằng</b>
+        <b>Nhập mật khẩu mới của bạn</b>
       </h6>
       <input
         type="password"
@@ -56,9 +57,9 @@ const ChangPassWord = () => {
       />
   
       <div className="text-left mt-4">
-        <a href="#" className="text-blue-500 hover:underline">
-          Quên mật khẩu?
-        </a>
+        <Link to="/login">
+              Đăng nhập
+        </Link>
       </div>
   
       <button

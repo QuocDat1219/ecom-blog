@@ -23,8 +23,8 @@ const Headergiohang = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleLogout = () => {
-    dispatch(logout(navigate));
+  const handleLogout = async () => {
+    await dispatch(logout(navigate));
     setOpenDropdown(false);
   };
 

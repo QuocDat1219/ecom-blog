@@ -47,35 +47,34 @@ const Login = () => {
       })
       .catch((err) => {
         if (err.response.status == 400) {
-          toast.error("Ú sờ chưa tồn tại vui lòng đăng ký dùm");
+          toast.error("Không tìm thấy tài khoản");
         }
       });
   };
   const onFailure = (e) => {
-    console.log(e);
+    toast.error("Đã xảy ra lỗi");
   };
   return (
     <div>
       <div className="parent clearfix">
         <div className="bg-illustration">
-          <div class="burger-btn">
+          <div className="burger-btn">
             <span></span>
             <span></span>
             <span></span>
           </div>
         </div>
-        <div class="login">
-          <div class="container">
+        <div className="login">
+          <div className="container">
             <h1>
               Đăng nhập
               <br />
               <span style={{ color: "#6698FF" }}> DDYB - Electronic </span>
             </h1>
 
-            <div class="login-form">
+            <div className="login-form">
               <div className="flex justify-center gap-10 lg:w-[500px] w-[351px]">
-                <div className="">
-                  <button className="w-[130px] h-[100px] flex items-center justify-center space-x-2 text-black">
+                <div className="w-[260px] h-[50px] bg-gray-200 border rounded-full flex items-start align-start justify-start">
                     <Link
                       to={""}
                       className="w-full h-full flex items-center justify-center"
@@ -83,32 +82,31 @@ const Login = () => {
                       <img
                         src={imgFacebook}
                         alt="facebook_logo"
-                        className="w-[3.25rem] h-[3.25rem]"
+                        className="w-[30px] h-[30px] mt-auto mb-auto"
                       />
                       <OAuth2Login
-                        className="ml-0 text-black w-[180px] h-[48px]"
+                        className=" text-black"
                         buttonText="Facebook"
                         authorizationUrl="https://www.facebook.com/dialog/oauth"
                         responseType="token"
                         clientId="203369009102213"
-                        redirectUri="http://localhost:3000/"
+                        redirectUri=" https://ecom-oto.vercel.app/"
                         scope="public_profile"
                         onSuccess={loginFb}
                         onFailure={onFailure}
                       />
                     </Link>
-                  </button>
                 </div>
 
                 <div className="">
                   <button
-                    className="w-[130px] h-[100px] flex items-center justify-center"
+                    className="w-[230px] h-[50px] bg-gray-200 border rounded-full flex items-start align-start justify-start"
                     onClick={() => login()}
                   >
                     <img
                       src={imgGoogle}
                       alt="google_logo"
-                      className="w-[3.25rem] h-[3.25rem]"
+                      className="w-[30px] h-[30px] mt-auto mb-auto"
                     />
                     <span className="text-black ml-[25px]">Google</span>
                   </button>
@@ -133,7 +131,7 @@ const Login = () => {
                 />
 
                 <div
-                  class="forget-pass"
+                  className="forget-pass"
                   style={{
                     textAlign: "left",
                   }}
@@ -145,7 +143,7 @@ const Login = () => {
                   </Link>
                 </div>
                 <div
-                  class="forget-pass"
+                  className="forget-pass"
                   style={{
                     textAlign: "left",
                   }}

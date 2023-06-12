@@ -16,8 +16,6 @@ const TableAntd = ({ orderData }) => {
   const [selectedOrder, setSelectedOrder] = useState([]);
   const searchInput = useRef(null);
   const products = useSelector((state) => state.product.products);
-  console.log(products);
-
   useEffect(() => {
     dispatch(getProductsAll());
   }, []);
@@ -33,12 +31,10 @@ const TableAntd = ({ orderData }) => {
     const pro = products.find(
       (item) => parseInt(item._id) == productId.toString()
     );
-    console.log("pro :>> ", pro);
     return pro?.imagesDefault.secure_url;
   };
   const getProductPriceById = (productId) => {
     const pro = products.find((item) => parseInt(item._id) == productId);
-    console.log("pro :>> ", pro);
     return pro ? pro.price : 0;
   };
 
@@ -47,7 +43,6 @@ const TableAntd = ({ orderData }) => {
     return total;
   };
   const showModal = (products) => {
-    console.log(JSON.parse(products));
     setSelectedOrder(JSON.parse(products));
     setModalProduct(true);
   };
@@ -56,8 +51,6 @@ const TableAntd = ({ orderData }) => {
     confirm();
     setSearchText(selectedKeys[0]);
     setSearchedColumn(dataIndex);
-    console.log(selectedKeys[0]);
-    console.log(dataIndex);
   };
   const handleReset = (clearFilters, confirm, dataIndex) => {
     clearFilters();
@@ -96,7 +89,7 @@ const TableAntd = ({ orderData }) => {
           <button
             onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
             type="button"
-            className="text-white bg-[#007bff] hover:bg-[#007bff]/90 focus:ring-4 focus:outline-none focus:ring-[#007bff]/50 font-medium rounded-lg text-sm px-3.5 py-2 text-center inline-flex items-center mr-2 mb-2"
+            className="text-white bg-[#74b9ff] hover:bg-[#007bff]/90 focus:ring-4 focus:outline-none focus:ring-[#007bff]/50 font-medium rounded-lg text-sm px-3.5 py-2 text-center inline-flex items-center mr-2 mb-2"
           >
             <AiOutlineSearch />
             Tìm kiếm
@@ -186,7 +179,7 @@ const TableAntd = ({ orderData }) => {
       width: "20%",
       render: (text, record) => (
         <button
-          className="text-white bg-[#007bff] hover:bg-[#007bff]/90 focus:ring-4 focus:outline-none focus:ring-[#007bff]/50 font-medium rounded-lg text-sm px-3.5 py-2 text-center inline-flex items-center mr-2 mb-2"
+          className="text-white bg-[#74b9ff] hover:bg-[#007bff]/90 focus:ring-4 focus:outline-none focus:ring-[#007bff]/50 font-medium rounded-lg text-sm px-3.5 py-2 text-center inline-flex items-center mr-2 mb-2"
           onClick={() => showModal(record.products)}
         >
           Chi tiết ({JSON.parse(record.products).length})
@@ -238,7 +231,7 @@ const TableAntd = ({ orderData }) => {
           <button
             onClick={() => setModalProduct(false)}
             type="button"
-            className="text-white bg-[#007bff] hover:bg-[#007bff]/90 focus:ring-4 focus:outline-none focus:ring-[#007bff]/50 font-medium rounded-lg text-sm px-3.5 py-2 text-center inline-flex items-center mr-2 mb-2"
+            className="text-white bg-[#74b9ff] hover:bg-[#007bff]/90 focus:ring-4 focus:outline-none focus:ring-[#007bff]/50 font-medium rounded-lg text-sm px-3.5 py-2 text-center inline-flex items-center mr-2 mb-2"
           >
             Đóng
           </button>,

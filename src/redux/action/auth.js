@@ -35,11 +35,16 @@ export const signin = (data2, navigate) => async (dispatch) => {
   if (storedAttempts < MAX_LOGIN_ATTEMPTS) {
     try {
       const { data } = await api.signIn(data2);
-      toast.success("Đăng nhập thành công");
-      window.localStorage.setItem("loginAttempts", "0");
-      window.localStorage.setItem("lockoutTime", "0");
-      navigate("/");
-      return dispatch({ type: LOGIN_GET_SUCCESS, payload: data });
+      if (data.isBlocked === false) {
+        toast.error("Tài khoản của bạn đã bị khóa. Vui lòng liên hệ với quản trị viên.");
+        return; 
+      }else{
+        toast.success("Đăng nhập thành công");
+        window.localStorage.setItem("loginAttempts", "0");
+        window.localStorage.setItem("lockoutTime", "0");
+        navigate("/");
+        return dispatch({ type: LOGIN_GET_SUCCESS, payload: data });
+      }
     } catch (err) {
       if (err.response.data.message == "Invalid Credentials") {
         toast.error("Sai tài khoản hoặc mật khẩu");

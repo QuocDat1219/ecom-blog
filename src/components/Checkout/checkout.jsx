@@ -384,7 +384,7 @@ const Checkout = () => {
                     Tỉnh/ Thành phố
                   </label>
                   <div className="relative">
-                  <input
+                    <input
                       type="text"
                       id=""
                       name=""
@@ -402,7 +402,7 @@ const Checkout = () => {
                     Quận/ Huyện
                   </label>
                   <div className="relative">
-                  <input
+                    <input
                       type="text"
                       id=""
                       name=""
@@ -420,7 +420,7 @@ const Checkout = () => {
                     Phường/ xã
                   </label>
                   <div className="relative">
-                  <input
+                    <input
                       type="text"
                       id=""
                       name=""
@@ -459,23 +459,34 @@ const Checkout = () => {
                   <p className="text-black font-normal">
                     {" "}
                     Hệ thống thanh toán cự kỳ bảo mật <br></br>
-                    Mạng lưới hệ thống rộng khắp, sử dụng trên toàn thế giới một cách nhanh chóng<br></br>
-                    An toàn khi giao dịch cho cả người bán và người mua (tính năng có thể đòi lại số tiền sau khi đã gửi tiền đến tài khoản khác khi bị lừa đảo). <br></br>
-                    Dịch vụ hỗ trợ chăm sóc khách hàng tốt và nhanh chóng. <br></br>
-                    Hạn chế bị lộ thông tin tài khoản ngân hàng, vì mỗi lần thanh toán, bạn không phải nhập số thẻ thanh toán quốc tế (VISA, Mastercard) vì đã cung cấp cho PayPal khi đăng ký tạo tài khoản.
+                    Mạng lưới hệ thống rộng khắp, sử dụng trên toàn thế giới một
+                    cách nhanh chóng<br></br>
+                    An toàn khi giao dịch cho cả người bán và người mua (tính
+                    năng có thể đòi lại số tiền sau khi đã gửi tiền đến tài
+                    khoản khác khi bị lừa đảo). <br></br>
+                    Dịch vụ hỗ trợ chăm sóc khách hàng tốt và nhanh chóng.{" "}
+                    <br></br>
+                    Hạn chế bị lộ thông tin tài khoản ngân hàng, vì mỗi lần
+                    thanh toán, bạn không phải nhập số thẻ thanh toán quốc tế
+                    (VISA, Mastercard) vì đã cung cấp cho PayPal khi đăng ký tạo
+                    tài khoản.
                   </p>
                 </div>
-                ) : currentStep == 3 && payment?.name == "MoMo" ? (
-                  <div className="lg:pt-24 sm:pt-2 ">
-                    <img src={QRmomo} className="w-[360px] h-[450px] ml-[150px]" />
-                  </div>
+              ) : currentStep == 3 && payment?.name == "MoMo" ? (
+                <div className="lg:pt-24 sm:pt-2 ">
+                  <img
+                    src={QRmomo}
+                    className="w-[360px] h-[450px] ml-[150px]"
+                  />
+                </div>
               ) : currentStep == 3 &&
                 payment?.name == "Nhận hàng thanh toán" ? (
                 <div className="lg:pt-64 sm:pt-2">
                   <p className="text-xl font-medium">Nhận hàng thanh toán</p>
                   <p className="text-black">
                     {" "}
-                    Phương thức thanh toán truyền , nhận hàng và thanh toán cho shipper
+                    Phương thức thanh toán truyền , nhận hàng và thanh toán cho
+                    shipper
                   </p>
                 </div>
               ) : (
@@ -555,7 +566,6 @@ const Checkout = () => {
                   }}
                   onApprove={(data, actions) => {
                     return actions.order.capture().then((details) => {
-                      console.log(details);
                       if (details.status === "COMPLETED") {
                         handleOrder();
                       }
@@ -563,23 +573,23 @@ const Checkout = () => {
                   }}
                 />
               </PayPalScriptProvider>
-            ) : currentStep == 3 && payment?.name == "MoMo" ?(
+            ) : currentStep == 3 && payment?.name == "MoMo" ? (
               <button
                 // onClick={handerClickCheckOut}
                 className="mt-4 mb-8 w-full rounded-md bg-[#6698ff] px-6 py-3 font-medium text-white "
               >
                 Chờ xác nhận nhé !!
               </button>
-            ):(
+            ) : (
               <></>
             )}
           </div>
         </div>
       ) : (
         <div>
-          <div class="pyro">
-            <div class="before"></div>
-            <div class="after"></div>
+          <div className="pyro">
+            <div className="before"></div>
+            <div className="after"></div>
           </div>
           <div className="grid-flow-col flex justify-center">
             <p className="text-[30px] mt-10 font-bold">

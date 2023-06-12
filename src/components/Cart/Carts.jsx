@@ -95,7 +95,7 @@ const Carts = () => {
       <div className="flex justify-center my-6">
         <div className="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5">
           <div className="flex-1 ">
-            <div class="overflow-x-scroll h-[400px]">
+            <div className="overflow-x-scroll h-[400px]">
               <table
                 className="w-full text-sm lg:text-base text-center"
                 cellspacing="0"
@@ -154,7 +154,7 @@ const Carts = () => {
                             />
                           </div>
                           <div
-                            class="inline-flex rounded-md shadow-sm w-20"
+                            className="inline-flex rounded-md shadow-sm w-20"
                             role="group"
                           >
                             <button
@@ -350,7 +350,7 @@ const Carts = () => {
                           aria-hidden="true"
                           data-prefix="far"
                           data-icon="credit-card"
-                          class="w-8"
+                          className="w-8"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 576 512"
                         >

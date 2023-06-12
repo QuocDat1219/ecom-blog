@@ -2,8 +2,8 @@ import React from "react";
 
 const LoadingPage = ({ size }) => {
   return (
-    <div class="flex items-center justify-center w-full h-full p-10">
-      <div class="flex justify-center items-center space-x-1 text-sm text-gray-700">
+    <div className="flex items-center justify-center w-full h-full p-10">
+      <div className="flex justify-center items-center space-x-1 text-sm text-gray-700">
         <div
           style={{ width: `${size}px`, height: `${size}px` }}
           className="animate-spin"

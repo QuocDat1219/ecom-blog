@@ -202,7 +202,7 @@ const Filters = (props) => {
                   <hr className="my-1" />
 
                   <button
-                    class="bg-color-button hover:bg-blue-400 text-text-color font-bold py-2 px-4 border border-black rounded my-2 "
+                    className="bg-color-button hover:bg-blue-400 text-text-color font-bold py-2 px-4 border border-black rounded my-2 "
                     onClick={handlefilterButtonClick}
                   >
                     <FontAwesomeIcon icon={faFilter} /> Lọc
@@ -290,7 +290,7 @@ const Filters = (props) => {
       ) : (
         <div className="containers justify-center flex items-center ">
           <nav aria-label="Page navigation example">
-            <ul class="inline-flex -space-x-px ">
+            <ul className="inline-flex -space-x-px ">
               <li>
                 <button
                   href="#"

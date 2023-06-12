@@ -2,7 +2,7 @@ import axios from "axios";
 
 // const API = axios.create({ baseURL: "https://ecom-z3we.onrender.com" });
 const API = axios.create({
-  baseURL: "https://ecom-oto.vercel.app",
+  baseURL: "http://localhost:5000",
 });
 
 API.interceptors.request.use((req) => {

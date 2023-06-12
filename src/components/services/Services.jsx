@@ -75,8 +75,8 @@ const Services = () => {
           <div className="flex flex-wrap justify-between">
             {data
               .map((val) => (
-                <div class="w-full md:w-1/3 px-4 mb-8 md:mb-0 ">
-                  <div class="relative h-0 pb-[100%] mb-4">
+                <div className="w-full md:w-1/3 px-4 mb-8 md:mb-0 ">
+                  <div className="relative h-0 pb-[100%] mb-4">
                     <img
                       src={
                         val.imageThumbnail
@@ -84,10 +84,10 @@ const Services = () => {
                           : imgerror
                       }
                       alt="Item 3"
-                      class="absolute inset-0 w-full h-full object-cover rounded-[20px] shadow"
+                      className="absolute inset-0 w-full h-full object-cover rounded-[20px] shadow"
                     />
                   </div>
-                  <p class="text-text-color leading-relaxed text-center mt-4">
+                  <p className="text-text-color leading-relaxed text-center mt-4">
                     {val.title}
                   </p>
                 </div>
