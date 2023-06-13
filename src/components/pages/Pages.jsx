@@ -19,7 +19,7 @@ import Register from "../Auth/Register";
 import UserProfile from "../User/User";
 import Checkout from "../Checkout/checkout";
 import Headergiohang from "../Headergiohang/headergiohang";
-import ForgotPassword from "../Auth/forgotpassword/FogotPassword";
+import ForgotPassword from "../Auth/forgotpassword/fogotpassword";
 import ChangPassWord from "../Auth/forgotpassword/ChangePassword";
 import Resetpassword from "../Auth/forgotpassword/resetpassword";
 import ChangeInfo from "../Auth/forgotpassword/ChangeInfo";
