@@ -1,57 +1,40 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import { toast } from "react-toastify";
+import { useNavigate, link, Link, useParams } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import PuffLoader from "react-spinners/PuffLoader";
 import "../login.css";
 import "../button.scss";
+import OAuth2Login from "react-simple-oauth2-login";
 import axios from "axios";
-import { logout } from "../../../redux/action/auth";
-const Resetpassword = () => {
+import { Result } from "antd";
+const ChangePassWord = () => {
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
-  const [token, setToken] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  var checkPassword =
-    /^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-  useEffect(() => {
-    const userinfo = window.localStorage.getItem("token");
-    setToken(userinfo);
-  });
+  const { token } = useParams();
   const handleSubmit = () => {
-    if (!checkPassword.test(password)) {
-      toast.error(
-        "Mật khẩu chứa kí tự chữ hoa, thường, ký tự đặc biệt và số và từ 8 ký tự trở lên"
-      );
-      return;
-    } else if (password === confirmpassword) {
+    if (password == confirmpassword) {
       axios
-        .put(
-          `${process.env.REACT_APP_API_URL}user/password`,
-          {
-            password,
-          },
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        )
+        .put(`${process.env.REACT_APP_API_URL}user/reset-password/${token}`, {
+          password,
+        })
         .then((result) => {
           toast.success("Mật khẩu đã được cập nhật");
-          dispatch(logout(navigate));
+          navigate("/login");
         })
         .catch((err) => {
-          toast.error("Lỗi");
+          toast.error("Mã đã hết hạn");
         });
     } else {
-      toast.error("Mật khẩu không đúng");
+      toast.error("Mật khẩu không trùng khớp");
     }
   };
   return (
     <div className="bg-gray-100 flex justify-center items-center h-screen">
-      <div className="container w-2/4 mx-auto">
+      <div className="container mx-auto w-2/4">
         <h6 className="text-center font-bold">
           <b>Nhập mật khẩu mới của bạn</b>
         </h6>
@@ -90,4 +73,4 @@ const Resetpassword = () => {
   );
 };
 
-export default Resetpassword;
+export default ChangePassWord;

@@ -3,11 +3,11 @@ import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch } from "react-redux";
-import "../login.css";
-import "../button.scss";
+import "./login.css";
+import "./button.scss";
 import axios from "axios";
-import { logout } from "../../../redux/action/auth";
-const Resetpassword = () => {
+import { logout } from "../../redux/action/auth";
+const ChangeInfo = () => {
   const [fristname, setFristName] = useState("");
   const [lastname, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -124,4 +124,4 @@ const Resetpassword = () => {
   );
 };
 
-export default Resetpassword;
+export default ChangeInfo;

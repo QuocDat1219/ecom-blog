@@ -20,9 +20,9 @@ import UserProfile from "../User/User";
 import Checkout from "../Checkout/checkout";
 import Headergiohang from "../Headergiohang/headergiohang";
 import ForgotPassword from "../Auth/forgotpassword/fogotpassword";
-import ChangPassWord from "../Auth/forgotpassword/changepassword";
-import Resetpassword from "../Auth/forgotpassword/resetpassword";
-import ChangeInfo from "../Auth/forgotpassword/changeInfo";
+import ChangePassWord from "../Auth/forgotpassword/getnewpassword";
+import Resetpassword from "../Auth/resetpassword";
+import ChangeInfo from "../Auth/changeInfo";
 const Pages = () => {
   return (
     <>
@@ -59,7 +59,7 @@ const Pages = () => {
           <Route path="/userinfo" element={<UserProfile />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
-          <Route path="/changepassword/:token" element={<ChangPassWord />} />
+          <Route path="/changepassword/:token" element={<ChangePassWord />} />
           <Route path="/resetpassword" element={<Resetpassword />} />
           <Route path="/edit_user" element={<ChangeInfo />} />
         </Routes>
