@@ -5,6 +5,7 @@ import {
   FcExport,
   FcManager,
   FcBusinessman,
+  FcImport,
 } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -117,7 +118,7 @@ const Headergiohang = () => {
           <>
             <div className="lg:ml-auto ml-auto">
               <Link to="/login">
-                <FcExport className="w-10 h-10 mt-[10px] mr-[10px] mb-[10px] text-[#6698ff]" />
+                <FcImport className="w-10 h-10 mt-[10px] mr-[10px] mb-[10px] text-[#6698ff]" />
               </Link>
             </div>
           </>
