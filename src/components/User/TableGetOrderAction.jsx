@@ -5,7 +5,7 @@ import {
 } from "react-icons/ai";
 import { FaCheck, FaShippingFast } from "react-icons/fa";
 import { FiDelete } from "react-icons/fi";
-import { FcSynchronize, FcShipped } from "react-icons/fc";
+import { FcSynchronize, FcShipped, FcInTransit } from "react-icons/fc";
 import { GrPowerReset } from "react-icons/gr";
 import { Input, Space, Table, Modal, message } from "antd";
 import Highlighter from "react-highlight-words";
@@ -32,19 +32,26 @@ const TableAntdAction = ({ orderData }) => {
   useEffect(() => {
     dispatch(getProductsAll());
   }, []);
+
   const userId = JSON.parse(window.localStorage.getItem("user_infos"));
-  const iduser = userId._id;
-  useEffect(() => {}, [iduser]);
+  const iduser = userId ? userId._id : null;
+
+  useEffect(() => {
+    // Thực hiện các tác vụ cần thiết sau khi iduser thay đổi
+  }, [iduser]);
+
   const getProductNameById = (productId) => {
-    const pro = products.find((item) => item._id == productId);
+    const pro = products.find((item) => item._id === productId);
     return pro ? pro.name : "Sản phẩm không tồn tại";
   };
+
   const getProductImagesById = (productId) => {
-    const pro = products.find((item) => item._id == productId);
-    return pro?.imagesDefault.secure_url;
+    const pro = products.find((item) => item._id === productId);
+    return pro?.imagesDefault?.secure_url;
   };
+
   const getProductPriceById = (productId) => {
-    const pro = products.find((item) => item._id == productId);
+    const pro = products.find((item) => item._id === productId);
     return pro ? pro.price : 0;
   };
 
@@ -195,11 +202,11 @@ const TableAntdAction = ({ orderData }) => {
             <FaCheck className="inline w-5 h-5" /> &nbsp;Đã xác nhận
           </span>
         ) : item.orderStatus === "Đang giao hàng" ? (
-          <span className="text-yellow-500 font-bold">
-            <FaShippingFast className="inline w-5 h-5" /> &nbsp; Đang giao hàng
+          <span className="text-[#e1b12c] font-bold">
+            <FcInTransit className="inline w-5 h-5" /> &nbsp; Đang giao hàng
           </span>
         ) : item.orderStatus === "Đã hủy" ? (
-          <span className="text-red-500 font-bold">
+          <span className="text-[#e84118] font-bold">
             <FiDelete className="rotate-180 inline w-5 h-5" /> &nbsp; Đã hủy
           </span>
         ) : item.orderStatus === "Đã giao hàng" ? (
