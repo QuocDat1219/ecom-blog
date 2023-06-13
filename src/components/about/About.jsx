@@ -10,7 +10,9 @@ import Infomation from "./AboutInfomation";
 import Sliderimg from "./Slide";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
+
 import { toast } from "react-toastify";
+import LoadingPage from "../loadingPage/LoadingPage";
 const About = () => {
   const [showText, setShowText] = useState(false);
   const [showTexFirst, setShowTextFirst] = useState(false);
@@ -254,7 +256,7 @@ const About = () => {
       </div>
     </>
   ) : (
-    <div>Loading...</div>
+    <LoadingPage size={32} />
   );
 };
 

@@ -6,6 +6,7 @@ import moment from "moment";
 
 import { EditorState, convertToRaw, convertFromRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
+import LoadingPage from "../loadingPage/LoadingPage";
 
 const RecentCard = ({ dataBlog }) => {
   const [data, setData] = useState([]);
@@ -114,7 +115,7 @@ const RecentCard = ({ dataBlog }) => {
           </div>
         )
       ) : (
-        <div>Loading</div>
+        <LoadingPage size={32} />
       )}
     </>
   );

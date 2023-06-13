@@ -21,6 +21,7 @@ import { Square3Stack3DIcon, UserCircleIcon } from "@heroicons/react/24/solid";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { addItem } from "../../redux/action/cartActions";
+import LoadingPage from "../loadingPage/LoadingPage";
 
 const ProductDetail = () => {
   const id = useParams();
@@ -123,7 +124,7 @@ const ProductDetail = () => {
     <div>
       <>
         {product == null ? (
-          <div>Loading...</div>
+          <LoadingPage size={32} />
         ) : (
           <div>
             <div className="containers">

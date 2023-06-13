@@ -19,6 +19,7 @@ import "react-toastify/dist/ReactToastify.css";
 import PuffLoader from "react-spinners/PuffLoader";
 import TableAntd from "./TableGetOrder";
 import TableAntdAction from "./TableGetOrderAction";
+import LoadingPage from "../loadingPage/LoadingPage";
 var checkPassword =
   /^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
@@ -83,19 +84,19 @@ const UserProfile = () => {
               <div className="followers">
                 <h1 className="text-sm text-gray-700">Email</h1>
                 <h2 className="bold-text" style={{ paddingBottom: "20px" }}>
-                  {userEmail ? userEmail : "Loading..."}
+                  {userEmail ? userEmail : <LoadingPage size={32} />}
                 </h2>
               </div>
               <div className="likes">
                 <h1 className="text-sm text-gray-700">Họ và tên</h1>
                 <h2 className="bold-text" style={{ paddingBottom: "20px" }}>
-                  {userName ? userName + " " + userFirstName : "Loading..."}
+                  {userName ? userName + " " + userFirstName : <LoadingPage size={32} />}
                 </h2>
               </div>
               <div className="likes">
                 <h1 className="text-sm text-gray-700">Số điện thoại</h1>
                 <h2 className="bold-text" style={{ paddingBottom: "20px" }}>
-                  {userMobile ? userMobile : "Loading..."}
+                  {userMobile ? userMobile : <LoadingPage size={32} />}
                 </h2>
               </div>
               <div className="likes">
@@ -103,7 +104,7 @@ const UserProfile = () => {
                 <h2 className="bold-text" style={{ paddingBottom: "20px" }}>
                   {userCreate
                     ? moment(userCreate).format("DD/MM/YYYY")
-                    : "Loading..."}
+                    : <LoadingPage size={32} />}
                 </h2>
               </div>
             </div>
