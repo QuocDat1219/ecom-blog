@@ -20,9 +20,9 @@ import UserProfile from "../User/User";
 import Checkout from "../Checkout/checkout";
 import Headergiohang from "../Headergiohang/headergiohang";
 import ForgotPassword from "../Auth/forgotpassword/fogotpassword";
-import ChangPassWord from "../Auth/forgotpassword/ChangePassword";
+import ChangPassWord from "../Auth/forgotpassword/changepassword";
 import Resetpassword from "../Auth/forgotpassword/resetpassword";
-import ChangeInfo from "../Auth/forgotpassword/ChangeInfo";
+import ChangeInfo from "../Auth/forgotpassword/changeInfo";
 const Pages = () => {
   return (
     <>
