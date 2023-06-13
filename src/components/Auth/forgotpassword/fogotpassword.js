@@ -23,30 +23,30 @@ const ForgotPassword = () => {
   };
   return (
     <div className="flex justify-center items-center pt-[20px] pb-[40px]">
-    <div className="w-full max-w-md">
-      <h6 className="mb-2 font-bold">Nhập email để lấy lại mật khẩu</h6>
-      <input
-        type="email"
-        name="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        className="w-full mb-2 px-4 py-2 border border-solid border-black border-1 rounded focus:outline-none focus:border-blue-500"
-      />
-      <div className="text-left mb-4">
-        <Link to={"/login"} className="text-blue-500">
-          Quay lại?
-        </Link>
+      <div className="w-full max-w-md">
+        <h6 className="mb-2 font-bold">Nhập email để lấy lại mật khẩu</h6>
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="w-full mb-2 px-4 py-2 border border-solid border-black border-1 rounded focus:outline-none focus:border-blue-500"
+        />
+        <div className="text-left mb-4">
+          <Link to={"/login"} className="text-blue-500">
+            Quay lại?
+          </Link>
+        </div>
+        <button
+          type="submit"
+          onClick={handleSubmit}
+          className="w-full px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none"
+        >
+          Lấy lại
+        </button>
       </div>
-      <button
-        type="submit"
-        onClick={handleSubmit}
-        className="w-full px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none"
-      >
-        Lấy lại
-      </button>
     </div>
-  </div>
   );
 };
 
